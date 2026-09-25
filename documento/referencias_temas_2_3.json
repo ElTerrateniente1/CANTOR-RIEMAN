@@ -1,0 +1,200 @@
+[
+  {
+    "n": 1,
+    "texto": "Wikipedia (en). «Cours d'analyse».",
+    "url": "https://en.wikipedia.org/wiki/Cours_d%27analyse",
+    "clave": "cours"
+  },
+  {
+    "n": 2,
+    "texto": "Wikipedia (en). «Cauchy's convergence test».",
+    "url": "https://en.wikipedia.org/wiki/Cauchy%27s_convergence_test",
+    "clave": "criterio"
+  },
+  {
+    "n": 3,
+    "texto": "A historical review of the Cauchy-Riemann equations and the Cauchy Theorem. arXiv:2311.16649.",
+    "url": "https://arxiv.org/abs/2311.16649",
+    "clave": "integral_rev"
+  },
+  {
+    "n": 4,
+    "texto": "Wikipedia (en). «Cauchy's integral theorem».",
+    "url": "https://en.wikipedia.org/wiki/Cauchy%27s_integral_theorem",
+    "clave": "integral_wiki"
+  },
+  {
+    "n": 5,
+    "texto": "Encyclopedia MDPI. «(ε, δ)-Definition of Limit».",
+    "url": "https://encyclopedia.pub/entry/35788",
+    "clave": "epsdelta"
+  },
+  {
+    "n": 6,
+    "texto": "Wikipedia (en). «Uniform convergence» (sección de historia).",
+    "url": "https://en.wikipedia.org/wiki/Uniform_convergence",
+    "clave": "uniforme"
+  },
+  {
+    "n": 7,
+    "texto": "Encyclopaedia Britannica. «Karl Weierstrass».",
+    "url": "https://www.britannica.com/biography/Karl-Weierstrass",
+    "clave": "britannica_w"
+  },
+  {
+    "n": 8,
+    "texto": "Sinkevich, G. I. «On the history of epsilontics». arXiv:1502.06942.",
+    "url": "https://arxiv.org/abs/1502.06942",
+    "clave": "sinkevich"
+  },
+  {
+    "n": 9,
+    "texto": "Wikipedia (en). «Bolzano–Weierstrass theorem».",
+    "url": "https://en.wikipedia.org/wiki/Bolzano%E2%80%93Weierstrass_theorem",
+    "clave": "bw"
+  },
+  {
+    "n": 10,
+    "texto": "Quanta Magazine (2025). «The Jagged, Monstrous Function That Broke Calculus».",
+    "url": "https://www.quantamagazine.org/the-jagged-monstrous-function-that-broke-calculus-20250123/",
+    "clave": "quanta"
+  },
+  {
+    "n": 11,
+    "texto": "Wikipedia (en). «Dirichlet's principle».",
+    "url": "https://en.wikipedia.org/wiki/Dirichlet%27s_principle",
+    "clave": "dirichlet"
+  },
+  {
+    "n": 12,
+    "texto": "«“Algebraic truths” vs “geometric fantasies”: Weierstrass' response to Riemann». arXiv:math/0305022.",
+    "url": "https://arxiv.org/abs/math/0305022",
+    "clave": "fantasias"
+  },
+  {
+    "n": 13,
+    "texto": "Borovik, A. y Katz, M. G. (2012). «Who gave you the Cauchy–Weierstrass tale? The dual history of rigorous calculus». Foundations of Science, 17(3), 245–276. arXiv:1108.2885.",
+    "url": "https://arxiv.org/abs/1108.2885",
+    "clave": "borovik"
+  },
+  {
+    "n": 14,
+    "texto": "Encyclopedia.com. «Cantor, Georg (1845–1918)».",
+    "url": "https://www.encyclopedia.com/humanities/encyclopedias-almanacs-transcripts-and-maps/cantor-georg-1845-1918",
+    "clave": "enc_c"
+  },
+  {
+    "n": 15,
+    "texto": "Encyclopedia.com. «Georg Cantor» (construcción de los reales con «series fundamentales»).",
+    "url": "https://www.encyclopedia.com/people/science-and-technology/mathematics-biographies/georg-cantor",
+    "clave": "enc_c2"
+  },
+  {
+    "n": 16,
+    "texto": "MacTutor History of Mathematics. «Bernhard Riemann» (biografía).",
+    "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Riemann/",
+    "clave": "mactutor_r"
+  },
+  {
+    "n": 17,
+    "texto": "Encyclopedia.com. «Riemann, Georg Friedrich Bernhard».",
+    "url": "https://www.encyclopedia.com/people/science-and-technology/mathematics-biographies/bernhard-riemann",
+    "clave": "enc_r"
+  },
+  {
+    "n": 18,
+    "texto": "Riemann, B. (1854). «Über die Hypothesen, welche der Geometrie zu Grunde liegen». Texto en EMIS.",
+    "url": "https://www.emis.de/classics/Riemann/Geom.pdf",
+    "clave": "riemann_1854"
+  },
+  {
+    "n": 19,
+    "texto": "APS News (2013). «June 10, 1854: Riemann's classic lecture on curved space».",
+    "url": "https://www.aps.org/apsnews/2013/06/riemanns-curved-space",
+    "clave": "aps"
+  },
+  {
+    "n": 20,
+    "texto": "Historia Mathematica (2020). «Are the genre and the Geschlecht one and the same number? An inquiry into Alfred Clebsch's Geschlecht».",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0315086020300239",
+    "clave": "clebsch"
+  },
+  {
+    "n": 21,
+    "texto": "Weibel, C. A. «History of Homological Algebra».",
+    "url": "https://faculty.math.illinois.edu/K-theory/0245/",
+    "clave": "weibel"
+  },
+  {
+    "n": 22,
+    "texto": "Encyclopaedia Britannica. «Enrico Betti».",
+    "url": "https://www.britannica.com/biography/Enrico-Betti",
+    "clave": "betti"
+  },
+  {
+    "n": 23,
+    "texto": "MacTutor History of Mathematics. «Georg Cantor» (biografía).",
+    "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Cantor/",
+    "clave": "mactutor_c"
+  },
+  {
+    "n": 24,
+    "texto": "Kechris, A. S. «Set theory and uniqueness for trigonometric series». Caltech.",
+    "url": "https://www.pma.caltech.edu/documents/5627/uniqueness.pdf",
+    "clave": "kechris"
+  },
+  {
+    "n": 25,
+    "texto": "Cantor, G. (1872). «Über die Ausdehnung eines Satzes aus der Theorie der trigonometrischen Reihen». Mathematische Annalen, 5, 123–132 (EuDML).",
+    "url": "https://eudml.org/doc/156562",
+    "clave": "cantor_1872"
+  },
+  {
+    "n": 26,
+    "texto": "MathDL (MAA). «Georg Cantor at the Dawn of Point-Set Topology» (copia en Academia.edu).",
+    "url": "https://www.academia.edu/81674037/MathDL_Georg_Cantor_at_the_Dawn_of_Point_Set_Topology",
+    "clave": "mathdl"
+  },
+  {
+    "n": 27,
+    "texto": "Encyclopedia MDPI. «Georg Cantor's First Set Theory Article».",
+    "url": "https://encyclopedia.pub/entry/32557",
+    "clave": "cantor_1874"
+  },
+  {
+    "n": 28,
+    "texto": "Gouvêa, F. Q. (2011). «Was Cantor surprised?». The American Mathematical Monthly, 118(3).",
+    "url": "https://www.nku.edu/~longa/classes/mat115/days/resources/Infinity/AMM-March11_Cantor.pdf",
+    "clave": "gouvea"
+  },
+  {
+    "n": 29,
+    "texto": "«Chapter 1: Sets and the continuum before 1907». Tesis, Universidad de Utrecht.",
+    "url": "https://dspace.library.uu.nl/bitstream/handle/1874/90/c1.pdf",
+    "clave": "utrecht"
+  },
+  {
+    "n": 30,
+    "texto": "«Descriptions of Cantor Sets: A Set-Theoretic Survey and Open Problems». arXiv:2506.13103.",
+    "url": "https://arxiv.org/abs/2506.13103",
+    "clave": "cantor_set"
+  },
+  {
+    "n": 31,
+    "texto": "History of Information. «Leonhard Euler publishes the problem of the Königsberg bridges».",
+    "url": "https://historyofinformation.com/detail.php?id=3406",
+    "clave": "euler"
+  },
+  {
+    "n": 32,
+    "texto": "EBSCO Research Starters. «Fréchet introduces the concept of abstract space».",
+    "url": "https://www.ebsco.com/research-starters/history/frechet-introduces-concept-abstract-space",
+    "clave": "frechet"
+  },
+  {
+    "n": 33,
+    "texto": "Encyclopaedia Britannica. «Grundzüge der Mengenlehre».",
+    "url": "https://www.britannica.com/topic/Grundzuge-der-Mengenlehre",
+    "clave": "hausdorff"
+  }
+]

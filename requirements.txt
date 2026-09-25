@@ -1,3 +1,4 @@
 reportlab>=4.0
 fonttools>=4.40
 pyphen>=0.14
+pillow>=10.0

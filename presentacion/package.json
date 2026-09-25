@@ -1,0 +1,11 @@
+{
+  "name": "presentacion-temas-2-3",
+  "private": true,
+  "description": "Genera la presentación .pptx de los puntos 2 y 3",
+  "scripts": {
+    "build": "node generar_pptx.js"
+  },
+  "dependencies": {
+    "pptxgenjs": "^4.0.1"
+  }
+}
