@@ -6,6 +6,7 @@ lleva su ley/formula generalizada encerrada en un rectangulo. Sin enunciados
 ni desarrollos.
 """
 import os
+import sys
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
@@ -27,21 +28,27 @@ addMapping("F", 0, 1, "F"); addMapping("F", 1, 1, "FB")
 addMapping("S", 0, 0, "S"); addMapping("S", 1, 0, "SB")
 addMapping("S", 0, 1, "S"); addMapping("S", 1, 1, "SB")
 
+COMPACT = "--compacto" in sys.argv
+K = 0.65 if COMPACT else 1.0   # factor de tamano
+
 INK = colors.HexColor("#1b2a41")
 ACC = colors.HexColor("#0b5fa5")
 BOXBG = colors.HexColor("#f3f7fb")
 
-st_h1 = ParagraphStyle("h1", fontName="SB", fontSize=15, leading=19, textColor=colors.white)
-st_h2 = ParagraphStyle("h2", fontName="SB", fontSize=10.5, leading=13, textColor=ACC,
-                       spaceBefore=7, spaceAfter=3)
-st_lbl = ParagraphStyle("lbl", fontName="S", fontSize=8.2, leading=10.2, textColor=INK)
-st_frm = ParagraphStyle("frm", fontName="F", fontSize=9.6, leading=13.2, textColor=INK)
+st_h1 = ParagraphStyle("h1", fontName="SB", fontSize=15*K, leading=19*K, textColor=colors.white)
+st_h2 = ParagraphStyle("h2", fontName="SB", fontSize=10.5*K, leading=13*K, textColor=ACC,
+                       spaceBefore=7*K, spaceAfter=3*K)
+st_lbl = ParagraphStyle("lbl", fontName="S", fontSize=8.2*K, leading=10.2*K, textColor=INK)
+st_frm = ParagraphStyle("frm", fontName="F", fontSize=9.6*K, leading=13.2*K, textColor=INK)
 st_note = ParagraphStyle("note", fontName="S", fontSize=8, leading=10.5,
                          textColor=colors.HexColor("#444444"))
 st_title = ParagraphStyle("t", fontName="SB", fontSize=22, leading=27, textColor=INK)
 st_sub = ParagraphStyle("s", fontName="S", fontSize=10, leading=14, textColor=colors.HexColor("#444444"))
 
-W = A4[0] - 28 * mm
+MG = 7 * mm if COMPACT else 14 * mm
+GAP = 4 * mm
+W = (A4[0] - 2 * MG - GAP) / 2 if COMPACT else A4[0] - 28 * mm
+LR = 0.36 if COMPACT else 0.35
 
 
 def step(n, label, formulas):
@@ -50,18 +57,18 @@ def step(n, label, formulas):
         formulas = [formulas]
     left = Paragraph(f"<b>{n}.</b> {label}", st_lbl)
     right = [Paragraph(f, st_frm) for f in formulas]
-    inner = Table([[right]], colWidths=[W * 0.64])
+    inner = Table([[right]], colWidths=[W * (1 - LR) - 2])
     inner.setStyle(TableStyle([
-        ("BOX", (0, 0), (-1, -1), 1.1, ACC),
+        ("BOX", (0, 0), (-1, -1), 1.1 * K, ACC),
         ("BACKGROUND", (0, 0), (-1, -1), BOXBG),
-        ("LEFTPADDING", (0, 0), (-1, -1), 6), ("RIGHTPADDING", (0, 0), (-1, -1), 6),
-        ("TOPPADDING", (0, 0), (-1, -1), 3), ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
+        ("LEFTPADDING", (0, 0), (-1, -1), 6 * K), ("RIGHTPADDING", (0, 0), (-1, -1), 6 * K),
+        ("TOPPADDING", (0, 0), (-1, -1), 3 * K), ("BOTTOMPADDING", (0, 0), (-1, -1), 3 * K),
     ]))
-    t = Table([[left, inner]], colWidths=[W * 0.35, W * 0.65])
+    t = Table([[left, inner]], colWidths=[W * LR, W * (1 - LR)])
     t.setStyle(TableStyle([
         ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
         ("LEFTPADDING", (0, 0), (-1, -1), 0), ("RIGHTPADDING", (0, 0), (-1, -1), 2),
-        ("TOPPADDING", (0, 0), (-1, -1), 1.5), ("BOTTOMPADDING", (0, 0), (-1, -1), 1.5),
+        ("TOPPADDING", (0, 0), (-1, -1), 1.5 * K), ("BOTTOMPADDING", (0, 0), (-1, -1), 1.5 * K),
     ]))
     return t
 
@@ -69,17 +76,17 @@ def step(n, label, formulas):
 def tipo(titulo, pasos):
     items = [Paragraph(titulo, st_h2)]
     items += [step(i + 1, l, f) for i, (l, f) in enumerate(pasos)]
-    items.append(Spacer(1, 3))
+    items.append(Spacer(1, 3 * K))
     return items
 
 
 def banner(texto):
     t = Table([[Paragraph(texto, st_h1)]], colWidths=[W])
     t.setStyle(TableStyle([("BACKGROUND", (0, 0), (-1, -1), INK),
-                           ("LEFTPADDING", (0, 0), (-1, -1), 8),
-                           ("TOPPADDING", (0, 0), (-1, -1), 5),
-                           ("BOTTOMPADDING", (0, 0), (-1, -1), 5)]))
-    return [t, Spacer(1, 3)]
+                           ("LEFTPADDING", (0, 0), (-1, -1), 8 * K),
+                           ("TOPPADDING", (0, 0), (-1, -1), 5 * K),
+                           ("BOTTOMPADDING", (0, 0), (-1, -1), 5 * K)]))
+    return [t, Spacer(1, 3 * K)]
 
 
 # Notacion: negrita = vector. v0 -> v<sub>0</sub>. Δ, ∫, ∑, ∇, φ, ω, α, μ, η, ρ, γ, β.
@@ -88,39 +95,43 @@ def sub(x): return f"<sub>{x}</sub>"
 def sup(x): return f"<super>{x}</super>"
 
 story = []
+PB = Spacer(1, 4) if COMPACT else PageBreak()
 
 # ------------------------------------------------------------------ portada
-story += [Paragraph("Formulario de Mecánica — Irodov (Mir)", st_title),
-          Paragraph("Problemas de Física General · Parte 1: Fundamentos físicos de la mecánica", st_sub),
-          Spacer(1, 6),
-          Paragraph(
-              "Cada tipo de problema se resuelve siguiendo los pasos numerados, en ese orden. "
-              "Cada rectángulo contiene la ley o fórmula generalizada del paso. "
-              "<b>Negrita = vector.</b> Convención: g = 9,8 m/s², G = 6,67·10"
-              + sup("−11") + " N·m²/kg², c = 3·10" + sup("8") + " m/s.", st_note),
-          Spacer(1, 6)]
-
-idx = [["Rango indicado", "Bloque del formulario", "Estado"],
-       ["1.1 – 1.13", "A. Cinemática", "según tu mensaje (“la primera”)"],
-       ["1.200 – 1.228", "C. Conservación · D. Gravitación", "por confirmar con el libro"],
-       ["1.244 – 1.248", "E. Mecánica del sólido", "por confirmar con el libro"],
-       ["1.316 – 1.321", "F. Hidrodinámica", "por confirmar con el libro"],
-       ["1.340 – 1.353, 1.355, 1.358", "G. Mecánica relativista (apoyo)", "por confirmar con el libro"],
-       ["“Leyes de Newton”", "B. Dinámica (leyes de Newton)", "indicado en tu mensaje"]]
-t = Table([[Paragraph(c, st_lbl) for c in r] for r in idx],
-          colWidths=[W * 0.27, W * 0.43, W * 0.30])
-t.setStyle(TableStyle([("GRID", (0, 0), (-1, -1), 0.6, ACC),
-                       ("BACKGROUND", (0, 0), (-1, 0), BOXBG),
-                       ("TOPPADDING", (0, 0), (-1, -1), 2), ("BOTTOMPADDING", (0, 0), (-1, -1), 2)]))
-story += [t, Spacer(1, 4),
-          Paragraph(
-              "Aviso: no pude abrir el libro desde este entorno (red bloqueada), así que la asignación "
-              "número→bloque es una estimación a partir de la estructura habitual del Irodov y de tu lista de "
-              "temas; verifícala con el índice de tu edición. El formulario está organizado por <i>tipo de "
-              "problema</i>, por lo que sigue sirviendo aunque un rango cambie de bloque.", st_note)]
+if COMPACT:
+    story += [Paragraph("Formulario de Mecánica — Irodov (Mir) · versión compacta · <b>negrita = vector</b> · rangos número→bloque por confirmar con el libro", st_note), Spacer(1, 3)]
+else:
+    story += [Paragraph("Formulario de Mecánica — Irodov (Mir)", st_title),
+              Paragraph("Problemas de Física General · Parte 1: Fundamentos físicos de la mecánica", st_sub),
+              Spacer(1, 6),
+              Paragraph(
+                  "Cada tipo de problema se resuelve siguiendo los pasos numerados, en ese orden. "
+                  "Cada rectángulo contiene la ley o fórmula generalizada del paso. "
+                  "<b>Negrita = vector.</b> Convención: g = 9,8 m/s², G = 6,67·10"
+                  + sup("−11") + " N·m²/kg², c = 3·10" + sup("8") + " m/s.", st_note),
+              Spacer(1, 6)]
+    
+    idx = [["Rango indicado", "Bloque del formulario", "Estado"],
+           ["1.1 – 1.13", "A. Cinemática", "según tu mensaje (“la primera”)"],
+           ["1.200 – 1.228", "C. Conservación · D. Gravitación", "por confirmar con el libro"],
+           ["1.244 – 1.248", "E. Mecánica del sólido", "por confirmar con el libro"],
+           ["1.316 – 1.321", "F. Hidrodinámica", "por confirmar con el libro"],
+           ["1.340 – 1.353, 1.355, 1.358", "G. Mecánica relativista (apoyo)", "por confirmar con el libro"],
+           ["“Leyes de Newton”", "B. Dinámica (leyes de Newton)", "indicado en tu mensaje"]]
+    t = Table([[Paragraph(c, st_lbl) for c in r] for r in idx],
+              colWidths=[W * 0.27, W * 0.43, W * 0.30])
+    t.setStyle(TableStyle([("GRID", (0, 0), (-1, -1), 0.6, ACC),
+                           ("BACKGROUND", (0, 0), (-1, 0), BOXBG),
+                           ("TOPPADDING", (0, 0), (-1, -1), 2), ("BOTTOMPADDING", (0, 0), (-1, -1), 2)]))
+    story += [t, Spacer(1, 4),
+              Paragraph(
+                  "Aviso: no pude abrir el libro desde este entorno (red bloqueada), así que la asignación "
+                  "número→bloque es una estimación a partir de la estructura habitual del Irodov y de tu lista de "
+                  "temas; verifícala con el índice de tu edición. El formulario está organizado por <i>tipo de "
+                  "problema</i>, por lo que sigue sirviendo aunque un rango cambie de bloque.", st_note)]
 
 # ------------------------------------------------------------------ A. Cinemática
-story += [PageBreak()] + banner("A. Cinemática (1.1 – 1.13)")
+story += [PB] + banner("A. Cinemática (1.1 – 1.13)")
 story += tipo("A1 · Movimiento con aceleración dada / trayectoria dada", [
     ("Sistema de referencia, origen, sentidos (+)", "<b>r</b>(t) = x<b>i</b> + y<b>j</b> + z<b>k</b>"),
     ("Velocidad y aceleración (derivar)", "<b>v</b> = d<b>r</b>/dt ;  <b>a</b> = d<b>v</b>/dt = d" + sup("2") + "<b>r</b>/dt" + sup("2")),
@@ -159,7 +170,7 @@ story += tipo("A4 · Movimiento curvilíneo y circular", [
 ])
 
 # ------------------------------------------------------------------ B. Newton
-story += [PageBreak()] + banner("B. Dinámica — Leyes de Newton")
+story += [PB] + banner("B. Dinámica — Leyes de Newton")
 story += tipo("B1 · Problema general de fuerzas (traslación)", [
     ("Aislar cada cuerpo: diagrama de cuerpo libre", "fuerzas: m<b>g</b>, <b>N</b>, <b>T</b>, <b>f</b>, <b>F</b>" + sub("el") + ", <b>F</b>" + sub("res")),
     ("Ejes: uno a lo largo de la aceleración", "Si trayectoria curva: ejes tangencial (τ) y normal (n)"),
@@ -189,7 +200,7 @@ story += tipo("B3 · Sistemas no inerciales y masa variable", [
 ])
 
 # ------------------------------------------------------------------ C. Conservación
-story += [PageBreak()] + banner("C. Principios de conservación (momento, energía, momento angular)")
+story += [PB] + banner("C. Principios de conservación (momento, energía, momento angular)")
 story += tipo("C1 · Energía y trabajo", [
     ("Definir estados inicial (1) y final (2)", "sistema, fuerzas conservativas / no conservativas, nivel de U = 0"),
     ("Trabajo y teorema de la energía cinética", "A = ∫<b>F</b>·d<b>r</b> ;  A" + sub("total") + " = ΔT ;  T = mv" + sup("2") + "/2"),
@@ -221,13 +232,13 @@ story += tipo("C3 · Momento angular", [
 ])
 
 # ------------------------------------------------------------------ D. Gravitación
-story += [PageBreak()] + banner("D. Gravitación universal")
+story += [PB] + banner("D. Gravitación universal")
 story += tipo("D1 · Campo y potencial gravitatorio", [
     ("Ley de gravitación", "F = G m" + sub("1") + "m" + sub("2") + "/r" + sup("2") + " ;  G = 6,67·10" + sup("−11") + " N·m²/kg²"),
     ("Intensidad y potencial (masa puntual / esfera, r ≥ R)", "<b>g</b> = −GM<b>r</b>/r" + sup("3") + " ;  φ = −GM/r ;  U = mφ ;  <b>g</b> = −∇φ"),
     ("Superposición (varias masas)", "<b>g</b> = ∑<b>g</b>" + sub("i") + " ;  φ = ∑φ" + sub("i")),
     ("Cuerpo extenso: elemento dm", "d<b>g</b> = −G dm <b>r</b>/r" + sup("3") + " ;  dm = ρ dV  (λ dl, σ dS) ;  usar simetría"),
-    ("Teorema de Gauss gravitatorio (simetría esférica, cilíndrica, plana)", "∮<b>g</b>·d<b>S</b> = −4πG M" + sub("int")),
+    ("Teorema de Gauss gravitatorio (simetría esférica, cilíndrica, plana)", "∫" + sub("S") + "<b>g</b>·d<b>S</b> = −4πG M" + sub("int")),
     ("Esfera homogénea", ["r ≥ R: g = GM/r" + sup("2") + " ;  φ = −GM/r",
                           "r ≤ R: g = GMr/R" + sup("3") + " = (4/3)πGρ r ;  φ = −GM(3R" + sup("2") + " − r" + sup("2") + ")/(2R" + sup("3") + ")"]),
     ("Cáscara esférica", "dentro: g = 0, φ = −GM/R ;  fuera: como masa puntual"),
@@ -245,7 +256,7 @@ story += tipo("D2 · Órbitas, Kepler y velocidades cósmicas", [
 ])
 
 # ------------------------------------------------------------------ E. Sólido
-story += [PageBreak()] + banner("E. Mecánica del sólido (rotación, rodadura, elasticidad)")
+story += [PB] + banner("E. Mecánica del sólido (rotación, rodadura, elasticidad)")
 story += tipo("E1 · Dinámica de rotación y rodadura", [
     ("Tipo de movimiento: eje fijo / plano (rodadura) / con traslación", "elegir eje z y sentido positivo de rotación"),
     ("Momento de inercia (definición)", "I = ∑m" + sub("i") + "r" + sub("i") + sup("2") + " = ∫r" + sup("2") + " dm"),
@@ -278,7 +289,7 @@ story += tipo("E3 · Deformaciones elásticas", [
 ])
 
 # ------------------------------------------------------------------ F. Hidrodinámica
-story += [PageBreak()] + banner("F. Hidrodinámica")
+story += [PB] + banner("F. Hidrodinámica")
 story += tipo("F1 · Fluido en reposo y fluido ideal en movimiento", [
     ("Presión hidrostática", "p = p" + sub("0") + " + ρ g h ;  Pascal: Δp se transmite íntegra"),
     ("Empuje (Arquímedes) y flotación", "F" + sub("A") + " = ρ" + sub("liq") + " g V" + sub("sum") + " ;  flota: ρ" + sub("cuerpo") + " V = ρ" + sub("liq") + " V" + sub("sum")),
@@ -295,11 +306,11 @@ story += tipo("F2 · Fuerzas del fluido, rotación y viscosidad", [
     ("Viscosidad (Newton)", "F = η S dv/dx"),
     ("Flujo laminar en tubo (Poiseuille)", "Q = πR" + sup("4") + "Δp/(8ηl) ;  v" + sub("máx") + " = Δp R" + sup("2") + "/(4ηl)"),
     ("Resistencia de Stokes y velocidad límite", "F = 6πηrv ;  v" + sub("lím") + " = 2r" + sup("2") + "(ρ − ρ" + sub("0") + ")g/(9η)"),
-    ("Régimen: número de Reynolds", "Re = ρ v l/η ;  laminar si Re ≲ 10" + sup("3") + " (tubo)"),
+    ("Régimen: número de Reynolds", "Re = ρ v l/η ;  laminar si Re < ~10" + sup("3") + " (tubo)"),
 ])
 
 # ------------------------------------------------------------------ G. Relativista
-story += [PageBreak()] + banner("G. Mecánica relativista (apoyo; rango 1.340–1.358 por confirmar)")
+story += [PB] + banner("G. Mecánica relativista (apoyo; rango 1.340–1.358 por confirmar)")
 story += tipo("G1 · Cinemática y dinámica relativistas", [
     ("Factor de Lorentz", "β = v/c ;  γ = 1/√(1 − β" + sup("2") + ")"),
     ("Transformaciones de Lorentz (K′ se mueve con V en x)", "x′ = γ(x − Vt) ;  t′ = γ(t − Vx/c" + sup("2") + ") ;  y′ = y ;  z′ = z"),
@@ -318,17 +329,24 @@ def footer(c, d):
     c.saveState()
     c.setFont("S", 7.5)
     c.setFillColor(colors.HexColor("#666666"))
-    c.drawString(14 * mm, 8 * mm, "Formulario de Mecánica — Irodov (Mir) · fórmulas generalizadas, sin enunciados")
-    c.drawRightString(A4[0] - 14 * mm, 8 * mm, f"Pág. {d.page}")
+    c.drawString(MG, 8 * mm if not COMPACT else 4 * mm, "Formulario de Mecánica — Irodov (Mir) · fórmulas generalizadas, sin enunciados")
+    c.drawRightString(A4[0] - MG, 8 * mm if not COMPACT else 4 * mm, f"Pág. {d.page}")
     c.restoreState()
 
 
-out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Formulario_Irodov_Mecanica.pdf")
-doc = BaseDocTemplate(out, pagesize=A4, leftMargin=14 * mm, rightMargin=14 * mm,
-                      topMargin=13 * mm, bottomMargin=15 * mm,
+nombre = "Formulario_Irodov_Mecanica_Compacto.pdf" if COMPACT else "Formulario_Irodov_Mecanica.pdf"
+out = os.path.join(os.path.dirname(os.path.abspath(__file__)), nombre)
+if COMPACT:
+    TM, BM = 6 * mm, 8 * mm
+    H = A4[1] - TM - BM
+    frames = [Frame(MG + i * (W + GAP), BM, W, H, id=f"f{i}", leftPadding=0, rightPadding=0,
+                    topPadding=0, bottomPadding=0) for i in range(2)]
+else:
+    TM, BM = 13 * mm, 15 * mm
+    frames = [Frame(14 * mm, 15 * mm, W, A4[1] - 28 * mm, id="f", leftPadding=0, rightPadding=0,
+                    topPadding=0, bottomPadding=0)]
+doc = BaseDocTemplate(out, pagesize=A4, leftMargin=MG, rightMargin=MG, topMargin=TM, bottomMargin=BM,
                       title="Formulario de Mecánica — Irodov (Mir)")
-doc.addPageTemplates([PageTemplate(id="p", frames=[Frame(14 * mm, 15 * mm, W, A4[1] - 28 * mm, id="f",
-                                                         leftPadding=0, rightPadding=0, topPadding=0, bottomPadding=0)],
-                                   onPage=footer)])
+doc.addPageTemplates([PageTemplate(id="p", frames=frames, onPage=footer)])
 doc.build(story)
 print(out)
