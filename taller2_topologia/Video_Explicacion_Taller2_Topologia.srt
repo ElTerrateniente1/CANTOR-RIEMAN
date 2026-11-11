@@ -1,0 +1,983 @@
+1
+00:00:00,450 --> 00:00:06,714
+Topología, módulo dos. En este video repasamos, paso a paso, la teoría que hay
+
+2
+00:00:06,714 --> 00:00:12,898
+detrás del taller dos, y la aplicamos a sus ejercicios, pensando en el examen
+
+3
+00:00:12,898 --> 00:00:13,541
+parcial.
+
+4
+00:00:14,441 --> 00:00:20,882
+El recorrido tiene siete bloques. Primero, qué es una topología y cómo se verifica.
+
+5
+00:00:20,882 --> 00:00:27,090
+Después, los cerrados, las vecindades y el abierto mínimo, que es la herramienta
+
+6
+00:00:27,090 --> 00:00:33,532
+clave. Luego, el derivado, la clausura, el interior y la frontera. Seguimos con los
+
+7
+00:00:33,532 --> 00:00:39,818
+conjuntos densos y los subespacios, las topologías pequeñas y su comparación, las
+
+8
+00:00:39,818 --> 00:00:46,259
+bases y las sub bases. Y terminamos con continuidad, funciones abiertas y cerradas,
+
+9
+00:00:46,259 --> 00:00:47,579
+y homeomorfismos.
+
+10
+00:00:48,479 --> 00:00:54,048
+Todo lo que se dice aquí está desarrollado con más detalle en los dos documentos que
+
+11
+00:00:54,048 --> 00:00:58,955
+acompañan al video: la solución completa del taller, y la guía de estudio.
+
+12
+00:00:59,855 --> 00:01:06,241
+Una topología sobre un conjunto equis es una familia tau de subconjuntos de equis, a
+
+13
+00:01:06,241 --> 00:01:12,551
+los que llamamos abiertos, que cumple tres condiciones. Uno: el vacío y equis están
+
+14
+00:01:12,551 --> 00:01:18,557
+en tau. Dos: la unión de cualquier cantidad de abiertos es un abierto. Tres: la
+
+15
+00:01:18,557 --> 00:01:24,943
+intersección de dos abiertos es un abierto, y por lo tanto, la de cualquier cantidad
+
+16
+00:01:24,943 --> 00:01:25,475
+finita.
+
+17
+00:01:26,375 --> 00:01:32,165
+¿Por qué solo intersecciones finitas? Porque así ocurre en la recta real. Los
+
+18
+00:01:32,165 --> 00:01:38,256
+intervalos abiertos, de menos uno sobre ene, a uno sobre ene, son todos abiertos.
+
+19
+00:01:38,256 --> 00:01:43,295
+Pero su intersección es solamente el punto cero, que no es abierto.
+
+20
+00:01:44,195 --> 00:01:49,751
+Los ejemplos extremos son la topología indiscreta, que solo tiene al vacío y a
+
+21
+00:01:49,751 --> 00:01:55,094
+equis, y la discreta, en la que todo subconjunto es abierto. Cualquier otra
+
+22
+00:01:55,094 --> 00:01:58,086
+topología sobre equis queda entre las dos.
+
+23
+00:01:58,986 --> 00:02:04,783
+En un conjunto finito, verificar es mecánico. Primero se comprueba que estén el
+
+24
+00:02:04,783 --> 00:02:10,727
+vacío y equis. Después se revisan las uniones y las intersecciones de dos en dos.
+
+25
+00:02:10,727 --> 00:02:16,598
+Basta de dos en dos, porque la familia es finita. Y hay un atajo: si un conjunto
+
+26
+00:02:16,598 --> 00:02:22,615
+está contenido en otro, su unión es el grande y su intersección es el pequeño. Así
+
+27
+00:02:22,615 --> 00:02:26,138
+que solo hay que mirar los pares no comparables.
+
+28
+00:02:27,038 --> 00:02:32,871
+Atención a la lógica. Para concluir que no es topología, basta un solo par que
+
+29
+00:02:32,871 --> 00:02:39,079
+falle, y ese par es la respuesta. Para concluir que sí lo es, hay que revisar todos
+
+30
+00:02:39,079 --> 00:02:41,696
+los pares, con las dos operaciones.
+
+31
+00:02:42,596 --> 00:02:49,668
+Parte uno del taller. Equis tiene cinco puntos: a, be, ce, de, y e. En tau uno, los
+
+32
+00:02:49,668 --> 00:02:56,740
+pares no comparables dan: a, unido con ce de, que es a ce de. A, unido con be ce de
+
+33
+00:02:56,740 --> 00:03:03,727
+e, que es equis. Y la intersección de a ce de, con be ce de e, que es ce de. Todos
+
+34
+00:03:03,727 --> 00:03:09,095
+esos resultados están en la lista. Tau uno sí es una topología.
+
+35
+00:03:09,995 --> 00:03:16,436
+En tau dos, la unión del conjunto a, con el conjunto be ce de, es a be ce de, que no
+
+36
+00:03:16,436 --> 00:03:20,577
+está en la colección. Falla la unión: no es topología.
+
+37
+00:03:21,477 --> 00:03:27,887
+En tau tres, todas las uniones funcionan. Pero la intersección de ce de, con a be de
+
+38
+00:03:27,887 --> 00:03:34,220
+e, es el conjunto de, que no está. Falla la intersección: tampoco es topología. Por
+
+39
+00:03:34,220 --> 00:03:37,883
+eso siempre hay que revisar las dos operaciones.
+
+40
+00:03:38,783 --> 00:03:44,750
+Tau cuatro pasa todas las pruebas, igual que tau uno. Entonces las topologías son
+
+41
+00:03:44,750 --> 00:03:49,243
+tau uno y tau cuatro. En lo que sigue trabajamos con tau uno.
+
+42
+00:03:50,143 --> 00:03:56,690
+Un conjunto es cerrado si su complemento es abierto. Para hallar todos los cerrados,
+
+43
+00:03:56,690 --> 00:04:03,081
+se toma el complemento de cada abierto, uno por uno. En tau uno, los cerrados son:
+
+44
+00:04:03,081 --> 00:04:09,550
+el vacío, equis, el conjunto a, el conjunto be e, el conjunto a be e, y el conjunto
+
+45
+00:04:09,550 --> 00:04:10,408
+be ce de e.
+
+46
+00:04:11,308 --> 00:04:17,431
+Cuidado: cerrado no es lo contrario de abierto. El conjunto a, y el conjunto be ce
+
+47
+00:04:17,431 --> 00:04:23,554
+de e, son abiertos y cerrados a la vez. En cambio, el conjunto be no es ni abierto
+
+48
+00:04:23,554 --> 00:04:24,375
+ni cerrado.
+
+49
+00:04:25,275 --> 00:04:31,208
+La herramienta más útil en espacios finitos es el abierto mínimo de un punto: la
+
+50
+00:04:31,208 --> 00:04:37,290
+intersección de todos los abiertos que lo contienen. Es el abierto más pequeño que
+
+51
+00:04:37,290 --> 00:04:43,520
+contiene al punto. En tau uno: el de a, es el conjunto a. El de be, y el de e, es be
+
+52
+00:04:43,520 --> 00:04:46,635
+ce de e. Y el de ce, y el de de, es ce de.
+
+53
+00:04:47,535 --> 00:04:53,094
+Con esa tabla se resuelve casi todo. Un conjunto es vecindad de un punto, si
+
+54
+00:04:53,094 --> 00:04:58,799
+contiene a su abierto mínimo. Un punto está en la clausura de A, si su abierto
+
+55
+00:04:58,799 --> 00:05:04,798
+mínimo corta a A. Está en el interior de A, si su abierto mínimo está contenido en
+
+56
+00:05:04,798 --> 00:05:10,942
+A. Y es punto de acumulación de A, si su abierto mínimo, quitándole el propio punto,
+
+57
+00:05:10,942 --> 00:05:12,259
+todavía corta a A.
+
+58
+00:05:13,159 --> 00:05:19,454
+Una vecindad de un punto es cualquier conjunto que contiene un abierto que contiene
+
+59
+00:05:19,454 --> 00:05:25,749
+al punto. No tiene que ser abierta. El abierto mínimo de ce, es ce de. Entonces las
+
+60
+00:05:25,749 --> 00:05:31,665
+vecindades de ce son: ce de, junto con cualquier combinación de los otros tres
+
+61
+00:05:31,665 --> 00:05:38,037
+puntos. Ocho conjuntos en total. El abierto mínimo de e, es be ce de e, y sus únicas
+
+62
+00:05:38,037 --> 00:05:40,843
+vecindades son ese conjunto, y equis.
+
+63
+00:05:41,743 --> 00:05:48,024
+Una advertencia. Algunos libros, como el de Munkres, llaman vecindad solamente a los
+
+64
+00:05:48,024 --> 00:05:54,305
+abiertos que contienen al punto. Con esa convención la respuesta es más corta. En el
+
+65
+00:05:54,305 --> 00:05:58,343
+examen conviene aclarar qué definición se está usando.
+
+66
+00:05:59,243 --> 00:06:04,988
+Un punto es de acumulación de un conjunto A, si todo abierto que lo contiene tiene
+
+67
+00:06:04,988 --> 00:06:10,803
+algún punto de A distinto de él mismo. El conjunto de esos puntos es el derivado de
+
+68
+00:06:10,803 --> 00:06:16,688
+A, que se escribe A prima. Hay dos detalles decisivos: tiene que cumplirse para todo
+
+69
+00:06:16,688 --> 00:06:19,280
+abierto, y el propio punto no cuenta.
+
+70
+00:06:20,180 --> 00:06:27,086
+Calculemos el derivado de ge, igual a be, e, en tau uno. Para cada punto tomamos su
+
+71
+00:06:27,086 --> 00:06:33,826
+abierto mínimo, le quitamos el punto, e intersecamos con ge. Para a, queda vacío.
+
+72
+00:06:33,826 --> 00:06:40,649
+Para be, queda el punto e. Para ce, y para de, queda vacío, porque ce de no toca a
+
+73
+00:06:40,649 --> 00:06:42,396
+ge. Para e, queda be.
+
+74
+00:06:43,296 --> 00:06:49,560
+Los puntos de acumulación son be, y e. El derivado de ge es be, e. Si cambiamos a la
+
+75
+00:06:49,560 --> 00:06:55,228
+topología tau cuatro, el mismo conjunto tiene como derivado a be ce de e. El
+
+76
+00:06:55,228 --> 00:06:59,330
+derivado depende de la topología, no solo del conjunto.
+
+77
+00:07:00,230 --> 00:07:05,987
+La clausura de A es el menor cerrado que contiene a A. También es igual a A, unido
+
+78
+00:07:05,987 --> 00:07:11,815
+con su derivado. Para calcularla, se recorre la lista de cerrados, y se toma el más
+
+79
+00:07:11,815 --> 00:07:14,132
+pequeño que contiene al conjunto.
+
+80
+00:07:15,032 --> 00:07:20,896
+En tau uno: el conjunto a ya es cerrado, así que es su propia clausura. El menor
+
+81
+00:07:20,896 --> 00:07:26,908
+cerrado que contiene a be, es be e. Y el menor cerrado que contiene a ce de, es be
+
+82
+00:07:26,908 --> 00:07:32,919
+ce de e. Hacer el cálculo por las dos vías, con los cerrados y con el derivado, es
+
+83
+00:07:32,919 --> 00:07:34,532
+la mejor comprobación.
+
+84
+00:07:35,432 --> 00:07:41,254
+El interior de A es la unión de los abiertos contenidos en A: el mayor abierto que
+
+85
+00:07:41,254 --> 00:07:46,934
+cabe dentro. El exterior es el interior del complemento. Y la frontera es lo que
+
+86
+00:07:46,934 --> 00:07:52,756
+queda: la clausura menos el interior. Interior, frontera y exterior siempre forman
+
+87
+00:07:52,756 --> 00:07:54,602
+una partición del espacio.
+
+88
+00:07:55,502 --> 00:08:01,997
+Para jota, igual a, a be ce, en tau uno. El único abierto no vacío contenido en jota
+
+89
+00:08:01,997 --> 00:08:08,337
+es el conjunto a, así que el interior es a. Ningún cerrado propio contiene a jota,
+
+90
+00:08:08,337 --> 00:08:14,754
+así que su clausura es todo equis. La frontera es equis menos a, es decir, be ce de
+
+91
+00:08:14,754 --> 00:08:16,765
+e. Y el exterior es vacío.
+
+92
+00:08:17,665 --> 00:08:24,141
+Dos observaciones. En espacios finitos, la frontera no es un borde delgado: aquí son
+
+93
+00:08:24,141 --> 00:08:30,617
+cuatro de los cinco puntos. Y el taller escribe sigma de jota. Lo interpretamos como
+
+94
+00:08:30,617 --> 00:08:37,093
+la frontera, pero esa notación no es estándar, y hay que confirmarla con los apuntes
+
+95
+00:08:37,093 --> 00:08:37,786
+de clase.
+
+96
+00:08:38,686 --> 00:08:44,946
+Un conjunto es denso si su clausura es todo el espacio. O, lo que es lo mismo, si
+
+97
+00:08:44,946 --> 00:08:51,206
+corta a todo abierto no vacío. Entre los abiertos de tau uno, los densos son a ce
+
+98
+00:08:51,206 --> 00:08:56,848
+de, y equis. Por ejemplo, ce de no es denso, porque no toca al abierto a.
+
+99
+00:08:57,748 --> 00:09:03,730
+La topología relativa sobre un subconjunto hache se obtiene intersecando cada
+
+100
+00:09:03,730 --> 00:09:10,100
+abierto con hache. Para hache, igual a, a ce de, las intersecciones dan: hache, el
+
+101
+00:09:10,100 --> 00:09:16,315
+vacío, el conjunto a, y el conjunto ce de. Ojo: un conjunto abierto en hache, no
+
+102
+00:09:16,315 --> 00:09:19,034
+tiene por qué ser abierto en equis.
+
+103
+00:09:19,934 --> 00:09:26,964
+En la parte dos, el conjunto es: uno, dos, tres, cuatro, seis. En tau uno aparece un
+
+104
+00:09:26,964 --> 00:09:33,825
+término incompleto. Si se lee como el conjunto dos, la colección es una topología.
+
+105
+00:09:33,825 --> 00:09:40,436
+Si se omite, deja de serlo, porque la intersección de uno dos, con dos seis, es
+
+106
+00:09:40,436 --> 00:09:46,378
+justamente el conjunto dos. Tau dos sí es topología, sin corregir nada.
+
+107
+00:09:47,278 --> 00:09:53,868
+Con tau dos, y los mismos métodos, se obtiene: el derivado de ele es uno, seis. El
+
+108
+00:09:53,868 --> 00:10:00,459
+de eme es uno, cuatro, seis. La clausura de dos seis es uno, dos, cuatro, seis. La
+
+109
+00:10:00,459 --> 00:10:07,050
+única vecindad de uno es todo el espacio. El interior de pe es el conjunto tres. Y
+
+110
+00:10:07,050 --> 00:10:13,640
+la frontera de ele unión eme es el conjunto uno. Un detalle instructivo: el cuatro
+
+111
+00:10:13,640 --> 00:10:18,141
+pertenece a ele, pero no es punto de acumulación de ele.
+
+112
+00:10:19,041 --> 00:10:25,701
+Parte tres. ¿Cuándo es topología una colección de cuatro términos: el vacío, A, be,
+
+113
+00:10:25,701 --> 00:10:32,039
+y equis? Solo hay que mirar A unión be, y A intersección be. Si uno contiene al
+
+114
+00:10:32,039 --> 00:10:38,538
+otro, todo funciona: es una cadena. Si no son comparables, la unión tiene que ser
+
+115
+00:10:38,538 --> 00:10:44,876
+equis, y la intersección tiene que ser vacía: son complementarios. Esas son las
+
+116
+00:10:44,876 --> 00:10:46,561
+únicas posibilidades.
+
+117
+00:10:47,461 --> 00:10:54,041
+En el conjunto dos, cuatro, seis: cadenas de un punto dentro de un par, hay tres por
+
+118
+00:10:54,041 --> 00:11:00,229
+dos, seis. Pares complementarios, un punto y los otros dos, hay tres. En total,
+
+119
+00:11:00,229 --> 00:11:06,573
+nueve topologías de cuatro términos. Con el mismo criterio se construyen las diez
+
+120
+00:11:06,573 --> 00:11:09,315
+que piden los problemas dos y tres.
+
+121
+00:11:10,215 --> 00:11:16,048
+Dos topologías sobre el mismo conjunto son comparables si una está contenida en la
+
+122
+00:11:16,048 --> 00:11:22,023
+otra. La que tiene más abiertos se llama más fina. En un conjunto de tres puntos hay
+
+123
+00:11:22,023 --> 00:11:27,643
+exactamente veintinueve topologías. La indiscreta está contenida en todas, y la
+
+124
+00:11:27,643 --> 00:11:29,777
+discreta las contiene a todas.
+
+125
+00:11:30,677 --> 00:11:36,687
+Este diagrama ordena las veintinueve por inclusión. Dos topologías son comparables
+
+126
+00:11:36,687 --> 00:11:42,624
+cuando se puede subir de una a la otra siguiendo las líneas. De los cuatrocientos
+
+127
+00:11:42,624 --> 00:11:48,707
+seis pares posibles, ciento sesenta y tres son comparables, y doscientos cuarenta y
+
+128
+00:11:48,707 --> 00:11:54,791
+tres no lo son. Un atajo: dos topologías distintas con el mismo número de abiertos,
+
+129
+00:11:54,791 --> 00:11:56,403
+nunca son comparables.
+
+130
+00:11:57,303 --> 00:12:03,914
+Problema seis. En los enteros, un conjunto es abierto si, para cada ene, contiene a
+
+131
+00:12:03,914 --> 00:12:10,604
+dos ene, exactamente cuando contiene a dos ene menos uno. Es decir, no puede separar
+
+132
+00:12:10,604 --> 00:12:17,293
+a cada impar del par que le sigue. Los abiertos son las uniones de bloques: uno dos,
+
+133
+00:12:17,293 --> 00:12:20,877
+tres cuatro, cinco seis, y así sucesivamente.
+
+134
+00:12:21,777 --> 00:12:27,833
+La demostración se hace con elementos. El vacío y los enteros cumplen la condición.
+
+135
+00:12:27,833 --> 00:12:33,743
+Si dos ene está en una unión, está en algún miembro, y ese miembro contiene a dos
+
+136
+00:12:33,743 --> 00:12:39,799
+ene menos uno. Y para la intersección, se aplica la condición a cada conjunto. Para
+
+137
+00:12:39,799 --> 00:12:45,709
+las vecindades de cinco: todo abierto que contiene a cinco, contiene a seis, y el
+
+138
+00:12:45,709 --> 00:12:51,619
+conjunto cinco seis es abierto. Así que las vecindades de cinco son los conjuntos
+
+139
+00:12:51,619 --> 00:12:53,881
+que contienen a cinco y a seis.
+
+140
+00:12:54,781 --> 00:13:00,857
+Problema siete. En los reales, se declaran abiertos los conjuntos que contienen al
+
+141
+00:13:00,857 --> 00:13:06,933
+cero. Tal como está escrito hay un problema: el vacío no contiene al cero, así que
+
+142
+00:13:06,933 --> 00:13:13,084
+faltaría en la familia. La definición correcta agrega el vacío. Con esa corrección,
+
+143
+00:13:13,084 --> 00:13:19,086
+los axiomas se verifican enseguida: una unión de conjuntos que contienen al cero,
+
+144
+00:13:19,086 --> 00:13:22,494
+contiene al cero; y lo mismo una intersección.
+
+145
+00:13:23,394 --> 00:13:28,959
+Para las vecindades de uno: un abierto que contiene a uno no es vacío, así que
+
+146
+00:13:28,959 --> 00:13:34,667
+también contiene al cero. El abierto mínimo de uno es el conjunto cero, uno. Las
+
+147
+00:13:34,667 --> 00:13:40,517
+vecindades de uno son todos los subconjuntos de los reales que contienen al cero y
+
+148
+00:13:40,517 --> 00:13:41,017
+al uno.
+
+149
+00:13:41,917 --> 00:13:47,840
+Una base es un catálogo reducido de abiertos, con el que se arman todos los demás
+
+150
+00:13:47,840 --> 00:13:53,544
+por unión. Una sub base es un catálogo todavía más pequeño: con intersecciones
+
+151
+00:13:53,544 --> 00:13:59,541
+finitas de sus miembros se obtiene una base. La topología generada por una familia
+
+152
+00:13:59,541 --> 00:14:05,099
+es la menor topología que la contiene. La receta tiene dos pasos, y el orden
+
+153
+00:14:05,099 --> 00:14:09,268
+importa: primero intersecciones finitas, después uniones.
+
+154
+00:14:10,168 --> 00:14:16,143
+Problema ocho. La familia tiene tres conjuntos: a be ce; ce de; y de e. Las
+
+155
+00:14:16,143 --> 00:14:22,358
+intersecciones dan el punto ce, el punto de, y el vacío. Con ellos, más equis,
+
+156
+00:14:22,358 --> 00:14:28,891
+tenemos la base. Las uniones producen dos conjuntos nuevos: ce de e; y a be ce de.
+
+157
+00:14:28,891 --> 00:14:35,425
+La topología generada tiene nueve abiertos. En el problema nueve pasa algo más: el
+
+158
+00:14:35,425 --> 00:14:41,958
+punto e no está en ningún miembro de la familia, y equis hay que agregarlo aparte.
+
+159
+00:14:42,858 --> 00:14:48,529
+Problema once. En los reales, la familia son todos los intervalos cerrados de
+
+160
+00:14:48,529 --> 00:14:54,567
+longitud uno. Para cualquier punto, el intervalo que termina en él, y el intervalo
+
+161
+00:14:54,567 --> 00:15:00,606
+que empieza en él, se cortan solamente en ese punto. Entonces todos los puntos son
+
+162
+00:15:00,606 --> 00:15:04,215
+abiertos, y la topología generada es la discreta.
+
+163
+00:15:05,115 --> 00:15:11,031
+Problema doce. El enunciado tiene una errata. Lo que se demuestra es que, si a una
+
+164
+00:15:11,031 --> 00:15:16,947
+base se le agregan abiertos, sigue siendo base. La prueba es directa: los miembros
+
+165
+00:15:16,947 --> 00:15:22,791
+de la familia grande son abiertos; y todo abierto es unión de miembros de la base
+
+166
+00:15:22,791 --> 00:15:26,326
+original, que también están en la familia grande.
+
+167
+00:15:27,226 --> 00:15:33,001
+Pasamos a las funciones. Una función entre espacios topológicos es continua, si la
+
+168
+00:15:33,001 --> 00:15:38,775
+imagen inversa de todo abierto de la llegada es un abierto de la salida. La imagen
+
+169
+00:15:38,775 --> 00:15:44,690
+inversa de un conjunto son todos los puntos cuya flecha cae en ese conjunto; no hace
+
+170
+00:15:44,690 --> 00:15:50,183
+falta que la función tenga inversa. Y es continua en un punto pe, si para todo
+
+171
+00:15:50,183 --> 00:15:55,675
+abierto que contiene a la imagen de pe, hay un abierto alrededor de pe que cae
+
+172
+00:15:55,675 --> 00:15:56,168
+dentro.
+
+173
+00:15:57,068 --> 00:16:03,602
+El error más común es revisar imágenes directas de abiertos. Eso no es continuidad:
+
+174
+00:16:03,602 --> 00:16:10,058
+es la definición de función abierta, que es otra propiedad distinta. Continua, con
+
+175
+00:16:10,058 --> 00:16:14,782
+imágenes inversas. Abierta y cerrada, con imágenes directas.
+
+176
+00:16:15,682 --> 00:16:22,620
+Problema uno de la parte cuatro. El espacio tiene cuatro puntos, con abiertos: el
+
+177
+00:16:22,620 --> 00:16:29,814
+conjunto a; el conjunto be; a be; y be ce de. La función lleva a en be; be en de; ce
+
+178
+00:16:29,814 --> 00:16:31,356
+en be; y de en ce.
+
+179
+00:16:32,256 --> 00:16:38,371
+Calculamos las imágenes inversas. Los puntos que van a parar a be, son a y ce.
+
+180
+00:16:38,371 --> 00:16:44,800
+Entonces la imagen inversa del abierto be, es el conjunto a ce, que no es abierto.
+
+181
+00:16:44,800 --> 00:16:46,839
+La función no es continua.
+
+182
+00:16:47,739 --> 00:16:53,976
+¿Y en el punto de? La imagen de de, es ce. Los abiertos que contienen a ce son: be
+
+183
+00:16:53,976 --> 00:17:00,289
+ce de; y equis. La imagen inversa de be ce de es todo equis, que es una vecindad de
+
+184
+00:17:00,289 --> 00:17:06,526
+de. Entonces la función sí es continua en de. De hecho, solo falla en el punto ce.
+
+185
+00:17:06,526 --> 00:17:12,535
+Pero un solo punto de discontinuidad basta para que la función no sea continua.
+
+186
+00:17:13,435 --> 00:17:19,175
+Una función es abierta, si la imagen directa de todo abierto es abierta. Y es
+
+187
+00:17:19,175 --> 00:17:24,989
+cerrada, si la imagen de todo cerrado es cerrada. Problema dos: ¿es abierta la
+
+188
+00:17:24,989 --> 00:17:31,176
+función equis al cuadrado, en los reales? Tomemos el intervalo abierto de menos uno
+
+189
+00:17:31,176 --> 00:17:31,624
+a uno.
+
+190
+00:17:32,524 --> 00:17:38,712
+Su imagen es el intervalo de cero a uno, que incluye al cero, y no incluye al uno.
+
+191
+00:17:38,712 --> 00:17:44,900
+Ese conjunto no es abierto, porque ningún intervalo alrededor de cero cabe dentro.
+
+192
+00:17:44,900 --> 00:17:50,937
+Entonces la función no es abierta, aunque sí es continua. Continua y abierta son
+
+193
+00:17:50,937 --> 00:17:52,974
+propiedades independientes.
+
+194
+00:17:53,874 --> 00:18:00,196
+Problema tres. Hay cuatro funciones, entre un espacio equis de cuatro puntos, y un
+
+195
+00:18:00,196 --> 00:18:06,363
+espacio ye de cuatro puntos. Para cada una se hacen tres pruebas independientes:
+
+196
+00:18:06,363 --> 00:18:12,685
+imágenes inversas de abiertos, para la continuidad. Imágenes directas de abiertos,
+
+197
+00:18:12,685 --> 00:18:18,159
+para ver si es abierta. E imágenes de cerrados, para ver si es cerrada.
+
+198
+00:18:19,059 --> 00:18:25,440
+Antes de empezar, una advertencia. La colección tau uno del enunciado no es cerrada
+
+199
+00:18:25,440 --> 00:18:31,744
+bajo intersecciones: uno dos cuatro, intersecado con uno dos tres, da uno dos, que
+
+200
+00:18:31,744 --> 00:18:37,894
+no está en la lista. Lo comprobamos de las dos maneras: con la lista tal cual, y
+
+201
+00:18:37,894 --> 00:18:41,738
+agregando ese conjunto. Las respuestas no cambian.
+
+202
+00:18:42,638 --> 00:18:49,615
+Efe no es continua: la imagen inversa del abierto ce, es el conjunto cuatro, que no
+
+203
+00:18:49,615 --> 00:18:56,676
+es abierto. Tampoco es abierta, ni cerrada. Ge sí es continua: las imágenes inversas
+
+204
+00:18:56,676 --> 00:19:02,980
+de los abiertos de ye son: dos tres; dos tres cuatro; y uno dos tres. Todas
+
+205
+00:19:02,980 --> 00:19:06,679
+abiertas. Pero ge no es abierta, ni cerrada.
+
+206
+00:19:07,579 --> 00:19:13,314
+Hache es biyectiva, pero no es continua, ni abierta, ni cerrada. Y ka no es
+
+207
+00:19:13,314 --> 00:19:19,584
+continua, pero sí es abierta: las imágenes de los abiertos son el conjunto tres, y
+
+208
+00:19:19,584 --> 00:19:25,778
+el conjunto dos tres cuatro, que son abiertos. No es cerrada, porque la imagen de
+
+209
+00:19:25,778 --> 00:19:31,743
+todo ye es dos tres cuatro, que no es cerrado. Ge y ka muestran que continua y
+
+210
+00:19:31,743 --> 00:19:33,807
+abierta son independientes.
+
+211
+00:19:34,707 --> 00:19:40,723
+El inciso be pide probar que equis y ye son homeomorfos. Con los datos impresos, eso
+
+212
+00:19:40,723 --> 00:19:46,524
+es falso. Un homeomorfismo hace corresponder los abiertos uno a uno. Y aquí equis
+
+213
+00:19:46,524 --> 00:19:52,468
+tiene nueve abiertos, o diez con la corrección, mientras que ye tiene cinco. Lo que
+
+214
+00:19:52,468 --> 00:19:58,484
+se puede demostrar es que no son homeomorfos, y conviene comentarlo con el profesor.
+
+215
+00:19:59,384 --> 00:20:05,083
+Un homeomorfismo es una biyección continua, cuya inversa también es continua.
+
+216
+00:20:05,083 --> 00:20:11,005
+Equivale a una biyección entre los puntos, que hace corresponder exactamente los
+
+217
+00:20:11,005 --> 00:20:16,187
+abiertos de un espacio con los del otro. Dos espacios homeomorfos son,
+
+218
+00:20:16,187 --> 00:20:20,702
+topológicamente, el mismo espacio con los puntos renombrados.
+
+219
+00:20:21,602 --> 00:20:27,771
+La estrategia tiene dos caras. Para negar, basta un invariante que no coincida: el
+
+220
+00:20:27,771 --> 00:20:34,016
+número de puntos, el número de abiertos, cuántos puntos son abiertos. Para afirmar,
+
+221
+00:20:34,016 --> 00:20:40,335
+hay que construir la biyección, y comprobar que lleva abiertos en abiertos. Ojo: que
+
+222
+00:20:40,335 --> 00:20:44,323
+coincida el número de abiertos no basta para afirmar.
+
+223
+00:20:45,223 --> 00:20:51,553
+Problema cuatro. En el espacio equis, el único punto abierto es a. En el espacio ye,
+
+224
+00:20:51,553 --> 00:20:57,582
+es uve. El único par abierto de equis es ce de. El de ye es uve doble, zeta. Eso
+
+225
+00:20:57,582 --> 00:21:03,687
+dicta la correspondencia: a va en uve. Ce y de van en uve doble y zeta. Y los dos
+
+226
+00:21:03,687 --> 00:21:07,907
+puntos que quedan en cada lado se corresponden entre sí.
+
+227
+00:21:08,807 --> 00:21:15,095
+Verificamos con la tabla: la imagen de cada abierto del primer espacio es un abierto
+
+228
+00:21:15,095 --> 00:21:20,485
+del segundo, y así se recorren todos. Por lo tanto, los dos espacios son
+
+229
+00:21:20,485 --> 00:21:21,383
+homeomorfos.
+
+230
+00:21:22,283 --> 00:21:29,522
+El espacio zeta tiene siete abiertos, y los otros dos tienen seis. Así que zeta no
+
+231
+00:21:29,522 --> 00:21:36,849
+es homeomorfo a ninguno de ellos. Y todo espacio es homeomorfo a sí mismo, mediante
+
+232
+00:21:36,849 --> 00:21:44,264
+la identidad. Respuestas: inciso a, sí. Inciso be, sí. Inciso ce, no. Inciso de, no.
+
+233
+00:21:44,264 --> 00:21:45,412
+Inciso e, sí.
+
+234
+00:21:46,312 --> 00:21:52,616
+Para cerrar, el recetario. Primero, haga la tabla de abiertos mínimos: con ella
+
+235
+00:21:52,616 --> 00:21:58,841
+salen las vecindades, el derivado, la clausura y el interior. Los cerrados son
+
+236
+00:21:58,841 --> 00:22:05,066
+complementos. La frontera es clausura menos interior. La topología relativa se
+
+237
+00:22:05,066 --> 00:22:11,530
+obtiene intersecando. Para generar una topología: primero intersecciones, después
+
+238
+00:22:11,530 --> 00:22:18,233
+uniones. Continuidad, con imágenes inversas. Función abierta, con imágenes directas.
+
+239
+00:22:18,233 --> 00:22:23,580
+Y homeomorfismo: negar con un invariante, o construir la biyección.
+
+240
+00:22:24,480 --> 00:22:30,650
+Y los errores que más cuestan puntos. Revisar solo uniones, o solo intersecciones.
+
+241
+00:22:30,650 --> 00:22:36,971
+Creer que cerrado significa no abierto. Olvidar que, en el derivado, el propio punto
+
+242
+00:22:36,971 --> 00:22:43,216
+no cuenta. Calcular imágenes directas para la continuidad. Y no leer con cuidado el
+
+243
+00:22:43,216 --> 00:22:48,785
+enunciado. Este taller tiene varias erratas, y en un examen lo correcto es
+
+244
+00:22:48,785 --> 00:22:51,343
+señalarlas, y decir qué se asumió.
+
+245
+00:22:52,243 --> 00:22:58,542
+Eso es todo. El siguiente paso es resolver la autoevaluación que está al final de la
+
+246
+00:22:58,542 --> 00:23:03,717
+guía de estudio, sin mirar las respuestas. Mucho éxito en el parcial.

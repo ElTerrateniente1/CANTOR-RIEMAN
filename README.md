@@ -14,6 +14,8 @@ topología, con una transición para enlazarlo con los aportes de Cauchy y Weier
 | `presentacion/generar_pptx.js`, `presentacion/generar_toro.py` | Generan el .pptx (pptxgenjs) y la ilustración del toro. |
 | `documento/preparar_fuentes.sh` | Descarga EB Garamond e IBM Plex Sans (SIL OFL 1.1) y crea las instancias estáticas. |
 
+| [`taller2_topologia/`](taller2_topologia/) | **Taller 2 de Topología (módulo 2):** solución completa en PDF, guía de estudio en PDF y video narrado con la explicación; incluye las fuentes LaTeX, el guion del video y los programas de verificación. Ver su [README](taller2_topologia/README.md). |
+
 La presentación (3 diapositivas sobre el tema más 1 de transición, con notas del
 orador) está publicada como Artifact de claude.ai y se descarga desde allí como .pptx o PDF.
 

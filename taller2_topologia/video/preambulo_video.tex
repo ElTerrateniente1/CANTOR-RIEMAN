@@ -1,0 +1,88 @@
+% Preámbulo de las diapositivas del video (beamer 16:9)
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-nodecimaldot,es-noshorthands]{babel}
+\usefonttheme{professionalfonts}
+\usepackage{mathpazo}
+\usepackage[scaled=.95]{helvet}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{array,booktabs,colortbl}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric,fit,backgrounds}
+
+\definecolor{tinta}{RGB}{24,52,94}
+\definecolor{tinta2}{RGB}{46,96,150}
+\definecolor{verde}{RGB}{22,102,82}
+\definecolor{ambar}{RGB}{160,96,8}
+\definecolor{rojo}{RGB}{160,36,36}
+\definecolor{malo}{RGB}{250,214,214}
+\definecolor{bueno}{RGB}{214,236,224}
+\definecolor{bueno2}{RGB}{218,228,244}
+\definecolor{fondo}{RGB}{250,251,253}
+
+\setbeamercolor{background canvas}{bg=fondo}
+\setbeamercolor{normal text}{fg=black!88}
+\setbeamercolor{frametitle}{fg=tinta}
+\setbeamercolor{structure}{fg=tinta}
+\setbeamercolor{alerted text}{fg=rojo}
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}{\color{tinta2}\rule[0.25ex]{0.9ex}{0.9ex}}
+\setbeamertemplate{enumerate items}[default]
+\setbeamersize{text margin left=9mm,text margin right=9mm}
+\setbeamertemplate{frametitle}{%
+  \vspace*{3.2mm}\insertframetitle\par\vspace{-1.6mm}{\color{tinta!30}\rule{\linewidth}{0.6pt}}}
+\newcommand{\bloque}{}
+\setbeamertemplate{footline}{%
+  \begin{tikzpicture}[x=1mm,y=1mm]
+    \useasboundingbox (0,0) rectangle (160,6);
+    \fill[tinta!12] (0,0) rectangle (160,1.1);
+    \fill[tinta2] (0,0) rectangle ({160*min(1,\insertpagenumber/\insertdocumentendpage)},1.1);
+    \node[anchor=west,font=\tiny\sffamily,text=black!55] at (8,3.4) {Topología · Taller 2 · explicación para el parcial};
+    \node[anchor=east,font=\tiny\sffamily,text=black!55] at (152,3.4) {\bloque};
+  \end{tikzpicture}}
+
+% ---------------------------------------------------------- macros
+\newcommand{\s}[1]{\{#1\}}
+\newcommand{\vac}{\varnothing}
+\newcommand{\cl}[1]{\overline{#1}}
+\newcommand{\inte}[1]{\mathring{#1}}
+\newcommand{\Int}{\operatorname{int}}
+\newcommand{\Ext}{\operatorname{ext}}
+\newcommand{\Fr}{\operatorname{Fr}}
+\newcommand{\cotau}{\mathrm{co}\text{-}\tau}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathfrak{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\sm}{\smallsetminus}
+\newcommand{\homeo}{\cong}
+\newcommand{\si}{\textcolor{verde}{\textbf{sí}}}
+\newcommand{\no}{\textcolor{rojo}{\textbf{no}}}
+\newcommand{\ok}{\textcolor{verde}{$\checkmark$}}
+\newcommand{\mal}{\textcolor{rojo}{$\times$}}
+
+% cajas sencillas
+\newcommand{\caja}[3][tinta]{%
+  \begin{tikzpicture}
+    \node[draw=#1!70,fill=#1!6,rounded corners=1.5pt,line width=0.5pt,inner sep=6pt,text width=#2,align=left] {#3};
+  \end{tikzpicture}}
+\newcommand{\etiqueta}[2][tinta]{{\footnotesize\bfseries\color{#1}\MakeUppercase{#2}}\\[1pt]}
+
+\tikzset{
+  hasse/.style={draw=tinta!45,line width=0.35pt},
+  nodoh/.style={circle,draw=tinta,fill=white,inner sep=0.8pt,minimum size=5.6mm,font=\scriptsize},
+  pto/.style={inner sep=2pt,font=\normalsize},
+  flecha/.style={-{Stealth[length=2.2mm]},line width=0.55pt},
+  ovalo/.style={draw=black!70,line width=0.5pt,ellipse,minimum width=2.1cm,minimum height=3.9cm},
+}
+\newcommand{\diagrama}[4]{%
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+  \node[ovalo] (L) at (0,0) {};
+  \node[ovalo] (Rr) at (3.6,0) {};
+  \node at (1.8,2.05) {$#1$};
+  \foreach \t [count=\i] in {#2} {\node[pto] (l\i) at (0,1.5-\i*0.6) {$\t$};}
+  \foreach \t [count=\i] in {#3} {\node[pto] (r\i) at (3.6,1.5-\i*0.6) {$\t$};}
+  \foreach \a/\b in {#4} {\draw[flecha] (l\a) -- (r\b);}
+\end{tikzpicture}}
