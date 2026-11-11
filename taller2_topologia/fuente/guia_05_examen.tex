@@ -1,0 +1,216 @@
+\section{El taller a la luz de la teoría}
+\begin{center}\small\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{@{}p{2.3cm}p{4.3cm}p{8.8cm}@{}}\toprule
+\textbf{Ejercicio} & \textbf{Qué evalúa} & \textbf{Clave y trampa}\\ \midrule\endhead
+I y II, verificar & Axiomas de topología & Tablas de $\cup$ y $\cap$ de los pares no comparables. $\tau_2$ falla una
+unión, $\tau_3$ una intersección. En II hay una errata en $\tau_1$.\\
+I(a), II(a) & Cerrados & Complemento de cada abierto. Hay conjuntos abiertos y cerrados a la vez.\\
+I(b), II(b) & Derivado & Usar el abierto mínimo y quitar el propio punto. Revisar \emph{todos} los puntos de $X$.\\
+I(c), II(c) & Clausura & Menor cerrado que contiene al conjunto; comprobar con $A\cup A'$.\\
+I(d), II(d) & Topología relativa & Intersecar cada abierto con $H$ y quitar repetidos.\\
+I(e) & Densidad & $\cl{U}=X$. No confundir «denso» con «grande».\\
+I(f), II(e) & Vecindades & Todos los superconjuntos de $U_x$. Convención de vecindad no necesariamente abierta.\\
+I(g), II(f) & Interior & Unión de los abiertos contenidos. Puede ser $\vac$ o muy pequeño.\\
+I(h), II(g) & Frontera ($\sigma$) & $\cl{A}\sm\inte{A}$. Notación por confirmar.\\
+III.1--3 & Topologías pequeñas & Criterio de cadena o complementarios (4 términos); tres formas (5 términos).\\
+III.4 & Comparación & Inclusión entre topologías; mismas cantidades de abiertos $\Rightarrow$ no comparables.\\
+III.5 & Axiomas & Igual que la Parte I, con seis puntos.\\
+III.6, III.7 & Topologías en conjuntos infinitos & Demostrar (T1)--(T3) con elementos; el abierto mínimo da las
+vecindades. En III.7 falta $\vac$ en la definición.\\
+III.8, III.9 & Topología generada & Primero intersecciones finitas, después uniones. En III.9 la sub-base no cubre $X$.\\
+III.10 & Sub-bases & Familias que generan exactamente la topología dada.\\
+III.11 & Sub-base en $\R$ & $[x-1,x]\cap[x,x+1]=\{x\}$: sale la discreta.\\
+III.12 & Bases & Agrandar una base con abiertos sigue dando base. Errata en la conclusión.\\
+III.13 & Axiomas & $A\subseteq B$, $B\subseteq A$ o $B=X\sm A$.\\
+IV.1 & Continuidad global y puntual & Imágenes inversas; continua en $d$ pero no globalmente.\\
+IV.2 & Función abierta & Contraejemplo $(-1,1)\mapsto[0,1)$.\\
+IV.3 & Continua, abierta, cerrada & Tres pruebas independientes por función. $\tau_1$ no es topología; $X\not\homeo Y$.\\
+IV.4 & Homeomorfismo & Contar abiertos para negar; construir la biyección para afirmar.\\ \bottomrule
+\end{longtable}
+\end{center}
+
+% =====================================================================
+\section{Recetario para el parcial}\label{sec:recetario}
+\begin{center}\small\renewcommand{\arraystretch}{1.35}
+\begin{longtable}{@{}p{4.3cm}p{11.1cm}@{}}\toprule
+\textbf{Si piden\dots} & \textbf{Se hace\dots}\\ \midrule\endhead
+¿Es topología? & (1) ¿Están $\vac$ y $X$? (2) Uniones e intersecciones de los pares no comparables. Un fallo basta
+para decir que no.\\
+Cerrados & Complemento de cada abierto.\\
+Abierto mínimo $U_x$ & Intersección de los abiertos que contienen a $x$. Hacer la tabla al principio: sirve para todo
+lo demás.\\
+Vecindades $\N_x$ & Todos los conjuntos que contienen a $U_x$.\\
+Derivado $A'$ & $x\in A'\iff(U_x\sm\{x\})\cap A\neq\vac$, para cada $x\in X$.\\
+Clausura $\cl{A}$ & Menor cerrado que contiene a $A$; o $A\cup A'$; o $\{x:U_x\cap A\neq\vac\}$.\\
+Interior $\inte{A}$ & Unión de los abiertos contenidos en $A$; o $\{x:U_x\subseteq A\}$.\\
+Exterior & $\Int(X\sm A)=X\sm\cl{A}$.\\
+Frontera & $\cl{A}\sm\inte{A}$. Comprobar $X=\inte{A}\sqcup\Fr(A)\sqcup\Ext(A)$.\\
+¿Denso? & $\cl{D}=X$; o $D$ corta a todo abierto no vacío.\\
+Topología relativa $\tau_H$ & $\{U\cap H:U\in\tau\}$, sin repetidos.\\
+¿Comparables? & ¿Una lista de abiertos está contenida en la otra?\\
+Topología generada & Intersecciones finitas (más $X$) $\to$ base; uniones (más $\vac$) $\to$ topología; verificar.\\
+¿Base de $\tau$? & Miembros abiertos y todo abierto es unión de ellos.\\
+¿Continua? & $f^{-1}(V)$ abierto en la salida para cada abierto $V$ de la llegada.\\
+¿Continua en $p$? & Para cada abierto $V\ni f(p)$, ¿$f^{-1}(V)$ es vecindad de $p$? Finito: $f(U_p)\subseteq V_{f(p)}$.\\
+¿Abierta? & $f(U)$ abierto en la llegada para cada abierto $U$ de la salida. Descarte: $f(X)$.\\
+¿Cerrada? & $f(F)$ cerrado en la llegada para cada cerrado $F$ de la salida. Descarte: $f(X)$.\\
+¿Homeomorfos? & Negar con un invariante (número de abiertos, de puntos abiertos\dots) o construir la biyección y
+tabular $U\mapsto\varphi(U)$.\\
+Demostrar que algo es topología (caso infinito) & (T1) mostrar que $\vac$ y $X$ cumplen la condición; (T2) tomar una
+familia arbitraria $\{A_i\}$ y un elemento de la unión; (T3) tomar $A$, $B$ y un elemento de la intersección.\\ \bottomrule
+\end{longtable}
+\end{center}
+
+% =====================================================================
+\section{Errores frecuentes}
+\begin{enumerate}[leftmargin=1.8em,itemsep=0.35em]
+\item \textbf{Verificar solo uniones o solo intersecciones.} Hacen falta las dos (ejemplo: $\tau_3$ de la Parte~I).
+\item \textbf{Pensar que cerrado es «no abierto».} Hay conjuntos con las dos propiedades y conjuntos sin ninguna.
+\item \textbf{Olvidar el «distinto de $x$» en el derivado.} Un punto de $A$ puede no estar en $A'$.
+\item \textbf{Buscar puntos de acumulación solo dentro de $A$.} Hay que revisar todo $X$.
+\item \textbf{Confundir $A'$ con $\cl{A}$.} $\cl{A}=A\cup A'$; el derivado puede ser más pequeño o no contener a $A$.
+\item \textbf{Creer que la frontera es «pequeña».} En espacios finitos puede ser casi todo $X$.
+\item \textbf{Dar como $\N_x$ solo los abiertos} cuando la definición del curso admite vecindades no abiertas (o al
+revés). Aclarar la convención en la respuesta.
+\item \textbf{En la topología generada, unir antes de intersecar}, u olvidar agregar $X$ y $\vac$.
+\item \textbf{Para la continuidad, calcular $f(U)$} en vez de $f^{-1}(V)$.
+\item \textbf{Concluir «homeomorfos» porque hay una biyección} o porque coincide el número de abiertos. Hay que
+exhibir la biyección y comprobar que lleva abiertos en abiertos en ambos sentidos.
+\item \textbf{Decir «abierto» sin decir en qué espacio}, cuando hay subespacios de por medio.
+\item \textbf{No leer el enunciado con cuidado.} Este taller tiene al menos cinco erratas; en un examen, si un dato
+parece inconsistente, hay que señalarlo y explicar qué se asumió.
+\end{enumerate}
+
+% =====================================================================
+\section{Autoevaluación (con respuestas)}\label{sec:auto}
+Sea $X=\s{p,q,r,s}$ y $\tau=\{\vac,\s{p},\s{p,q},\s{p,r},\s{p,q,r},X\}$.
+\begin{enumerate}[leftmargin=1.8em,itemsep=0.25em]
+\item Compruebe que $\tau$ es una topología.
+\item Halle los cerrados.
+\item Halle el abierto mínimo de cada punto.
+\item Para $A=\s{q,s}$ halle $A'$ y $\cl{A}$.
+\item Halle $\cl{\s{p}}$ y $\s{p}'$. ¿Es $\s{p}$ denso?
+\item Halle el interior de $\s{q,r,s}$ y el de $\s{p,q,s}$.
+\item Para $B=\s{p,s}$ halle interior, clausura, frontera y exterior.
+\item Halle $\N_s$ y $\N_q$.
+\item Halle la topología relativa sobre $H=\s{q,r,s}$.
+\item ¿Cuáles subconjuntos de $X$ son densos?
+\item Sea $f:X\to X$ con $f(p)=p$, $f(q)=p$, $f(r)=q$, $f(s)=r$. ¿Es continua? ¿Abierta? ¿Cerrada?
+\item Sea $\varphi:X\to X$ la función que intercambia $q$ con $r$ y fija $p$ y $s$. ¿Es un homeomorfismo?
+\item Halle la topología $\tau^{\ast}$ sobre $X$ generada por $\C=\{\s{p,q},\s{q,r}\}$.
+\item ¿Son homeomorfos $(X,\tau)$ y $(X,\tau^{\ast})$?
+\item Verdadero o falso: (a) en un espacio discreto todo subconjunto es abierto y cerrado; (b) si $A$ es abierto,
+entonces $A'=\vac$; (c) $\cl{A\cap B}=\cl{A}\cap\cl{B}$ siempre; (d) todo homeomorfismo es una función abierta; (e) la
+unión de dos topologías es una topología; (f) toda biyección continua es homeomorfismo; (g) $\Fr(A)=\Fr(X\sm A)$
+siempre; (h) el interior de un conjunto no vacío es no vacío.
+\end{enumerate}
+
+\begin{respuesta}
+\textbf{\sffamily\color{verde!70!black}Respuestas.}
+\begin{enumerate}[leftmargin=1.8em,itemsep=0.2em]
+\item El único par no comparable es $\s{p,q}$, $\s{p,r}$: unión $\s{p,q,r}$, intersección $\s{p}$; ambos están.
+\item $\cotau=\{\vac,\s{s},\s{q,s},\s{r,s},\s{q,r,s},X\}$.
+\item $U_p=\s{p}$, $U_q=\s{p,q}$, $U_r=\s{p,r}$, $U_s=X$.
+\item $A'=\s{s}$ (solo $U_s\sm\s{s}=\s{p,q,r}$ corta a $A$); $\cl{A}=\s{q,s}$, que es cerrado.
+\item $\cl{\s{p}}=X$ y $\s{p}'=\s{q,r,s}$. Sí es denso.
+\item $\Int\s{q,r,s}=\vac$; $\Int\s{p,q,s}=\s{p,q}$.
+\item $\inte{B}=\s{p}$, $\cl{B}=X$, $\Fr(B)=\s{q,r,s}$, $\Ext(B)=\vac$.
+\item $\N_s=\{X\}$; $\N_q=\{\s{p,q},\s{p,q,r},\s{p,q,s},X\}$.
+\item $\tau_H=\{\vac,\s{q},\s{r},\s{q,r},H\}$.
+\item Exactamente los que contienen a $p$ (8 conjuntos): todo abierto no vacío contiene a $p$.
+\item No es continua: $f^{-1}(\s{p,r})=\s{p,q,s}\notin\tau$. Sí es abierta: las imágenes de los abiertos son
+$\s{p},\s{p},\s{p,q},\s{p,q},\s{p,q,r}$. No es cerrada: $f(\s{s})=\s{r}$ no es cerrado.
+\item Sí: es biyectiva y lleva $\tau$ sobre $\tau$ (intercambia $\s{p,q}$ con $\s{p,r}$ y fija los demás abiertos).
+\item Base: $\{X,\s{q},\s{p,q},\s{q,r}\}$. $\tau^{\ast}=\{\vac,\s{q},\s{p,q},\s{q,r},\s{p,q,r},X\}$.
+\item Sí: $\psi=(p\mapsto q,\ q\mapsto p,\ r\mapsto r,\ s\mapsto s)$ lleva $\s{p}\mapsto\s{q}$, $\s{p,q}\mapsto\s{p,q}$,
+$\s{p,r}\mapsto\s{q,r}$, $\s{p,q,r}\mapsto\s{p,q,r}$, que es exactamente $\tau^{\ast}$.
+\item (a) V. (b) F: en el ejercicio 5, $\s{p}$ es abierto y $\s{p}'\neq\vac$. (c) F: solo vale «$\subseteq$». (d) V.
+(e) F. (f) F: la inversa puede no ser continua. (g) V. (h) F: ejercicio 6.
+\end{enumerate}
+\end{respuesta}
+
+% =====================================================================
+\section{Glosario de notación}
+\begin{center}\small\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}p{3.0cm}p{5.2cm}p{7.2cm}@{}}\toprule
+\textbf{Aquí} & \textbf{Significado} & \textbf{Otras notaciones que aparecen en los textos}\\ \midrule
+$\tau$ & topología (familia de abiertos) & $\mathcal{T}$, $\mathcal{O}$\\
+$\cotau$ & familia de cerrados & $c_0\tau$ (taller), $\mathcal{F}$, $\mathcal{C}$\\
+$\N_x$ & sistema de vecindades de $x$ & $N_x$ (taller), $\mathcal{V}(x)$, $\mathcal{U}_x$, $\mathcal{E}(x)$ (entornos)\\
+$U_x$ & abierto mínimo de $x$ (espacios finitos) & $\mathrm{st}(x)$, $\uparrow\! x$\\
+$A'$ & derivado & $A^{d}$, $\mathrm{Der}(A)$, $\mathrm{ac}(A)$\\
+$\cl{A}$ & clausura o adherencia & $\mathrm{cl}(A)$, $\mathrm{Cl}\,A$, $A^{-}$, $\mathrm{adh}(A)$\\
+$\inte{A}$, $\Int(A)$ & interior & $A^{\circ}$, $\mathrm{Int}\,A$\\
+$\Ext(A)$ & exterior & $\mathrm{Ext}(A)$\\
+$\Fr(A)$ & frontera & $\partial A$, $b(A)$, $\mathrm{Bd}\,A$; $\sigma(A)$ en el taller (por confirmar)\\
+$\tau_H$ & topología relativa a $H$ & $\tau|_H$, $\tau/H$\\
+$\B$, $\Sb$ & base, sub-base & $\mathfrak{B}$, $\mathcal{S}$\\
+$\tau(\C)$ & topología generada por $\C$ & $\langle\C\rangle$\\
+$X\homeo Y$ & $X$ homeomorfo a $Y$ & $X\approx Y$, $X\simeq Y$\\ \bottomrule
+\end{tabular}\end{center}
+
+% =====================================================================
+\section*{Fuentes}
+\addcontentsline{toc}{section}{Fuentes}
+\markboth{Fuentes}{}
+\begin{ojo}[Alcance de la verificación de fuentes]
+El entorno en que se preparó esta guía permitía \emph{buscar} en la web, pero no abrir directamente las páginas ni los
+PDF. Por eso: (1) los recursos en línea se consultaron a través de los resultados y resúmenes de búsqueda, no leyendo
+el documento completo; (2) los libros impresos se citan por capítulo o sección según su índice, sin número de página,
+y conviene confirmar la numeración en la edición que se tenga a mano; (3) todo resultado matemático de la guía se
+puede comprobar de forma independiente: las demostraciones están escritas y los cálculos finitos se verificaron por
+computadora. No se encontraron apuntes públicos del curso de la Universidad de Panamá, de modo que las convenciones de
+notación propias del curso ($c_0\tau$, $\sigma$) quedan como supuestos.
+\end{ojo}
+\textbf{Libros de texto}
+\begin{enumerate}[label={[\arabic*]},leftmargin=2.6em,itemsep=0.3em]\small\sloppy
+\item S.~Lipschutz, \emph{Theory and Problems of General Topology}, Schaum's Outline Series, McGraw-Hill, Nueva York,
+1965 (ed. en español: \emph{Topología general}). Capítulos «Topological spaces: definitions», «Bases and subbases» y
+«Continuity and topological equivalence» (5, 6 y 7). Es, con mucha probabilidad, la fuente de los ejemplos de las
+Partes I y IV del taller; la topología $\{X,\vac,\{a\},\{c,d\},\{a,c,d\},\{b,c,d,e\}\}$ es su ejemplo recurrente.
+\item J.~R.~Munkres, \emph{Topology}, 2.ª ed., Prentice Hall, 2000. Capítulo 2, «Topological Spaces and Continuous
+Functions»: §12 (espacios topológicos), §13 (bases), §16 (subespacios), §17 (cerrados y puntos límite), §18
+(funciones continuas).
+\item J.~L.~Kelley, \emph{General Topology}, Van Nostrand, 1955; reimpr. Springer, Graduate Texts in Mathematics 27.
+Capítulo 1.
+\item S.~Willard, \emph{General Topology}, Addison-Wesley, 1970; reimpr. Dover, 2004. Capítulos 2 y 3.
+\item R.~Engelking, \emph{General Topology}, ed. revisada, Heldermann, Berlín, 1989. Capítulo 1.
+\item G.~N.~Rubiano, \emph{Topología general (un primer curso)}, 2.ª ed., Universidad Nacional de Colombia, Bogotá,
+2002.
+\item M.~Macho Stadler, \emph{Topología}, apuntes del curso 2014--2015, Universidad del País Vasco (UPV/EHU).
+\url{https://www.ehu.eus/~mtwmastm/Topologia1415.pdf}
+\item F.~Cano, M.~Martín-Vega y B.~Molina-Samper, \emph{Topología: notas de un curso}, Universidad de Valladolid.
+\url{https://uvadoc.uva.es/handle/10324/70838}
+\item S.~A.~Morris, \emph{Topology Without Tears}, libro de acceso libre. \url{https://www.topologywithouttears.net}
+\item L.~A.~Steen y J.~A.~Seebach, \emph{Counterexamples in Topology}, 2.ª ed., Springer, 1978. Ejemplos 5 (topología
+de partición), 6 (par--impar) y 8 a 10 (punto particular), según los listados consultados.
+\end{enumerate}
+\textbf{Recursos en línea y artículos}
+\begin{enumerate}[label={[\arabic*]},leftmargin=2.6em,itemsep=0.3em,start=11]\small\sloppy
+\item OEIS Foundation, A000798: \emph{Number of different quasi-orders (or topologies, or transitive digraphs) with
+$n$ labeled elements}. \url{https://oeis.org/A000798}
+\item OEIS Foundation, A001930: \emph{Number of topologies, or transitive digraphs, with $n$ unlabeled nodes}.
+\url{https://oeis.org/A001930}
+\item Wikipedia, «Finite topological space». \url{https://en.wikipedia.org/wiki/Finite_topological_space}
+\item Wikipedia, «Alexandrov topology». \url{https://en.wikipedia.org/wiki/Alexandrov_topology}
+\item Wikipedia, «Kuratowski closure axioms». \url{https://en.wikipedia.org/wiki/Kuratowski_closure_axioms}
+\item Wikipedia, «Subbase». \url{https://en.wikipedia.org/wiki/Subbase}
+\item Wikipedia, «Comparison of topologies». \url{https://en.wikipedia.org/wiki/Comparison_of_topologies}
+\item Wikipedia, «Particular point topology». \url{https://en.wikipedia.org/wiki/Particular_point_topology}
+\item ProofWiki, «Definition: Odd-Even Topology». \url{https://proofwiki.org/wiki/Definition:Odd-Even_Topology}
+\item B.~G.~Wachsmuth, \emph{Interactive Real Analysis}, §6.4, ejemplo de $x^2$ y la imagen de $(-1,1)$.
+\url{https://mathcs.org/analysis/reals/cont/answers/imag1.html}
+\item M.~Benoumhani, «The number of topologies on a finite set», \emph{Journal of Integer Sequences} 9 (2006),
+artículo 06.2.6.
+\item J.~Evans, \emph{Topology and Groups} (University College London), «2.07 Homeomorphisms».
+\url{https://www.homepages.ucl.ac.uk/~ucahjde/tg/html/topsp07.html}
+\item R.~Tinarrage, \emph{Topological Data Analysis} (EMAp/FGV), lección 2: homeomorfismos.
+\url{https://raphaeltinarrage.github.io/files/EMAp/Lesson2.pdf}
+\item Universidad de Extremadura, apuntes de \emph{Fundamentos Matemáticos}, tema 3 (notación $\mathrm{Fr}(A)$ y
+$\mathrm{Ext}(A)$). \url{https://matematicas.unex.es/~trinidad/fmi/TTema3.pdf}
+\item R.~P.~Stanley, «On the number of open sets of finite topologies», \emph{Journal of Combinatorial Theory} 10
+(1971), 74--79.
+\item N.~Bourbaki, \emph{Topologie générale}, capítulo 1 (estructuras topológicas).
+\item K.~Ragnarsson y B.~E.~Tenner, «Obtainable sizes of topologies on finite sets», \emph{Journal of Combinatorial
+Theory, Series A} 117 (2010), 138--151; arXiv:0802.2550.
+\end{enumerate}

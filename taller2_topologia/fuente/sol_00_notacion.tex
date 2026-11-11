@@ -1,0 +1,101 @@
+\section{Notación, supuestos y herramientas}\label{sec:supuestos}
+
+\subsection{Cómo se leyó la notación del enunciado}
+\begin{center}\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}p{3.2cm}p{12.2cm}@{}}
+\toprule
+\textbf{En el enunciado} & \textbf{Significado adoptado en esta solución}\\ \midrule
+$c_0\tau$ & $\cotau$: la familia de los \textbf{conjuntos cerrados}, es decir, los complementos de los abiertos:
+$\cotau=\{X\sm U: U\in\tau\}$.\\
+$G'$ & \textbf{Conjunto derivado} de $G$: el conjunto de sus puntos de acumulación.\\
+clausura de $A$ & $\cl{A}$: el menor cerrado que contiene a $A$ (también llamada adherencia).\\
+$\tau_H$ & \textbf{Topología relativa} (o de subespacio) sobre $H$: $\tau_H=\{U\cap H: U\in\tau\}$.\\
+$N_x$ & $\N_x$: el \textbf{sistema de vecindades} del punto $x$.\\
+$J$ con un $0$ encima & $\inte{J}$: el \textbf{interior} de $J$.\\
+$\sigma(J)$ & La \textbf{frontera} de $J$, $\Fr(J)=\cl{J}\sm\inte{J}$ \emph{(supuesto S1)}.\\
+$\wedge$ & La conjunción «y»: «$N_c\wedge N_e$» se lee «$N_c$ y $N_e$».\\
+«tautologías» & Se lee «topologías» (errata de las indicaciones).\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Supuestos y erratas detectadas}
+\begin{ojo}[Supuestos que conviene confirmar]
+\begin{description}[leftmargin=1.1cm,style=nextline,itemsep=0.35em]
+\item[S1. El símbolo $\sigma(\,\cdot\,)$.] No es una notación estándar de los textos consultados (lo usual es
+$\Fr(A)$, $\partial A$ o $b(A)$). Por el orden de los incisos (interior y, a continuación, $\sigma$) se interpretó
+como la \textbf{frontera}. Para cubrir otra posible lectura, en cada caso se calculan también el exterior, la
+clausura y el derivado del mismo conjunto.
+\item[S2. Vecindad.] Se usa la definición de Lipschutz y Kelley: $N$ es vecindad de $x$ si existe un abierto $U$ con
+$x\in U\subseteq N$ (la vecindad no tiene que ser abierta). Si en clase se usó la convención de Munkres (vecindad $=$
+abierto que contiene al punto), basta quedarse con las vecindades abiertas, que se indican aparte.
+\item[S3. Parte II, $\tau_1$.] Aparece el término «$\{\,,2\}$», al que le falta un elemento. Se leyó como $\{2\}$:
+es justamente el conjunto que hace falta, porque $\{1,2\}\cap\{2,6\}=\{2\}$. Si ese término se omite, $\tau_1$ no es
+topología.
+\item[S4. Parte III, problema 7.] Tal como está escrito, $\tau^0=\{A\subset\R: 0\in A\}$ no contiene a $\vac$ y no
+sería topología. Se trabajó con la definición habitual de la topología del punto incluido:
+$\tau^0=\{A\subset\R:0\in A\}\cup\{\vac\}$.
+\item[S5. Parte III, problema 10.] No se especifica cuál es $\tau_X$. Se resolvió para la topología $\tau_1$ de la
+Parte~I (mismo conjunto $X$) y, además, para la topología discreta.
+\item[S6. Parte III, problema 12.] La conclusión impresa («$\B$ es una base») repite la hipótesis; se demostró lo que
+tiene sentido: que $\B_1$ es una base para $\tau$.
+\item[S7. Parte IV, problema 3.] La colección $\tau_1$ no es cerrada bajo intersecciones
+($\s{1,2,4}\cap\s{1,2,3}=\s{1,2}\notin\tau_1$), así que en rigor no es una topología; y la afirmación
+«$X\homeo Y$» es falsa (las topologías tienen distinto número de abiertos). Se explica con detalle en su lugar.
+\item[S8. Diagramas de flechas.] Se leyeron de la imagen ampliada: en IV.1, $f(a)=b$, $f(b)=d$, $f(c)=b$, $f(d)=c$;
+en IV.3, $f=(1\!\mapsto\! a,\,2\!\mapsto\! a,\,3\!\mapsto\! d,\,4\!\mapsto\! c)$,
+$g=(1\!\mapsto\! b,\,2\!\mapsto\! c,\,3\!\mapsto\! c,\,4\!\mapsto\! d)$,
+$h=(a\!\mapsto\! 2,\,b\!\mapsto\! 3,\,c\!\mapsto\! 4,\,d\!\mapsto\! 1)$ y
+$k=(a\!\mapsto\! 2,\,b\!\mapsto\! 4,\,c\!\mapsto\! 3,\,d\!\mapsto\! 3)$.
+\end{description}
+\end{ojo}
+
+\subsection{Herramientas que se usan una y otra vez}\label{sec:herr}
+Sea $(X,\tau)$ un espacio topológico y $A\subseteq X$.
+
+\begin{teorema}[H1. Criterio finito]
+Si $\tau$ es una familia \emph{finita} de subconjuntos de $X$ con $\vac,X\in\tau$, entonces $\tau$ es una topología
+si y solo si $A\cup B\in\tau$ y $A\cap B\in\tau$ para todo par $A,B\in\tau$.
+\end{teorema}
+\emph{Justificación.} Una unión de miembros de una familia finita es una unión de finitos conjuntos distintos, y
+toda unión o intersección de $n$ conjuntos se obtiene aplicando $n-1$ veces la operación de dos en dos (inducción).
+Los pares en que interviene $\vac$ o $X$, o en que un conjunto contiene al otro, se cumplen solos; por eso las
+tablas de este documento solo incluyen los miembros distintos de $\vac$ y de $X$.
+
+\begin{teorema}[H2. Fórmulas de trabajo]
+\begin{enumerate}[label=(\roman*),leftmargin=1.9em]
+\item $F$ es cerrado $\iff X\sm F\in\tau$.
+\item $\cl{A}=\bigcap\{F \text{ cerrado}: A\subseteq F\}=A\cup A'$.
+\item $\inte{A}=\bigcup\{U\in\tau: U\subseteq A\}$.
+\item $\Ext(A)=\Int(X\sm A)=X\sm\cl{A}$ \quad y \quad $\Fr(A)=\cl{A}\sm\inte{A}=\cl{A}\cap\cl{X\sm A}$.
+\item $X$ es la unión disjunta $\inte{A}\ \sqcup\ \Fr(A)\ \sqcup\ \Ext(A)$.
+\item $D$ es denso en $X$ $\iff \cl{D}=X \iff D$ corta a todo abierto no vacío.
+\end{enumerate}
+\end{teorema}
+
+\begin{teorema}[H3. El abierto mínimo en espacios finitos]
+Si $\tau$ es finita, para cada $x\in X$ el conjunto $U_x=\bigcap\{U\in\tau: x\in U\}$ es abierto (intersección finita
+de abiertos) y es el menor abierto que contiene a $x$. Entonces:
+\begin{gather*}
+\N_x=\{N\subseteq X: U_x\subseteq N\},\qquad x\in A' \iff (U_x\sm\{x\})\cap A\neq\vac,\\
+x\in\cl{A}\iff U_x\cap A\neq\vac,\qquad x\in\inte{A}\iff U_x\subseteq A .
+\end{gather*}
+\end{teorema}
+\emph{Justificación.} Todo abierto que contiene a $x$ contiene a $U_x$; por tanto una condición que deba cumplirse
+«para todo abierto que contiene a $x$» (como en la definición de punto de acumulación) se cumple en todos ellos si y
+solo si se cumple en el más pequeño, $U_x$. Para $\N_x$: si $U_x\subseteq N$, entonces $N$ es vecindad; y si
+$x\in U\subseteq N$ con $U$ abierto, entonces $U_x\subseteq U\subseteq N$.
+
+\begin{teorema}[H4. Funciones]
+Sea $f:(X,\tau_X)\to(Y,\tau_Y)$.
+\begin{enumerate}[label=(\roman*),leftmargin=1.9em]
+\item $f$ es \textbf{continua} $\iff f^{-1}(V)\in\tau_X$ para todo $V\in\tau_Y$.
+\item $f$ es \textbf{continua en el punto $p$} $\iff$ para todo abierto $V$ con $f(p)\in V$ existe un abierto $U$ con
+$p\in U$ y $f(U)\subseteq V$. Y $f$ es continua $\iff$ lo es en cada punto.
+\item $f$ es \textbf{abierta} si $f(U)\in\tau_Y$ para todo $U\in\tau_X$; es \textbf{cerrada} si $f(F)$ es cerrado en
+$Y$ para todo cerrado $F$ de $X$.
+\item $f$ es \textbf{homeomorfismo} si es biyectiva, continua y $f^{-1}$ es continua. Equivale a: $f$ es una biyección
+y $U\in\tau_X\iff f(U)\in\tau_Y$. En particular, si $X\homeo Y$, las topologías tienen el mismo número de elementos.
+\end{enumerate}
+\end{teorema}

@@ -1,0 +1,367 @@
+\section{Parte III: problemas}
+
+% ---------------------------------------------------------------- III.1
+\subsection{Problema 1: topologías de 4 términos sobre \texorpdfstring{$X=\{2,4,6\}$}{X=\{2,4,6\}}}
+\begin{enunciado}
+Sea $X=\s{2,4,6}$. Encuentre todas las topologías que se pueden definir sobre $X$ que constan de 4 términos. En
+cada caso busque $c_0\tau$.
+\end{enunciado}
+Una topología de cuatro términos tiene la forma $\tau=\{\vac,A,B,X\}$ con $A\neq B$ subconjuntos propios y no vacíos.
+Por el problema~13 (demostrado más abajo), tal colección es una topología exactamente en dos situaciones:
+\begin{itemize}
+\item \textbf{Cadena:} uno está contenido en el otro, $\vac\subsetneq A\subsetneq B\subsetneq X$. En un conjunto de
+tres puntos esto obliga a que $A$ tenga un punto y $B$ dos: hay $3$ maneras de elegir $A$ y, para cada una, $2$ de
+elegir el punto que se agrega para formar $B$: $3\cdot 2=6$ topologías.
+\item \textbf{Complementarios:} $A\cap B=\vac$ y $A\cup B=X$, es decir, $B=X\sm A$. Un punto y el par restante:
+$3$ topologías.
+\end{itemize}
+En total hay $6+3=9$. Para los cerrados se toman complementos.
+\begin{center}\small\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}cllc@{}}\toprule
+ & topología $\tau$ & cerrados $\cotau$ & tipo\\ \midrule
+\tinput{lista_III1}\bottomrule
+\end{tabular}\end{center}
+\resp{Hay exactamente $9$ topologías de cuatro términos sobre $\s{2,4,6}$: las de la tabla. En las tres últimas
+(complementarias) los cerrados coinciden con los abiertos.}
+\emph{Comprobación.} Sobre un conjunto de 3 puntos hay 29 topologías en total, repartidas según su número de abiertos
+así: 1 con 2, 6 con 3, \textbf{9 con 4}, 6 con 5, 6 con 6 y 1 con 8 (véase el problema~4).
+
+% ---------------------------------------------------------------- III.2
+\subsection{Problema 2: diez topologías de 4 términos sobre \texorpdfstring{$Y=\{1,2,3,4\}$}{Y=\{1,2,3,4\}}}
+\begin{enunciado}
+Sea $Y=\s{1,2,3,4}$. Encuentre diez topologías que se pueden definir sobre $Y$ que constan de 4 términos. En cada
+caso busque $c_0\tau$.
+\end{enunciado}
+Se aplica el mismo criterio del problema~13: $\{\vac,A,B,Y\}$ es topología si $A\subsetneq B$ (cadena) o si
+$B=Y\sm A$ (complementarios). Se eligen seis cadenas y cuatro pares complementarios:
+\begin{center}\small\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}cllc@{}}\toprule
+ & topología $\tau$ & cerrados $\cotau$ & tipo\\ \midrule
+\tinput{lista_III2}\bottomrule
+\end{tabular}\end{center}
+\emph{Por qué cada una es topología:} en las cadenas, la unión de dos miembros es el mayor y la intersección el menor;
+en las complementarias, $A\cup B=Y$ y $A\cap B=\vac$.
+
+\emph{Dato adicional.} En total hay $43$ topologías de cuatro términos sobre un conjunto de cuatro puntos:
+$36$ cadenas ($12$ de la forma punto $\subset$ par, $12$ punto $\subset$ trío, $12$ par $\subset$ trío) y $7$ pares
+complementarios (la mitad de los $2^4-2=14$ subconjuntos propios no vacíos).
+
+% ---------------------------------------------------------------- III.3
+\subsection{Problema 3: diez topologías de 5 términos sobre \texorpdfstring{$Z=\{2,4,5,6\}$}{Z=\{2,4,5,6\}}}
+\begin{enunciado}
+Sea $Z=\s{2,4,5,6}$. Encuentre diez topologías que se pueden definir sobre $Z$ que constan de 5 términos. En cada
+caso busque $c_0\tau$.
+\end{enunciado}
+Una topología de cinco términos es $\{\vac,A,B,C,Z\}$. Hay tres formas de armarla:
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=1.6em]
+\item \textbf{Cadena} $\vac\subsetneq A\subsetneq B\subsetneq C\subsetneq Z$ (punto, par, trío).
+\item \textbf{Dos abiertos disjuntos y su unión:} $A\cap B=\vac$ y $C=A\cup B\neq Z$.
+\item \textbf{Dos abiertos que cubren $Z$ y su intersección:} $A\cup B=Z$ y $C=A\cap B\neq\vac$.
+\end{enumerate}
+En los tres casos la unión y la intersección de dos miembros cualesquiera vuelve a ser un miembro (se comprueba
+directamente: en 2, por ejemplo, $A\cup C=C$, $A\cap C=A$, $A\cap B=\vac$, $A\cup B=C$).
+\begin{center}\small\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}cllc@{}}\toprule
+ & topología $\tau$ & cerrados $\cotau$ & tipo\\ \midrule
+\tinput{lista_III3}\bottomrule
+\end{tabular}\end{center}
+Las cuatro primeras son cadenas; $\tau_5$ a $\tau_8$ son del tipo 2 y $\tau_9$, $\tau_{10}$ del tipo 3.
+
+\emph{Dato adicional.} Hay $60$ topologías de cinco términos sobre un conjunto de cuatro puntos: $24$ cadenas,
+$18$ del tipo 2 y $18$ del tipo 3 (conteo verificado por computadora).
+
+% ---------------------------------------------------------------- III.4
+\subsection{Problema 4: todas las topologías sobre \texorpdfstring{$X=\{a,b,c\}$}{X=\{a,b,c\}} y su comparación}
+\begin{enunciado}
+Considere todas las topologías que se pueden definir sobre $X=\s{a,b,c}$. Compare dichas topologías de dos en dos e
+indique si son comparables o no (si una es más fina que la otra).
+\end{enunciado}
+
+\subsubsection*{Paso 1. Cuántas hay: 29}
+Se clasifican según cuántos puntos son abiertos. La observación clave es que dos pares distintos se cortan en un
+punto; si ambos pares son abiertos, ese punto también lo es.
+\begin{itemize}
+\item \textbf{Ningún punto abierto.} Puede haber a lo sumo un par abierto (dos pares obligarían a un punto abierto).
+Resultan la indiscreta y las $3$ de la forma $\{\vac,\text{par},X\}$: \textbf{4}.
+\item \textbf{Exactamente un punto abierto $\s{x}$.} Si hay dos pares abiertos, su intersección es $\s{x}$, así que
+ambos contienen a $x$. Opciones: ningún par ($3$ topologías, una por cada $x$); un par que contiene a $x$
+($3\cdot2=6$); el par que no contiene a $x$ ($3$); los dos pares que contienen a $x$ ($3$). Total: \textbf{15}.
+\item \textbf{Exactamente dos puntos abiertos $\s{x},\s{y}$.} Entonces $\s{x,y}$ es abierto (unión). De los otros dos
+pares, $\s{x,z}$ y $\s{y,z}$, no pueden estar ambos (su intersección $\s{z}$ sería abierta): ninguno ($3$
+topologías) o exactamente uno ($3\cdot 2=6$). Total: \textbf{9}.
+\item \textbf{Los tres puntos abiertos.} La discreta: \textbf{1}.
+\end{itemize}
+$4+15+9+1=29$, que coincide con el valor conocido del número de topologías sobre un conjunto de tres puntos (sucesión
+A000798 de la OEIS: $1,1,4,29,355,6942,\dots$) y con el recuento hecho por computadora.
+
+\subsubsection*{Paso 2. La lista}
+{\small\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}clcl@{}}\toprule
+ & topología & n.º de abiertos & forma\\ \midrule\endhead
+\tinput{lista_III4}\bottomrule
+\end{longtable}}
+
+\subsubsection*{Paso 3. La comparación}
+Dos topologías $\tau$ y $\tau'$ sobre el mismo conjunto son \textbf{comparables} si $\tau\subseteq\tau'$ (entonces
+$\tau'$ es \emph{más fina} y $\tau$ \emph{más gruesa}) o $\tau'\subseteq\tau$. Para decidirlo basta ver si todos los
+abiertos de una están en la otra. Dos consecuencias inmediatas:
+\begin{itemize}
+\item $\tau_1$ (indiscreta) está contenida en todas y $\tau_{29}$ (discreta) las contiene a todas: ambas son
+comparables con cualquier otra.
+\item Dos topologías \emph{distintas} con el mismo número de abiertos nunca son comparables (si una contuviera a la
+otra serían iguales).
+\end{itemize}
+La tabla siguiente resume los $\binom{29}{2}=\paresTotal$ pares. En la fila $\tau_i$ y la columna $\tau_j$:
+«$\subset$» significa $\tau_i\subsetneq\tau_j$ ($\tau_j$ es más fina); «$\supset$» significa $\tau_i\supsetneq\tau_j$
+($\tau_i$ es más fina); «$\cdot$» significa \textbf{no comparables}.
+\begin{center}
+{\setlength{\tabcolsep}{2.9pt}\renewcommand{\arraystretch}{1.12}\footnotesize\input{gen/matriz_III4}}
+\end{center}
+\resp{De los \paresTotal\ pares de topologías distintas, \textbf{\paresComp\ son comparables} y
+\textbf{\paresNoComp\ no lo son}. El detalle par por par está en la tabla.}
+
+\emph{Ejemplos de lectura.} $\tau_2=\{\vac,\s{a},X\}$ y $\tau_8=\{\vac,\s{a},\s{a,b},X\}$ son comparables
+($\tau_2\subset\tau_8$). En cambio $\tau_2=\{\vac,\s{a},X\}$ y $\tau_3=\{\vac,\s{b},X\}$ no lo son: $\s{a}\in\tau_2\sm\tau_3$ y
+$\s{b}\in\tau_3\sm\tau_2$. Tampoco $\tau_8$ y $\tau_{10}=\{\vac,\s{a},\s{b,c},X\}$, pues $\s{a,b}\notin\tau_{10}$ y
+$\s{b,c}\notin\tau_8$.
+
+\subsubsection*{Paso 4. Diagrama de Hasse}
+El diagrama muestra el orden por inclusión: una línea une $\tau_i$ (abajo) con $\tau_j$ (arriba) cuando
+$\tau_i\subsetneq\tau_j$ y no hay ninguna topología estrictamente entre ellas. Dos topologías son comparables si y
+solo si se puede ir de una a otra subiendo siempre por líneas.
+\begin{center}
+\resizebox{\linewidth}{!}{\input{gen/hasse_III4}}
+\end{center}
+
+% ---------------------------------------------------------------- III.5
+\subsection{Problema 5}
+\begin{enunciado}
+Sea $X=\s{a,b,c,d,e,f}$ y $\tau=\{X,\vac,\s{a},\s{c,d},\s{a,c,d},\s{b,c,d,e,f}\}$. Pruebe que $\tau$ es una topología
+sobre $X$.
+\end{enunciado}
+\textbf{(T1)} $\vac\in\tau$ y $X\in\tau$ por inspección.
+
+\textbf{(T2) y (T3)} Como $\tau$ es finita, por H1 basta comprobar uniones e intersecciones de dos en dos entre los
+cuatro miembros no triviales:
+\begin{center}{\small\renewcommand{\arraystretch}{1.15}\input{gen/tab_III5_u}}\end{center}
+\begin{center}{\small\renewcommand{\arraystretch}{1.15}\input{gen/tab_III5_i}}\end{center}
+Las $16$ uniones y las $16$ intersecciones pertenecen a $\tau$ (en particular $\s{a}\cup\s{c,d}=\s{a,c,d}$,
+$\s{a}\cup\s{b,c,d,e,f}=X$, $\s{a}\cap\s{c,d}=\vac$ y $\s{a,c,d}\cap\s{b,c,d,e,f}=\s{c,d}$). Las operaciones con
+$\vac$ y $X$ devuelven siempre uno de los dos conjuntos operados.
+\resp{$\tau$ cumple los tres axiomas; es una topología sobre $X$. \qed}
+
+% ---------------------------------------------------------------- III.6
+\subsection{Problema 6: la topología «par--impar» en \texorpdfstring{$\Z$}{Z}}
+\begin{enunciado}
+En $\Z$ definamos $\tau=\{A\subset\Z:\ 2n\in A\iff 2n-1\in A,\ \text{para todo } n\in\Z\}$.
+(a) Pruebe que $\tau$ es una topología sobre $\Z$. (b) Encuentre $N_5$.
+\end{enunciado}
+\textbf{Idea.} La condición dice que $A$ no puede separar a $2n-1$ de $2n$: los bloques
+$P_n=\s{2n-1,2n}$ ($\dots,\s{-1,0},\s{1,2},\s{3,4},\s{5,6},\dots$) forman una partición de $\Z$ y
+$A\in\tau$ si y solo si $A$ es unión de bloques completos.
+
+\textbf{(a)} Sea $n\in\Z$ arbitrario.
+\begin{itemize}
+\item[(T1)] Para $A=\vac$ las dos proposiciones «$2n\in\vac$» y «$2n-1\in\vac$» son falsas, luego la equivalencia es
+verdadera: $\vac\in\tau$. Para $A=\Z$ ambas son verdaderas: $\Z\in\tau$.
+\item[(T2)] Sea $\{A_i\}_{i\in I}\subseteq\tau$ y $A=\bigcup_{i\in I}A_i$. Entonces
+\[
+2n\in A\iff \exists\, i\in I:\ 2n\in A_i\iff \exists\, i\in I:\ 2n-1\in A_i\iff 2n-1\in A,
+\]
+donde la equivalencia central usa que cada $A_i\in\tau$. Luego $A\in\tau$.
+\item[(T3)] Sean $A,B\in\tau$. Entonces
+\[
+2n\in A\cap B\iff 2n\in A\ \text{y}\ 2n\in B\iff 2n-1\in A\ \text{y}\ 2n-1\in B\iff 2n-1\in A\cap B .
+\]
+Luego $A\cap B\in\tau$ (por inducción, toda intersección finita).
+\end{itemize}
+Por tanto $\tau$ es una topología sobre $\Z$. \qed
+
+\textbf{(b)} $5=2\cdot3-1$. Si $U\in\tau$ y $5\in U$, la condición con $n=3$ obliga a que $6\in U$. Por otra parte
+$\s{5,6}\in\tau$: para $n=3$ contiene a $2n$ y a $2n-1$, y para $n\neq3$ a ninguno. Luego $\s{5,6}$ es el menor
+abierto que contiene a $5$, y las vecindades de $5$ son los conjuntos que lo contienen.
+\resp{$\N_5=\{N\subseteq\Z:\ \s{5,6}\subseteq N\}$. (Las vecindades \emph{abiertas} de $5$ son los miembros de $\tau$
+que contienen a $\s{5,6}$.)}
+\emph{Contexto.} Es una \emph{topología de partición}; la versión sobre los enteros positivos es el contraejemplo n.º~6
+(«odd--even topology») de Steen y Seebach.
+
+% ---------------------------------------------------------------- III.7
+\subsection{Problema 7: la topología del punto incluido en \texorpdfstring{$\R$}{R}}
+\begin{enunciado}
+En $\R$ definamos $\tau^0=\{A\subset\R:\ 0\in A\}$. (a) Pruebe que $\tau^0$ es una topología sobre $\R$.
+(b) Encuentre $N_1$.
+\end{enunciado}
+\begin{ojo}[Supuesto S4]
+Leída literalmente, la familia no contiene al vacío ($0\notin\vac$), y entonces falla el primer axioma. La
+definición habitual de esta topología (\emph{topología del punto incluido} o \emph{particular point topology}) es
+\[\tau^0=\{A\subseteq\R:\ 0\in A\}\cup\{\vac\},\]
+y con ella se trabaja a continuación.
+\end{ojo}
+\textbf{(a)}
+\begin{itemize}
+\item[(T1)] $\vac\in\tau^0$ por definición, y $\R\in\tau^0$ porque $0\in\R$.
+\item[(T2)] Sea $\{A_i\}_{i\in I}\subseteq\tau^0$. Si todos los $A_i$ son vacíos, la unión es $\vac\in\tau^0$. Si algún
+$A_j\neq\vac$, entonces $0\in A_j\subseteq\bigcup_i A_i$, y la unión está en $\tau^0$.
+\item[(T3)] Sean $A,B\in\tau^0$. Si alguno es vacío, $A\cap B=\vac\in\tau^0$. Si ninguno lo es, $0\in A$ y $0\in B$,
+luego $0\in A\cap B$ y $A\cap B\in\tau^0$.
+\end{itemize}
+Por tanto $\tau^0$ es una topología sobre $\R$. \qed
+
+\textbf{(b)} Un abierto que contiene a $1$ es no vacío, así que contiene a $0$; es decir, contiene a $\s{0,1}$. Y
+$\s{0,1}\in\tau^0$. Luego $\s{0,1}$ es el menor abierto que contiene a $1$.
+\resp{$\N_1=\{N\subseteq\R:\ \s{0,1}\subseteq N\}$: los subconjuntos de $\R$ que contienen a $0$ y a $1$. (En este
+caso todas las vecindades de $1$ son abiertas, porque contienen a $0$.)}
+
+% ---------------------------------------------------------------- III.8
+\subsection{Problema 8: topología generada por \texorpdfstring{$\C=\{\{a,b,c\},\{c,d\},\{d,e\}\}$}{C}}
+\begin{enunciado}
+Dado $X=\s{a,b,c,d,e}$ y $\C=\{\s{a,b,c},\s{c,d},\s{d,e}\}$, encuentre la topología generada por $\C$ y verifique
+que, en efecto, es una topología.
+\end{enunciado}
+La topología generada por $\C$ es la menor topología que contiene a $\C$. Se construye en dos pasos.
+
+\textbf{Paso 1: intersecciones finitas} (dan una base $\B$).
+\begin{gather*}
+\s{a,b,c}\cap\s{c,d}=\s{c},\qquad \s{c,d}\cap\s{d,e}=\s{d},\qquad \s{a,b,c}\cap\s{d,e}=\vac,\\
+\s{a,b,c}\cap\s{c,d}\cap\s{d,e}=\vac .
+\end{gather*}
+Junto con los propios miembros de $\C$ y con $X$ (intersección de la familia vacía; aquí además
+$X=\s{a,b,c}\cup\s{d,e}$):
+\[\B=\{X,\ \vac,\ \s{c},\ \s{d},\ \s{c,d},\ \s{d,e},\ \s{a,b,c}\}.\]
+
+\textbf{Paso 2: uniones} de miembros de $\B$. Las que producen conjuntos nuevos son
+\[
+\s{c}\cup\s{d,e}=\s{c,d,e},\qquad \s{d}\cup\s{a,b,c}=\s{a,b,c,d};
+\]
+las demás repiten conjuntos ya obtenidos ($\s{c}\cup\s{d}=\s{c,d}$, $\s{c,d}\cup\s{d,e}=\s{c,d,e}$,
+$\s{c,d}\cup\s{a,b,c}=\s{a,b,c,d}$, $\s{d,e}\cup\s{a,b,c}=X$, etc.).
+\resp{$\tau(\C)=\{\vac,\ \s{c},\ \s{d},\ \s{c,d},\ \s{d,e},\ \s{c,d,e},\ \s{a,b,c},\ \s{a,b,c,d},\ X\}$
+\quad (9 abiertos).}
+\textbf{Verificación.} $\vac,X\in\tau(\C)$, y las tablas muestran que la colección es cerrada bajo uniones e
+intersecciones de dos en dos (criterio H1):
+\begin{center}{\scriptsize\renewcommand{\arraystretch}{1.2}\setlength{\tabcolsep}{3.5pt}\input{gen/tab_III8_u}}\end{center}
+\begin{center}{\scriptsize\renewcommand{\arraystretch}{1.2}\setlength{\tabcolsep}{3.5pt}\input{gen/tab_III8_i}}\end{center}
+
+% ---------------------------------------------------------------- III.9
+\subsection{Problema 9: topología generada por \texorpdfstring{$\C=\{\{a\},\{a,b,c\},\{c,d\}\}$}{C}}
+\begin{enunciado}
+Dado $X=\s{a,b,c,d,e}$ y $\C=\{\s{a},\s{a,b,c},\s{c,d}\}$, encuentre la topología generada por $\C$ y verifique que,
+en efecto, es una topología.
+\end{enunciado}
+\textbf{Paso 1: intersecciones finitas.}
+\[
+\s{a}\cap\s{a,b,c}=\s{a},\qquad \s{a}\cap\s{c,d}=\vac,\qquad \s{a,b,c}\cap\s{c,d}=\s{c}.
+\]
+Aquí la unión de los miembros de $\C$ es $\s{a,b,c,d}\neq X$: el punto $e$ no está en ninguno. El conjunto $X$ entra
+en la base como intersección de la familia vacía (o, si se prefiere, porque toda topología debe contener a $X$).
+\[\B=\{X,\ \vac,\ \s{a},\ \s{c},\ \s{c,d},\ \s{a,b,c}\}.\]
+
+\textbf{Paso 2: uniones.} Conjuntos nuevos:
+\[
+\s{a}\cup\s{c}=\s{a,c},\qquad \s{a}\cup\s{c,d}=\s{a,c,d},\qquad \s{a,b,c}\cup\s{c,d}=\s{a,b,c,d}.
+\]
+\resp{$\tau(\C)=\{\vac,\ \s{a},\ \s{c},\ \s{a,c},\ \s{c,d},\ \s{a,c,d},\ \s{a,b,c},\ \s{a,b,c,d},\ X\}$
+\quad (9 abiertos). El único abierto que contiene a $e$ es $X$.}
+\textbf{Verificación.}
+\begin{center}{\scriptsize\renewcommand{\arraystretch}{1.2}\setlength{\tabcolsep}{3.5pt}\input{gen/tab_III9_u}}\end{center}
+\begin{center}{\scriptsize\renewcommand{\arraystretch}{1.2}\setlength{\tabcolsep}{3.5pt}\input{gen/tab_III9_i}}\end{center}
+Todas las entradas pertenecen a la colección; es una topología.
+
+% --------------------------------------------------------------- III.10
+\subsection{Problema 10: dos sub-bases}
+\begin{enunciado}
+Dado $X=\s{a,b,c,d,e}$ y $\tau_X$. Encuentre dos sub-bases [de] $\tau_X$.
+\end{enunciado}
+\begin{ojo}[Supuesto S5]
+El enunciado no dice cuál es la topología $\tau_X$. Se resuelve para dos lecturas razonables. El método es el mismo
+en cualquier otro caso: una familia $\Sb\subseteq\tau$ es sub-base de $\tau$ si las intersecciones finitas de sus
+miembros forman una base de $\tau$; equivalentemente, si la topología que genera es exactamente $\tau$.
+\end{ojo}
+\textbf{Lectura A: $\tau_X=\{X,\vac,\s{a},\s{c,d},\s{a,c,d},\s{b,c,d,e}\}$ (la $\tau_1$ de la Parte I).}
+\begin{itemize}
+\item $\Sb_1=\{\s{a},\ \s{a,c,d},\ \s{b,c,d,e}\}$. Intersecciones: $\s{a,c,d}\cap\s{b,c,d,e}=\s{c,d}$,
+$\s{a}\cap\s{b,c,d,e}=\vac$, $\s{a}\cap\s{a,c,d}=\s{a}$. Uniones: $\s{a}\cup\s{b,c,d,e}=X$. Se obtienen exactamente
+los seis abiertos de $\tau_X$.
+\item $\Sb_2=\{\s{a},\ \s{c,d},\ \s{b,c,d,e}\}$. Intersecciones: $\s{a}\cap\s{c,d}=\vac$,
+$\s{c,d}\cap\s{b,c,d,e}=\s{c,d}$. Uniones: $\s{a}\cup\s{c,d}=\s{a,c,d}$, $\s{a}\cup\s{b,c,d,e}=X$. De nuevo se
+obtiene $\tau_X$.
+\end{itemize}
+(Otras respuestas válidas: la propia $\tau_X$, o cualquier base de $\tau_X$, pues toda base es sub-base.)
+
+\textbf{Lectura B: $\tau_X$ es la topología discreta $\Pt(X)$.}
+\begin{itemize}
+\item $\Sb_3=\{\s{a},\s{b},\s{c},\s{d},\s{e}\}$: todo subconjunto es unión de puntos.
+\item $\Sb_4=\{X\sm\s{x}:x\in X\}=\{\s{b,c,d,e},\s{a,c,d,e},\s{a,b,d,e},\s{a,b,c,e},\s{a,b,c,d}\}$: la intersección
+de cuatro de ellos es un punto (por ejemplo $\s{a,c,d,e}\cap\s{a,b,d,e}\cap\s{a,b,c,e}\cap\s{a,b,c,d}=\s{a}$), y
+con los puntos se arma cualquier subconjunto.
+\end{itemize}
+\resp{Lectura A: $\Sb_1=\{\s{a},\s{a,c,d},\s{b,c,d,e}\}$ y $\Sb_2=\{\s{a},\s{c,d},\s{b,c,d,e}\}$. Lectura B:
+$\Sb_3$ (los puntos) y $\Sb_4$ (los complementos de los puntos). Las cuatro se comprobaron por computadora.}
+
+% --------------------------------------------------------------- III.11
+\subsection{Problema 11: topología generada por los intervalos \texorpdfstring{$[a,a+1]$}{[a,a+1]}}
+\begin{enunciado}
+Consideremos $X=\R$. Sea $\C=\{[a,a+1]:a\in\R\}$. Encuentre la topología generada por $\C$.
+\end{enunciado}
+Sea $x\in\R$ cualquiera. Los intervalos $[x-1,x]$ (con $a=x-1$) y $[x,x+1]$ (con $a=x$) pertenecen a $\C$, y
+\[ [x-1,x]\cap[x,x+1]=\{x\}. \]
+Así, cada conjunto unitario $\{x\}$ es una intersección finita de miembros de $\C$, es decir, es un elemento de la
+base y por tanto es abierto en $\tau(\C)$. Si $A\subseteq\R$ es arbitrario, $A=\bigcup_{x\in A}\{x\}$ es unión de
+abiertos, luego es abierto.
+\resp{$\tau(\C)=\Pt(\R)$: la topología generada es la \textbf{discreta}.}
+\emph{Observación.} $\C$ es sub-base pero \emph{no} base de esa topología: $[0,1]\cap[1,2]=\s{1}$ no es unión de
+miembros de $\C$ (cada miembro tiene longitud 1).
+
+% --------------------------------------------------------------- III.12
+\subsection{Problema 12}
+\begin{enunciado}
+Sea $(X,\tau)$ un espacio topológico y $\B_1$ una colección de subconjuntos de $X$. Sea $\B$ una base para $\tau$.
+Si $\B\subset\B_1\subset\tau$, entonces $\B$ [sic] una base para $\tau$.
+\end{enunciado}
+\begin{ojo}[Supuesto S6]
+Que $\B$ sea base es la hipótesis, de modo que el enunciado literal no tiene nada que probar. Lo que se debe
+demostrar es: \emph{si $\B\subseteq\B_1\subseteq\tau$ y $\B$ es base de $\tau$, entonces $\B_1$ es base de $\tau$.}
+\end{ojo}
+\textbf{Demostración.} Recuérdese que $\B_1$ es base de $\tau$ si (i) $\B_1\subseteq\tau$ y (ii) todo $U\in\tau$ es
+unión de miembros de $\B_1$.
+
+(i) Es la hipótesis $\B_1\subseteq\tau$: los miembros de $\B_1$ son abiertos.
+
+(ii) Sea $U\in\tau$. Como $\B$ es base de $\tau$, existe una subfamilia $\{B_i\}_{i\in I}\subseteq\B$ con
+$U=\bigcup_{i\in I}B_i$. Como $\B\subseteq\B_1$, cada $B_i$ pertenece también a $\B_1$; luego $U$ es unión de
+miembros de $\B_1$.
+
+Por (i) y (ii), $\B_1$ es una base para $\tau$. \qed
+
+\emph{Moraleja:} a una base se le pueden agregar abiertos y sigue siendo base. La hipótesis $\B_1\subseteq\tau$ es
+indispensable: si se agregara un conjunto no abierto, la familia generaría una topología estrictamente más fina.
+
+% --------------------------------------------------------------- III.13
+\subsection{Problema 13: ¿cuándo \texorpdfstring{$\{X,\varnothing,A,B\}$}{\{X,vacío,A,B\}} es una topología?}
+\begin{enunciado}
+Consideremos una colección $\tau=\{X,\vac,A,B\}$ definida sobre un conjunto $X\neq\vac$. ¿Bajo qué condiciones es
+$\tau$ una topología sobre $X$?
+\end{enunciado}
+$\vac$ y $X$ ya están. Por H1, $\tau$ es topología si y solo si $A\cup B\in\tau$ y $A\cap B\in\tau$ (las operaciones
+con $\vac$ y $X$ no producen nada nuevo).
+
+\textbf{Condición suficiente.}
+\begin{itemize}
+\item Si $A\subseteq B$: $A\cup B=B$ y $A\cap B=A$, ambos en $\tau$. Análogo si $B\subseteq A$.
+\item Si $A\cap B=\vac$ y $A\cup B=X$: ambos resultados están en $\tau$.
+\end{itemize}
+\textbf{Condición necesaria.} Supóngase que $\tau$ es topología y que $A$ y $B$ no son comparables (ni $A\subseteq B$
+ni $B\subseteq A$). Entonces:
+\begin{itemize}
+\item $A\cup B\in\{X,\vac,A,B\}$. No puede ser $A$ (daría $B\subseteq A$), ni $B$ (daría $A\subseteq B$), ni $\vac$
+(daría $A=B=\vac$). Luego $A\cup B=X$.
+\item $A\cap B\in\{X,\vac,A,B\}$. No puede ser $A$ (daría $A\subseteq B$), ni $B$, ni $X$ (daría $A=B=X$). Luego
+$A\cap B=\vac$.
+\end{itemize}
+Es decir, $B=X\sm A$.
+\resp{$\tau=\{X,\vac,A,B\}$ es una topología sobre $X$ si y solo si se cumple alguna de estas condiciones:
+\ (1) $A\subseteq B$;\ \ (2) $B\subseteq A$;\ \ (3) $B=X\sm A$ (es decir, $A\cap B=\vac$ y $A\cup B=X$).\\
+Si además se quiere que los cuatro conjuntos sean distintos, queda: $\vac\subsetneq A\subsetneq B\subsetneq X$ (o al
+revés), o bien $A$ y $B$ complementarios, propios y no vacíos.}
+\emph{Nota.} Las condiciones (1) y (2) incluyen los casos degenerados en que $A$ o $B$ coincide con $\vac$, con $X$ o
+entre sí; entonces la colección tiene menos de cuatro elementos pero sigue siendo topología.

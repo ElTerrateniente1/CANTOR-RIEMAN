@@ -1,0 +1,247 @@
+\section{Continuidad}\label{sec:cont}
+\subsection{De $\varepsilon$--$\delta$ a los abiertos}
+En cálculo, $f:\R\to\R$ es continua en $p$ si para todo $\varepsilon>0$ existe $\delta>0$ tal que
+$|x-p|<\delta\Rightarrow|f(x)-f(p)|<\varepsilon$. En palabras: \emph{para todo intervalo $V$ alrededor de $f(p)$ existe
+un intervalo $U$ alrededor de $p$ con $f(U)\subseteq V$}. Si se cambia «intervalo alrededor de» por «abierto que
+contiene a», la frase ya no menciona distancias y tiene sentido en cualquier espacio topológico.
+
+\begin{definicion}[Definición: continuidad en un punto y continuidad global]
+Sea $f:(X,\tau_X)\to(Y,\tau_Y)$.
+\begin{itemize}
+\item $f$ es \textbf{continua en $p\in X$} si para todo abierto $V$ de $Y$ con $f(p)\in V$ existe un abierto $U$ de $X$
+con $p\in U$ y $f(U)\subseteq V$.
+\item $f$ es \textbf{continua} si la imagen inversa de todo abierto de $Y$ es un abierto de $X$:
+\[V\in\tau_Y\ \Longrightarrow\ f^{-1}(V)\in\tau_X .\]
+\end{itemize}
+\end{definicion}
+Recuérdese que $f^{-1}(V)=\{x\in X: f(x)\in V\}$ está definido para \emph{cualquier} función; no supone que $f$ tenga
+inversa.
+
+\begin{teorema}[Equivalencias de la continuidad]
+Para $f:X\to Y$ son equivalentes:
+\begin{enumerate}[label=(\alph*),leftmargin=1.9em]
+\item $f$ es continua (imagen inversa de abierto es abierto);
+\item la imagen inversa de todo \emph{cerrado} de $Y$ es cerrada en $X$;
+\item la imagen inversa de todo miembro de una base (o de una sub-base) de $Y$ es abierta en $X$;
+\item $f$ es continua en cada punto de $X$;
+\item $f(\cl{A})\subseteq\cl{f(A)}$ para todo $A\subseteq X$.
+\end{enumerate}
+\end{teorema}
+\emph{Demostración de (a)$\iff$(b).} $f^{-1}(Y\sm V)=X\sm f^{-1}(V)$. \qed
+
+\emph{Demostración de (a)$\iff$(d).} ($\Rightarrow$) Dado $p$ y $V\ni f(p)$ abierto, $U=f^{-1}(V)$ es abierto, contiene
+a $p$ y $f(U)\subseteq V$. ($\Leftarrow$) Sea $V$ abierto de $Y$ y $p\in f^{-1}(V)$. Por la continuidad en $p$ hay un
+abierto $U_p\ni p$ con $f(U_p)\subseteq V$, es decir, $U_p\subseteq f^{-1}(V)$. Entonces $f^{-1}(V)$ es vecindad de cada
+uno de sus puntos y, por (N4), es abierto. \qed
+
+\begin{metodo}[Método: decidir si $f$ es continua (espacios finitos)]
+\begin{enumerate}[leftmargin=1.6em]
+\item Escribir la tabla de valores de $f$ (leerla del diagrama de flechas con cuidado).
+\item Para \emph{cada} abierto $V$ de la llegada, calcular $f^{-1}(V)$: los puntos de la salida cuya flecha cae en $V$.
+\item Si todas las imágenes inversas son abiertos de la salida, $f$ es continua. Si alguna no lo es, $f$ no es
+continua y ese $V$ es el contraejemplo.
+\end{enumerate}
+Para $\vac$ y para el total no hay nada que revisar: $f^{-1}(\vac)=\vac$ y $f^{-1}(Y)=X$.
+\end{metodo}
+\begin{metodo}[Método: decidir si $f$ es continua en un punto $p$]
+\begin{enumerate}[leftmargin=1.6em]
+\item Calcular $f(p)$ y listar los abiertos $V$ de la llegada que contienen a $f(p)$.
+\item Para cada uno, ver si $f^{-1}(V)$ es vecindad de $p$ (contiene un abierto que contiene a $p$).
+\item En espacios finitos basta una sola prueba: $f$ es continua en $p$ $\iff f(U_p)\subseteq V_{f(p)}$, donde $U_p$ y
+$V_{f(p)}$ son los abiertos mínimos de $p$ y de $f(p)$.
+\end{enumerate}
+\end{metodo}
+
+\begin{ejemplo}[Ejemplo: problema IV.1]
+$X=\s{a,b,c,d}$, $\tau=\{X,\vac,\s{a},\s{b},\s{a,b},\s{b,c,d}\}$ y $f(a)=b$, $f(b)=d$, $f(c)=b$, $f(d)=c$.
+
+\emph{Global.} $f^{-1}(\s{b})=\s{a,c}$ (los puntos que van a $b$ son $a$ y $c$), y $\s{a,c}\notin\tau$. No es continua.
+
+\emph{En $d$.} $f(d)=c$; abiertos que contienen a $c$: $\s{b,c,d}$ y $X$. $f^{-1}(\s{b,c,d})=X$, que es vecindad de
+$d$. Sí es continua en $d$. Con abiertos mínimos: $U_d=\s{b,c,d}$, $f(U_d)=\s{d,b,c}\subseteq U_{f(d)}=U_c=\s{b,c,d}$.
+
+\emph{En $c$.} $f(c)=b$; $U_c=\s{b,c,d}$, $f(U_c)=\s{b,c,d}\not\subseteq U_b=\s{b}$. No es continua en $c$.
+
+La función es continua en $a$, $b$ y $d$, y discontinua solo en $c$: basta un punto de discontinuidad para que la
+función no sea continua.
+\end{ejemplo}
+
+\begin{ejemplo}[Ejemplos generales que conviene recordar]
+\begin{itemize}
+\item Toda función constante es continua (la imagen inversa de un abierto es $\vac$ o $X$).
+\item La identidad $(X,\tau)\to(X,\tau)$ es continua.
+\item Si $X$ tiene la topología \textbf{discreta}, toda función $X\to Y$ es continua.
+\item Si $Y$ tiene la topología \textbf{indiscreta}, toda función $X\to Y$ es continua.
+\item La composición de funciones continuas es continua: $(g\circ f)^{-1}(W)=f^{-1}(g^{-1}(W))$.
+\item La restricción de una función continua a un subespacio es continua.
+\end{itemize}
+\end{ejemplo}
+
+\begin{ojo}[Errores frecuentes en continuidad]
+\begin{itemize}
+\item Revisar imágenes directas $f(U)$ en lugar de imágenes inversas $f^{-1}(V)$. Eso es la definición de función
+\emph{abierta}, que es otra cosa.
+\item Usar los abiertos del espacio equivocado: las $V$ se toman en la \emph{llegada} y se comprueba que $f^{-1}(V)$
+esté en la topología de la \emph{salida}.
+\item Leer mal el diagrama: $f^{-1}(\s{b})$ son todos los puntos de los que \emph{sale} una flecha que llega a $b$.
+\item Creer que «continua en algunos puntos» implica continua.
+\end{itemize}
+\end{ojo}
+
+% =====================================================================
+\section{Funciones abiertas y funciones cerradas}
+\begin{definicion}[Definición]
+$f:X\to Y$ es \textbf{abierta} si $f(U)$ es abierto en $Y$ para todo abierto $U$ de $X$; es \textbf{cerrada} si
+$f(F)$ es cerrado en $Y$ para todo cerrado $F$ de $X$.
+\end{definicion}
+Continua, abierta y cerrada son tres propiedades \textbf{independientes}: una función puede tener cualquiera de las
+ocho combinaciones. La razón de fondo es que la imagen inversa se comporta bien con todas las operaciones de conjuntos,
+mientras que la imagen directa solo respeta las uniones:
+\begin{gather*}
+f(A\cup B)=f(A)\cup f(B),\qquad f(A\cap B)\subseteq f(A)\cap f(B),\\
+f(X\sm A)\ \text{y}\ Y\sm f(A)\ \text{no se relacionan en general}.
+\end{gather*}
+Por eso «abierta» no equivale a «cerrada», salvo en el caso biyectivo.
+
+\begin{teorema}[Hechos útiles]
+\begin{enumerate}[label=(\alph*),leftmargin=1.9em]
+\item Para saber si $f$ es abierta basta revisar las imágenes de los miembros de una \emph{base} de $X$ (porque
+$f(\bigcup_iB_i)=\bigcup_if(B_i)$).
+\item Si $f$ es abierta, entonces $f(X)$ es abierto en $Y$; si es cerrada, $f(X)$ es cerrado en $Y$. (Dos pruebas
+rápidas para descartar.)
+\item Si $f$ es \textbf{biyectiva}: $f$ abierta $\iff f$ cerrada $\iff f^{-1}$ continua.
+\end{enumerate}
+\end{teorema}
+\emph{Demostración de (c).} Para una biyección, $f(X\sm A)=Y\sm f(A)$, lo que da la primera equivalencia. Y la imagen
+inversa de $U$ por la función $f^{-1}:Y\to X$ es precisamente $f(U)$; así, «$f^{-1}$ continua» dice «$f(U)$ abierto para
+todo abierto $U$». \qed
+
+\begin{metodo}[Método: decidir si $f$ es abierta / cerrada]
+\textbf{Abierta:} para cada abierto $U$ de la salida calcular $f(U)$ (adónde llegan las flechas que salen de $U$) y
+ver si está en la topología de la llegada.\\[2pt]
+\textbf{Cerrada:} listar los cerrados de la salida y los de la llegada; para cada cerrado $F$ de la salida calcular
+$f(F)$ y ver si está en la lista de cerrados de la llegada.\\[2pt]
+\textbf{Descartes rápidos:} mirar $f(X)$; mirar los abiertos y cerrados de un solo punto.
+\end{metodo}
+
+\begin{ejemplo}[Ejemplo: problema IV.2, $f(x)=x^2$ en $\R$]
+$f$ es continua y \textbf{no es abierta}: $f((-1,1))=[0,1)$, que no es abierto porque ningún intervalo alrededor de $0$
+cabe en $[0,1)$\fuente{20}. Geométricamente: la parábola «dobla» la recta en $0$, y el punto del doblez queda en el
+borde de la imagen.
+\end{ejemplo}
+
+\begin{ejemplo}[Ejemplo: problema IV.3, resumen]
+Con $X=\s{1,2,3,4}$, $Y=\s{a,b,c,d}$, $\tau_2=\{Y,\vac,\s{c},\s{c,d},\s{a,b,c}\}$ y la $\tau_1$ del enunciado:
+\begin{center}\footnotesize\renewcommand{\arraystretch}{1.25}\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lcccl@{}}\toprule
+función & continua & abierta & cerrada & por qué\\ \midrule
+$f=(1\!\mapsto\! a,2\!\mapsto\! a,3\!\mapsto\! d,4\!\mapsto\! c)$ & \no & \no & \no & $f^{-1}(\s{c})=\s{4}$; $f(\s{2})=\s{a}$; $f(\s{1})=\s{a}$\\
+$g=(1\!\mapsto\! b,2\!\mapsto\! c,3\!\mapsto\! c,4\!\mapsto\! d)$ & \si & \no & \no & $g(X)=\s{b,c,d}$: ni abierto ni cerrado\\
+$h=(a\!\mapsto\! 2,b\!\mapsto\! 3,c\!\mapsto\! 4,d\!\mapsto\! 1)$ & \no & \no & \no & $h^{-1}(\s{2})=\s{a}$; $h(\s{c})=\s{4}$\\
+$k=(a\!\mapsto\! 2,b\!\mapsto\! 4,c\!\mapsto\! 3,d\!\mapsto\! 3)$ & \no & \si & \no & $k^{-1}(\s{2})=\s{a}$; $k(Y)=\s{2,3,4}$ no cerrado\\ \bottomrule
+\end{tabular}\end{center}
+$g$ es continua y no abierta; $k$ es abierta y no continua: el mismo problema contiene los dos contraejemplos que
+muestran la independencia de ambas nociones. Nótese el uso del descarte (b): $g(X)$ y $k(Y)$.
+\end{ejemplo}
+
+% =====================================================================
+\section{Homeomorfismos}
+\subsection{Definición e idea}
+Dos espacios son «el mismo espacio con los puntos renombrados» cuando hay una correspondencia entre sus puntos que
+también hace corresponder sus abiertos. Eso es un homeomorfismo: el isomorfismo de la topología.
+\begin{definicion}[Definición: homeomorfismo]
+$f:X\to Y$ es un \textbf{homeomorfismo} si es biyectiva, continua y su inversa $f^{-1}:Y\to X$ es continua. Si existe
+un homeomorfismo se dice que $X$ y $Y$ son \textbf{homeomorfos} (o topológicamente equivalentes): $X\homeo Y$.
+\end{definicion}
+\begin{teorema}[Formas equivalentes]
+Para una \emph{biyección} $f:X\to Y$ son equivalentes:
+\begin{enumerate}[label=(\alph*),leftmargin=1.9em]
+\item $f$ es homeomorfismo;
+\item $f$ es continua y abierta;
+\item $f$ es continua y cerrada;
+\item $U$ es abierto en $X$ $\iff$ $f(U)$ es abierto en $Y$; es decir, $U\mapsto f(U)$ es una biyección de $\tau_X$
+sobre $\tau_Y$.
+\end{enumerate}
+\end{teorema}
+\begin{teorema}[$\homeo$ es una relación de equivalencia]
+Reflexiva: la identidad es homeomorfismo. Simétrica: si $f$ es homeomorfismo, $f^{-1}$ también. Transitiva: la
+composición de homeomorfismos es homeomorfismo.
+\end{teorema}
+
+\begin{ojo}[Biyectiva y continua no basta]
+La inversa debe ser continua también. Ejemplo finito: la identidad de $X=\s{a,b}$ con la topología discreta hacia
+$X$ con la indiscreta es biyectiva y continua, pero su inversa no es continua. Ejemplo clásico:
+$t\mapsto(\cos t,\sen t)$ de $[0,2\pi)$ sobre la circunferencia es biyectiva y continua, y no es homeomorfismo
+(la inversa «rompe» la circunferencia en el punto $(1,0)$)\fuente{22,23}.
+\end{ojo}
+
+\subsection{Invariantes topológicos: cómo probar que \emph{no} son homeomorfos}
+Una propiedad es un \textbf{invariante topológico} si, cuando la tiene un espacio, la tienen todos los homeomorfos a
+él. Si $X$ tiene un invariante y $Y$ no, entonces $X\not\homeo Y$. Para espacios finitos los más útiles son:
+\begin{center}\small\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}p{6.4cm}p{9.0cm}@{}}\toprule
+\textbf{Invariante} & \textbf{Por qué se conserva}\\ \midrule
+Número de puntos & Un homeomorfismo es una biyección.\\
+Número de abiertos (y de cerrados) & $U\mapsto f(U)$ es biyección entre las topologías.\\
+Número de abiertos de cada tamaño & $f(U)$ tiene tantos puntos como $U$.\\
+Número de puntos abiertos; de puntos cerrados & Caso particular del anterior.\\
+Número de conjuntos abiertos y cerrados a la vez & $f$ conserva abiertos y cerrados.\\
+Existencia de dos abiertos no vacíos disjuntos & $f(U\cap V)=f(U)\cap f(V)$ para biyecciones.\\
+La forma del orden de inclusión entre abiertos & $U\subseteq V\iff f(U)\subseteq f(V)$.\\ \bottomrule
+\end{tabular}\end{center}
+
+\begin{ojo}[El mismo número de abiertos no garantiza homeomorfismo]
+En $X=\s{a,b,c}$, $\tau=\{\vac,\s{a},\s{a,b},X\}$ y $\tau'=\{\vac,\s{a},\s{b,c},X\}$ tienen 4 abiertos cada una y no son
+homeomorfas: $\tau'$ tiene un abierto propio que también es cerrado ($\s{a}$) y $\tau$ no; o bien, $\tau'$ tiene dos
+abiertos no vacíos disjuntos y $\tau$ no. Los invariantes sirven para \emph{negar}; para \emph{afirmar} hay que
+construir el homeomorfismo.
+\end{ojo}
+
+\begin{metodo}[Método: decidir si $X\homeo Y$ (espacios finitos)]
+\begin{enumerate}[leftmargin=1.6em]
+\item \textbf{Descartar:} comparar número de puntos, número de abiertos y tamaños de los abiertos. Si algo difiere,
+no son homeomorfos y ese es el argumento.
+\item \textbf{Construir:} si todo coincide, emparejar los abiertos «por tamaño y posición»: los puntos abiertos con
+los puntos abiertos, los pares abiertos con los pares abiertos, etc. Eso dicta adónde debe ir cada punto.
+\item \textbf{Verificar:} escribir la tabla $U\mapsto\varphi(U)$ para todos los abiertos de $X$ y comprobar que la
+fila de imágenes es exactamente la topología de $Y$.
+\end{enumerate}
+\end{metodo}
+
+\begin{ejemplo}[Ejemplo: problema IV.4]
+$\tau_1=\{X,\vac,\s{a},\s{c,d},\s{a,c,d},\s{b,c,d,e}\}$ y $\tau_2=\{Y,\vac,\s{v},\s{w,z},\s{v,w,z},\s{w,x,y,z}\}$ tienen
+abiertos de tamaños $0,1,2,3,4,5$ en ambos casos. Emparejando: $\s{a}\leftrightarrow\s{v}$ obliga $a\mapsto v$;
+$\s{c,d}\leftrightarrow\s{w,z}$ obliga $\s{c,d}\mapsto\s{w,z}$; lo que queda, $\s{b,e}\mapsto\s{x,y}$.
+Con $\varphi=(a\mapsto v,b\mapsto x,c\mapsto w,d\mapsto z,e\mapsto y)$ la tabla de imágenes recorre $\tau_2$:
+$X\homeo Y$.
+
+$\tau_3$ tiene 7 abiertos y las otras 6: $Z\not\homeo X$ y $Z\not\homeo Y$. Y todo espacio es homeomorfo a sí mismo.
+\end{ejemplo}
+\begin{ejemplo}[Ejemplo: problema IV.3(b)]
+$X$ tiene 9 abiertos (10 con la corrección) y $Y$ tiene 5: no pueden ser homeomorfos, a pesar de lo que pide probar
+el enunciado. Cuando un enunciado pide demostrar algo falso, la respuesta correcta es el contraargumento, bien
+justificado.
+\end{ejemplo}
+\begin{ejemplo}[Ejemplos en $\R$]
+$(-1,1)\homeo\R$ mediante $x\mapsto\dfrac{x}{1-|x|}$ (inversa $y\mapsto\dfrac{y}{1+|y|}$, ambas continuas). Dos
+intervalos abiertos cualesquiera son homeomorfos (por una función afín). En cambio $[0,1]\not\homeo(0,1)$: la
+compacidad es un invariante que se estudia más adelante en el curso.
+\end{ejemplo}
+
+\subsection{Clasificación de los espacios de tres puntos}
+Las 29 topologías sobre $\s{a,b,c}$ se agrupan en \textbf{9 clases de homeomorfismo}\fuente{12,13}. Un representante de
+cada una, con el número de topologías de la clase:
+\begin{center}\small\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}llc@{}}\toprule
+representante & descripción & cuántas\\ \midrule
+$\{\vac,X\}$ & indiscreta & 1\\
+$\{\vac,\s{a},X\}$ & un punto abierto & 3\\
+$\{\vac,\s{a,b},X\}$ & un par abierto & 3\\
+$\{\vac,\s{a},\s{a,b},X\}$ & cadena & 6\\
+$\{\vac,\s{a},\s{b,c},X\}$ & partición & 3\\
+$\{\vac,\s{a},\s{b},\s{a,b},X\}$ & dos puntos abiertos y su unión & 3\\
+$\{\vac,\s{a},\s{a,b},\s{a,c},X\}$ & un punto abierto y dos pares & 3\\
+$\{\vac,\s{a},\s{b},\s{a,b},\s{a,c},X\}$ & dos puntos, dos pares & 6\\
+$\Pt(X)$ & discreta & 1\\ \bottomrule
+\end{tabular}\end{center}
+$1+3+3+6+3+3+3+6+1=29$. Dos topologías de la misma fila se obtienen una de otra renombrando los puntos.

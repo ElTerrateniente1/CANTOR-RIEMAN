@@ -1,0 +1,186 @@
+\section{Espacios topológicos}
+
+\subsection{La idea: hablar de «cercanía» sin medir distancias}
+En cálculo, casi todo (límites, continuidad, convergencia) se formula con desigualdades del tipo $|x-a|<\varepsilon$:
+«$x$ está cerca de $a$». La observación que da origen a la topología es que no hace falta la distancia en sí; basta
+saber cuáles conjuntos son \emph{abiertos}. En $\R$, un conjunto $U$ es abierto si cada uno de sus puntos tiene un
+pequeño intervalo alrededor contenido en $U$; es decir, si cada punto de $U$ está «rodeado» por puntos de $U$.
+Con eso solo ya se puede decir qué es una función continua (sección~\ref{sec:cont}).
+
+La topología general da el paso siguiente: en un conjunto cualquiera $X$, \emph{declarar} cuáles subconjuntos se
+llamarán abiertos, exigiendo únicamente tres reglas que los abiertos de $\R$ cumplen. Los ejemplos finitos del taller
+son el laboratorio ideal: son tan pequeños que todo se puede calcular a mano, y obligan a usar las definiciones en
+lugar de la intuición geométrica.
+
+\subsection{Definición}
+\begin{definicion}[Definición: topología y espacio topológico]
+Sea $X$ un conjunto. Una \textbf{topología} sobre $X$ es una familia $\tau$ de subconjuntos de $X$ tal que:
+\begin{description}[leftmargin=1.4cm,labelwidth=1.0cm,itemsep=0.1em]
+\item[(T1)] $\vac\in\tau$ y $X\in\tau$;
+\item[(T2)] la unión de \emph{cualquier} subfamilia de $\tau$ (finita o infinita) pertenece a $\tau$;
+\item[(T3)] la intersección de \emph{dos} miembros de $\tau$ (y por inducción, de un número finito) pertenece a $\tau$.
+\end{description}
+El par $(X,\tau)$ se llama \textbf{espacio topológico} y los miembros de $\tau$ son sus \textbf{conjuntos abiertos}.
+\end{definicion}
+Es la definición de todos los textos de referencia\fuente{1,2,3}; algunos omiten (T1) porque consideran que la unión de
+la familia vacía es $\vac$ y su intersección es $X$.
+
+\begin{ojo}[¿Por qué uniones arbitrarias pero solo intersecciones finitas?]
+Porque así ocurre en $\R$. Los intervalos $U_n=(-\tfrac1n,\tfrac1n)$ son abiertos, pero su intersección
+$\bigcap_{n\ge1}U_n=\{0\}$ no lo es. Si se exigiera cerrar bajo intersecciones infinitas, la topología usual de $\R$
+no sería una topología. En un espacio \emph{finito} la distinción desaparece: solo hay finitos abiertos, y toda
+intersección es finita.
+\end{ojo}
+
+\subsection{Los ejemplos que hay que tener en la cabeza}
+\begin{center}\small\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}p{3.6cm}p{5.6cm}p{6.2cm}@{}}\toprule
+\textbf{Nombre} & \textbf{Abiertos} & \textbf{Comentario}\\ \midrule
+Indiscreta (trivial) & $\{\vac,X\}$ & La menor topología posible: la más gruesa.\\
+Discreta & $\Pt(X)$: todos los subconjuntos & La mayor posible: la más fina. Todo punto es abierto.\\
+Usual de $\R$ & uniones de intervalos abiertos $(a,b)$ & La del cálculo. Problema IV.2.\\
+Del punto incluido & $\vac$ y los conjuntos que contienen a un punto fijo $p$ & Problema III.7, con $X=\R$, $p=0$\fuente{10,18}.\\
+De partición & uniones de bloques de una partición de $X$ & Problema III.6, con bloques $\{2n-1,2n\}$\fuente{10,19}.\\
+Cofinita & $\vac$ y los conjuntos de complemento finito & No aparece en el taller; es el contraejemplo clásico siguiente.\\
+Cadena & $\vac\subset A_1\subset A_2\subset\dots\subset X$ & Cualquier cadena que incluya $\vac$ y $X$ es topología. Problemas III.1 a III.3.\\
+Sierpiński & $X=\{0,1\}$, $\tau=\{\vac,\{1\},X\}$ & El espacio no trivial más pequeño.\\ \bottomrule
+\end{tabular}\end{center}
+
+\begin{ejemplo}[Ejemplo: por qué una topología de partición es topología]
+Sea $\{P_i\}_{i\in I}$ una partición de $X$ y $\tau$ la familia de las uniones de bloques (incluida la unión vacía,
+$\vac$). (T1) $\vac$ es la unión de ningún bloque y $X$ la de todos. (T2) Unión de uniones de bloques es unión de
+bloques. (T3) Si $A=\bigcup_{i\in I_A}P_i$ y $B=\bigcup_{i\in I_B}P_i$, entonces $A\cap B=\bigcup_{i\in I_A\cap I_B}P_i$,
+porque bloques distintos son disjuntos. En el problema III.6 se hizo la misma demostración, escrita con la condición
+«$2n\in A\iff 2n-1\in A$». En estas topologías todo abierto es también cerrado.
+\end{ejemplo}
+
+\subsection{Cómo verificar si una familia finita es topología}\label{sec:verif}
+\begin{metodo}[Método: verificación en el caso finito]
+\begin{enumerate}[leftmargin=1.6em]
+\item Comprobar que $\vac$ y $X$ están en la lista.
+\item Apartar $\vac$ y $X$. Con los $m$ conjuntos restantes, formar la tabla de uniones y la tabla de intersecciones
+($m\times m$; como son simétricas basta la mitad).
+\item Si todos los resultados están en la lista, \textbf{es topología}. Si alguno falta, \textbf{no lo es}, y ese par
+es el contraejemplo que hay que escribir.
+\end{enumerate}
+\end{metodo}
+\emph{Por qué basta de dos en dos.} La familia es finita, así que toda unión de miembros es una unión de finitos
+conjuntos $A_1\cup\dots\cup A_n$, que se calcula como $(\dots((A_1\cup A_2)\cup A_3)\dots)\cup A_n$: si cada paso se
+queda dentro de la familia, el resultado también. Lo mismo para intersecciones.
+
+\emph{Atajos que ahorran trabajo.} (1) Las operaciones con $\vac$ y con $X$ nunca producen nada nuevo.
+(2) Si $A\subseteq B$, entonces $A\cup B=B$ y $A\cap B=A$: los pares encajados se cumplen solos. Solo hay que mirar
+los pares \emph{no comparables}. (3) Si la familia tiene una descripción estructural (por ejemplo «todos los
+subconjuntos de $\{1,2,6\}$, más $X$», como $\tau_1$ de la Parte~II), el argumento general es más rápido que la tabla.
+
+\begin{ejemplo}[Ejemplo: Parte I del taller]
+$X=\s{a,b,c,d,e}$.
+\begin{itemize}
+\item $\tau_1=\{X,\vac,\s{a},\s{c,d},\s{a,c,d},\s{b,c,d,e}\}$. Pares no comparables: $\s{a}$ con $\s{c,d}$ (unión
+$\s{a,c,d}$, intersección $\vac$), $\s{a}$ con $\s{b,c,d,e}$ (unión $X$, intersección $\vac$), $\s{a,c,d}$ con
+$\s{b,c,d,e}$ (unión $X$, intersección $\s{c,d}$). Todo está en $\tau_1$: \textbf{es topología}.
+\item $\tau_2$ cambia $\s{b,c,d,e}$ por $\s{b,c,d}$: ahora $\s{a}\cup\s{b,c,d}=\s{a,b,c,d}\notin\tau_2$.
+\textbf{Falla (T2).}
+\item $\tau_3$ lo cambia por $\s{a,b,d,e}$: $\s{c,d}\cap\s{a,b,d,e}=\s{d}\notin\tau_3$. \textbf{Falla (T3).}
+\end{itemize}
+Moraleja para el examen: un solo par que falle basta para concluir que no es topología, pero para afirmar que
+\emph{sí} lo es hay que revisar todos los pares no comparables.
+\end{ejemplo}
+
+\begin{ojo}[Errores frecuentes al verificar]
+\begin{itemize}
+\item Revisar solo las uniones (o solo las intersecciones). $\tau_3$ pasa todas las uniones y aun así no es topología.
+\item Olvidar que $\vac$ y $X$ deben estar.
+\item Confundir «el conjunto $\s{a,b}$ no está en $\tau$» con «los puntos $a$ y $b$ no están cubiertos». Lo que
+pertenece a $\tau$ son subconjuntos, no puntos.
+\end{itemize}
+\end{ojo}
+
+\subsection{¿Cuántas topologías hay en un conjunto finito?}\label{sec:cuantas}
+No se conoce una fórmula cerrada. Los primeros valores son\fuente{11,12,13,21}:
+\begin{center}\small\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}lcccccc@{}}\toprule
+número de puntos $n$ & 0 & 1 & 2 & 3 & 4 & 5\\ \midrule
+topologías distintas (OEIS A000798) & 1 & 1 & 4 & 29 & 355 & 6942\\
+salvo homeomorfismo (OEIS A001930) & 1 & 1 & 3 & 9 & 33 & 139\\ \bottomrule
+\end{tabular}\end{center}
+Los valores de las dos filas para $n\le5$ se reprodujeron por computadora (contando preórdenes, que en un conjunto
+finito corresponden uno a uno con las topologías\fuente{13,21}); coinciden con los de la OEIS. Para $n=3$, las 29 topologías se reparten por número de abiertos así:
+\begin{center}\small\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}lcccccc|c@{}}\toprule
+número de abiertos & 2 & 3 & 4 & 5 & 6 & 8 & total\\ \midrule
+cuántas topologías & 1 & 6 & 9 & 6 & 6 & 1 & 29\\ \bottomrule
+\end{tabular}\end{center}
+Nótese que no hay ninguna con 7 abiertos. Para $n=4$ (355 en total): 1 con 2 abiertos, 14 con 3, 43 con 4, 60 con 5,
+72 con 6, 54 con 7, 54 con 8, 20 con 9, 24 con 10, 12 con 12 y 1 con 16.
+
+\begin{teorema}[Topologías con pocos abiertos (problemas III.1 a III.3 y III.13)]
+Sea $X$ un conjunto y $A$, $B$, $C$ subconjuntos propios y no vacíos, distintos entre sí.
+\begin{enumerate}[label=(\alph*),leftmargin=1.9em]
+\item $\{\vac,A,X\}$ siempre es topología.
+\item $\{\vac,A,B,X\}$ es topología $\iff$ $A\subset B$, o $B\subset A$, o $B=X\sm A$.
+\item $\{\vac,A,B,C,X\}$ es topología $\iff$ (salvo reordenar) es una cadena $A\subset B\subset C$; o
+$A\cap B=\vac$ y $C=A\cup B$; o $A\cup B=X$ y $C=A\cap B$.
+\end{enumerate}
+\end{teorema}
+\emph{Demostración de (b).} ($\Leftarrow$) En los tres casos $A\cup B$ y $A\cap B$ son miembros. ($\Rightarrow$) Si $A$
+y $B$ no son comparables, $A\cup B$ no puede ser $A$, ni $B$, ni $\vac$; solo queda $A\cup B=X$. Y $A\cap B$ no puede
+ser $A$, ni $B$, ni $X$; solo queda $A\cap B=\vac$. Luego $B=X\sm A$. \qed
+
+\emph{Idea de (c).} Si los tres son comparables dos a dos, forman una cadena. Si dos de ellos, digamos $A$ y $B$, no
+son comparables, entonces $A\cup B$ y $A\cap B$ son miembros distintos de $A$ y de $B$; como solo quedan $\vac$, $C$ y
+$X$ disponibles, o bien $A\cap B=\vac$ y $A\cup B=C$, o bien $A\cap B=C$ y $A\cup B=X$ (el caso $A\cap B=\vac$ y
+$A\cup B=X$ no deja lugar para $C$: se comprueba que $C$ no podría ser comparable con ambos sin crear un conjunto
+nuevo).
+
+\begin{ejemplo}[Ejemplo: contar con el teorema]
+En $X=\s{2,4,6}$ (problema III.1): cadenas $\s{x}\subset\s{x,y}$: $3\cdot2=6$; complementarios $\s{x}$ y
+$X\sm\s{x}$: $3$. Total $9$, como dice la tabla anterior. En un conjunto de 4 puntos: $36$ cadenas y $7$ pares
+complementarios, total $43$.
+\end{ejemplo}
+
+% =====================================================================
+\section{Conjuntos cerrados}
+\begin{definicion}[Definición: cerrado]
+Un conjunto $F\subseteq X$ es \textbf{cerrado} si su complemento $X\sm F$ es abierto. La familia de los cerrados se
+denota aquí $\cotau$ (en el taller, «$c_0\tau$»).
+\end{definicion}
+\begin{teorema}[Propiedades de los cerrados]
+\begin{enumerate}[label=(C\arabic*),leftmargin=2.6em]
+\item $\vac$ y $X$ son cerrados.
+\item La intersección de \emph{cualquier} familia de cerrados es cerrada.
+\item La unión de \emph{dos} (o de finitos) cerrados es cerrada.
+\end{enumerate}
+\end{teorema}
+\emph{Demostración.} Son los axiomas (T1) a (T3) pasados por las leyes de De Morgan:
+$X\sm\bigcap_i F_i=\bigcup_i (X\sm F_i)$ y $X\sm(F_1\cup F_2)=(X\sm F_1)\cap(X\sm F_2)$. \qed
+
+Obsérvese el intercambio: los abiertos toleran uniones arbitrarias e intersecciones finitas; los cerrados, al revés.
+
+\begin{metodo}[Método: hallar $\cotau$]
+Tomar el complemento de cada abierto, uno por uno. La lista de cerrados tiene exactamente tantos elementos como la
+de abiertos (el complemento es una biyección).
+\end{metodo}
+
+\begin{ojo}[«Cerrado» no es lo contrario de «abierto»]
+Un conjunto puede ser:
+\begin{itemize}
+\item \textbf{abierto y cerrado a la vez}: siempre lo son $\vac$ y $X$; en $\tau_1$ de la Parte~I también $\s{a}$ y
+$\s{b,c,d,e}$ (cada uno es el complemento del otro);
+\item \textbf{ni abierto ni cerrado}: en $\tau_1$, el conjunto $\s{b}$ no es abierto, y tampoco es cerrado porque su
+complemento $\s{a,c,d,e}$ no está en $\tau_1$; en $\R$, el intervalo $[0,1)$;
+\item solo abierto, o solo cerrado.
+\end{itemize}
+Por eso, para probar que algo \emph{no} es cerrado no sirve decir «es abierto»: hay que mostrar que su complemento no
+es abierto.
+\end{ojo}
+
+\begin{ejemplo}[Ejemplo: los cerrados en el taller]
+\begin{itemize}
+\item Parte I, $\tau_1$: $\co{\tau_1}=\{\vac,X,\s{a},\s{b,e},\s{a,b,e},\s{b,c,d,e}\}$.
+\item Parte I, $\tau_4$: $\co{\tau_4}=\{\vac,X,\s{a},\s{c,d},\s{a,c,d},\s{b,c,d,e}\}$, que es exactamente $\tau_1$. No es
+casualidad: en un espacio finito la familia de cerrados cumple también los axiomas de topología (finitas uniones e
+intersecciones), así que $\cotau$ es otra topología sobre $X$.
+\item Parte II, $\tau_2$: $\co{\tau_2}=\{\vac,X,\s{1},\s{1,3},\s{1,4,6},\s{1,2,4,6},\s{1,3,4,6}\}$.
+\end{itemize}
+\end{ejemplo}

@@ -1,0 +1,139 @@
+\section{Parte II: \texorpdfstring{$X=\{1,2,3,4,6\}$}{X = \{1,2,3,4,6\}}}
+\begin{enunciado}
+Sea $X=\s{1,2,3,4,6}$. Verifique si las siguientes son topologías sobre $X$. En caso afirmativo:
+(a) busque $c_0\tau$; (b) determine el conjunto derivado de $L=\s{1,4}$ y de $M=\s{2,6}$; (c) determine la clausura de
+$\s{1}$, $\s{1,3}$ y $\s{2,6}$; (d) dado $P=\s{1,3,4,6}$, busque $\tau_P$; (e) encuentre $N_1$, $N_4$ y $N_6$;
+(f) encuentre $\inte{P}$; (g) encuentre $\sigma(L\cup M)$.
+\begin{align*}
+\tau_1&=\{X,\vac,\s{1},\s{1,2},\s{2,6},\s{1,6},\s{\ ,2},\s{1,2,6},\s{6}\}\\
+\tau_2&=\{X,\vac,\s{2},\s{3},\s{2,3},\s{2,4,6},\s{2,3,4,6}\}
+\end{align*}
+\end{enunciado}
+
+\subsection{¿Cuáles son topologías?}
+\textbf{Colección $\tau_1$.} El término «$\s{\ ,2}$» está incompleto (supuesto S3). Se lee como $\s{2}$, con lo cual
+\[
+\tau_1=\{\vac,\ \s{1},\ \s{2},\ \s{6},\ \s{1,2},\ \s{1,6},\ \s{2,6},\ \s{1,2,6},\ X\}=\Pt(\s{1,2,6})\cup\{X\},
+\]
+es decir, todos los subconjuntos de $\s{1,2,6}$ junto con $X$. Con esta descripción la verificación es inmediata:
+la unión y la intersección de dos subconjuntos de $\s{1,2,6}$ son otra vez subconjuntos de $\s{1,2,6}$, y los pares
+con $X$ o $\vac$ son triviales. Las tablas lo confirman:
+\begin{center}{\footnotesize\renewcommand{\arraystretch}{1.15}\input{gen/tab_II1_u}}\end{center}
+\begin{center}{\footnotesize\renewcommand{\arraystretch}{1.15}\input{gen/tab_II1_i}}\end{center}
+\textbf{$\tau_1$ (con $\s{2}$) sí es una topología.} Si el término ilegible simplemente se suprime, deja de serlo,
+porque $\s{1,2}\cap\s{2,6}=\s{2}$ quedaría fuera.
+
+\textbf{Colección $\tau_2$.}
+\begin{center}{\footnotesize\renewcommand{\arraystretch}{1.15}\input{gen/tab_II2_u}}\end{center}
+\begin{center}{\footnotesize\renewcommand{\arraystretch}{1.15}\input{gen/tab_II2_i}}\end{center}
+Todos los resultados están en $\tau_2$. \textbf{$\tau_2$ sí es una topología.}
+
+\resp{Las dos colecciones son topologías ($\tau_1$ bajo el supuesto S3). Se desarrollan ambas; para la entrega basta
+una. Se sugiere entregar $\tau_2$, que no depende de ninguna corrección del enunciado.}
+
+% =====================================================================
+\subsection{Desarrollo completo con \texorpdfstring{$\tau_2$}{tau2}}
+$\tau_2=\{X,\vac,\s{2},\s{3},\s{2,3},\s{2,4,6},\s{2,3,4,6}\}$. Abiertos mínimos:
+\begin{center}\small\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}cll@{}}\toprule
+$x$ & abiertos que contienen a $x$ & $U_x$\\ \midrule
+$1$ & $X$ & $X$\\
+$2$ & $\s{2},\ \s{2,3},\ \s{2,4,6},\ \s{2,3,4,6},\ X$ & $\s{2}$\\
+$3$ & $\s{3},\ \s{2,3},\ \s{2,3,4,6},\ X$ & $\s{3}$\\
+$4$ & $\s{2,4,6},\ \s{2,3,4,6},\ X$ & $\s{2,4,6}$\\
+$6$ & $\s{2,4,6},\ \s{2,3,4,6},\ X$ & $\s{2,4,6}$\\ \bottomrule
+\end{tabular}\end{center}
+
+\subsubsection*{(a) Los cerrados}
+$X\sm\s{2}=\s{1,3,4,6}$, $X\sm\s{3}=\s{1,2,4,6}$, $X\sm\s{2,3}=\s{1,4,6}$, $X\sm\s{2,4,6}=\s{1,3}$,
+$X\sm\s{2,3,4,6}=\s{1}$.
+\resp{$\co{\tau_2}=\{\vac,\ X,\ \s{1},\ \s{1,3},\ \s{1,4,6},\ \s{1,2,4,6},\ \s{1,3,4,6}\}$.}
+
+\subsubsection*{(b) Derivados de $L=\s{1,4}$ y $M=\s{2,6}$}
+\begin{center}\small\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}cl|lc|lc@{}}\toprule
+$x$ & $U_x$ & $(U_x\sm\{x\})\cap L$ & ¿$x\in L'$? & $(U_x\sm\{x\})\cap M$ & ¿$x\in M'$?\\ \midrule
+$1$ & $X$ & $\s{4}$ & sí & $\s{2,6}$ & sí\\
+$2$ & $\s{2}$ & $\vac$ & no & $\vac$ & no\\
+$3$ & $\s{3}$ & $\vac$ & no & $\vac$ & no\\
+$4$ & $\s{2,4,6}$ & $\vac$ & no & $\s{2,6}$ & sí\\
+$6$ & $\s{2,4,6}$ & $\s{4}$ & sí & $\s{2}$ & sí\\ \bottomrule
+\end{tabular}\end{center}
+Detalle de un caso con la definición: los abiertos que contienen a $4$ son $\s{2,4,6}$, $\s{2,3,4,6}$ y $X$. El
+primero no contiene ningún punto de $L=\s{1,4}$ distinto de $4$; por eso $4\notin L'$, aunque $4\in L$.
+\resp{$L'=\s{1,6}$ \quad y \quad $M'=\s{1,4,6}$.}
+
+\subsubsection*{(c) Clausuras}
+$\s{1}$ y $\s{1,3}$ aparecen en la lista de cerrados. Los cerrados que contienen a $\s{2,6}$ son $\s{1,2,4,6}$ y $X$.
+\resp{$\cl{\s{1}}=\s{1}$,\quad $\cl{\s{1,3}}=\s{1,3}$,\quad $\cl{\s{2,6}}=\s{1,2,4,6}$.}
+\emph{Comprobación:} $\cl{M}=M\cup M'=\s{2,6}\cup\s{1,4,6}=\s{1,2,4,6}$. Coincide.
+
+\subsubsection*{(d) Topología relativa sobre $P=\s{1,3,4,6}$}
+$X\cap P=P$, $\vac\cap P=\vac$, $\s{2}\cap P=\vac$, $\s{3}\cap P=\s{3}$, $\s{2,3}\cap P=\s{3}$,
+$\s{2,4,6}\cap P=\s{4,6}$, $\s{2,3,4,6}\cap P=\s{3,4,6}$.
+\resp{$\tau_P=\{P,\ \vac,\ \s{3},\ \s{4,6},\ \s{3,4,6}\}$.}
+
+\subsubsection*{(e) Vecindades de $1$, $4$ y $6$}
+$U_1=X$, de modo que la única vecindad de $1$ es $X$. Además $U_4=U_6=\s{2,4,6}$: las vecindades de $4$ y de $6$ son
+los conjuntos que contienen a $\s{2,4,6}$, que se obtienen agregando o no los puntos $1$ y $3$.
+\resp{$\N_1=\{X\}$ \quad y \quad $\N_4=\N_6=\{\s{2,4,6},\ \s{1,2,4,6},\ \s{2,3,4,6},\ X\}$.}
+(Vecindades abiertas de $4$ y de $6$: $\s{2,4,6}$, $\s{2,3,4,6}$ y $X$.)
+
+\subsubsection*{(f) Interior de $P=\s{1,3,4,6}$}
+Los abiertos contenidos en $P$ son $\vac$ y $\s{3}$; todos los demás contienen a $2\notin P$.
+\resp{$\inte{P}=\s{3}$.}
+
+\subsubsection*{(g) $\sigma(L\cup M)$: frontera de $L\cup M=\s{1,2,4,6}$}
+\emph{Interior.} Abiertos contenidos en $\s{1,2,4,6}$: $\vac$, $\s{2}$, $\s{2,4,6}$. Su unión es $\s{2,4,6}$.
+
+\emph{Clausura.} $\s{1,2,4,6}$ es cerrado (es el complemento de $\s{3}$), luego es su propia clausura.
+
+\emph{Frontera.} $\Fr(L\cup M)=\s{1,2,4,6}\sm\s{2,4,6}=\s{1}$.
+\resp{$\sigma(L\cup M)=\Fr(L\cup M)=\s{1}$ (supuesto S1).}
+\emph{Datos complementarios:} $\Ext(L\cup M)=\Int\s{3}=\s{3}$;\ $(L\cup M)'=L'\cup M'=\s{1,4,6}$. Partición:
+$X=\s{2,4,6}\sqcup\s{1}\sqcup\s{3}$.
+
+% =====================================================================
+\subsection{Desarrollo completo con \texorpdfstring{$\tau_1$}{tau1} (leyendo \texorpdfstring{$\{\,,2\}$}{\{,2\}} como \texorpdfstring{$\{2\}$}{\{2\}})}
+$\tau_1=\Pt(\s{1,2,6})\cup\{X\}$. Abiertos mínimos: $U_1=\s{1}$, $U_2=\s{2}$, $U_6=\s{6}$ (son abiertos), y
+$U_3=U_4=X$, porque el único abierto que contiene a $3$ o a $4$ es $X$.
+
+\textbf{(a) Cerrados.} Los complementos de los subconjuntos de $\s{1,2,6}$ son los conjuntos que contienen a
+$\s{3,4}$; además está $\vac=X\sm X$.
+\resp{$\co{\tau_1}=\{\vac,\ \s{3,4},\ \s{1,3,4},\ \s{2,3,4},\ \s{3,4,6},\ \s{1,2,3,4},\ \s{1,3,4,6},\ \s{2,3,4,6},\ X\}$.}
+
+\textbf{(b) Derivados de $L=\s{1,4}$ y $M=\s{2,6}$.} Los puntos $1$, $2$ y $6$ son abiertos: $U_x\sm\s{x}=\vac$, así
+que ninguno de ellos es de acumulación de ningún conjunto. Para $x=3$ y $x=4$ el único abierto es $X$:
+\begin{center}\small\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}cl|lc|lc@{}}\toprule
+$x$ & $U_x$ & $(U_x\sm\{x\})\cap L$ & ¿$x\in L'$? & $(U_x\sm\{x\})\cap M$ & ¿$x\in M'$?\\ \midrule
+$3$ & $X$ & $\s{1,4}$ & sí & $\s{2,6}$ & sí\\
+$4$ & $X$ & $\s{1}$ & sí & $\s{2,6}$ & sí\\ \bottomrule
+\end{tabular}\end{center}
+\resp{$L'=\s{3,4}$ \quad y \quad $M'=\s{3,4}$.}
+
+\textbf{(c) Clausuras.} Como todo cerrado no vacío contiene a $\s{3,4}$, la clausura de un conjunto no vacío $A$ es
+$A\cup\s{3,4}$.
+\resp{$\cl{\s{1}}=\s{1,3,4}$,\quad $\cl{\s{1,3}}=\s{1,3,4}$,\quad $\cl{\s{2,6}}=\s{2,3,4,6}$.}
+
+\textbf{(d) Topología relativa sobre $P=\s{1,3,4,6}$.} Al intersecar con $P$ los subconjuntos de $\s{1,2,6}$ quedan
+los subconjuntos de $\s{1,6}$; y $X\cap P=P$.
+\resp{$\tau_P=\{P,\ \vac,\ \s{1},\ \s{6},\ \s{1,6}\}$.}
+
+\textbf{(e) Vecindades.} $U_1=\s{1}$: son vecindades de $1$ los $2^4=16$ subconjuntos de $X$ que contienen a $1$.
+Análogamente para $6$. Y $U_4=X$.
+\resp{\sloppy $\N_1=\{N\subseteq X: 1\in N\}$, que consta de los 16 conjuntos
+$\s{1}$, $\s{1,2}$, $\s{1,3}$, $\s{1,4}$, $\s{1,6}$, $\s{1,2,3}$, $\s{1,2,4}$, $\s{1,2,6}$, $\s{1,3,4}$,
+$\s{1,3,6}$, $\s{1,4,6}$, $\s{1,2,3,4}$, $\s{1,2,3,6}$, $\s{1,2,4,6}$, $\s{1,3,4,6}$, $X$.\\[2pt]
+$\N_4=\{X\}$.\\[2pt]
+$\N_6=\{N\subseteq X: 6\in N\}$: los 16 conjuntos
+$\s{6}$, $\s{1,6}$, $\s{2,6}$, $\s{3,6}$, $\s{4,6}$, $\s{1,2,6}$, $\s{1,3,6}$, $\s{1,4,6}$, $\s{2,3,6}$,
+$\s{2,4,6}$, $\s{3,4,6}$, $\s{1,2,3,6}$, $\s{1,2,4,6}$, $\s{1,3,4,6}$, $\s{2,3,4,6}$, $X$.}
+
+\textbf{(f) Interior de $P=\s{1,3,4,6}$.} Abiertos contenidos en $P$: $\vac$, $\s{1}$, $\s{6}$, $\s{1,6}$.
+\resp{$\inte{P}=\s{1,6}$.}
+
+\textbf{(g) Frontera de $L\cup M=\s{1,2,4,6}$.} Interior: el mayor abierto contenido es $\s{1,2,6}$. Clausura:
+$\s{1,2,4,6}\cup\s{3,4}=X$.
+\resp{$\sigma(L\cup M)=\Fr(L\cup M)=X\sm\s{1,2,6}=\s{3,4}$ (supuestos S1 y S3). Complementos:
+$\Ext(L\cup M)=\Int\s{3}=\vac$; $(L\cup M)'=\s{3,4}$.}

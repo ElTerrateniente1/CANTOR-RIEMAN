@@ -1,0 +1,220 @@
+\section{Parte IV: continuidad y homeomorfismos}
+
+% ----------------------------------------------------------------- IV.1
+\subsection{Problema 1}
+\begin{enunciado}
+Sea $X=\s{a,b,c,d}$ con la topología $\tau=\{X,\vac,\s{a},\s{b},\s{a,b},\s{b,c,d}\}$. Dada $f:X\to X$ por el
+diagrama, (a) ¿es $f$ continua?; (b) ¿es $f$ continua en $d$?
+\end{enunciado}
+\begin{center}
+\diagrama{f}{a,b,c,d}{a,b,c,d}{1/2,2/4,3/2,4/3}
+\qquad\qquad
+\begin{tabular}{@{}c|cccc@{}}
+$x$ & $a$ & $b$ & $c$ & $d$\\ \hline
+$f(x)$ & $b$ & $d$ & $b$ & $c$
+\end{tabular}
+\end{center}
+
+\textbf{(a)} Se calcula la imagen inversa de cada abierto:
+\begin{center}\small\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}lcccccc@{}}\toprule
+$V\in\tau$ & $\vac$ & $\s{a}$ & $\s{b}$ & $\s{a,b}$ & $\s{b,c,d}$ & $X$\\ \midrule
+$f^{-1}(V)$ & $\vac$ & $\vac$ & $\s{a,c}$ & $\s{a,c}$ & $X$ & $X$\\
+¿$f^{-1}(V)\in\tau$? & \ok & \ok & \mal & \mal & \ok & \ok\\ \bottomrule
+\end{tabular}\end{center}
+$\s{b}$ es abierto pero $f^{-1}(\s{b})=\s{a,c}$ no lo es.
+\resp{$f$ \textbf{no es continua}.}
+
+\textbf{(b)} $f(d)=c$. Los abiertos que contienen a $c$ son $V=\s{b,c,d}$ y $V=X$. Para ambos sirve $U=X$, que es
+un abierto que contiene a $d$:
+\[ f(X)=\s{b,c,d}\subseteq\s{b,c,d}\subseteq X . \]
+(Equivalentemente: $f^{-1}(\s{b,c,d})=X$ es una vecindad de $d$.)
+\resp{$f$ \textbf{sí es continua en $d$}.}
+
+\emph{Complemento: dónde falla.} $f$ es continua en $a$ (para $V\ni f(a)=b$ sirve $U=\s{a}$, pues $f(\s{a})=\s{b}$)
+y en $b$ (para $V\ni f(b)=d$ sirve $U=X$). No es continua en $c$: $f(c)=b\in\s{b}$, pero los abiertos que contienen
+a $c$ son $\s{b,c,d}$ y $X$, y $f(\s{b,c,d})=\s{b,c,d}\not\subseteq\s{b}$. Esto concuerda con (a): una función es
+continua si y solo si lo es en todos sus puntos, y aquí falla exactamente en $c$.
+
+\emph{Sobre la lectura del diagrama.} Si la flecha que sale de $b$ se leyera como $b\mapsto c$ en lugar de
+$b\mapsto d$, las dos respuestas no cambian: sigue siendo $f^{-1}(\s{b})=\s{a,c}\notin\tau$ y
+$f^{-1}(\s{b,c,d})=X$.
+
+% ----------------------------------------------------------------- IV.2
+\subsection{Problema 2}
+\begin{enunciado}
+Consideremos a $\R$ con la topología usual. Sea $f:\R\to\R$ definida por $f(x)=x^2$. ¿Es $f$ una función abierta?
+\end{enunciado}
+Una función es abierta si la imagen de \emph{todo} abierto es abierta; para negar esto basta un contraejemplo. Sea
+$U=(-1,1)$, que es abierto en la topología usual. Entonces
+\[ f(U)=\{x^2:\ -1<x<1\}=[0,1). \]
+En efecto, si $|x|<1$ entonces $0\le x^2<1$; y todo $y\in[0,1)$ es $y=(\sqrt{y}\,)^2$ con $\sqrt{y}\in[0,1)\subseteq U$.
+
+El conjunto $[0,1)$ no es abierto en $\R$: contiene a $0$, pero ningún intervalo $(-\varepsilon,\varepsilon)$ está
+contenido en $[0,1)$, porque $-\varepsilon/2\notin[0,1)$.
+\resp{$f(x)=x^2$ \textbf{no es una función abierta}: $f\big((-1,1)\big)=[0,1)$ no es abierto.}
+\emph{Comentario (no se pide).} $f$ sí es continua. El ejemplo muestra que «continua» y «abierta» son propiedades
+independientes: la primera habla de imágenes inversas de abiertos y la segunda de imágenes directas.
+
+% ----------------------------------------------------------------- IV.3
+\subsection{Problema 3}
+\begin{enunciado}
+Sean $X=\s{1,2,3,4}$ y $Y=\s{a,b,c,d}$ con las topologías
+\begin{align*}
+\tau_1&=\{X,\vac,\s{2},\s{2,3},\s{2,3,4},\s{3},\s{2,4},\s{1,2,4},\s{1,2,3}\},\\
+\tau_2&=\{Y,\vac,\s{c},\s{c,d},\s{a,b,c}\}.
+\end{align*}
+(a) Verifique si las siguientes funciones son continuas, abiertas o cerradas. (b) Pruebe que $X\homeo Y$.
+\end{enunciado}
+\begin{center}
+\scalebox{0.66}{\diagrama{f}{1,2,3,4}{a,b,c,d}{1/1,2/1,3/4,4/3}}\hfill
+\scalebox{0.66}{\diagrama{g}{1,2,3,4}{a,b,c,d}{1/2,2/3,3/3,4/4}}\hfill
+\scalebox{0.66}{\diagrama{h}{a,b,c,d}{1,2,3,4}{1/2,2/3,3/4,4/1}}\hfill
+\scalebox{0.66}{\diagrama{k}{a,b,c,d}{1,2,3,4}{1/2,2/4,3/3,4/3}}
+\end{center}
+$f,g:X\to Y$ y $h,k:Y\to X$.
+
+\subsubsection*{Antes de empezar: revisión de las topologías}
+\begin{center}{\scriptsize\renewcommand{\arraystretch}{1.2}\setlength{\tabcolsep}{3.5pt}\input{gen/tab_IV3_i}}\end{center}
+\begin{ojo}[Supuesto S7: $\tau_1$ no es cerrada bajo intersecciones]
+$\s{1,2,4}\cap\s{1,2,3}=\s{1,2}\notin\tau_1$ (celda en rojo). Todas las demás intersecciones y todas las uniones sí
+pertenecen a $\tau_1$. Por tanto, tal como está impresa, $\tau_1$ \textbf{no es una topología}; lo sería al agregar
+$\s{1,2}$:
+\[\tau_1^{*}=\tau_1\cup\{\s{1,2}\}\quad(\text{10 abiertos; es la topología generada por }\tau_1).\]
+Las respuestas que siguen se obtuvieron de las dos maneras —con la lista literal $\tau_1$ y con $\tau_1^{*}$— y
+\textbf{coinciden en todos los casos}, de modo que la conclusión no depende de cómo se corrija el enunciado. Los
+testigos que se dan abajo usan únicamente conjuntos que aparecen en la lista impresa.
+\end{ojo}
+$\tau_2$ sí es topología: $\s{c,d}\cup\s{a,b,c}=Y$, $\s{c,d}\cap\s{a,b,c}=\s{c}$ y los demás pares están encajados.
+
+\textbf{Cerrados.} En $X$, los complementos de los miembros de $\tau_1$ son
+\[\vac,\quad X,\quad \s{1},\quad \s{3},\quad \s{4},\quad \s{1,3},\quad \s{1,4},\quad \s{1,2,4},\quad \s{1,3,4}\]
+(y además $\s{3,4}$ si se usa $\tau_1^{*}$). En $Y$: $\co{\tau_2}=\{\vac,\ Y,\ \s{d},\ \s{a,b},\ \s{a,b,d}\}$.
+
+\subsubsection*{(a) Análisis de cada función}
+\textbf{La función $f$} ($1\mapsto a$, $2\mapsto a$, $3\mapsto d$, $4\mapsto c$).
+\begin{itemize}
+\item \emph{Continuidad.} $f^{-1}(\s{c})=\s{4}$, que no es abierto en $X$. \textbf{No es continua.}
+(Las otras imágenes inversas: $f^{-1}(\s{c,d})=\s{3,4}$, tampoco abierto; $f^{-1}(\s{a,b,c})=\s{1,2,4}$, abierto.)
+\item \emph{Abierta.} $\s{2}\in\tau_1$ y $f(\s{2})=\s{a}\notin\tau_2$. \textbf{No es abierta.}
+\item \emph{Cerrada.} $\s{1}$ es cerrado en $X$ (su complemento $\s{2,3,4}$ es abierto) y $f(\s{1})=\s{a}$ no es
+cerrado en $Y$ (su complemento $\s{b,c,d}\notin\tau_2$). \textbf{No es cerrada.}
+\end{itemize}
+
+\textbf{La función $g$} ($1\mapsto b$, $2\mapsto c$, $3\mapsto c$, $4\mapsto d$).
+\begin{itemize}
+\item \emph{Continuidad.}
+\begin{center}\small\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}lccccc@{}}\toprule
+$V\in\tau_2$ & $\vac$ & $\s{c}$ & $\s{c,d}$ & $\s{a,b,c}$ & $Y$\\ \midrule
+$g^{-1}(V)$ & $\vac$ & $\s{2,3}$ & $\s{2,3,4}$ & $\s{1,2,3}$ & $X$\\
+¿abierto en $X$? & \ok & \ok & \ok & \ok & \ok\\ \bottomrule
+\end{tabular}\end{center}
+Todas las imágenes inversas son abiertas. \textbf{Es continua.}
+\item \emph{Abierta.} $\s{1,2,4}\in\tau_1$ y $g(\s{1,2,4})=\s{b,c,d}\notin\tau_2$. \textbf{No es abierta.} (También:
+$g(X)=\s{b,c,d}$ no es abierto.)
+\item \emph{Cerrada.} $\s{1}$ es cerrado en $X$ y $g(\s{1})=\s{b}$ no es cerrado en $Y$ ($\s{a,c,d}\notin\tau_2$).
+\textbf{No es cerrada.}
+\end{itemize}
+
+\textbf{La función $h$} ($a\mapsto 2$, $b\mapsto 3$, $c\mapsto 4$, $d\mapsto 1$); es biyectiva.
+\begin{itemize}
+\item \emph{Continuidad.} $\s{2}\in\tau_1$ y $h^{-1}(\s{2})=\s{a}\notin\tau_2$. \textbf{No es continua.}
+\item \emph{Abierta.} $\s{c}\in\tau_2$ y $h(\s{c})=\s{4}$, que no es abierto en $X$. \textbf{No es abierta.}
+\item \emph{Cerrada.} $\s{a,b}$ es cerrado en $Y$ y $h(\s{a,b})=\s{2,3}$ no es cerrado en $X$ (su complemento
+$\s{1,4}$ no es abierto). \textbf{No es cerrada.} (Coherente: para una biyección, ser abierta equivale a ser
+cerrada.)
+\end{itemize}
+
+\textbf{La función $k$} ($a\mapsto 2$, $b\mapsto 4$, $c\mapsto 3$, $d\mapsto 3$).
+\begin{itemize}
+\item \emph{Continuidad.} $\s{2}\in\tau_1$ y $k^{-1}(\s{2})=\s{a}\notin\tau_2$. \textbf{No es continua.}
+\item \emph{Abierta.}
+\begin{center}\small\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}lccccc@{}}\toprule
+$U\in\tau_2$ & $\vac$ & $\s{c}$ & $\s{c,d}$ & $\s{a,b,c}$ & $Y$\\ \midrule
+$k(U)$ & $\vac$ & $\s{3}$ & $\s{3}$ & $\s{2,3,4}$ & $\s{2,3,4}$\\
+¿abierto en $X$? & \ok & \ok & \ok & \ok & \ok\\ \bottomrule
+\end{tabular}\end{center}
+Todas las imágenes de abiertos son abiertas. \textbf{Es abierta.}
+\item \emph{Cerrada.} $Y$ es cerrado y $k(Y)=\s{2,3,4}$ no es cerrado en $X$ (su complemento $\s{1}$ no es abierto).
+\textbf{No es cerrada.}
+\end{itemize}
+
+\begin{respuesta}
+\textbf{\sffamily\color{verde!70!black}Respuesta (a).}
+\begin{center}\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}lcccl@{}}\toprule
+función & continua & abierta & cerrada & testigo principal\\ \midrule
+$f:X\to Y$ & \no & \no & \no & $f^{-1}(\s{c})=\s{4}$;\ $f(\s{2})=\s{a}$;\ $f(\s{1})=\s{a}$\\
+$g:X\to Y$ & \si & \no & \no & $g(\s{1,2,4})=\s{b,c,d}$;\ $g(\s{1})=\s{b}$\\
+$h:Y\to X$ & \no & \no & \no & $h^{-1}(\s{2})=\s{a}$;\ $h(\s{c})=\s{4}$;\ $h(\s{a,b})=\s{2,3}$\\
+$k:Y\to X$ & \no & \si & \no & $k^{-1}(\s{2})=\s{a}$;\ $k(Y)=\s{2,3,4}$\\ \bottomrule
+\end{tabular}\end{center}
+\end{respuesta}
+
+\subsubsection*{(b) «Pruebe que $X\homeo Y$»}
+\begin{ojo}[La afirmación es falsa con los datos impresos]
+$X$ y $Y$ \textbf{no son homeomorfos}, de modo que lo que se puede probar es $X\not\homeo Y$.
+\end{ojo}
+\textbf{Demostración.} Supóngase que existe un homeomorfismo $\varphi:X\to Y$. Entonces $U\mapsto\varphi(U)$ es una
+biyección entre los abiertos de $X$ y los de $Y$ (H4), y ambas topologías tendrían el mismo número de elementos.
+Pero $\tau_2$ tiene $5$ abiertos y la topología de $X$ tiene $9$ con la lista impresa ($10$ si se agrega
+$\s{1,2}$). Contradicción. \qed
+
+\emph{Segundo argumento, independiente.} Un homeomorfismo lleva puntos abiertos en puntos abiertos. En $X$ hay dos
+puntos abiertos ($\s{2}$ y $\s{3}$) y en $Y$ solo uno ($\s{c}$).
+
+\emph{Tercer argumento.} De las cuatro funciones dadas, la única biyección es $h$, y no es continua.
+
+\resp{Con las topologías dadas, $X\not\homeo Y$. Para que la afirmación del enunciado fuese cierta, las dos
+topologías tendrían que tener la misma estructura; es probable que el enunciado original tuviera otras topologías y
+que al modificarlas no se actualizara este inciso. Conviene consultarlo.}
+
+% ----------------------------------------------------------------- IV.4
+\subsection{Problema 4}
+\begin{enunciado}
+Considere los siguientes espacios topológicos:
+\begin{align*}
+X&=\s{a,b,c,d,e} \text{ con } \tau_1=\{X,\vac,\s{a},\s{c,d},\s{a,c,d},\s{b,c,d,e}\},\\
+Y&=\s{v,w,x,y,z} \text{ con } \tau_2=\{Y,\vac,\s{v},\s{w,z},\s{v,w,z},\s{w,x,y,z}\},\\
+Z&=\s{1,2,3,4,5} \text{ con } \tau_3=\{Z,\vac,\s{1},\s{1,2},\s{1,3,4},\s{1,2,3,4},\s{1,2,5}\}.
+\end{align*}
+Verifique si: (a) $X\homeo X$; (b) $X\homeo Y$; (c) $Y\homeo Z$; (d) $Z\homeo X$; (e) $Z\homeo Z$.
+\end{enunciado}
+Las tres colecciones son topologías: $\tau_1$ se verificó en la Parte~I; $\tau_2$ tiene la misma forma (véase el
+inciso b); y para $\tau_3$:
+\begin{center}{\scriptsize\renewcommand{\arraystretch}{1.2}\setlength{\tabcolsep}{3.5pt}\input{gen/tab_IV4Z_u}\qquad\input{gen/tab_IV4Z_i}}\end{center}
+Número de abiertos: $|\tau_1|=6$, $|\tau_2|=6$, $|\tau_3|=7$.
+
+\textbf{(a) $X\homeo X$: sí.} La identidad $\mathrm{id}_X:X\to X$ es biyectiva, y $\mathrm{id}^{-1}(U)=U$ para todo
+$U$, así que ella y su inversa son continuas. (Todo espacio es homeomorfo a sí mismo: la relación $\homeo$ es
+reflexiva.)
+
+\textbf{(b) $X\homeo Y$: sí.} \emph{Cómo se encuentra el homeomorfismo.} Debe respetar la estructura de los abiertos:
+el único punto abierto de $X$ es $a$ y el de $Y$ es $v$, luego $a\mapsto v$; el único par abierto de $X$ es $\s{c,d}$
+y el de $Y$ es $\s{w,z}$, luego $\s{c,d}\mapsto\s{w,z}$; los puntos restantes, $\s{b,e}\mapsto\s{x,y}$. Se define
+\[
+\varphi:X\to Y,\qquad \varphi(a)=v,\quad \varphi(b)=x,\quad \varphi(c)=w,\quad \varphi(d)=z,\quad \varphi(e)=y .
+\]
+$\varphi$ es biyectiva y lleva los abiertos de $X$ exactamente sobre los de $Y$:
+\begin{center}\small\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}lcccccc@{}}\toprule
+$U\in\tau_1$ & $\vac$ & $\s{a}$ & $\s{c,d}$ & $\s{a,c,d}$ & $\s{b,c,d,e}$ & $X$\\ \midrule
+$\varphi(U)$ & $\vac$ & $\s{v}$ & $\s{w,z}$ & $\s{v,w,z}$ & $\s{w,x,y,z}$ & $Y$\\ \bottomrule
+\end{tabular}\end{center}
+La segunda fila recorre todo $\tau_2$. Por tanto $\varphi$ es abierta y, como cada $V\in\tau_2$ es $\varphi(U)$ con
+$U=\varphi^{-1}(V)\in\tau_1$, también es continua: $\varphi$ es un homeomorfismo. (No es el único: hay cuatro, según
+se envíe $c\mapsto w$ o $c\mapsto z$, y $b\mapsto x$ o $b\mapsto y$.)
+
+\textbf{(c) $Y\homeo Z$: no.} Un homeomorfismo induce una biyección entre las topologías, pero $|\tau_2|=6\neq7=|\tau_3|$.
+\emph{Otro argumento:} en $Z$ todo abierto no vacío contiene a $1$, así que no hay dos abiertos no vacíos disjuntos;
+en $Y$, $\s{v}$ y $\s{w,z}$ son abiertos no vacíos disjuntos. Esa propiedad se conserva por homeomorfismos.
+
+\textbf{(d) $Z\homeo X$: no.} Por la misma razón: $|\tau_3|=7\neq6=|\tau_1|$. (Además, si fuese $Z\homeo X$, como
+$X\homeo Y$ se tendría $Z\homeo Y$ por transitividad, contra el inciso c.)
+
+\textbf{(e) $Z\homeo Z$: sí.} La identidad de $Z$ es un homeomorfismo.
+
+\resp{(a) sí;\quad (b) sí, con $\varphi=(a\mapsto v,\ b\mapsto x,\ c\mapsto w,\ d\mapsto z,\ e\mapsto y)$;\quad
+(c) no;\quad (d) no;\quad (e) sí.}

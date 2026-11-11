@@ -1,0 +1,217 @@
+\section{Topología relativa (subespacios)}
+\subsection{Definición}
+Si $H$ es un subconjunto de un espacio $X$, hay una manera natural de convertir a $H$ en espacio: mirar los abiertos
+de $X$ «a través de la ventana $H$».
+\begin{definicion}[Definición: topología relativa]
+Sea $(X,\tau)$ un espacio y $H\subseteq X$. La \textbf{topología relativa} (inducida, o de subespacio) sobre $H$ es
+\[\tau_H=\{U\cap H:\ U\in\tau\}.\]
+$(H,\tau_H)$ se llama \textbf{subespacio} de $X$.
+\end{definicion}
+\emph{$\tau_H$ es una topología sobre $H$.} (T1) $\vac=\vac\cap H$ y $H=X\cap H$. (T2)
+$\bigcup_i(U_i\cap H)=(\bigcup_iU_i)\cap H$. (T3) $(U\cap H)\cap(V\cap H)=(U\cap V)\cap H$. En los tres casos lo que
+queda dentro del paréntesis es un abierto de $X$. \qed
+
+\begin{metodo}[Método: calcular $\tau_H$]
+Intersecar \emph{cada} abierto de $\tau$ con $H$, anotar los resultados y eliminar los repetidos. La lista resultante
+tiene a lo sumo tantos elementos como $\tau$.
+\end{metodo}
+\begin{ejemplo}[Ejemplo: Parte I(d) y Parte II(d)]
+\textbf{I(d).} $H=\s{a,c,d}$ en $\tau_1$: las intersecciones son $H,\vac,\s{a},\s{c,d},H,\s{c,d}$. Sin repetidos:
+$\tau_H=\{H,\vac,\s{a},\s{c,d}\}$. Con $\tau_4$ resulta la \emph{misma} $\tau_H$: dos topologías distintas sobre $X$
+pueden inducir la misma topología en un subconjunto.
+
+\textbf{II(d).} $P=\s{1,3,4,6}$ en $\tau_2=\{X,\vac,\s{2},\s{3},\s{2,3},\s{2,4,6},\s{2,3,4,6}\}$: intersecciones
+$P,\vac,\vac,\s{3},\s{3},\s{4,6},\s{3,4,6}$. Luego $\tau_P=\{P,\vac,\s{3},\s{4,6},\s{3,4,6}\}$.
+\end{ejemplo}
+
+\subsection{Lo que hay que saber de los subespacios}
+\begin{teorema}[Propiedades]
+Sea $H\subseteq X$ con la topología relativa.
+\begin{enumerate}[label=(\alph*),leftmargin=1.9em]
+\item Los cerrados de $H$ son exactamente los conjuntos $F\cap H$ con $F$ cerrado en $X$.
+\item Si $\B$ es base de $\tau$, entonces $\{B\cap H:B\in\B\}$ es base de $\tau_H$.
+\item Para $A\subseteq H$: la clausura de $A$ en $H$ es $\cl{A}\cap H$ (con $\cl{A}$ la clausura en $X$).
+\item Si $H$ es abierto en $X$: un subconjunto de $H$ es abierto en $H$ $\iff$ es abierto en $X$.
+\end{enumerate}
+\end{teorema}
+\emph{Demostración de (a).} $C\subseteq H$ es cerrado en $H$ $\iff H\sm C=U\cap H$ para algún $U\in\tau$
+$\iff C=H\sm(U\cap H)=(X\sm U)\cap H$. \qed
+
+\begin{ojo}[Abierto en $H$ no implica abierto en $X$]
+«Ser abierto» depende del espacio en que se mire. En II(d), $\s{4,6}$ es abierto en $P$ pero no es abierto en $X$
+(no está en $\tau_2$). En $\R$: $[0,1)$ es abierto en el subespacio $H=[0,2]$, porque $[0,1)=(-1,1)\cap[0,2]$, y no
+es abierto en $\R$. Lo mismo pasa con «cerrado». En un examen conviene escribir siempre «abierto \emph{en} \dots».
+\end{ojo}
+
+% =====================================================================
+\section{Comparación de topologías}\label{sec:comp}
+\begin{definicion}[Definición: más fina, más gruesa, comparables]
+Sean $\tau$ y $\tau'$ dos topologías sobre el mismo conjunto $X$. Si $\tau\subseteq\tau'$ se dice que $\tau'$ es
+\textbf{más fina} (o más fuerte) que $\tau$, y que $\tau$ es \textbf{más gruesa} (o más débil) que $\tau'$. Las dos
+topologías son \textbf{comparables} si $\tau\subseteq\tau'$ o $\tau'\subseteq\tau$.
+\end{definicion}
+«Más fina» significa «con más abiertos». La imagen de Munkres\fuente{2}: un camión de grava (los abiertos); si se
+tritura cada piedra, hay más piedras y más pequeñas: la grava es más fina. Algunos autores de análisis usan «fuerte» y
+«débil» con el sentido contrario\fuente{17}; «fina» y «gruesa» no tienen esa ambigüedad.
+
+\begin{teorema}[Hechos básicos]
+\begin{enumerate}[label=(\alph*),leftmargin=1.9em]
+\item La indiscreta es más gruesa que cualquier topología y la discreta es más fina que cualquiera.
+\item La inclusión es un orden parcial entre las topologías de $X$, pero no total: hay pares no comparables.
+\item La \textbf{intersección} de dos topologías (o de cualquier familia de topologías) es una topología.
+\item La \textbf{unión} de dos topologías puede no ser una topología.
+\item $\tau\subseteq\tau'$ $\iff$ la identidad $\mathrm{id}:(X,\tau')\to(X,\tau)$ es continua.
+\item Si $\B$ y $\B'$ son bases de $\tau$ y $\tau'$: $\tau\subseteq\tau'$ $\iff$ para todo $B\in\B$ y todo $x\in B$
+existe $B'\in\B'$ con $x\in B'\subseteq B$.
+\end{enumerate}
+\end{teorema}
+\emph{Demostración de (c).} Si $\tau=\bigcap_j\tau_j$: $\vac$ y $X$ están en todas; si una familia de conjuntos está en
+todas las $\tau_j$, su unión también, y lo mismo la intersección de dos. \qed
+
+\emph{Contraejemplo para (d).} En $X=\s{a,b,c}$: $\tau=\{\vac,\s{a},X\}$ y $\tau'=\{\vac,\s{b},X\}$. La unión
+$\{\vac,\s{a},\s{b},X\}$ no contiene a $\s{a}\cup\s{b}=\s{a,b}$. La menor topología que contiene a ambas es la
+\emph{generada} por la unión: $\{\vac,\s{a},\s{b},\s{a,b},X\}$.
+
+\begin{metodo}[Método: decidir si dos topologías son comparables]
+Mirar si todos los abiertos de una están en la otra. Si $\tau$ tiene un abierto que no está en $\tau'$ \emph{y}
+$\tau'$ tiene uno que no está en $\tau$, no son comparables: esos dos conjuntos son el testigo. Atajo: dos topologías
+distintas con el mismo número (finito) de abiertos nunca son comparables.
+\end{metodo}
+
+\begin{ejemplo}[Ejemplo: las 29 topologías sobre $\s{a,b,c}$ (problema III.4)]
+Por inclusión forman un orden parcial con mínimo (indiscreta) y máximo (discreta). De los $\binom{29}{2}=\paresTotal$
+pares, $\paresComp$ son comparables y $\paresNoComp$ no. El diagrama de Hasse muestra el orden: se sube por una línea
+cuando una topología está contenida en otra sin ninguna intermedia. La numeración es la de la lista de la solución.
+\begin{center}\resizebox{0.92\linewidth}{!}{\input{gen/hasse_III4}}\end{center}
+Lecturas: $\tau_2=\{\vac,\s{a},X\}\subset\tau_8=\{\vac,\s{a},\s{a,b},X\}\subset\tau_{17}=\{\vac,\s{a},\s{b},\s{a,b},X\}$
+es una cadena de topologías cada vez más finas. En cambio $\tau_2$ y $\tau_3=\{\vac,\s{b},X\}$ no son comparables.
+\end{ejemplo}
+
+% =====================================================================
+\section{Bases y sub-bases}\label{sec:bases}
+\subsection{Para qué sirven}
+Describir una topología listando \emph{todos} sus abiertos solo es posible en ejemplos pequeños. En $\R$ nadie lista
+los abiertos: se dice «las uniones de intervalos abiertos». Los intervalos son una \emph{base}: un catálogo reducido de
+abiertos con el cual se arman todos los demás por unión. Una \emph{sub-base} es un catálogo aún más reducido, con el
+que se arma la base por intersecciones finitas.
+\[\text{sub-base }\Sb\ \xrightarrow{\ \text{intersecciones finitas}\ }\ \text{base }\B\
+\xrightarrow{\ \text{uniones arbitrarias}\ }\ \text{topología }\tau\]
+
+\subsection{Bases}
+\begin{definicion}[Definición: base de una topología]
+Sea $(X,\tau)$ un espacio. Una familia $\B\subseteq\tau$ es una \textbf{base} de $\tau$ si todo abierto es unión de
+miembros de $\B$. Equivalentemente: para todo abierto $U$ y todo $x\in U$ existe $B\in\B$ con $x\in B\subseteq U$.
+\end{definicion}
+(El vacío es la unión de la subfamilia vacía, así que $\vac$ no necesita estar en la base.)
+
+\begin{ejemplo}[Ejemplos de bases]
+\begin{itemize}
+\item Los intervalos abiertos $(a,b)$ son base de la topología usual de $\R$; también lo son los de extremos
+racionales.
+\item $\{\{x\}:x\in X\}$ es base de la topología discreta. $\{X\}$ es base de la indiscreta.
+\item $\tau$ misma siempre es base de $\tau$.
+\item \textbf{En un espacio finito, los abiertos mínimos $\{U_x:x\in X\}$ forman una base}, y es la más pequeña: todo
+abierto $U$ cumple $U=\bigcup_{x\in U}U_x$, y cualquier base debe contener a cada $U_x$. Para $\tau_1$ de la Parte~I:
+$\B=\{\s{a},\s{c,d},\s{b,c,d,e}\}$.
+\item En el problema III.6, los bloques $\s{2n-1,2n}$ son una base; en el III.7, los conjuntos $\s{0,x}$.
+\end{itemize}
+\end{ejemplo}
+
+No toda familia de subconjuntos es base de alguna topología. El criterio es:
+\begin{teorema}[¿Cuándo una familia $\B$ es base de \emph{alguna} topología sobre $X$?]
+Si y solo si:
+\begin{description}[leftmargin=1.4cm,labelwidth=1.0cm,itemsep=0.1em]
+\item[(B1)] $\B$ cubre $X$: todo $x\in X$ pertenece a algún $B\in\B$;
+\item[(B2)] si $x\in B_1\cap B_2$ con $B_1,B_2\in\B$, existe $B_3\in\B$ con $x\in B_3\subseteq B_1\cap B_2$.
+\end{description}
+En ese caso la topología es única: sus abiertos son las uniones de miembros de $\B$.
+\end{teorema}
+\emph{Idea de la demostración.} (B1) garantiza que $X$ es unión de miembros de $\B$. (B2) dice que $B_1\cap B_2$ es
+unión de miembros de $\B$; de ahí, la intersección de dos uniones de básicos es unión de básicos, que es (T3). (T2) es
+automático. \qed
+
+\emph{Ejemplo de familia que no es base.} En el problema III.11, $\C=\{[a,a+1]\}$ cumple (B1) pero no (B2):
+$1\in[0,1]\cap[1,2]=\{1\}$ y ningún miembro de $\C$ cabe dentro de $\{1\}$.
+
+\begin{teorema}[Problema III.12: agrandar una base]
+Si $\B$ es base de $\tau$ y $\B\subseteq\B_1\subseteq\tau$, entonces $\B_1$ es base de $\tau$.
+\end{teorema}
+\emph{Demostración.} Los miembros de $\B_1$ son abiertos. Todo abierto es unión de miembros de $\B$, que también son
+miembros de $\B_1$. \qed
+
+\subsection{Sub-bases y topología generada}
+\begin{definicion}[Definición: sub-base]
+Una familia $\Sb\subseteq\tau$ es una \textbf{sub-base} de $\tau$ si las intersecciones finitas de miembros de $\Sb$
+forman una base de $\tau$.
+\end{definicion}
+\begin{teorema}[Topología generada]
+Sea $\C$ \emph{cualquier} familia de subconjuntos de $X$. Existe una menor topología sobre $X$ que contiene a $\C$; se
+llama \textbf{topología generada} por $\C$ y se denota $\tau(\C)$. Se obtiene así:
+\begin{enumerate}[leftmargin=1.6em]
+\item $\B$ = todas las intersecciones finitas de miembros de $\C$, junto con $X$;
+\item $\tau(\C)$ = todas las uniones de miembros de $\B$ (incluida $\vac$).
+\end{enumerate}
+Además $\tau(\C)$ es la intersección de todas las topologías que contienen a $\C$, y $\C$ es sub-base de $\tau(\C)$.
+\end{teorema}
+\emph{Por qué funciona.} La familia $\B$ del paso 1 cubre $X$ y es cerrada bajo intersecciones finitas, luego cumple
+(B1) y (B2) y es base de una topología. Cualquier topología que contenga a $\C$ debe contener a las intersecciones
+finitas de sus miembros y luego a las uniones de estas: por eso la obtenida es la menor. \qed
+
+\begin{ojo}[¿Y el conjunto $X$?]
+Si los miembros de $\C$ no cubren $X$ (como en el problema III.9, donde el punto $e$ no está en ninguno), $X$ no
+aparece como intersección de miembros de $\C$. Hay dos maneras equivalentes de resolverlo: (1) convenir que la
+intersección de la familia vacía es $X$; (2) exigir en la definición que la sub-base cubra $X$. Los textos difieren en
+esto\fuente{16}; con la definición «menor topología que contiene a $\C$» no hay ambigüedad: $X$ siempre está.
+\end{ojo}
+
+\begin{metodo}[Método: hallar la topología generada por una familia finita $\C$]
+\begin{enumerate}[leftmargin=1.6em]
+\item \textbf{Intersecciones:} calcular las intersecciones de dos en dos, de tres en tres, etc., de miembros de $\C$.
+Anotar los conjuntos nuevos. Agregar $X$. Eso es $\B$.
+\item \textbf{Uniones:} calcular las uniones de miembros de $\B$ hasta que no aparezcan conjuntos nuevos. Agregar
+$\vac$. Eso es $\tau(\C)$.
+\item \textbf{Verificar} que el resultado es cerrado bajo $\cup$ y $\cap$ (tabla), como pide el enunciado.
+\end{enumerate}
+El orden importa: primero intersecciones, luego uniones. Al revés puede faltar algún abierto.
+\end{metodo}
+
+\begin{ejemplo}[Ejemplo: problema III.8, $\C=\{\s{a,b,c},\s{c,d},\s{d,e}\}$ en $X=\s{a,b,c,d,e}$]
+\emph{Intersecciones:} $\s{a,b,c}\cap\s{c,d}=\s{c}$; $\s{c,d}\cap\s{d,e}=\s{d}$; $\s{a,b,c}\cap\s{d,e}=\vac$.
+$\B=\{X,\vac,\s{c},\s{d},\s{c,d},\s{d,e},\s{a,b,c}\}$.
+
+\emph{Uniones nuevas:} $\s{c}\cup\s{d,e}=\s{c,d,e}$; $\s{d}\cup\s{a,b,c}=\s{a,b,c,d}$.
+
+$\tau(\C)=\{\vac,\s{c},\s{d},\s{c,d},\s{d,e},\s{c,d,e},\s{a,b,c},\s{a,b,c,d},X\}$: nueve abiertos a partir de tres.
+\end{ejemplo}
+\begin{ejemplo}[{Ejemplo: problema III.11, $\C=\{[a,a+1]:a\in\R\}$}]
+$[x-1,x]\cap[x,x+1]=\{x\}$: todos los puntos son básicos, y la topología generada es la discreta. Una sub-base formada
+por conjuntos «grandes» puede generar la topología más fina posible.
+\end{ejemplo}
+\begin{ejemplo}[Ejemplo: una sub-base de la topología usual de $\R$]
+Las semirrectas abiertas $(a,\infty)$ y $(-\infty,b)$. En efecto, $(a,\infty)\cap(-\infty,b)=(a,b)$, y los intervalos
+son base.
+\end{ejemplo}
+
+\begin{metodo}[Método: encontrar sub-bases de una topología dada (problema III.10)]
+Una familia $\Sb\subseteq\tau$ es sub-base de $\tau$ si genera exactamente $\tau$. Maneras de producirlas:
+\begin{itemize}
+\item $\tau$ misma, o cualquier base de $\tau$ (toda base es sub-base).
+\item Partir de los abiertos mínimos y quitar los que se recuperen como intersección de otros abiertos de la familia.
+\item Buscar abiertos «grandes» cuyas intersecciones den los pequeños: en la discreta sobre $X$, los complementos de
+los puntos.
+\end{itemize}
+Siempre hay que comprobar al final que al generar no falta ni sobra ningún abierto.
+\end{metodo}
+
+\subsection{Por qué importan: continuidad con menos trabajo}
+\begin{teorema}[Continuidad sobre una base o sub-base]
+Sea $f:X\to Y$ y $\Sb$ una sub-base (o una base) de la topología de $Y$. Entonces $f$ es continua $\iff$
+$f^{-1}(S)$ es abierto en $X$ para todo $S\in\Sb$.
+\end{teorema}
+\emph{Demostración.} La imagen inversa respeta uniones e intersecciones:
+$f^{-1}(\bigcup_iV_i)=\bigcup_if^{-1}(V_i)$ y $f^{-1}(V\cap W)=f^{-1}(V)\cap f^{-1}(W)$. Todo abierto de $Y$ es unión
+de intersecciones finitas de miembros de $\Sb$; su imagen inversa es unión de intersecciones finitas de abiertos. \qed
+
+Este resultado explica, por ejemplo, por qué en el problema IV.3 la continuidad de $h$ y de $k$ (que llegan a $X$)
+se puede decidir con la lista impresa de $\tau_1$ aunque le falte $\s{1,2}$: esa lista es una sub-base de la topología
+reparada $\tau_1^{*}$.

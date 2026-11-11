@@ -1,0 +1,196 @@
+\section{Parte I: \texorpdfstring{$X=\{a,b,c,d,e\}$}{X = \{a,b,c,d,e\}}}
+\begin{enunciado}
+Sea $X=\s{a,b,c,d,e}$. Verifique si las siguientes son topologías sobre $X$. En caso afirmativo:
+(a) busque $c_0\tau$; (b) determine $G'$, si $G=\s{b,e}$; (c) determine la clausura de $\s{a}$, $\s{b}$ y $\s{c,d}$;
+(d) dado $H=\s{a,c,d}$, busque $\tau_H$; (e) ¿cuál de los elementos de $\tau$ es denso en $X$?; (f) encuentre $N_c$ y
+$N_e$; (g) dado $J=\s{a,b,c}$, encuentre $\inte{J}$; (h) encuentre $\sigma(J)$.
+\begin{align*}
+\tau_1&=\{X,\vac,\s{a},\s{c,d},\s{a,c,d},\s{b,c,d,e}\} & \tau_2&=\{X,\vac,\s{a},\s{c,d},\s{a,c,d},\s{b,c,d}\}\\
+\tau_3&=\{X,\vac,\s{a},\s{c,d},\s{a,c,d},\s{a,b,d,e}\} & \tau_4&=\{X,\vac,\s{a},\s{b,e},\s{a,b,e},\s{b,c,d,e}\}
+\end{align*}
+\end{enunciado}
+
+\subsection{¿Cuáles son topologías?}
+Las cuatro colecciones contienen a $\vac$ y a $X$. Por el criterio finito (H1) basta revisar las uniones y las
+intersecciones de dos en dos de los cuatro miembros restantes. En las tablas, una celda sombreada en rojo indica un
+resultado que \textbf{no} pertenece a la colección.
+
+\newcommand{\dostablas}[2]{{\small\renewcommand{\arraystretch}{1.15}\input{gen/#1}\qquad\input{gen/#2}}}
+
+\textbf{Colección $\tau_1$.}
+\begin{center}\dostablas{tab_I1_u}{tab_I1_i}\end{center}
+Todos los resultados están en $\tau_1$. \textbf{$\tau_1$ sí es una topología.}
+
+\textbf{Colección $\tau_2$.}
+\begin{center}\dostablas{tab_I2_u}{tab_I2_i}\end{center}
+Falla la unión: $\s{a}\cup\s{b,c,d}=\s{a,b,c,d}\notin\tau_2$. \textbf{$\tau_2$ no es una topología.}
+
+\textbf{Colección $\tau_3$.}
+\begin{center}\dostablas{tab_I3_u}{tab_I3_i}\end{center}
+Falla la intersección: $\s{c,d}\cap\s{a,b,d,e}=\s{d}\notin\tau_3$ (y también $\s{a,c,d}\cap\s{a,b,d,e}=\s{a,d}$).
+\textbf{$\tau_3$ no es una topología.}
+
+\textbf{Colección $\tau_4$.}
+\begin{center}\dostablas{tab_I4_u}{tab_I4_i}\end{center}
+Todos los resultados están en $\tau_4$. \textbf{$\tau_4$ sí es una topología.}
+
+\resp{Son topologías $\tau_1$ y $\tau_4$; no lo son $\tau_2$ (falla una unión) ni $\tau_3$ (falla una intersección).
+A continuación se desarrollan todos los incisos para las dos válidas; para la entrega basta una de ellas.}
+
+% =====================================================================
+\subsection{Desarrollo completo con \texorpdfstring{$\tau_1$}{tau1}}
+$\tau_1=\{X,\vac,\s{a},\s{c,d},\s{a,c,d},\s{b,c,d,e}\}$.
+
+Conviene calcular primero el abierto mínimo $U_x$ de cada punto (H3), intersecando todos los abiertos que lo
+contienen:
+\begin{center}\small\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}cll@{}}\toprule
+$x$ & abiertos que contienen a $x$ & $U_x$\\ \midrule
+$a$ & $\s{a},\ \s{a,c,d},\ X$ & $\s{a}$\\
+$b$ & $\s{b,c,d,e},\ X$ & $\s{b,c,d,e}$\\
+$c$ & $\s{c,d},\ \s{a,c,d},\ \s{b,c,d,e},\ X$ & $\s{c,d}$\\
+$d$ & $\s{c,d},\ \s{a,c,d},\ \s{b,c,d,e},\ X$ & $\s{c,d}$\\
+$e$ & $\s{b,c,d,e},\ X$ & $\s{b,c,d,e}$\\ \bottomrule
+\end{tabular}\end{center}
+
+\subsubsection*{(a) Los cerrados, $\co{\tau_1}$}
+Se toma el complemento de cada abierto:
+\begin{gather*}
+X\sm X=\vac,\qquad X\sm\vac=X,\qquad X\sm\s{a}=\s{b,c,d,e},\\
+X\sm\s{c,d}=\s{a,b,e},\qquad X\sm\s{a,c,d}=\s{b,e},\qquad X\sm\s{b,c,d,e}=\s{a}.
+\end{gather*}
+\resp{$\co{\tau_1}=\{\vac,\ X,\ \s{a},\ \s{b,e},\ \s{a,b,e},\ \s{b,c,d,e}\}$. Obsérvese que $\s{a}$ y
+$\s{b,c,d,e}$ son a la vez abiertos y cerrados.}
+
+\subsubsection*{(b) El derivado de $G=\s{b,e}$}
+Un punto $x$ es de acumulación de $G$ si \emph{todo} abierto que contiene a $x$ contiene algún punto de $G$ distinto
+de $x$. Por H3 basta mirar el abierto mínimo:
+\begin{center}\small\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}cllc@{}}\toprule
+$x$ & $U_x$ & $(U_x\sm\{x\})\cap G$ & ¿$x\in G'$?\\ \midrule
+$a$ & $\s{a}$ & $\vac$ & no\\
+$b$ & $\s{b,c,d,e}$ & $\s{e}$ & sí\\
+$c$ & $\s{c,d}$ & $\vac$ & no\\
+$d$ & $\s{c,d}$ & $\vac$ & no\\
+$e$ & $\s{b,c,d,e}$ & $\s{b}$ & sí\\ \bottomrule
+\end{tabular}\end{center}
+Por ejemplo, con la definición directa: los abiertos que contienen a $b$ son $\s{b,c,d,e}$ y $X$, y ambos contienen
+a $e\in G$, $e\neq b$; luego $b\in G'$. En cambio $\s{c,d}$ es un abierto que contiene a $c$ y no toca a $G$; luego
+$c\notin G'$.
+\resp{$G'=\s{b,e}$.}
+
+\subsubsection*{(c) Clausuras}
+La clausura es el menor cerrado que contiene al conjunto; se busca en la lista del inciso (a).
+\begin{itemize}
+\item $\s{a}$ ya es cerrado, así que $\cl{\s{a}}=\s{a}$.
+\item Cerrados que contienen a $b$: $\s{b,e}$, $\s{a,b,e}$, $\s{b,c,d,e}$, $X$. El menor es $\s{b,e}$.
+\item Cerrados que contienen a $\s{c,d}$: $\s{b,c,d,e}$ y $X$. El menor es $\s{b,c,d,e}$.
+\end{itemize}
+\resp{$\cl{\s{a}}=\s{a}$,\quad $\cl{\s{b}}=\s{b,e}$,\quad $\cl{\s{c,d}}=\s{b,c,d,e}$.}
+\emph{Comprobación con $\cl{A}=A\cup A'$:} $\s{b}'=\s{e}$ (porque $U_e\sm\s{e}$ contiene a $b$, y $U_b\sm\s{b}$ no
+contiene a $b$), y $\s{b}\cup\s{e}=\s{b,e}$. Coincide.
+
+\subsubsection*{(d) La topología relativa sobre $H=\s{a,c,d}$}
+Se interseca cada abierto con $H$:
+\begin{gather*}
+X\cap H=H,\qquad \vac\cap H=\vac,\qquad \s{a}\cap H=\s{a},\\
+\s{c,d}\cap H=\s{c,d},\qquad \s{a,c,d}\cap H=H,\qquad \s{b,c,d,e}\cap H=\s{c,d}.
+\end{gather*}
+\resp{$\tau_H=\{H,\ \vac,\ \s{a},\ \s{c,d}\}$.}
+
+\subsubsection*{(e) Abiertos densos}
+Un conjunto es denso si su clausura es $X$. Se calcula la clausura de cada abierto con la lista de cerrados:
+\begin{center}\small\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lcccccc@{}}\toprule
+$U\in\tau_1$ & $\vac$ & $\s{a}$ & $\s{c,d}$ & $\s{a,c,d}$ & $\s{b,c,d,e}$ & $X$\\ \midrule
+$\cl{U}$ & $\vac$ & $\s{a}$ & $\s{b,c,d,e}$ & $X$ & $\s{b,c,d,e}$ & $X$\\
+¿denso? & no & no & no & \textbf{sí} & no & \textbf{sí}\\ \bottomrule
+\end{tabular}\end{center}
+Para $\s{a,c,d}$: el único cerrado que lo contiene es $X$ (ni $\s{a,b,e}$ ni $\s{b,c,d,e}$ lo contienen).
+\resp{Los elementos de $\tau_1$ densos en $X$ son $\s{a,c,d}$ y $X$.}
+
+\subsubsection*{(f) Los sistemas de vecindades $\N_c$ y $\N_e$}
+Por H3, las vecindades de $x$ son exactamente los subconjuntos que contienen a $U_x$.
+
+Como $U_c=\s{c,d}$, las vecindades de $c$ son los $2^3=8$ conjuntos que se obtienen agregando a $\s{c,d}$ cualquier
+subconjunto de $\s{a,b,e}$. Como $U_e=\s{b,c,d,e}$, solo queda agregar o no el punto $a$.
+\resp{$\N_c=\{\s{c,d},\ \s{a,c,d},\ \s{b,c,d},\ \s{c,d,e},\ \s{a,b,c,d},\ \s{a,c,d,e},\ \s{b,c,d,e},\ X\}$.\\[2pt]
+$\N_e=\{\s{b,c,d,e},\ X\}$.}
+\emph{Notas.} (1) Si se pidiera la intersección de las dos familias: $\N_c\cap\N_e=\{\s{b,c,d,e},X\}=\N_e$.
+(2) Con la convención de Munkres (solo vecindades abiertas): para $c$ serían $\s{c,d}$, $\s{a,c,d}$, $\s{b,c,d,e}$,
+$X$; para $e$, las mismas dos de arriba.
+
+\subsubsection*{(g) El interior de $J=\s{a,b,c}$}
+El interior es la unión de los abiertos contenidos en $J$. Los únicos abiertos contenidos en $\s{a,b,c}$ son $\vac$
+y $\s{a}$ (los demás contienen a $d$ o a $e$).
+\resp{$\inte{J}=\s{a}$.}
+
+\subsubsection*{(h) $\sigma(J)$: la frontera de $J=\s{a,b,c}$}
+\emph{Clausura.} Los cerrados son $\vac,\s{a},\s{b,e},\s{a,b,e},\s{b,c,d,e},X$; el único que contiene a $a$, $b$ y
+$c$ a la vez es $X$. Así, $\cl{J}=X$ ($J$ es denso).
+
+\emph{Frontera.} $\Fr(J)=\cl{J}\sm\inte{J}=X\sm\s{a}=\s{b,c,d,e}$.
+\resp{$\sigma(J)=\Fr(J)=\s{b,c,d,e}$ (supuesto S1).}
+\emph{Datos complementarios, por si $\sigma$ designara otro operador:} $\Ext(J)=\Int(X\sm J)=\Int\s{d,e}=\vac$;
+\ $J'=\s{b,d,e}$;\ $\cl{J}=X$. Se cumple la partición $X=\inte{J}\sqcup\Fr(J)\sqcup\Ext(J)=\s{a}\sqcup\s{b,c,d,e}\sqcup\vac$.
+
+% =====================================================================
+\subsection{Desarrollo completo con \texorpdfstring{$\tau_4$}{tau4}}
+$\tau_4=\{X,\vac,\s{a},\s{b,e},\s{a,b,e},\s{b,c,d,e}\}$. Abiertos mínimos:
+\begin{center}\small\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}cll@{}}\toprule
+$x$ & abiertos que contienen a $x$ & $U_x$\\ \midrule
+$a$ & $\s{a},\ \s{a,b,e},\ X$ & $\s{a}$\\
+$b$ & $\s{b,e},\ \s{a,b,e},\ \s{b,c,d,e},\ X$ & $\s{b,e}$\\
+$c$ & $\s{b,c,d,e},\ X$ & $\s{b,c,d,e}$\\
+$d$ & $\s{b,c,d,e},\ X$ & $\s{b,c,d,e}$\\
+$e$ & $\s{b,e},\ \s{a,b,e},\ \s{b,c,d,e},\ X$ & $\s{b,e}$\\ \bottomrule
+\end{tabular}\end{center}
+
+\textbf{(a) Cerrados.} Complementos de los abiertos:
+\resp{$\co{\tau_4}=\{\vac,\ X,\ \s{a},\ \s{c,d},\ \s{a,c,d},\ \s{b,c,d,e}\}$.}
+\emph{Curiosidad:} los cerrados de $\tau_4$ son exactamente los abiertos de $\tau_1$, y viceversa.
+
+\textbf{(b) Derivado de $G=\s{b,e}$.}
+\begin{center}\small\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}cllc@{}}\toprule
+$x$ & $U_x$ & $(U_x\sm\{x\})\cap G$ & ¿$x\in G'$?\\ \midrule
+$a$ & $\s{a}$ & $\vac$ & no\\
+$b$ & $\s{b,e}$ & $\s{e}$ & sí\\
+$c$ & $\s{b,c,d,e}$ & $\s{b,e}$ & sí\\
+$d$ & $\s{b,c,d,e}$ & $\s{b,e}$ & sí\\
+$e$ & $\s{b,e}$ & $\s{b}$ & sí\\ \bottomrule
+\end{tabular}\end{center}
+\resp{$G'=\s{b,c,d,e}$.}
+
+\textbf{(c) Clausuras.} $\s{a}$ y $\s{c,d}$ son cerrados, así que coinciden con su clausura. Los cerrados que
+contienen a $b$ son $\s{b,c,d,e}$ y $X$.
+\resp{$\cl{\s{a}}=\s{a}$,\quad $\cl{\s{b}}=\s{b,c,d,e}$,\quad $\cl{\s{c,d}}=\s{c,d}$.}
+
+\textbf{(d) Topología relativa sobre $H=\s{a,c,d}$.}
+$X\cap H=H$, $\vac\cap H=\vac$, $\s{a}\cap H=\s{a}$, $\s{b,e}\cap H=\vac$, $\s{a,b,e}\cap H=\s{a}$,
+$\s{b,c,d,e}\cap H=\s{c,d}$.
+\resp{$\tau_H=\{H,\ \vac,\ \s{a},\ \s{c,d}\}$ (la misma que se obtuvo con $\tau_1$).}
+
+\textbf{(e) Abiertos densos.}
+\begin{center}\small\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lcccccc@{}}\toprule
+$U\in\tau_4$ & $\vac$ & $\s{a}$ & $\s{b,e}$ & $\s{a,b,e}$ & $\s{b,c,d,e}$ & $X$\\ \midrule
+$\cl{U}$ & $\vac$ & $\s{a}$ & $\s{b,c,d,e}$ & $X$ & $\s{b,c,d,e}$ & $X$\\
+¿denso? & no & no & no & \textbf{sí} & no & \textbf{sí}\\ \bottomrule
+\end{tabular}\end{center}
+\resp{Los elementos de $\tau_4$ densos en $X$ son $\s{a,b,e}$ y $X$.}
+
+\textbf{(f) Vecindades.} $U_c=\s{b,c,d,e}$ y $U_e=\s{b,e}$.
+\resp{$\N_c=\{\s{b,c,d,e},\ X\}$.\\[2pt]
+$\N_e=\{\s{b,e},\ \s{a,b,e},\ \s{b,c,e},\ \s{b,d,e},\ \s{a,b,c,e},\ \s{a,b,d,e},\ \s{b,c,d,e},\ X\}$.}
+(Intersección de las familias: $\N_c\cap\N_e=\{\s{b,c,d,e},X\}$. Vecindades abiertas de $e$: $\s{b,e}$, $\s{a,b,e}$,
+$\s{b,c,d,e}$, $X$.)
+
+\textbf{(g) Interior de $J=\s{a,b,c}$.} Los abiertos contenidos en $J$ son $\vac$ y $\s{a}$ ($\s{b,e}$ no, porque
+$e\notin J$).
+\resp{$\inte{J}=\s{a}$.}
+
+\textbf{(h) Frontera de $J$.} El único cerrado que contiene a $\s{a,b,c}$ es $X$, de modo que $\cl{J}=X$ y
+$\Fr(J)=X\sm\s{a}$.
+\resp{$\sigma(J)=\Fr(J)=\s{b,c,d,e}$ (supuesto S1). Complementos: $\Ext(J)=\Int\s{d,e}=\vac$, $J'=\s{c,d,e}$.}

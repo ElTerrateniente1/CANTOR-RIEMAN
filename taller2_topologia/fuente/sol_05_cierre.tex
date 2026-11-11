@@ -1,0 +1,57 @@
+\section{Qué entregar y cómo se verificó}
+
+\subsection{Selección sugerida para la entrega}
+Las indicaciones piden: una topología de la Parte~I, una de la Parte~II, un problema entre el 1, 2 y 3 de la
+Parte~III, dos problemas entre el 4 y el 13 «que sus compañeros no resuelvan», los problemas 1 y 2 de la Parte~IV y
+al menos dos entre lo pedido en los problemas 3 y 4. Una selección posible:
+\begin{center}\small\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}p{2.6cm}p{5.2cm}p{7.4cm}@{}}\toprule
+\textbf{Parte} & \textbf{Sugerencia} & \textbf{Motivo}\\ \midrule
+I & $\tau_1$ (incisos a–h) & Es la topología clásica del texto de Lipschutz; todos los incisos dan respuestas no triviales.\\
+II & $\tau_2$ (incisos a–g) & No depende de corregir el término «$\{\,,2\}$».\\
+III (1, 2 o 3) & Problema 1 & Es el único en que se pide \emph{todas}; la respuesta es cerrada (9 topologías).\\
+III (4 al 13) & A convenir con el grupo & Están resueltos los diez; los problemas 6, 8, 11 y 13 son compactos y completos.\\
+IV & 1 y 2; además 3(a) y 4 & El 3(b) debe entregarse con la observación de que la afirmación es falsa.\\ \bottomrule
+\end{tabular}\end{center}
+
+\subsection{Verificación por computadora}
+En la carpeta \texttt{verificacion/} hay dos programas en Python:
+\begin{itemize}
+\item \texttt{topofin.py} implementa, directamente desde las definiciones, los operadores de un espacio topológico
+finito (cerrados, derivado, clausura, interior, exterior, frontera, topología relativa, vecindades, topología
+generada por una sub-base) y las pruebas de continuidad, función abierta, función cerrada y homeomorfismo.
+\item \texttt{verificar\_taller.py} aplica esas funciones a cada inciso del taller y enumera por fuerza bruta todas
+las topologías sobre conjuntos de 3 y 4 puntos (29 y 355, respectivamente).
+\end{itemize}
+Todos los resultados de este documento coinciden con la salida del programa. Las tablas de uniones e intersecciones,
+las listas de topologías y el diagrama de Hasse se generaron automáticamente a partir de esos mismos datos, para
+evitar errores de transcripción.
+
+\subsection{Límites de esta solución}
+\begin{itemize}
+\item Los supuestos S1 a S8 de la sección~\ref{sec:supuestos} son interpretaciones del enunciado; si en clase se usa
+otra convención (sobre todo para $\sigma$ y para «vecindad»), las respuestas correspondientes deben ajustarse.
+\item El programa comprueba cálculos sobre conjuntos finitos. Los problemas 6, 7, 11 y 12 de la Parte~III y el
+problema~2 de la Parte~IV tratan con conjuntos infinitos: allí la garantía es la demostración escrita, no el
+programa.
+\end{itemize}
+
+\section*{Referencias}
+\addcontentsline{toc}{section}{Referencias}
+\begin{enumerate}[label={[\arabic*]},leftmargin=2.4em,itemsep=0.35em]\small\sloppy
+\item S.~Lipschutz, \emph{Theory and Problems of General Topology}, Schaum's Outline Series, McGraw-Hill, 1965.
+Edición en español: \emph{Topología general}. Capítulos 5 (espacios topológicos), 6 (bases y sub-bases) y 7
+(continuidad y equivalencia topológica).
+\item J.~R.~Munkres, \emph{Topology}, 2.ª ed., Prentice Hall, 2000. Capítulo 2: §12 espacios topológicos, §13 bases,
+§16 subespacios, §17 cerrados y puntos límite, §18 funciones continuas.
+\item J.~L.~Kelley, \emph{General Topology}, Van Nostrand, 1955 (reimpr. Springer GTM 27). Capítulo 1.
+\item G.~N.~Rubiano, \emph{Topología general (un primer curso)}, Universidad Nacional de Colombia, Bogotá.
+\item M.~Macho Stadler, \emph{Topología}, apuntes de curso, UPV/EHU, 2014--2015.
+\url{https://www.ehu.eus/~mtwmastm/Topologia1415.pdf}
+\item L.~A.~Steen y J.~A.~Seebach, \emph{Counterexamples in Topology}, 2.ª ed., Springer, 1978. Ejemplos 5 y 6
+(topologías de partición y par--impar) y 8 a 10 (topología del punto particular).
+\item OEIS Foundation, sucesión A000798: número de topologías sobre $n$ puntos etiquetados.
+\url{https://oeis.org/A000798}
+\item Wikipedia, «Subbase» (convención sobre la intersección vacía). \url{https://en.wikipedia.org/wiki/Subbase}
+\item Wikipedia, «Particular point topology». \url{https://en.wikipedia.org/wiki/Particular_point_topology}
+\end{enumerate}

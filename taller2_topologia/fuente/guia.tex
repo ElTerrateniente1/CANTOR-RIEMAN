@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+\input{comun}
+\hypersetup{pdftitle={Guía de estudio — Taller 2 de Topología},pdfsubject={Topología general},pdfkeywords={topología, guía de estudio, parcial}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{black!60}Guía de estudio — Topología, módulo 2}
+\fancyhead[R]{\small\sffamily\color{black!60}\nouppercase{\leftmark}}
+\fancyfoot[C]{\small\sffamily\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\input{gen/conteo_III4}
+
+\begin{document}
+\thispagestyle{empty}
+\vspace*{1.2cm}
+\begin{center}
+{\sffamily\large UNIVERSIDAD DE PANAMÁ · FACINET · LICENCIATURA EN MATEMÁTICA}\\[2.2em]
+{\sffamily\bfseries\Huge\color{tinta} Guía de estudio}\\[0.5em]
+{\sffamily\bfseries\LARGE\color{tinta} Topología — Módulo 2}\\[1.0em]
+{\sffamily\Large Todo lo que hay detrás del Taller 2, explicado paso a paso para el parcial}\\[2.2em]
+\begin{tikzpicture}[x=1cm,y=1cm,
+  caja/.style={draw=tinta,fill=tinta!6,rounded corners=2pt,font=\sffamily\small,align=center,inner sep=5pt,minimum width=3.3cm,minimum height=1.05cm},
+  fl/.style={-{Stealth[length=2.2mm]},draw=tinta!70,line width=0.6pt}]
+\node[caja] (top) at (0,0) {Topología $\tau$\\{\scriptsize abiertos}};
+\node[caja] (cer) at (-4.6,-1.9) {Cerrados\\{\scriptsize $\cotau$}};
+\node[caja] (vec) at (0,-1.9) {Vecindades\\{\scriptsize $\N_x$}};
+\node[caja] (bas) at (4.6,-1.9) {Bases y sub-bases\\{\scriptsize generar $\tau$}};
+\node[caja] (der) at (-4.6,-3.9) {Derivado y clausura\\{\scriptsize $A'$, $\cl{A}$}};
+\node[caja] (int) at (0,-3.9) {Interior, exterior,\\frontera};
+\node[caja] (sub) at (4.6,-3.9) {Subespacios y\\comparación};
+\node[caja] (con) at (-2.3,-5.9) {Continuidad;\\funciones abiertas y cerradas};
+\node[caja] (hom) at (3.2,-5.9) {Homeomorfismos\\{\scriptsize $X\homeo Y$}};
+\draw[fl] (top) -- (cer); \draw[fl] (top) -- (vec); \draw[fl] (top) -- (bas);
+\draw[fl] (cer) -- (der); \draw[fl] (vec) -- (der); \draw[fl] (vec) -- (int); \draw[fl] (bas) -- (sub);
+\draw[fl] (der) -- (con); \draw[fl] (int) -- (con); \draw[fl] (sub) -- (hom); \draw[fl] (con) -- (hom);
+\end{tikzpicture}
+\end{center}
+\vspace{1.2em}
+\begin{metodo}[Cómo usar esta guía]
+\begin{itemize}
+\item Cada sección sigue el mismo orden: \textbf{idea} en lenguaje llano, \textbf{definición} precisa, \textbf{resultados}
+con su demostración cuando es corta e instructiva, \textbf{método} de cálculo paso a paso y \textbf{ejemplos}, casi todos
+tomados del Taller~2 para que teoría y práctica coincidan.
+\item Las cajas ámbar marcan los errores más comunes y los puntos donde las convenciones cambian de un libro a otro.
+\item La sección~\ref{sec:recetario} es un recetario de una página para repasar la víspera; la~\ref{sec:auto} es una
+autoevaluación con respuestas.
+\item Los números entre corchetes remiten a las fuentes de la sección final. Todos los cálculos con conjuntos finitos
+de esta guía se comprobaron por computadora con el mismo programa que verificó el taller.
+\end{itemize}
+\end{metodo}
+\newpage
+\setcounter{tocdepth}{2}
+{\small\tableofcontents}
+\newpage
+
+\input{guia_01_topologia}
+\input{guia_02_puntos}
+\input{guia_03_estructuras}
+\input{guia_04_funciones}
+\input{guia_05_examen}
+\end{document}

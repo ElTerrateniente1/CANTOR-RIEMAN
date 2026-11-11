@@ -1,0 +1,335 @@
+\section{Vecindades}
+\subsection{Idea y definición}
+Una vecindad de $x$ es un conjunto que contiene «todo lo que está suficientemente cerca de $x$». En $\R$: un conjunto
+que contiene algún intervalo $(x-\varepsilon,x+\varepsilon)$.
+\begin{definicion}[Definición: vecindad y sistema de vecindades]
+Sea $(X,\tau)$ un espacio y $x\in X$. Un conjunto $N\subseteq X$ es una \textbf{vecindad} (o \emph{entorno}) de $x$ si
+existe un abierto $U$ tal que
+\[x\in U\subseteq N.\]
+La familia de todas las vecindades de $x$ se llama \textbf{sistema de vecindades} de $x$ y se denota $\N_x$.
+\end{definicion}
+\begin{ojo}[Dos convenciones]
+En Lipschutz, Kelley, Willard y Bourbaki\fuente{1,3,4,26} la vecindad \emph{no} tiene que ser abierta: basta que
+contenga un abierto que contenga al punto. En Munkres\fuente{2}, «vecindad de $x$» significa directamente «abierto que
+contiene a $x$». Los enunciados del taller («encuentre $N_c$») corresponden a la primera. Si en el parcial se usa la
+segunda, la respuesta es la sublista de vecindades que son abiertas. Ante la duda, conviene escribir ambas.
+\end{ojo}
+
+\begin{teorema}[Propiedades del sistema de vecindades]
+\begin{enumerate}[label=(N\arabic*),leftmargin=2.6em]
+\item $\N_x\neq\vac$ (porque $X\in\N_x$) y todo $N\in\N_x$ contiene a $x$.
+\item Si $N\in\N_x$ y $N\subseteq M$, entonces $M\in\N_x$ (los superconjuntos de vecindades son vecindades).
+\item Si $N,M\in\N_x$, entonces $N\cap M\in\N_x$.
+\item Un conjunto $U$ es abierto $\iff$ $U$ es vecindad de cada uno de sus puntos.
+\end{enumerate}
+\end{teorema}
+\emph{Demostración de (N4).} ($\Rightarrow$) Si $U$ es abierto y $x\in U$, entonces $x\in U\subseteq U$. ($\Leftarrow$)
+Para cada $x\in U$ hay un abierto $U_x$ con $x\in U_x\subseteq U$; entonces $U=\bigcup_{x\in U}U_x$ es unión de
+abiertos. \qed
+
+La propiedad (N4) es la que más se usa: dice que para probar que un conjunto es abierto basta «rodear» cada uno de
+sus puntos con un abierto contenido en él.
+
+\subsection{El abierto mínimo: la herramienta clave en espacios finitos}\label{sec:minimo}
+\begin{teorema}[Abierto mínimo]
+Si $\tau$ es finita, para cada $x\in X$ el conjunto
+\[U_x=\bigcap\{U\in\tau:\ x\in U\}\]
+es abierto y es el menor abierto que contiene a $x$. En consecuencia $\N_x=\{N\subseteq X:\ U_x\subseteq N\}$, y si
+$X$ tiene $n$ puntos y $U_x$ tiene $k$, entonces $\N_x$ tiene $2^{\,n-k}$ elementos.
+\end{teorema}
+\emph{Demostración.} $U_x$ es intersección de finitos abiertos, luego es abierto, contiene a $x$ y está contenido en
+todo abierto que contiene a $x$. Si $U_x\subseteq N$, $N$ es vecindad. Si $N$ es vecindad, $x\in U\subseteq N$ para
+algún abierto $U$, y $U_x\subseteq U\subseteq N$. Las vecindades se obtienen agregando a $U_x$ cualquier subconjunto de
+los $n-k$ puntos restantes. \qed
+
+En espacios infinitos el abierto mínimo puede no existir: en $\R$ usual, la intersección de todos los abiertos que
+contienen a $0$ es $\{0\}$, que no es abierto. Los espacios en que siempre existe se llaman \emph{de Alexandrov}; todo
+espacio finito lo es, y también las topologías de los problemas III.6 y III.7\fuente{13,14}.
+
+\begin{metodo}[Método: calcular $U_x$ y $\N_x$]
+\begin{enumerate}[leftmargin=1.6em]
+\item Listar los abiertos que contienen a $x$.
+\item Intersecarlos: eso es $U_x$. (Suele bastar con mirar cuál es el más pequeño de la lista; si hay dos no
+comparables, su intersección también está en la lista por (T3).)
+\item $\N_x$ consta de $U_x$ y de todos los conjuntos que resultan de agregarle puntos.
+\end{enumerate}
+\end{metodo}
+
+\begin{ejemplo}[Ejemplo: Parte I, $\tau_1=\{X,\vac,\s{a},\s{c,d},\s{a,c,d},\s{b,c,d,e}\}$]
+\begin{center}\small\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}c|ccccc@{}}
+$x$ & $a$ & $b$ & $c$ & $d$ & $e$\\ \hline
+$U_x$ & $\s{a}$ & $\s{b,c,d,e}$ & $\s{c,d}$ & $\s{c,d}$ & $\s{b,c,d,e}$
+\end{tabular}\end{center}
+$\N_c$: a $\s{c,d}$ se le agrega cualquier subconjunto de $\s{a,b,e}$: $2^3=8$ vecindades. $\N_e$: a $\s{b,c,d,e}$
+solo se le puede agregar $a$: $2$ vecindades, $\s{b,c,d,e}$ y $X$.
+
+Dos lecturas útiles de la tabla: (1) $c$ y $d$ tienen el mismo abierto mínimo: la topología «no los distingue»; lo
+mismo $b$ y $e$. (2) $U_b$ contiene a $c$ pero $U_c$ no contiene a $b$: la relación «estar en el abierto mínimo de» no
+es simétrica.
+\end{ejemplo}
+\begin{ejemplo}[Ejemplo: vecindades en los problemas III.6 y III.7]
+En $\Z$ con la topología par--impar, $U_5=\s{5,6}$: todo abierto que contiene a $5=2\cdot3-1$ debe contener a
+$6=2\cdot3$, y $\s{5,6}$ es abierto. Así $\N_5=\{N\subseteq\Z:\s{5,6}\subseteq N\}$.
+
+En $\R$ con la topología del punto incluido $0$, $U_1=\s{0,1}$: todo abierto no vacío contiene a $0$. Así
+$\N_1=\{N\subseteq\R:\s{0,1}\subseteq N\}$. En general $U_x=\s{0,x}$ y $U_0=\s{0}$.
+\end{ejemplo}
+
+% =====================================================================
+\section{Puntos de acumulación y conjunto derivado}
+\subsection{Definición, leída con lupa}
+\begin{definicion}[Definición: punto de acumulación y derivado]
+Sea $A\subseteq X$. Un punto $x\in X$ es \textbf{punto de acumulación} (o punto límite) de $A$ si \emph{todo} abierto
+$U$ que contiene a $x$ contiene algún punto de $A$ \emph{distinto de $x$}:
+\[\forall\,U\in\tau\ \big(x\in U\ \Longrightarrow\ (U\sm\{x\})\cap A\neq\vac\big).\]
+El conjunto de los puntos de acumulación de $A$ es el \textbf{conjunto derivado} de $A$, denotado $A'$.
+\end{definicion}
+Tres detalles de la definición que deciden los ejercicios:
+\begin{enumerate}[leftmargin=1.6em]
+\item \textbf{«Todo abierto».} Para probar que $x\in A'$ hay que revisar todos los abiertos que contienen a $x$; para
+probar que $x\notin A'$ basta exhibir \emph{uno} que falle.
+\item \textbf{«Distinto de $x$».} El propio $x$ no cuenta. Por eso un punto de $A$ puede no ser de acumulación de $A$
+(se llama \textbf{punto aislado} de $A$), y un punto que no está en $A$ sí puede serlo.
+\item \textbf{$x$ recorre todo $X$}, no solo $A$. Hay que examinar cada punto del espacio.
+\end{enumerate}
+
+\begin{ejemplo}[Ejemplos en $\R$ con la topología usual]
+$(0,1)'=[0,1]$: los extremos $0$ y $1$ no están en el conjunto pero todo intervalo alrededor de ellos lo corta.\quad
+$\Z'=\vac$: cada entero $n$ tiene el abierto $(n-\tfrac12,n+\tfrac12)$, que no contiene otro entero; todos los puntos
+de $\Z$ son aislados.\quad $\{\tfrac1n:n\ge1\}'=\{0\}$.\quad $\Q'=\R$.
+\end{ejemplo}
+
+\begin{metodo}[Método: calcular $A'$ en un espacio finito]
+Por la sección~\ref{sec:minimo}, basta probar con el abierto mínimo:
+\[x\in A'\iff (U_x\sm\{x\})\cap A\neq\vac .\]
+\begin{enumerate}[leftmargin=1.6em]
+\item Hacer la tabla de abiertos mínimos $U_x$ (se hace una sola vez por topología y sirve para todo).
+\item Para cada $x\in X$: quitar $x$ de $U_x$ e intersecar con $A$.
+\item $x\in A'$ exactamente cuando esa intersección no es vacía.
+\end{enumerate}
+\emph{Atajo:} si $\{x\}$ es abierto, entonces $U_x\sm\{x\}=\vac$ y $x$ no es punto de acumulación de \emph{ningún}
+conjunto.
+\end{metodo}
+La equivalencia es válida porque $U_x$ está contenido en todo abierto que contiene a $x$: si $U_x\sm\{x\}$ ya corta a
+$A$, todos los abiertos más grandes también; y si $U_x$ falla, es el testigo de que $x\notin A'$.
+
+\begin{ejemplo}[Ejemplo: $G=\s{b,e}$ en $\tau_1$ y en $\tau_4$ (Parte I)]
+\begin{center}\small\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}c|ll|ll@{}}
+ & \multicolumn{2}{c|}{en $\tau_1$} & \multicolumn{2}{c}{en $\tau_4$}\\
+$x$ & $U_x$ & $(U_x\sm\{x\})\cap G$ & $U_x$ & $(U_x\sm\{x\})\cap G$\\ \hline
+$a$ & $\s{a}$ & $\vac$ & $\s{a}$ & $\vac$\\
+$b$ & $\s{b,c,d,e}$ & $\s{e}$ & $\s{b,e}$ & $\s{e}$\\
+$c$ & $\s{c,d}$ & $\vac$ & $\s{b,c,d,e}$ & $\s{b,e}$\\
+$d$ & $\s{c,d}$ & $\vac$ & $\s{b,c,d,e}$ & $\s{b,e}$\\
+$e$ & $\s{b,c,d,e}$ & $\s{b}$ & $\s{b,e}$ & $\s{b}$
+\end{tabular}\end{center}
+En $\tau_1$: $G'=\s{b,e}$. En $\tau_4$: $G'=\s{b,c,d,e}$. El mismo conjunto $G$ tiene derivados distintos según la
+topología: el derivado no es una propiedad del conjunto solo, sino del conjunto \emph{dentro del espacio}.
+\end{ejemplo}
+
+\begin{ejemplo}[Ejemplo: casos extremos]
+\begin{itemize}
+\item \textbf{Topología discreta:} todo punto es abierto, así que $A'=\vac$ para todo $A$.
+\item \textbf{Topología indiscreta:} el único abierto que contiene a $x$ es $X$. Si $A$ tiene al menos dos puntos,
+$A'=X$; si $A=\{p\}$, entonces $A'=X\sm\{p\}$; y $\vac'=\vac$.
+\item \textbf{Parte II, $\tau_2$, $L=\s{1,4}$:} $L'=\s{1,6}$. El punto $4\in L$ no es de acumulación de $L$ (su abierto
+mínimo $\s{2,4,6}$ no contiene otro punto de $L$), y $6\notin L$ sí lo es.
+\end{itemize}
+\end{ejemplo}
+
+\subsection{Propiedades}
+\begin{teorema}[Propiedades del derivado]
+Para $A,B\subseteq X$:
+\begin{enumerate}[label=(D\arabic*),leftmargin=2.6em]
+\item $\vac'=\vac$.
+\item Si $A\subseteq B$, entonces $A'\subseteq B'$.
+\item $(A\cup B)'=A'\cup B'$.
+\item $A$ es cerrado $\iff A'\subseteq A$.
+\end{enumerate}
+\end{teorema}
+\emph{Demostración de (D4).} ($\Rightarrow$) Sea $A$ cerrado y $x\notin A$. Entonces $X\sm A$ es un abierto que
+contiene a $x$ y no corta a $A$; luego $x\notin A'$. Así $A'\subseteq A$. ($\Leftarrow$) Sea $A'\subseteq A$ y
+$x\notin A$. Como $x\notin A'$, hay un abierto $U_x\ni x$ con $(U_x\sm\{x\})\cap A=\vac$; y como $x\notin A$,
+$U_x\cap A=\vac$, es decir, $U_x\subseteq X\sm A$. Por (N4), $X\sm A$ es abierto. \qed
+
+\emph{Demostración de (D3).} «$\supseteq$» sale de (D2). «$\subseteq$»: si $x\notin A'\cup B'$, hay abiertos $U,V$ que
+contienen a $x$ con $(U\sm\{x\})\cap A=\vac$ y $(V\sm\{x\})\cap B=\vac$; entonces $U\cap V$ es un abierto que contiene a
+$x$ y $((U\cap V)\sm\{x\})\cap(A\cup B)=\vac$, luego $x\notin(A\cup B)'$. \qed
+
+En el taller, (D3) se usó como comprobación: en $\tau_2$ de la Parte~II, $(L\cup M)'=L'\cup M'=\s{1,6}\cup\s{1,4,6}=\s{1,4,6}$.
+
+% =====================================================================
+\section{Clausura}
+\subsection{Definición y caracterizaciones}
+\begin{definicion}[Definición: clausura]
+La \textbf{clausura} (o adherencia) de $A\subseteq X$ es la intersección de todos los cerrados que contienen a $A$:
+\[\cl{A}=\bigcap\{F:\ F\text{ cerrado},\ A\subseteq F\}.\]
+Es un cerrado (C2), contiene a $A$, y es el \emph{menor} cerrado que contiene a $A$.
+\end{definicion}
+\begin{teorema}[Tres formas equivalentes de calcular la clausura]
+Para $A\subseteq X$ y $x\in X$:
+\begin{enumerate}[label=(\alph*),leftmargin=1.9em]
+\item $x\in\cl{A}\iff$ todo abierto que contiene a $x$ corta a $A$.
+\item $\cl{A}=A\cup A'$.
+\item En un espacio finito: $x\in\cl{A}\iff U_x\cap A\neq\vac$.
+\end{enumerate}
+\end{teorema}
+\emph{Demostración.} (a) Por contrarrecíproco: $x\notin\cl{A}$ $\iff$ existe un cerrado $F\supseteq A$ con $x\notin F$
+$\iff$ existe un abierto $U=X\sm F$ con $x\in U$ y $U\cap A=\vac$.
+(b) Si $x\in A$ o $x\in A'$, todo abierto que contiene a $x$ corta a $A$, así que $x\in\cl{A}$ por (a).
+Recíprocamente, si $x\in\cl{A}$ y $x\notin A$, todo abierto que contiene a $x$ corta a $A$ en un punto que
+necesariamente es distinto de $x$; luego $x\in A'$. (c) Es (a) aplicado al abierto mínimo. \qed
+
+\begin{metodo}[Método: calcular $\cl{A}$]
+\textbf{Vía cerrados (la más rápida si ya se tiene $\cotau$):} recorrer la lista de cerrados y quedarse con el más
+pequeño que contiene a $A$. Si $A$ mismo aparece en la lista, $\cl{A}=A$.\\[2pt]
+\textbf{Vía derivado:} calcular $A'$ y unir: $\cl{A}=A\cup A'$.\\[2pt]
+\textbf{Vía abiertos mínimos:} $\cl{A}=\{x: U_x\cap A\neq\vac\}$.\\[2pt]
+Hacerlo por dos vías es la mejor comprobación en un examen.
+\end{metodo}
+
+\begin{ejemplo}[Ejemplo: Parte I, $\tau_1$, con $\co{\tau_1}=\{\vac,X,\s{a},\s{b,e},\s{a,b,e},\s{b,c,d,e}\}$]
+\begin{itemize}
+\item $\cl{\s{a}}=\s{a}$: ya es cerrado.
+\item $\cl{\s{b}}=\s{b,e}$: los cerrados que contienen a $b$ son $\s{b,e}$, $\s{a,b,e}$, $\s{b,c,d,e}$, $X$; el menor es
+$\s{b,e}$. Por la otra vía: $\s{b}'=\s{e}$, y $\s{b}\cup\s{e}=\s{b,e}$.
+\item $\cl{\s{c,d}}=\s{b,c,d,e}$. Vía abiertos mínimos: $U_b=\s{b,c,d,e}$ y $U_e=\s{b,c,d,e}$ cortan a $\s{c,d}$;
+$U_a=\s{a}$ no.
+\end{itemize}
+\end{ejemplo}
+
+\subsection{Propiedades (axiomas de Kuratowski)}
+\begin{teorema}[Propiedades de la clausura]
+\begin{enumerate}[label=(K\arabic*),leftmargin=2.6em]
+\item $\cl{\vac}=\vac$.
+\item $A\subseteq\cl{A}$.
+\item $\cl{\cl{A}}=\cl{A}$.
+\item $\cl{A\cup B}=\cl{A}\cup\cl{B}$.
+\end{enumerate}
+Además: $A$ es cerrado $\iff A=\cl{A}$; y $A\subseteq B\Rightarrow\cl{A}\subseteq\cl{B}$.
+\end{teorema}
+Estas cuatro propiedades caracterizan a la clausura: un operador que las cumpla define una topología (los cerrados
+son los conjuntos con $\cl{A}=A$). Son los \emph{axiomas de clausura de Kuratowski}\fuente{15}.
+
+\begin{ojo}[Con la intersección solo hay una inclusión]
+$\cl{A\cap B}\subseteq\cl{A}\cap\cl{B}$, y puede ser estricta. En $\R$: $A=(0,1)$, $B=(1,2)$. Entonces
+$A\cap B=\vac$ y $\cl{A\cap B}=\vac$, pero $\cl{A}\cap\cl{B}=[0,1]\cap[1,2]=\{1\}$.
+\end{ojo}
+
+% =====================================================================
+\section{Interior, exterior y frontera}
+\subsection{Definiciones}
+\begin{definicion}[Definición: interior, exterior, frontera]
+Sea $A\subseteq X$.
+\begin{itemize}
+\item El \textbf{interior} de $A$ es la unión de todos los abiertos contenidos en $A$:
+$\inte{A}=\Int(A)=\bigcup\{U\in\tau: U\subseteq A\}$. Es el \emph{mayor} abierto contenido en $A$. Sus puntos se llaman
+puntos interiores: $x\in\inte{A}\iff$ existe un abierto $U$ con $x\in U\subseteq A$ $\iff A\in\N_x$.
+\item El \textbf{exterior} de $A$ es el interior de su complemento: $\Ext(A)=\Int(X\sm A)$.
+\item La \textbf{frontera} de $A$ es el conjunto de puntos que no son interiores ni exteriores:
+$\Fr(A)=X\sm(\inte{A}\cup\Ext(A))$.
+\end{itemize}
+\end{definicion}
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm,font=\small]
+\fill[tinta!6] (-4.6,-1.7) rectangle (4.6,1.7);
+\draw[black!50] (-4.6,-1.7) rectangle (4.6,1.7);
+\fill[verde!22] (-0.4,0) ellipse (3.0 and 1.2);
+\draw[rojo,line width=1.6pt] (-0.4,0) ellipse (3.0 and 1.2);
+\node at (-0.4,0.25) {$\inte{A}$};
+\node at (-0.4,-0.3) {\scriptsize puntos con un abierto dentro de $A$};
+\node[rojo] at (3.7,1.3) {$\Fr(A)$};
+\draw[rojo,-{Stealth[length=2mm]}] (3.35,1.15) -- (2.2,0.62);
+\node at (-3.8,-1.35) {$\Ext(A)$};
+\node[anchor=west] at (4.8,0.9) {$X=\inte{A}\ \sqcup\ \Fr(A)\ \sqcup\ \Ext(A)$};
+\node[anchor=west] at (4.8,0.2) {$\cl{A}=\inte{A}\ \sqcup\ \Fr(A)$};
+\node[anchor=west] at (4.8,-0.5) {$\Ext(A)=X\sm\cl{A}$};
+\end{tikzpicture}
+\end{center}
+El dibujo es la imagen mental correcta en $\R^2$; en un espacio finito la frontera no es «un borde delgado» —puede
+ser casi todo el espacio—, pero las fórmulas valen igual.
+
+\begin{teorema}[Fórmulas que relacionan interior, clausura y frontera]
+\begin{enumerate}[label=(F\arabic*),leftmargin=2.6em]
+\item \textbf{Dualidad:} $\Int(A)=X\sm\cl{X\sm A}$ \quad y \quad $\cl{A}=X\sm\Int(X\sm A)=X\sm\Ext(A)$.
+\item $\Fr(A)=\cl{A}\sm\inte{A}=\cl{A}\cap\cl{X\sm A}$. En particular $\Fr(A)$ es cerrado y $\Fr(A)=\Fr(X\sm A)$.
+\item $x\in\Fr(A)\iff$ todo abierto que contiene a $x$ corta a $A$ y a $X\sm A$.
+\item $A$ es abierto $\iff A=\inte{A}\iff A\cap\Fr(A)=\vac$.\quad $A$ es cerrado $\iff\Fr(A)\subseteq A$.\quad
+$A$ es abierto y cerrado $\iff\Fr(A)=\vac$.
+\item $\Int(A\cap B)=\Int(A)\cap\Int(B)$; \quad $\Int(A)\cup\Int(B)\subseteq\Int(A\cup B)$, posiblemente estricta.
+\item En un espacio finito: $x\in\inte{A}\iff U_x\subseteq A$.
+\end{enumerate}
+\end{teorema}
+\emph{Demostración de (F1).} $x\in\Int(A)$ $\iff$ existe un abierto $U\ni x$ con $U\subseteq A$ $\iff$ existe un abierto
+$U\ni x$ con $U\cap(X\sm A)=\vac$ $\iff x\notin\cl{X\sm A}$. La segunda fórmula es la primera aplicada a $X\sm A$. \qed
+
+\emph{Demostración de (F2).} Por definición y por (F1), $\Fr(A)=X\sm\inte{A}\ \cap\ X\sm\Ext(A)=\cl{X\sm A}\cap\cl{A}$; y
+$\cl{A}\cap(X\sm\inte{A})=\cl{A}\sm\inte{A}$. \qed
+
+\emph{Contraejemplo para (F5).} En $\R$: $A=[0,1]$, $B=[1,2]$. $\Int(A)\cup\Int(B)=(0,1)\cup(1,2)$ pero
+$\Int(A\cup B)=(0,2)$.
+
+\begin{metodo}[Método: «anatomía completa» de un conjunto $A$]
+\begin{enumerate}[leftmargin=1.6em]
+\item \textbf{Interior:} listar los abiertos contenidos en $A$ y unirlos (o tomar el mayor).
+\item \textbf{Clausura:} el menor cerrado que contiene a $A$.
+\item \textbf{Frontera:} $\cl{A}\sm\inte{A}$.
+\item \textbf{Exterior:} $X\sm\cl{A}$.
+\item \textbf{Comprobar} que interior, frontera y exterior son disjuntos y que su unión es $X$.
+\end{enumerate}
+\end{metodo}
+
+\begin{ejemplo}[Ejemplo: $J=\s{a,b,c}$ en $\tau_1$ (Parte I, incisos g y h)]
+Interior: los abiertos contenidos en $J$ son $\vac$ y $\s{a}$, así que $\inte{J}=\s{a}$. Clausura: ningún cerrado
+propio contiene a $\s{a,b,c}$, así que $\cl{J}=X$. Frontera: $\Fr(J)=X\sm\s{a}=\s{b,c,d,e}$. Exterior:
+$X\sm\cl{J}=\vac$.
+
+Aquí la frontera tiene cuatro de los cinco puntos del espacio, y contiene puntos de $J$ ($b$, $c$) y puntos que no
+están en $J$ ($d$, $e$). Verificación con (F3) para $d$: su abierto mínimo $\s{c,d}$ corta a $J$ (en $c$) y a
+$X\sm J$ (en $d$).
+\end{ejemplo}
+\begin{ejemplo}[Ejemplo: $L\cup M=\s{1,2,4,6}$ en $\tau_2$ (Parte II, inciso g)]
+Interior $\s{2,4,6}$; clausura $\s{1,2,4,6}$ (es cerrado); frontera $\s{1}$; exterior $\s{3}$. Partición:
+$\s{2,4,6}\sqcup\s{1}\sqcup\s{3}=X$.
+\end{ejemplo}
+\begin{ejemplo}[Ejemplos en $\R$]
+$A=[0,1)$: interior $(0,1)$, clausura $[0,1]$, frontera $\{0,1\}$, exterior $(-\infty,0)\cup(1,\infty)$.\quad
+$A=\Q$: interior $\vac$, clausura $\R$, frontera $\R$, exterior $\vac$.
+\end{ejemplo}
+
+\begin{ojo}[Sobre el símbolo $\sigma(J)$ del taller]
+Los textos consultados escriben la frontera como $\Fr(A)$, $\partial A$, $b(A)$ o $\mathrm{Bd}\,A$; no se encontró
+ninguno que use $\sigma(A)$. En la solución se interpretó $\sigma$ como frontera por el orden de los incisos, pero es
+una suposición: hay que confirmarla en los apuntes de clase. Para el parcial, lo seguro es saber calcular los cuatro
+objetos (interior, exterior, frontera, clausura) y el derivado.
+\end{ojo}
+
+% =====================================================================
+\section{Conjuntos densos}
+\begin{definicion}[Definición: denso]
+$D\subseteq X$ es \textbf{denso} en $X$ si $\cl{D}=X$.
+\end{definicion}
+\begin{teorema}[Equivalencias]
+Son equivalentes: (a) $D$ es denso; (b) todo abierto no vacío corta a $D$; (c) $\Ext(D)=\vac$; (d) el único cerrado
+que contiene a $D$ es $X$; (e) en un espacio finito: $D\cap U_x\neq\vac$ para todo $x\in X$.
+\end{teorema}
+\emph{Demostración de (a)$\iff$(b).} $\cl{D}=X$ $\iff$ todo $x\in X$ cumple que cada abierto que lo contiene corta a
+$D$ $\iff$ todo abierto no vacío corta a $D$ (un abierto no vacío contiene a alguno de sus puntos). \qed
+
+\begin{metodo}[Método: ¿cuáles abiertos son densos? (inciso I.e)]
+Calcular la clausura de cada abierto; son densos los que dan $X$. Atajo con (b): un abierto $U$ es denso si y solo si
+corta a todos los demás abiertos no vacíos.
+\end{metodo}
+\begin{ejemplo}[Ejemplo: Parte I]
+En $\tau_1$: $\cl{\s{a}}=\s{a}$, $\cl{\s{c,d}}=\s{b,c,d,e}$, $\cl{\s{a,c,d}}=X$, $\cl{\s{b,c,d,e}}=\s{b,c,d,e}$. Densos:
+$\s{a,c,d}$ y $X$. Con el atajo: $\s{c,d}$ no es denso porque no corta al abierto $\s{a}$; $\s{a,c,d}$ corta a
+$\s{a}$, $\s{c,d}$ y $\s{b,c,d,e}$.
+
+En $\tau_4$ los densos son $\s{a,b,e}$ y $X$.
+\end{ejemplo}
+\begin{ejemplo}[Otros ejemplos]
+$\Q$ es denso en $\R$. En la topología del punto incluido (III.7), $\s{0}$ es denso: todo abierto no vacío contiene a
+$0$. En la topología discreta el único denso es $X$; en la indiscreta, todo conjunto no vacío es denso.
+\end{ejemplo}

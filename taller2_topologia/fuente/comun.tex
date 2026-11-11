@@ -1,0 +1,116 @@
+% ------------------------------------------------------------------
+% Preámbulo común a la solución del taller y a la guía de estudio
+% ------------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-nodecimaldot,es-noshorthands,es-tabla,es-lcroman]{babel}
+\usepackage{mathpazo}
+\usepackage{tgpagella}
+\usepackage[scaled=.92]{helvet}
+\renewcommand{\ttdefault}{lmtt}
+\linespread{1.06}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[letterpaper,margin=2.25cm,headheight=14pt]{geometry}
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{array,booktabs,longtable,multicol,graphicx}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric,fit,backgrounds}
+\usepackage[most]{tcolorbox}
+\usepackage[hidelinks,unicode]{hyperref}
+\usepackage{bookmark}
+
+% ----------------------------------------------------------- colores
+\definecolor{tinta}{RGB}{24,52,94}
+\definecolor{tinta2}{RGB}{46,96,150}
+\definecolor{verde}{RGB}{22,102,82}
+\definecolor{ambar}{RGB}{160,96,8}
+\definecolor{rojo}{RGB}{160,36,36}
+\definecolor{malo}{RGB}{250,214,214}
+\definecolor{bueno}{RGB}{214,236,224}
+\definecolor{bueno2}{RGB}{218,228,244}
+\definecolor{papel}{RGB}{246,248,251}
+\hypersetup{colorlinks=true,linkcolor=tinta2,urlcolor=tinta2,citecolor=tinta2}
+
+% ---------------------------------------------------------- formato
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlist{itemsep=0.2em,topsep=0.3em,parsep=0.15em}
+\titleformat{\section}{\Large\bfseries\sffamily\color{tinta}}{\thesection}{0.6em}{}[\vspace{-0.4em}{\color{tinta!35}\rule{\linewidth}{0.8pt}}]
+\titleformat{\subsection}{\large\bfseries\sffamily\color{tinta}}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\sffamily\color{tinta2}}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.4em}{0.6em}
+\titlespacing*{\subsection}{0pt}{1.0em}{0.3em}
+\titlespacing*{\subsubsection}{0pt}{0.8em}{0.2em}
+
+% ----------------------------------------------------------- macros
+\newcommand{\s}[1]{\{#1\}}                         % conjunto por extensión
+\newcommand{\vac}{\varnothing}
+\newcommand{\cl}[1]{\overline{#1}}                 % clausura
+\newcommand{\inte}[1]{\mathring{#1}}               % interior (letra sola)
+\newcommand{\Int}{\operatorname{int}}
+\newcommand{\Ext}{\operatorname{ext}}
+\newcommand{\Fr}{\operatorname{Fr}}
+\newcommand{\cotau}{\mathrm{co}\text{-}\tau}
+\newcommand{\co}[1]{\mathrm{co}\text{-}#1}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathfrak{C}}
+\newcommand{\Sb}{\mathcal{S}}
+\newcommand{\Pt}{\mathcal{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\sm}{\smallsetminus}
+\newcommand{\homeo}{\cong}
+\newcommand{\si}{\textcolor{verde}{\textbf{sí}}}
+\newcommand{\no}{\textcolor{rojo}{\textbf{no}}}
+\newcommand{\ok}{\textcolor{verde}{$\checkmark$}}
+\newcommand{\mal}{\textcolor{rojo}{$\times$}}
+\newcommand{\fuente}[1]{\textsuperscript{\textcolor{tinta2}{[#1]}}}
+
+% \input expandible, para poder usarlo dentro de tablas antes de \bottomrule
+\makeatletter\newcommand{\tinput}[1]{\@@input gen/#1.tex }\makeatother
+
+% ------------------------------------------------------------ cajas
+\tcbset{base/.style={enhanced,breakable,boxrule=0pt,arc=1.5pt,left=9pt,right=9pt,top=6pt,bottom=6pt,
+  before skip=0.8em,after skip=0.8em,fonttitle=\bfseries\sffamily\small,coltitle=white,
+  attach boxed title to top left={xshift=6pt,yshift=-2.5mm},boxed title style={arc=1.5pt,boxrule=0pt,top=1.5pt,bottom=1.5pt}}}
+\newtcolorbox{definicion}[1][Definición]{base,colback=tinta!5,borderline west={2.5pt}{0pt}{tinta},
+  colbacktitle=tinta,title={#1}}
+\newtcolorbox{teorema}[1][Teorema]{base,colback=tinta2!6,borderline west={2.5pt}{0pt}{tinta2},
+  colbacktitle=tinta2,title={#1}}
+\newtcolorbox{ejemplo}[1][Ejemplo]{base,colback=verde!5,borderline west={2.5pt}{0pt}{verde},
+  colbacktitle=verde,title={#1}}
+\newtcolorbox{ojo}[1][Advertencia]{base,colback=ambar!7,borderline west={2.5pt}{0pt}{ambar},
+  colbacktitle=ambar,title={#1}}
+\newtcolorbox{metodo}[1][Método]{base,colback=papel,borderline west={2.5pt}{0pt}{black!55},
+  colbacktitle=black!65,title={#1}}
+\newtcolorbox{respuesta}{enhanced,boxrule=0.6pt,colframe=verde!70!black,colback=verde!4,arc=1.5pt,
+  left=8pt,right=8pt,top=4pt,bottom=4pt,before skip=0.6em,after skip=0.8em}
+\newcommand{\resp}[1]{\begin{respuesta}\textbf{\sffamily\color{verde!70!black}Respuesta.} #1\end{respuesta}}
+\newtcolorbox{enunciado}{enhanced,breakable,boxrule=0pt,colback=black!4,arc=1.5pt,left=8pt,right=8pt,top=5pt,bottom=5pt,
+  before skip=0.6em,after skip=0.6em,fontupper=\itshape}
+
+% -------------------------------------------------- estilos de TikZ
+\tikzset{
+  hasse/.style={draw=tinta!45,line width=0.35pt},
+  nodoh/.style={circle,draw=tinta,fill=white,inner sep=0.8pt,minimum size=5.6mm,font=\scriptsize},
+  pto/.style={inner sep=2pt,font=\normalsize},
+  flecha/.style={-{Stealth[length=2.2mm]},line width=0.55pt},
+  ovalo/.style={draw=black!70,line width=0.5pt,ellipse,minimum width=2.1cm,minimum height=3.9cm},
+}
+% diagrama de flechas de una función entre conjuntos de 4 puntos:
+% \diagrama{nombre}{d1,d2,d3,d4}{c1,c2,c3,c4}{i1/j1,i2/j2,...}
+\newcommand{\diagrama}[4]{%
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+  \node[ovalo] (L) at (0,0) {};
+  \node[ovalo] (Rr) at (3.6,0) {};
+  \node at (1.8,2.05) {$#1$};
+  \foreach \t [count=\i] in {#2} {\node[pto] (l\i) at (0,1.5-\i*0.6) {$\t$};}
+  \foreach \t [count=\i] in {#3} {\node[pto] (r\i) at (3.6,1.5-\i*0.6) {$\t$};}
+  \foreach \a/\b in {#4} {\draw[flecha] (l\a) -- (r\b);}
+\end{tikzpicture}}
