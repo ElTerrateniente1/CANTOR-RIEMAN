@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 # =============================================================================
 # Piloto Raphanus sativus: simulante LHS-1 vs arena de rio x 4 tratamientos
-# Iteracion 1: control de calidad de las tablas resumen + inferencia preliminar
+# Control de calidad de las tablas resumen + inferencia (ANOVA factorial y contrastes H1-H4)
 #
 # Fuente UNICA de datos: tablas (media +/- DE) transcritas de las imagenes.
 # Supuesto de diseno S1 (deducido del texto "160 seeds ... 40 experimental units"):
@@ -109,6 +109,7 @@ prueba <- function(P, m, s) {
   c(any(okm & coincide(ss, s), na.rm = TRUE),
     if (any(okm)) ss[okm][which.min(abs(ss[okm] - s))] else NA)
 }
+sup_s_alt <- numeric(nrow(celdas))   # DE reproducible mas cercana (definicion A0), para sensibilidad
 for (i in seq_len(nrow(celdas))) {
   tot <- round(celdas$germ_m[i] / 100 * n_u * n_s)
   G   <- g_all[rowSums(g_all) == tot, , drop = FALSE]
@@ -123,6 +124,7 @@ for (i in seq_len(nrow(celdas))) {
                         prueba(A1, celdas$sup_m[i], celdas$sup_s[i]),
                         prueba(100 * S / n_s, celdas$sup_m[i], celdas$sup_s[i])))
   }
+  c0 <- out[!is.na(out[, 2]), 2]; sup_s_alt[i] <- c0[which.min(abs(c0 - celdas$sup_s[i]))]
   res <- sapply(c(1, 3, 5), function(j) {
     cerca <- out[, j + 1]; cerca <- cerca[!is.na(cerca)]
     sprintf("%-2s (%s)", if (any(out[, j] == 1)) "SI" else "NO",
@@ -261,3 +263,112 @@ cat(sprintf("Unidades por sustrato para detectar %.1f puntos con potencia 0.80: 
 pa <- power.anova.test(groups = 4, between.var = var(mt), within.var = cme, power = 0.80, sig.level = alpha)
 cat(sprintf("Unidades por tratamiento para detectar el patron observado entre tratamientos (potencia 0.80): %.0f\n",
             ceiling(pa$n)))
+
+# ----------------------------------------------------------------------------
+# 6. Contrastes planificados por hipotesis
+#    H1 sustrato | H2 dosis del aditivo (0, 5, 10 %) | H3 aditivo vs convencional
+#    H4 efecto del sustrato dentro de cada tratamiento (interaccion)
+#    Orden de las 8 celdas: LHS-1 (C, A5, A10, Conv), River sand (C, A5, A10, Conv)
+# ----------------------------------------------------------------------------
+amb    <- function(v) rep(v, 2) / 2                       # promedio sobre ambos sustratos
+lhs    <- function(v) c(v, 0, 0, 0, 0)
+riv    <- function(v) c(0, 0, 0, 0, v)
+sus_en <- function(t) { w <- numeric(8); w[c(t, t + 4)] <- c(1, -1); w }
+k <- function(H, nombre, w, permuta = "tratamiento", tipo = "2g", perm_celdas = which(w != 0), fam = nombre)
+  list(H = H, nombre = nombre, w = w, permuta = permuta, tipo = tipo, perm_celdas = perm_celdas, fam = fam)
+ctr <- list(
+  k("H1", "Sustrato: LHS-1 - River sand", c(1, 1, 1, 1, -1, -1, -1, -1) / 4, permuta = "sustrato"),
+  k("H2", "Dosis lineal 0->10 % (global)",        amb(c(-1, 0, 1, 0)), tipo = "tend", perm_celdas = c(1, 2, 3, 5, 6, 7)),
+  k("H2", "Dosis lineal 0->10 % en LHS-1",        lhs(c(-1, 0, 1, 0)), tipo = "tend", perm_celdas = 1:3),
+  k("H2", "Dosis lineal 0->10 % en River sand",   riv(c(-1, 0, 1, 0)), tipo = "tend", perm_celdas = 5:7),
+  k("H2", "Curvatura C - 2*A5 + A10 (global)",    amb(c(1, -2, 1, 0)), tipo = "curv"),
+  k("H2", "Primer escalon: A5 - Control (global)", amb(c(-1, 1, 0, 0))),
+  k("H3", "A5 - Convencional (global)",           amb(c(0, 1, 0, -1)),  fam = "H3 global"),
+  k("H3", "A10 - Convencional (global)",          amb(c(0, 0, 1, -1)),  fam = "H3 global"),
+  k("H3", "A5 y A10 - Convencional (global)",     amb(c(0, .5, .5, -1))),
+  k("H3", "A5 - Convencional en LHS-1",           lhs(c(0, 1, 0, -1)),  fam = "H3 por sustrato"),
+  k("H3", "A10 - Convencional en LHS-1",          lhs(c(0, 0, 1, -1)),  fam = "H3 por sustrato"),
+  k("H3", "A5 - Convencional en River sand",      riv(c(0, 1, 0, -1)),  fam = "H3 por sustrato"),
+  k("H3", "A10 - Convencional en River sand",     riv(c(0, 0, 1, -1)),  fam = "H3 por sustrato"),
+  k("H4", "LHS-1 - River sand en Control",        sus_en(1), permuta = "sustrato", fam = "H4"),
+  k("H4", "LHS-1 - River sand en A5",             sus_en(2), permuta = "sustrato", fam = "H4"),
+  k("H4", "LHS-1 - River sand en A10",            sus_en(3), permuta = "sustrato", fam = "H4"),
+  k("H4", "LHS-1 - River sand en Convencional",   sus_en(4), permuta = "sustrato", fam = "H4")
+)
+fam  <- sapply(ctr, `[[`, "fam")
+holm <- function(p) ave(p, fam, FUN = function(x) p.adjust(x, "holm"))   # Holm dentro de cada familia
+
+titulo("6a. SUPERVIVENCIA - contrastes planificados (CME agrupado del ANOVA, 32 gl; diferencias en puntos %)")
+contraste_resumen <- function(w, m, s) {
+  est <- sum(w * m); ee <- sqrt(cme * sum(w^2) / n_u); tq <- qt(1 - alpha / 2, gl_e)
+  v_w <- w^2 * s^2 / n_u; gl_w <- sum(v_w)^2 / sum(v_w^2 / (n_u - 1))     # Welch-Satterthwaite
+  c(dif = est, EE = ee, IC_inf = est - tq * ee, IC_sup = est + tq * ee,
+    p = 2 * pt(-abs(est / ee), gl_e), p_Welch = 2 * pt(-abs(est / sqrt(sum(v_w))), gl_w))
+}
+tab_s <- data.frame(H = sapply(ctr, `[[`, "H"), contraste = sapply(ctr, `[[`, "nombre"),
+                    t(sapply(ctr, function(x) contraste_resumen(x$w, celdas$sup_m, celdas$sup_s))))
+tab_s$p_Holm <- holm(tab_s$p)
+print(cbind(tab_s[, 1:2], round(tab_s[, 3:6], 1), round(tab_s[, 7:9], 3)), row.names = FALSE)
+cat(sprintf("\nPendiente dosis-respuesta global: %.2f puntos por cada 1 %% de aditivo; IC %g%% [%.2f, %.2f]\n",
+            tab_s$dif[2] / 10, 100 * (1 - alpha), tab_s$IC_inf[2] / 10, tab_s$IC_sup[2] / 10))
+
+cat("\nSensibilidad: mismo ANOVA con la DE reproducible mas cercana en cada celda\n")
+av_alt <- anova_resumen(celdas$sup_m, sup_s_alt, celdas$sustrato, celdas$tratamiento, n_u)
+print(round(data.frame(DE_reportada = celdas$sup_s, DE_alternativa = sup_s_alt), 1))
+print(round(data.frame(p_reportada = av_sup$tabla$p[1:3], p_alternativa = av_alt$tabla$p[1:3],
+                       row.names = rownames(av_sup$tabla)[1:3]), 4))
+cat(sprintf("CME: %.1f (reportada) vs %.1f (alternativa)\n", av_sup$cme, av_alt$cme))
+
+titulo("6b. GERMINACION - contrastes planificados (diferencias en puntos %)")
+# p_exacta: Fisher (2 grupos) o tendencia exacta condicional (dosis 0, 5, 10); semillas independientes.
+# IC: Newcombe (score hibrido) para la diferencia de proporciones; semillas independientes.
+# p_perm: permutacion estratificada con la MACETA como unidad (conteos reconstruidos en 1c);
+#         a / b = las dos configuraciones candidatas de River sand / Additive 5 %.
+wilson <- function(x, n) {
+  z <- qnorm(1 - alpha / 2); p <- x / n; d <- 1 + z^2 / n
+  (p + z^2 / (2 * n)) / d + c(-1, 1) * z * sqrt(p * (1 - p) / n + z^2 / (4 * n^2)) / d
+}
+newcombe <- function(x1, n1, x2, n2) {
+  p1 <- x1 / n1; p2 <- x2 / n2; w1 <- wilson(x1, n1); w2 <- wilson(x2, n2)
+  (p1 - p2) + c(-sqrt((p1 - w1[1])^2 + (w2[2] - p2)^2), sqrt((w1[2] - p1)^2 + (p2 - w2[1])^2))
+}
+tendencia_exacta <- function(x, n, score) {       # condicional a los totales (hipergeometrica multivariada)
+  f <- n - x; tf <- sum(f)
+  gr <- as.matrix(expand.grid(lapply(n, function(m) 0:min(m, tf)))); gr <- gr[rowSums(gr) == tf, , drop = FALSE]
+  pr <- apply(gr, 1, function(r) prod(choose(n, r))) / choose(sum(n), tf)
+  tt <- gr %*% score; e <- sum(pr * tt)
+  sum(pr[abs(tt - e) >= abs(sum(f * score) - e) - 1e-9])
+}
+perm_p <- function(g_u, x, B = 10000) {
+  est <- function(gl) sum(x$w * sapply(gl, mean)) * 100 / n_s
+  grupos <- if (x$permuta == "tratamiento") list(1:4, 5:8) else lapply(1:4, function(t) c(t, t + 4))
+  grupos <- lapply(grupos, intersect, x$perm_celdas); grupos <- grupos[lengths(grupos) > 1]
+  obs <- est(g_u)
+  sim <- replicate(B, {
+    gp <- g_u
+    for (ix in grupos) gp[ix] <- split(sample(unlist(g_u[ix])), rep(seq_along(ix), lengths(g_u[ix])))
+    est(gp)
+  })
+  (1 + sum(abs(sim) >= abs(obs) - 1e-9)) / (B + 1)
+}
+germ_fila <- function(x) {
+  pos <- which(x$w > 0); neg <- which(x$w < 0)
+  x1 <- sum(celdas$germ_k[pos]); n1 <- sum(celdas$n_sem[pos])
+  x2 <- sum(celdas$germ_k[neg]); n2 <- sum(celdas$n_sem[neg])
+  ic <- if (x$tipo == "curv") c(NA, NA) else 100 * newcombe(x1, n1, x2, n2)
+  p  <- switch(x$tipo,
+    curv = NA,
+    tend = tendencia_exacta(rowSums(matrix(celdas$germ_k[x$perm_celdas], nrow = 3)),
+                            rowSums(matrix(celdas$n_sem[x$perm_celdas],  nrow = 3)), c(0, 5, 10)),
+    fisher.test(matrix(c(x1, n1 - x1, x2, n2 - x2), 2))$p.value)
+  pp <- sapply(seq_len(n_cand), function(j) {
+    set.seed(2026)
+    perm_p(lapply(seq_along(rec_germ), function(i) rec_germ[[i]][if (i == 6) j else 1, ]), x)
+  })
+  c(dif = sum(x$w * celdas$germ_m), IC_inf = ic[1], IC_sup = ic[2], p_exacta = p, p_perm_a = pp[1], p_perm_b = pp[2])
+}
+tab_g <- data.frame(H = sapply(ctr, `[[`, "H"), contraste = sapply(ctr, `[[`, "nombre"), t(sapply(ctr, germ_fila)))
+tab_g$p_Holm <- holm(tab_g$p_exacta)
+cat(sprintf("Candidatas River sand / Additive 5 %%: a = (%s), b = (%s)\n",
+            paste(rec_germ[[6]][1, ], collapse = ","), paste(rec_germ[[6]][2, ], collapse = ",")))
+print(cbind(tab_g[, 1:2], round(tab_g[, 3:5], 1), round(tab_g[, c(6, 9, 7, 8)], 4)), row.names = FALSE)

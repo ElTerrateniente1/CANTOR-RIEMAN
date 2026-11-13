@@ -189,3 +189,66 @@ Potencia actual para la diferencia observada entre sustratos (15.4; 20 vs 20 uni
 Diferencia minima detectable con potencia 0.80 (20 vs 20): 29.0 puntos
 Unidades por sustrato para detectar 15.4 puntos con potencia 0.80: 68
 Unidades por tratamiento para detectar el patron observado entre tratamientos (potencia 0.80): 45
+
+====================================================================================================
+6a. SUPERVIVENCIA - contrastes planificados (CME agrupado del ANOVA, 32 gl; diferencias en puntos %)
+====================================================================================================
+  H                             contraste  dif   EE IC_inf IC_sup     p p_Welch p_Holm
+ H1          Sustrato: LHS-1 - River sand 15.4 10.1   -5.1   35.9 0.135   0.137  0.135
+ H2         Dosis lineal 0->10 % (global) 21.6 14.2   -7.4   50.7 0.138   0.126  0.138
+ H2         Dosis lineal 0->10 % en LHS-1 30.0 20.1  -11.0   71.0 0.146   0.132  0.146
+ H2    Dosis lineal 0->10 % en River sand 13.3 20.1  -27.7   54.3 0.514   0.525  0.514
+ H2     Curvatura C - 2*A5 + A10 (global)  1.6 24.7  -48.6   51.9 0.947   0.948  0.947
+ H2 Primer escalon: A5 - Control (global) 10.0 14.2  -19.0   39.0 0.488   0.475  0.488
+ H3            A5 - Convencional (global)  4.2 14.2  -24.8   33.2 0.770   0.786  0.770
+ H3           A10 - Convencional (global) 15.9 14.2  -13.2   44.9 0.274   0.303  0.548
+ H3      A5 y A10 - Convencional (global) 10.0 12.3  -15.1   35.1 0.422   0.456  0.422
+ H3            A5 - Convencional en LHS-1  1.7 20.1  -39.3   42.7 0.933   0.938  1.000
+ H3           A10 - Convencional en LHS-1 21.7 20.1  -19.3   62.7 0.289   0.304  1.000
+ H3       A5 - Convencional en River sand  6.7 20.1  -34.3   47.7 0.742   0.765  1.000
+ H3      A10 - Convencional en River sand 10.0 20.1  -31.0   51.0 0.623   0.667  1.000
+ H4         LHS-1 - River sand en Control 10.0 20.1  -31.0   51.0 0.623   0.578  1.000
+ H4              LHS-1 - River sand en A5 10.0 20.1  -31.0   51.0 0.623   0.651  1.000
+ H4             LHS-1 - River sand en A10 26.7 20.1  -14.3   67.7 0.194   0.231  0.777
+ H4    LHS-1 - River sand en Convencional 15.0 20.1  -26.0   56.0 0.462   0.510  1.000
+
+Pendiente dosis-respuesta global: 2.17 puntos por cada 1 % de aditivo; IC 95% [-0.74, 5.07]
+
+Sensibilidad: mismo ANOVA con la DE reproducible mas cercana en cada celda
+  DE_reportada DE_alternativa
+1         32.4           32.6
+2         29.6           28.5
+3         22.4           22.4
+4         37.3           37.5
+5         20.4           20.9
+6         37.1           37.1
+7         39.1           37.3
+8         31.2           30.3
+                       p_reportada p_alternativa
+Sustrato                    0.1354        0.1305
+Tratamiento                 0.4886        0.4772
+Sustrato x Tratamiento      0.9270        0.9244
+CME: 1014.2 (reportada) vs 987.8 (alternativa)
+
+====================================================================================================
+6b. GERMINACION - contrastes planificados (diferencias en puntos %)
+====================================================================================================
+Candidatas River sand / Additive 5 %: a = (4,4,3,3,1), b = (4,4,3,2,2)
+  H                             contraste   dif IC_inf IC_sup p_exacta p_Holm p_perm_a p_perm_b
+ H1          Sustrato: LHS-1 - River sand   0.0   -9.8    9.8   1.0000 1.0000   1.0000   1.0000
+ H2         Dosis lineal 0->10 % (global)  -5.0  -16.5    4.5   0.4818 0.4818   0.6481   0.5592
+ H2         Dosis lineal 0->10 % en LHS-1  -5.0  -23.6   11.6   0.6667 0.6667   0.6718   0.6718
+ H2    Dosis lineal 0->10 % en River sand  -5.0  -23.6   11.6   0.7976 0.7976   0.8875   0.8259
+ H2     Curvatura C - 2*A5 + A10 (global)  20.0     NA     NA       NA     NA   0.1097   0.0653
+ H2 Primer escalon: A5 - Control (global) -12.5  -26.1   -1.3   0.0547 0.0547   0.1600   0.1600
+ H3            A5 - Convencional (global)  10.0   -7.0   26.6   0.3781 0.3781   0.5873   0.5861
+ H3           A10 - Convencional (global)  17.5    2.1   32.9   0.0476 0.0953   0.1801   0.1801
+ H3      A5 y A10 - Convencional (global)  13.8    0.7   29.4   0.0477 0.0477   0.1690   0.1533
+ H3            A5 - Convencional en LHS-1  35.0   11.7   56.7   0.0083 0.0333   0.1655   0.1655
+ H3           A10 - Convencional en LHS-1  30.0    4.9   52.1   0.0436 0.1308   0.2857   0.2857
+ H3       A5 - Convencional en River sand -15.0  -38.0    9.4   0.4075 0.8150   0.6508   0.4479
+ H3      A10 - Convencional en River sand   5.0  -15.0   25.5   1.0000 1.0000   1.0000   1.0000
+ H4         LHS-1 - River sand en Control   0.0  -16.1   16.1   1.0000 1.0000   1.0000   1.0000
+ H4              LHS-1 - River sand en A5  25.0    3.8   46.9   0.0471 0.1885   0.1655   0.1655
+ H4             LHS-1 - River sand en A10   0.0  -19.1   19.1   1.0000 1.0000   1.0000   1.0000
+ H4    LHS-1 - River sand en Convencional -25.0  -47.9    1.3   0.1274 0.3822   0.4093   0.4093
