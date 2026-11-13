@@ -1,0 +1,191 @@
+
+====================================================================================================
+0. DATOS TRANSCRITOS (por celda)
+====================================================================================================
+   sustrato  tratamiento germ_m germ_s sup_m sup_s dli_m dli_s
+      LHS-1      Control    100    0.0  55.0  32.4 10.73  1.02
+      LHS-1  Additive 5%    100    0.0  65.0  29.6 10.73  1.02
+      LHS-1 Additive 10%     95   11.2  85.0  22.4  9.52  1.00
+      LHS-1 Conventional     65   41.8  63.3  37.3  9.52  0.97
+ River sand      Control    100    0.0  45.0  20.4  8.87  1.10
+ River sand  Additive 5%     75   27.9  55.0  37.1  8.87  1.10
+ River sand Additive 10%     95   11.2  58.3  39.1 10.77  1.08
+ River sand Conventional     90   13.7  48.3  31.2 10.77  1.08
+
+====================================================================================================
+1a. QC - medias marginales reportadas vs. promedio de medias de celda
+====================================================================================================
+          Control Additive 5% Additive 10% Conventional
+germ_calc   100.0        87.5        95.00        77.50
+germ_rep    100.0        87.5        95.00        77.50
+sup_calc     50.0        60.0        71.65        55.80
+sup_rep      50.0        60.0        71.70        55.80
+dli_calc      9.8         9.8        10.14        10.14
+dli_rep       9.8         9.8        10.15        10.15
+          LHS-1 River sand
+germ_calc 90.00      90.00
+germ_rep  90.00      90.00
+sup_calc  67.08      51.65
+sup_rep   67.10      51.70
+dli_calc  10.12       9.82
+dli_rep   10.13       9.82
+
+====================================================================================================
+1b. QC - DE marginal reportada vs. DE implicada por las celdas (n = 5 por celda)
+====================================================================================================
+               Control Additive 5% Additive 10% Conventional LHS-1 River sand
+germ_implicada     0.0        22.8         10.6         32.1  24.9       17.9
+germ_reportada     0.0        21.8         10.5         32.4  23.7       18.7
+sup_implicada     26.1        32.1         33.2         33.4  30.5       30.6
+sup_reportada     26.7        32.4         31.4         34.3  31.6       32.4
+
+====================================================================================================
+1c. QC - reconstruccion de conteos por unidad (5 unidades x 4 semillas)
+====================================================================================================
+Germinacion: configuraciones (germinadas por unidad) compatibles con media +/- DE
+  LHS-1      Control       100.0 +/-  0.0  ->  4,4,4,4,4
+  LHS-1      Additive 5%   100.0 +/-  0.0  ->  4,4,4,4,4
+  LHS-1      Additive 10%   95.0 +/- 11.2  ->  4,4,4,4,3
+  LHS-1      Conventional   65.0 +/- 41.8  ->  4,4,3,2,0
+  River sand Control       100.0 +/-  0.0  ->  4,4,4,4,4
+  River sand Additive 5%    75.0 +/- 27.9  ->  NINGUNA. Mas cercanas: 4,4,3,3,1 (DE=30.6) | 4,4,3,2,2 (DE=25.0)
+  River sand Additive 10%   95.0 +/- 11.2  ->  4,4,4,4,3
+  River sand Conventional   90.0 +/- 13.7  ->  4,4,4,3,3
+
+Supervivencia: existe alguna configuracion entera que reproduzca media +/- DE?
+  (entre parentesis: DE alcanzable mas cercana cuando la media si coincide)
+  LHS-1      Control        55.0 +/- 32.4  ->  A0: NO (32.6)              A1: NO (32.6)              B: NO (32.6)
+  LHS-1      Additive 5%    65.0 +/- 29.6  ->  A0: NO (28.5)              A1: NO (28.5)              B: NO (28.5)
+  LHS-1      Additive 10%   85.0 +/- 22.4  ->  A0: SI (22.4)              A1: SI (22.4)              B: SI (22.4)
+  LHS-1      Conventional   63.3 +/- 37.3  ->  A0: NO (37.5)              A1: NO (37.5)              B: NO (media imposible)
+  River sand Control        45.0 +/- 20.4  ->  A0: NO (20.9)              A1: NO (20.9)              B: NO (20.9)
+  River sand Additive 5%    55.0 +/- 37.1  ->  A0: SI (37.1)              A1: SI (37.1)              B: SI (37.1)
+  River sand Additive 10%   58.3 +/- 39.1  ->  A0: NO (37.3)              A1: NO (37.3)              B: NO (media imposible)
+  River sand Conventional   48.3 +/- 31.2  ->  A0: NO (30.3)              A1: NO (30.3)              B: NO (media imposible)
+
+====================================================================================================
+1d. QC - estructura del DLI (confusion con el diseno)
+====================================================================================================
+  dli_m       sup_m    germ_m
+1  8.87     45 / 55  100 / 75
+2  9.52   85 / 63.3   95 / 65
+3 10.73     55 / 65 100 / 100
+4 10.77 58.3 / 48.3   95 / 90
+Celdas por valor de DLI:
+                                                 8.87                                                  9.52 
+      "River sand:Control  +  River sand:Additive 5%"           "LHS-1:Additive 10%  +  LHS-1:Conventional" 
+                                                10.73                                                 10.77 
+                "LHS-1:Control  +  LHS-1:Additive 5%" "River sand:Additive 10%  +  River sand:Conventional" 
+
+====================================================================================================
+2a. SUPERVIVENCIA (%) - ANOVA 2x4 desde medias y DE de celda
+====================================================================================================
+                       gl      SC     CM      F      p eta2_parcial
+Sustrato                1  2379.3 2379.3 2.3459 0.1354       0.0683
+Tratamiento             3  2517.4  839.1 0.8274 0.4886       0.0720
+Sustrato x Tratamiento  3   465.4  155.1 0.1530 0.9270       0.0141
+Error                  32 32455.2 1014.2     NA     NA           NA
+Razon de varianzas max/min entre celdas: 3.67
+
+Diferencia LHS-1 - River sand: 15.4 puntos; IC 95%: [-5.1, 35.9]; d de Cohen = 0.48
+
+Comparaciones entre tratamientos (Tukey HSD, IC simultaneos):
+                   contraste   dif IC_inf IC_sup p_Tukey
+       Additive 5% - Control  10.0  -28.6   48.6   0.895
+      Additive 10% - Control  21.7  -16.9   60.2   0.438
+      Conventional - Control   5.8  -32.8   44.4   0.977
+  Additive 10% - Additive 5%  11.7  -26.9   50.2   0.846
+  Conventional - Additive 5%  -4.2  -42.8   34.4   0.991
+ Conventional - Additive 10% -15.9  -54.4   22.7   0.684
+
+====================================================================================================
+2b. GERMINACION (%) - mismo ANOVA, SOLO para mostrar por que no es adecuado aqui
+====================================================================================================
+                       gl    SC     CM     F      p eta2_parcial
+Sustrato                1     0    0.0 0.000 1.0000       0.0000
+Tratamiento             3  2875  958.3 2.586 0.0702       0.1952
+Sustrato x Tratamiento  3  3125 1041.7 2.811 0.0551       0.2086
+Error                  32 11857  370.5    NA     NA           NA
+Varianzas de celda: 0 0 125 1747 0 778 125 188  -> 3 celdas con varianza 0 (homocedasticidad violada)
+
+====================================================================================================
+3a. GERMINACION - conteos por celda e IC exactos de Clopper-Pearson
+====================================================================================================
+   sustrato  tratamiento germ_k n_sem prop IC_inf IC_sup
+      LHS-1      Control     20    20 1.00  0.832  1.000
+      LHS-1  Additive 5%     20    20 1.00  0.832  1.000
+      LHS-1 Additive 10%     19    20 0.95  0.751  0.999
+      LHS-1 Conventional     13    20 0.65  0.408  0.846
+ River sand      Control     20    20 1.00  0.832  1.000
+ River sand  Additive 5%     15    20 0.75  0.509  0.913
+ River sand Additive 10%     19    20 0.95  0.751  0.999
+ River sand Conventional     18    20 0.90  0.683  0.988
+
+====================================================================================================
+3b. GERMINACION - pruebas exactas (suponen semillas independientes)
+====================================================================================================
+              Control Additive 5% Additive 10% Conventional
+germinadas         40          35           38           31
+no_germinadas       0           5            2            9
+              LHS-1 River sand
+germinadas       72         72
+no_germinadas     8          8
+Fisher exacto, sustrato (2x2):        p = 1.0000
+Fisher exacto, tratamiento (4x2):     p = 0.0030
+Fisher exacto, 8 celdas (8x2):        p = 0.0003
+Fisher exacto, tratamiento dentro de LHS-1      p = 0.0007
+Fisher exacto, tratamiento dentro de River sand p = 0.0711
+
+Cada tratamiento vs Control (marginal, n = 40 vs 40), p cruda y ajustada por Holm:
+        Additive 5% Additive 10% Conventional
+p_cruda      0.0547       0.4937       0.0024
+p_Holm       0.1095       0.4937       0.0071
+
+====================================================================================================
+3c. GERMINACION - GLM binomial (logit), analisis de devianza secuencial
+====================================================================================================
+Analysis of Deviance Table
+
+Model: binomial, link: logit
+
+Response: cbind(germ_k, n_sem - germ_k)
+
+Terms added sequentially (first to last)
+
+
+                     Df Deviance Resid. Df Resid. Dev Pr(>Chi)   
+NULL                                     7       26.8            
+sustrato              1      0.0         6       26.8   1.0000   
+tratamiento           3     15.3         3       11.4   0.0015 **
+sustrato:tratamiento  3     11.4         0        0.0   0.0097 **
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+====================================================================================================
+3d. GERMINACION - sensibilidad a sobredispersion (la unidad experimental es la maceta)
+====================================================================================================
+River sand / Additive 5% = (4,4,3,3,1): X2 = 32.1; phi(32 gl) = 1.00; phi(celdas informativas, 20 gl) = 1.60
+               efecto F_cuasi gl1 gl2      p
+             sustrato    0.00   1  20 1.0000
+          tratamiento    3.19   3  20 0.0458
+ sustrato:tratamiento    2.37   3  20 0.1010
+River sand / Additive 5% = (4,4,3,2,2): X2 = 29.4; phi(32 gl) = 0.92; phi(celdas informativas, 20 gl) = 1.47
+               efecto F_cuasi gl1 gl2      p
+             sustrato    0.00   1  20 1.0000
+          tratamiento    3.48   3  20 0.0351
+ sustrato:tratamiento    2.59   3  20 0.0817
+
+====================================================================================================
+4. DLI - asociacion a nivel de celda (ecologica, n = 8)
+====================================================================================================
+sup_m   Pearson r = -0.019, IC 95% [-0.71, 0.69], p = 0.964 | Spearman rho =  0.098, p = 0.817
+germ_m  Pearson r =  0.424, IC 95% [-0.40, 0.87], p = 0.295 | Spearman rho =  0.101, p = 0.813
+
+====================================================================================================
+5. POTENCIA (supervivencia; DE residual del ANOVA 2a)
+====================================================================================================
+DE residual = 31.8 puntos porcentuales
+Potencia actual para la diferencia observada entre sustratos (15.4; 20 vs 20 unidades): 0.32
+Diferencia minima detectable con potencia 0.80 (20 vs 20): 29.0 puntos
+Unidades por sustrato para detectar 15.4 puntos con potencia 0.80: 68
+Unidades por tratamiento para detectar el patron observado entre tratamientos (potencia 0.80): 45
