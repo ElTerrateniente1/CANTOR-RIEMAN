@@ -1,0 +1,21 @@
+% Preambulo comun de los tres documentos (el idioma de babel se carga antes de este archivo)
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage[round]{natbib}
+\usepackage[hidelinks]{hyperref}
+\captionsetup{font=small,labelfont=bf,justification=justified,singlelinecheck=false}
+\captionsetup[table]{position=top,skip=6pt}
+\renewcommand{\arraystretch}{1.25}
+\setlength{\parskip}{0.45em}
+\setlength{\parindent}{0pt}
+\graphicspath{{figuras/}}
+\newcommand{\tabla}[1]{\centering\small\setlength{\tabcolsep}{4.5pt}\input{tablas/#1}}
