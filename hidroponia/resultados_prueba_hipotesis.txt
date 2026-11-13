@@ -1,0 +1,78 @@
+
+====================================================================================================
+1. Datos de la hipotesis: supervivencia (%) en LHS-1 segun proporcion de sustrato ionitoponico
+====================================================================================================
+ proporcion sup_m sup_s germ_m dli_m n
+        0 %    55  32.4    100 10.73 5
+        5 %    65  29.6    100 10.73 5
+       10 %    85  22.4     95  9.52 5
+
+====================================================================================================
+2. ANOVA de una via (dosis en LHS-1) con particion ortogonal; error = CME agrupado (32 gl)
+====================================================================================================
+                                gl    SC   CM     F p_bilateral
+Dosis (0, 5, 10 %)               2  2333 1167 1.150      0.3293
+  C1: enmendado vs sin enmendar  1  1333 1333 1.315      0.2601
+  C2: 10 % vs 5 %                1  1000 1000 0.986      0.3282
+Error                           32 32455 1014    NA          NA
+
+====================================================================================================
+3. PRUEBA DE HIPOTESIS (contrastes planificados; diferencias en puntos porcentuales)
+====================================================================================================
+                                                  estimacion    EE     t gl     p IC95_inf IC95_sup
+C1 enmendado - sin enmendar (unilateral, H1: > 0)         20 17.44 1.147 32 0.130   -15.53    55.53
+C2 10 % - 5 % (bilateral)                                 20 20.14 0.993 32 0.328   -21.03    61.03
+                                                  cota_inf_95_unilateral p_Holm       decision
+C1 enmendado - sin enmendar (unilateral, H1: > 0)                 -9.547  0.260 No rechazar H0
+C2 10 % - 5 % (bilateral)                                        -14.118  0.328 No rechazar H0
+p bilateral de C1 (referencia): 0.260
+
+Complementarios: cada proporcion frente a 0 % (unilateral, Holm). Con dosis equiespaciadas,
+'10 % - 0 %' coincide con el contraste de tendencia lineal.
+                                estimacion    EE     t gl     p IC95_inf IC95_sup cota_inf_95_unilateral p_Holm
+ 5 % - 0 %                              10 20.14 0.496 32 0.311   -31.03    51.03                -24.118  0.311
+10 % - 0 % (= tendencia lineal)         30 20.14 1.489 32 0.073   -11.03    71.03                 -4.118  0.146
+
+====================================================================================================
+4. Sensibilidad del resultado al termino de error
+====================================================================================================
+C1 (unilateral):
+                                      EE     t    gl     p
+CME agrupado, 8 celdas (principal) 17.44 1.147 32.00 0.130
+CME solo celdas del contraste      15.58 1.284 12.00 0.112
+Welch-Satterthwaite (sin agrupar)  16.70 1.198  6.67 0.136
+CME agrupado con DE alternativas   17.22 1.162 32.00 0.127
+C2 (bilateral):
+                                      EE     t    gl     p
+CME agrupado, 8 celdas (principal) 20.14 0.993 32.00 0.328
+CME solo celdas del contraste      16.60 1.205  8.00 0.263
+Welch-Satterthwaite (sin agrupar)  16.60 1.205  7.45 0.265
+CME agrupado con DE alternativas   19.88 1.006 32.00 0.322
+
+Sensibilidad a nivel de semilla (supone semillas independientes):
+  proporcion sobrevivientes germinadas  prop
+1        0 %             11         20 0.550
+2        5 %             13         20 0.650
+3       10 %             16         19 0.842
+  C1 Fisher unilateral, enmendado (29/39) vs sin enmendar (11/20): p = 0.113
+  C2 Fisher bilateral, 10 % (16/19) vs 5 % (13/20): p = 0.273
+  Tendencia exacta unilateral 0 -> 5 -> 10 %: p = 0.038
+  Sobredispersion entre macetas (var. observada / var. binomial) en 0, 5 y 10 %: 1.70, 1.54, 1.43; media = 1.56
+  Tendencia de Cochran-Armitage unilateral: z = 1.95, p = 0.026 | corregida por sobredispersion: z = 1.56, p = 0.059
+
+====================================================================================================
+5. Contexto de la hipotesis (secundario, bilateral, sin ajuste)
+====================================================================================================
+                                                            estimacion    EE      t     p IC95_inf IC95_sup
+Premisa: LHS-1 sin enmendar - LHS-1 con sol. convencional        -8.30 20.14 -0.412 0.683   -49.33    32.73
+Premisa: LHS-1 sin enmendar - River sand sin enmendar            10.00 20.14  0.496 0.623   -31.03    51.03
+Compensacion: LHS-1 enmendado - LHS-1 con sol. convencional      11.70 17.44  0.671 0.507   -23.83    47.23
+Efecto de la enmienda en River sand                              11.65 17.44  0.668 0.509   -23.88    47.18
+Especificidad: efecto en LHS-1 - efecto en River sand             8.35 24.67  0.338 0.737   -41.90    58.60
+
+====================================================================================================
+6. Potencia y tamano de muestra para el experimento confirmatorio (DE = raiz del CME)
+====================================================================================================
+DE residual supuesta: 31.8 puntos
+C1: potencia del piloto para la diferencia observada (20 puntos): 0.30 | unidades por grupo para potencia 0.80: 24
+C2: potencia del piloto para la diferencia observada (20 puntos): 0.16 | unidades por grupo para potencia 0.80: 41
