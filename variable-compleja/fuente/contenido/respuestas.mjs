@@ -1,0 +1,96 @@
+// Respuestas de las seis listas de referencia (todas comprobadas en verificacion/verificar_listas.py).
+//   e: enunciado abreviado (LaTeX) · r: respuesta (LaTeX) · k: idea clave (HTML con $...$) · d: dónde se resuelve en los videos
+import { r } from '../lib/mate.mjs';
+
+export default [
+  {
+    id: 'derivacion', nivel: 1, titulo: 'Derivación compleja',
+    items: [
+      { e: r`f=x+ay+i(bx+cy)\ \text{analítica};\ f(1+i)`, r: r`c=1,\ b=-a\ (a\in\R\text{ libre});\quad f(1+i)=(1+a)+i(1-a)`, k: r`C–R con parciales constantes; $f(z)=(1-ai)z$.`, d: 'Nivel 1, ej. 3' },
+      { e: r`f=\sqrt{|xy|}\ \text{en } z=0`, r: r`\text{Cumple C–R en }0\text{, pero no es derivable}`, k: r`Por $y=x$ el cociente incremental vale $\frac{1}{1+i}$; por el eje real, $0$.`, d: 'Nivel 1, ej. 1' },
+      { e: r`f=(z-i)^2\,\Re(iz^2)`, r: r`\text{Derivable solo en } z=0 \text{ y } z=i;\quad f'(0)=f'(i)=0`, k: r`$\partial f/\partial\bar z=-i\,\bar z\,(z-i)^2$. No es analítica en ningún punto.`, d: 'Nivel 1, ej. 2' },
+      { e: r`f,\ \bar f\ \text{analíticas};\quad |f|^2\ \text{analítica}`, r: r`f \text{ constante};\qquad |f| \text{ constante}`, k: r`C–R para $f$ y $\bar f$ anula todas las parciales. Una función analítica real es constante.`, d: 'Nivel 1, «Dos consecuencias»' },
+      { e: r`f=|x^2-y^2|+2i|xy|`, r: r`0<\theta<\tfrac{\pi}{4},\ \ \tfrac{\pi}{2}<\theta<\tfrac{3\pi}{4},\ \ \pi<\theta<\tfrac{5\pi}{4},\ \ \tfrac{3\pi}{2}<\theta<\tfrac{7\pi}{4}`, k: r`En esos sectores $f=\pm z^2$; en los otros, $f=\pm\bar z^{\,2}$.`, d: 'Nivel 1, ej. 6' },
+      { e: r`u=\dfrac{x}{x^2+y^2}`, r: r`v=\dfrac{-y}{x^2+y^2}+C,\qquad f=\dfrac1z`, k: r`$u=\Re(1/z)$; o integrar $v_y=u_x$ e imponer $v_x=-u_y$.`, d: 'Nivel 1, ej. 4' },
+      { e: r`f=\varphi(x^2+y^2)+iv`, r: r`\varphi(t)=a\ln t+b,\quad v=2a\arg z+c,\quad f=2a\Log z+\text{cte}`, k: r`Una función armónica radial es $A\ln r+B$. Dominio: donde el argumento sea continuo, p. ej. $\C\setminus(-\infty,0]$.`, d: 'Nivel 1, ej. 5' },
+      { e: r`\arg f=xy`, r: r`f(z)=C\,e^{z^2/2},\ C>0`, k: r`$f=e^{g}$ con $\Im g=xy=\Im\!\left(\tfrac12z^2\right)$.`, d: 'Nivel 1, ej. 5' },
+      { e: r`\ln z=\ln r+i\theta\ \text{(polares)}`, r: r`u_r=\tfrac1r=\tfrac1r v_\theta,\ \ v_r=0=-\tfrac1r u_\theta;\quad f'=\tfrac1z`, k: r`Matiz: con $\theta\in(-\pi,\pi]$ la función no es continua en el semieje negativo; es analítica en $\C\setminus(-\infty,0]$.`, d: 'Nivel 1, «C–R en polares»' },
+      { e: r`f=u+iv\ \text{analítica}\Rightarrow uv\ \text{armónica}`, r: r`uv=\tfrac12\,\Im(f^2)`, k: r`$f^2$ es analítica y su parte imaginaria es $2uv$.`, d: 'Nivel 1, ej. 7' },
+    ],
+  },
+  {
+    id: 'curvas', nivel: 2, titulo: 'Integrales sobre curvas',
+    items: [
+      { e: r`z^2;\ \alpha(t)=\cos t,\ 0\le t\le\tfrac{\pi}{2}`, r: r`-\tfrac13`, k: r`Va de $1$ a $0$; primitiva $z^3/3$.`, d: 'Nivel 2, «Tres ejercicios»' },
+      { e: r`\tfrac1z;\ \alpha(t)=e^{it},\ 0\le t\le\tfrac{\pi}{4}`, r: r`\tfrac{\pi}{4}\,i`, k: r`El integrando se reduce a $i$.`, d: 'Nivel 2, «Tres ejercicios»' },
+      { e: r`\Re^2(z)+1;\ \alpha(t)=t+i\arctan t,\ 0\le t\le1`, r: r`\tfrac43+i`, k: r`$\alpha'=1+\frac{i}{1+t^2}$ y $f(\alpha)=t^2+1$.`, d: 'Nivel 2, ej. 3' },
+      { e: r`e^{iz};\ \alpha(t)=t^2+i|t|,\ -1\le t\le1`, r: r`0`, k: r`$\alpha(-1)=\alpha(1)$: curva cerrada y $e^{iz}$ tiene primitiva.`, d: 'Nivel 2, ej. 4' },
+      { e: r`\Log z;\ \alpha(t)=1-t+it,\ 0\le t\le1`, r: r`1-\tfrac{\pi}{2}-i`, k: r`Primitiva $z\Log z-z$; el segmento evita el corte.`, d: 'Nivel 2, ej. 5' },
+      { e: r`\bar z;\ \text{cuarto de círculo unitario, 1.er cuadrante}`, r: r`\tfrac{\pi}{2}\,i`, k: r`Parametrizar: $\bar z\,\dd z=e^{-it}\,i\,e^{it}\dd t$.`, d: 'Nivel 2, ej. 2' },
+      { e: r`(z^2+4)^{-1};\ \text{semicírculo superior } |z|=1`, r: r`-\arctan\tfrac12`, k: r`Analítica en $|z|<2$: se cambia el arco por el segmento de $1$ a $-1$. (Si se toma el contorno cerrado del semidisco, $0$.)`, d: 'Nivel 2, ej. 6' },
+      { e: r`e^{iz};\ \text{triángulo } 0,\,1,\,i`, r: r`0`, k: r`Curva cerrada y función entera.`, d: 'Nivel 2, ej. 4' },
+      { e: r`z\sqrt z;\ \text{arco de parábola de } 1-i \text{ a } 1+i`, r: r`\tfrac45\,2^{5/4}\sen\tfrac{5\pi}{8}\;i\approx1{,}758\,i`, k: r`Primitiva $\frac25z^{5/2}$ (rama principal); el arco $x=y^2$ está en $\Re z\ge0$.`, d: 'Nivel 2, ej. 7' },
+      { e: r`\Im z+i\,\Re z;\ \text{segmento de } i \text{ a } 1+2i`, r: r`1+2i`, k: r`$f=i\bar z$ no es analítica: parametrizar con $\alpha(t)=t+i(1+t)$.`, d: 'Nivel 2, «Tres ejercicios»' },
+    ],
+  },
+  {
+    id: 'cauchy', nivel: 3, titulo: 'Fórmula integral de Cauchy',
+    items: [
+      { e: r`\oint_{|z-2i|=2}\frac{\cos2z}{z^2+4}\dd z`, r: r`\tfrac{\pi}{2}\cosh4`, k: r`Dentro solo $2i$; $g=\frac{\cos2z}{z+2i}$.`, d: 'Nivel 3, ej. 1' },
+      { e: r`\oint_{|z|=\frac12}\frac{e^{iz}}{z^2-iz}\dd z`, r: r`-2\pi`, k: r`Dentro solo $0$; $g=\frac{e^{iz}}{z-i}$.`, d: 'Nivel 3, «Dos ejercicios»' },
+      { e: r`\oint_{|z-\sqrt2|=1}\frac{z}{z^4+2z^2-8}\dd z`, r: r`\tfrac{\pi i}{6}`, k: r`$(z^2+4)(z^2-2)$; dentro solo $\sqrt2$.`, d: 'Nivel 3, ej. 2' },
+      { e: r`\oint_{|z+\pi i|=1}\frac{\sen z}{z^2+\pi^2}\dd z`, r: r`i\,\senh\pi`, k: r`Dentro solo $-\pi i$; $\sen(\pi i)=i\senh\pi$.`, d: 'Nivel 3, «Dos ejercicios»' },
+      { e: r`\oint_{|z+i|=1}\frac{e^{iz}}{(z+i)^3}\dd z`, r: r`-\pi e\,i`, k: r`$\frac{2\pi i}{2!}g''(-i)$ con $g=e^{iz}$.`, d: 'Nivel 3, ej. 3' },
+      { e: r`\oint_{|z-2i|=1}\frac{\dd z}{\Log^2z\,(z-2i)}`, r: r`\dfrac{2\pi i}{\left(\ln2+\frac{\pi}{2}i\right)^2}\approx1{,}5745-1{,}4367\,i`, k: r`$z=1$ y el corte quedan fuera; $g=1/\Log^2z$.`, d: 'Nivel 3, ej. 7' },
+      { e: r`\oint_{|z-w|=|w|}\frac{\dd z}{z^2-w^2}`, r: r`\tfrac{\pi i}{w}`, k: r`Dentro solo $w$.`, d: 'Nivel 3, ej. 5' },
+      { e: r`\oint_{\alpha}\frac{z+w}{z^2+w^2}\dd z`, r: r`\pi(1+i)\ \text{si }\Re w>0;\qquad\pi(-1+i)\ \text{si }\Re w<0`, k: r`Se asume el diámetro $[-2|w|,2|w|]$. Dentro: $iw$ o $-iw$ según el signo de $\Re w$.`, d: 'Nivel 3, ej. 6' },
+      { e: r`\oint_{\alpha}\frac{z+w}{(z^2+w^2)^2}\dd z`, r: r`\tfrac{\pi}{2w^2}\ \text{si }\Re w>0;\qquad-\tfrac{\pi}{2w^2}\ \text{si }\Re w<0`, k: r`Mismo contorno; polo doble, $2\pi i\,g'$.`, d: 'Nivel 3, ej. 6 (nota)' },
+      { e: r`\oint_{|z-i|=\frac12}\frac{\dd z}{(z^2+4)(z^2+1)^2}`, r: r`\tfrac{\pi}{18}`, k: r`Polo doble en $i$: $2\pi i\,g'(i)$, $g'(i)=-\frac{i}{36}$.`, d: 'Nivel 3, ej. 4' },
+    ],
+  },
+  {
+    id: 'residuos', nivel: 4, titulo: 'Teorema de los residuos',
+    items: [
+      { e: r`\oint_{|z|=3}\frac{\Log(z+4)}{z^2+4}\dd z`, r: r`\pi i\arctan\tfrac12`, k: r`Corte en $z\le-4$ (fuera); polos $\pm2i$.`, d: 'Nivel 4, ej. 6' },
+      { e: r`\oint_{|z-1|=\frac32}\frac{\dd z}{z^3-z}`, r: r`-\pi i`, k: r`Dentro $0$ y $1$: residuos $-1$ y $\frac12$.`, d: 'Nivel 4, ej. 1' },
+      { e: r`\oint_{|z|=1}\frac{e^z}{e^z-1}\dd z`, r: r`2\pi i`, k: r`Dentro solo $0$; regla $p/q$: residuo $1$.`, d: 'Nivel 4, ej. 3' },
+      { e: r`\oint_{|z|=2}\tan z\dd z`, r: r`-4\pi i`, k: r`Polos $\pm\frac{\pi}{2}$, residuo $-1$ cada uno.`, d: 'Nivel 4, ej. 2' },
+      { e: r`\oint_{|z-i|=3}\frac{e^{iz}}{z(z+i)^3}\dd z`, r: r`\pi(e-2)`, k: r`Residuos $i$ (en $0$) y $-\frac{ie}{2}$ (polo triple en $-i$).`, d: 'Nivel 4, ej. 4' },
+      { e: r`\oint_{|z-\sqrt3i|=3}\frac{z+2}{z^2+4z+7}\dd z`, r: r`\pi i`, k: r`Dentro solo $-2+\sqrt3i$; residuo $\frac12$.`, d: 'Nivel 4, ej. 5' },
+      { e: r`\oint_{|z|=2|w|}\frac{\dd z}{z^2-w^2}`, r: r`0`, k: r`Ambos polos dentro; residuos opuestos (o grados $0$ y $2$).`, d: 'Nivel 4, «Atajo»' },
+      { e: r`\oint_{|z-w|=3|w|}\frac{z+w}{z^2+w^2}\dd z`, r: r`2\pi i`, k: r`Ambos polos dentro; residuos suman $1$ (grados $1$ y $2$).`, d: 'Nivel 4, «Atajo»' },
+      { e: r`\oint_{|z-w|=3|w|}\frac{z+w}{(z^2+w^2)^2}\dd z`, r: r`0`, k: r`Todos los polos dentro; grados $1$ y $4$.`, d: 'Nivel 4, «Atajo»' },
+      { e: r`\oint_{|z-i|=\sqrt3}\frac{\dd z}{(z^2+4)(z^2+1)^2}`, r: r`\tfrac{\pi}{9}`, k: r`Dentro $i$ (doble) y $2i$ (simple): ambos residuos $-\frac{i}{36}$.`, d: 'Nivel 4, ej. 7' },
+    ],
+  },
+  {
+    id: 'trigonometricas', nivel: 5, titulo: 'Integrales racionales de senos y cosenos',
+    items: [
+      { e: r`\int_0^{2\pi}\frac{\dd x}{\cos x+\sen x+3}`, r: r`\tfrac{2\pi}{\sqrt7}`, k: r`Polo interior $\frac{-3+\sqrt7}{1-i}$; o $\cos x+\sen x=\sqrt2\cos(x-\frac{\pi}{4})$.`, d: 'Nivel 5, ej. 2' },
+      { e: r`\int_0^{2\pi}\frac{\dd x}{\cos x\,\sen x+3}`, r: r`\tfrac{4\pi}{\sqrt{35}}`, k: r`$\cos x\sen x=\frac12\sen2x$ y periodicidad.`, d: 'Nivel 5, «Simplificar»' },
+      { e: r`\int_0^{2\pi}\frac{\sen^2(x/2)}{\cos x+2}\dd x`, r: r`\pi(\sqrt3-1)`, k: r`$\sen^2\frac x2=\frac{1-\cos x}{2}$ y división.`, d: 'Nivel 5, ej. 3' },
+      { e: r`\int_0^{2\pi}\frac{\sen x\cos x+1}{(\cos x+2)^2}\dd x`, r: r`\tfrac{4\pi}{3\sqrt3}`, k: r`La parte impar integra $0$; polo doble en $-2+\sqrt3$.`, d: 'Nivel 5, ej. 4' },
+      { e: r`\int_{-\pi}^{\pi}\frac{\cos2x}{3\sen2x-5}\dd x`, r: r`0`, k: r`Numerador proporcional a la derivada del denominador.`, d: 'Nivel 5, ej. 5' },
+      { e: r`\int_{-\pi}^{\pi}\frac{\sen x\cos x+1}{3\cos x+4}\dd x`, r: r`\tfrac{2\pi}{\sqrt7}`, k: r`La parte impar integra $0$; modelo con $a=4$, $b=3$.`, d: 'Nivel 5, «Simplificar»' },
+      { e: r`\int_0^{\pi/2}\frac{\sen^24x}{4+4\cos4x}\dd x`, r: r`\tfrac{\pi}{8}`, k: r`$\sen^24x=(1-\cos4x)(1+\cos4x)$.`, d: 'Nivel 5, ej. 5' },
+      { e: r`\int_{-\pi}^{\pi}\frac{\dd x}{(\cos x+\sen x)^2+1}`, r: r`\tfrac{2\pi}{\sqrt3}`, k: r`$(\cos x+\sen x)^2=1+\sen2x$.`, d: 'Nivel 5, «Simplificar»' },
+      { e: r`\int_0^{2\pi}\frac{\dd x}{a+\cos x},\ |a|>1`, r: r`\tfrac{2\pi}{\sqrt{a^2-1}}\ (a>1);\qquad-\tfrac{2\pi}{\sqrt{a^2-1}}\ (a<-1)`, k: r`Polos $-a\pm\sqrt{a^2-1}$, con producto $1$.`, d: 'Nivel 5, ej. 1' },
+      { e: r`\int_0^{2\pi}\frac{\dd x}{a^2+\cos^2x},\ |a|>1`, r: r`\tfrac{2\pi}{|a|\sqrt{a^2+1}}`, k: r`$\cos^2x=\frac{1+\cos2x}{2}$ y modelo con $A=2a^2+1$.`, d: 'Nivel 5, ej. 6' },
+    ],
+  },
+  {
+    id: 'singularidades', nivel: 6, titulo: 'Integrandos con singularidades reales',
+    items: [
+      { e: r`\int_{-\infty}^{\infty}\frac{x+2}{(2-x)(x^2+4x+7)}\dd x`, r: r`-\tfrac{\sqrt3\,\pi}{19}\quad(\text{v.p.})`, k: r`Residuos $-\frac{4}{19}$ (en $2$) y $\frac{4+\sqrt3i}{38}$ (en $-2+\sqrt3i$).`, d: 'Nivel 6, ej. 7' },
+      { e: r`\int_{-\infty}^{\infty}\frac{x}{x^3+1}\dd x`, r: r`\tfrac{\pi}{\sqrt3}\quad(\text{v.p.})`, k: r`Residuo $\frac{1}{3z_0}$ en cada raíz cúbica de $-1$.`, d: 'Nivel 6, ej. 3' },
+      { e: r`\int_{-\infty}^{\infty}\frac{\cos(\pi x)}{x^3+1}\dd x`, r: r`\tfrac{\pi}{3}\,e^{-\sqrt3\pi/2}\quad(\text{v.p.})`, k: r`Parte real de la integral con $e^{i\pi x}$.`, d: 'Nivel 6, ej. 4' },
+      { e: r`\int_{-\infty}^{\infty}\frac{\sen(\pi x)}{x^3+1}\dd x`, r: r`\tfrac{\pi}{3}\left(\sqrt3\,e^{-\sqrt3\pi/2}-1\right)`, k: r`Parte imaginaria; converge en sentido ordinario (singularidad evitable en $-1$).`, d: 'Nivel 6, ej. 4' },
+      { e: r`\int_{-\infty}^{\infty}\frac{\sen(\pi x)}{x^3+1}\dd x`, r: r`\tfrac{\pi}{3}\left(\sqrt3\,e^{-\sqrt3\pi/2}-1\right)`, k: r`Repetido en la lista (igual al ejercicio 4).`, d: 'Nivel 6, ej. 4' },
+      { e: r`\int_{-\infty}^{\infty}\frac{\sen(\pi\sqrt2\,x)}{x^5+x}\dd x`, r: r`\pi\left(1+e^{-\pi}\right)`, k: r`Residuos $1$ (en $0$) y $\frac{e^{-\pi}}{4}$ en $e^{i\pi/4}$ y $e^{3i\pi/4}$.`, d: 'Nivel 6, ej. 5' },
+      { e: r`\int_{-\infty}^{\infty}\frac{x+1}{(x-2)(x^2+1)}\dd x`, r: r`-\tfrac{\pi}{5}\quad(\text{v.p.})`, k: r`Residuos $\frac35$ (en $2$) y $-\frac{3-i}{10}$ (en $i$).`, d: 'Nivel 6, ej. 2' },
+      { e: r`\int_{-\infty}^{\infty}\frac{\cos5x}{x^2+2x+5}\dd x`, r: r`\tfrac{\pi}{2}\,e^{-10}\cos5\approx2{,}02\times10^{-5}`, k: r`Sin polos reales; residuo de $e^{5iz}/(z^2+2z+5)$ en $-1+2i$.`, d: 'Nivel 6, ej. 1' },
+      { e: r`\int_{-\infty}^{\infty}\frac{\cos5x}{x^2+2x+5}\dd x`, r: r`\tfrac{\pi}{2}\,e^{-10}\cos5`, k: r`Repetido en la lista (igual al ejercicio 8).`, d: 'Nivel 6, ej. 1' },
+      { e: r`\int_{-\infty}^{\infty}\frac{\cos^2(\pi x)}{1-x^4}\dd x`, r: r`\tfrac{\pi}{4}\left(1+e^{-2\pi}\right)\quad(\text{v.p.})`, k: r`Linealizar $\cos^2$; los residuos en $\pm1$ se cancelan.`, d: 'Nivel 6, ej. 6' },
+    ],
+  },
+];

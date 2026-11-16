@@ -22,6 +22,8 @@ MPC = SR // FPS                       # muestras de audio por cuadro
 ENTRADA = 0.32                        # s entre que aparece el paso y empieza la voz
 COLA, COLA_ESCENA, COLA_FINAL = 0.55, 1.0, 2.0
 F_PASO, F_ESCENA, F_INICIO = 8, 14, 15  # cuadros de fundido
+CRF = os.environ.get('VC_CRF', '25')           # calidad de video (menor = mejor y más pesado)
+AUDIO_KBPS = os.environ.get('VC_AUDIO', '64k') # voz en mono: 64 kb/s es suficiente
 
 
 def a_yuv(ruta, tam):
@@ -151,9 +153,9 @@ def ensamblar(idn, salida, alto):
     # ---- video ----
     cmd = ['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'yuv420p', '-s', f'{tam[0]}x{tam[1]}', '-r', str(FPS), '-i', 'pipe:0',
            '-i', wav_tmp, '-i', meta_tmp, '-i', srt, '-map', '0:v', '-map', '1:a', '-map', '3:s', '-map_metadata', '2', '-map_chapters', '2',
-           '-c:v', 'libx264', '-preset', 'slow', '-crf', '23', '-x264-params', 'keyint=300:min-keyint=30', '-pix_fmt', 'yuv420p',
+           '-c:v', 'libx264', '-preset', 'slow', '-crf', CRF, '-x264-params', 'keyint=300:min-keyint=30', '-pix_fmt', 'yuv420p',
            '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709', '-color_range', 'tv',
-           '-c:a', 'aac', '-b:a', '96k', '-ar', str(SR), '-af', 'loudnorm=I=-17:TP=-1.5:LRA=11',
+           '-c:a', 'aac', '-b:a', AUDIO_KBPS, '-ar', str(SR), '-af', 'loudnorm=I=-17:TP=-1.5:LRA=11',
            '-c:s', 'mov_text', '-metadata:s:s:0', 'language=spa', '-metadata:s:a:0', 'language=spa',
            '-movflags', '+faststart', mp4]
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
@@ -178,6 +180,12 @@ def ensamblar(idn, salida, alto):
         raise RuntimeError('ffmpeg falló')
     mb = os.path.getsize(mp4) / 1e6
     print(f'{idn}: {mp4}  {dur_total / 60:.1f} min  {mb:.1f} MB  ({mb * 8000 / dur_total:.0f} kb/s)')
+    # índice de videos (lo usan el documento y la página de la ruta)
+    ruta = os.path.join(BUILD, 'videos.json')
+    indice = json.load(open(ruta)) if os.path.exists(ruta) else {}
+    indice[idn] = {'archivo': base + '.mp4', 'vtt': base + '.vtt', 'duracion': round(dur_total, 1), 'mb': round(mb, 1),
+                   'capitulos': [[round(t, 1), tit] for t, tit in caps]}
+    json.dump(indice, open(ruta, 'w'), ensure_ascii=False, indent=1)
     return mp4
 
 
