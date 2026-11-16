@@ -16,6 +16,16 @@ se repasan los apuntes y se resuelve la práctica; **con 70 % o más se desbloqu
 | **Prácticas** | [`practicas/index.html`](practicas/index.html) · [`practicas/Practicas_Variable_Compleja.pdf`](practicas/Practicas_Variable_Compleja.pdf) | Página interactiva con la ruta completa (video, apuntes y práctica por nivel, con desbloqueo progresivo) y versión imprimible con soluciones. |
 
 <!-- VIDEOS -->
+| Nivel | Video | Duración | Tamaño | Escenas |
+|---|---|---|---|---|
+| 1 · Derivación compleja | [`Nivel_1_Derivacion_compleja.mp4`](videos/Nivel_1_Derivacion_compleja.mp4) | 17 min | 19 MB | 17 |
+| 2 · Integrales sobre curvas | [`Nivel_2_Integrales_sobre_curvas.mp4`](videos/Nivel_2_Integrales_sobre_curvas.mp4) | 12 min | 14 MB | 14 |
+| 3 · Teorema y fórmula integral de Cauchy | [`Nivel_3_Teorema_y_formula_integral_de_Cauchy.mp4`](videos/Nivel_3_Teorema_y_formula_integral_de_Cauchy.mp4) | 14 min | 16 MB | 16 |
+| 4 · Teorema de los residuos | [`Nivel_4_Teorema_de_los_residuos.mp4`](videos/Nivel_4_Teorema_de_los_residuos.mp4) | 13 min | 15 MB | 15 |
+| 5 · Integrales trigonométricas | [`Nivel_5_Integrales_trigonometricas.mp4`](videos/Nivel_5_Integrales_trigonometricas.mp4) | 11 min | 13 MB | 11 |
+| 6 · Integrales impropias y singularidades reales | [`Nivel_6_Integrales_impropias_y_singularidades_reales.mp4`](videos/Nivel_6_Integrales_impropias_y_singularidades_reales.mp4) | 15 min | 17 MB | 14 |
+
+Duración total: 82 minutos.
 <!-- /VIDEOS -->
 
 ## Cómo usarlo

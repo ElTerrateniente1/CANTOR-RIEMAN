@@ -14,7 +14,9 @@ const N_ANIM = 30; // cuadros de la animación de trazo (1 s a 30 fps)
 const suave = (t) => t * t * (3 - 2 * t);
 const dos = (n) => String(n).padStart(2, '0');
 /** Título en texto plano (para los capítulos del video). */
-const llano = (t) => t.replace(/\$/g, '').replace(/\\d?frac\{([^{}]*)\}\{([^{}]*)\}/g, '$1/($2)').replace(/\\sqrt\{([^{}]*)\}/g, '√($1)')
+const llano = (t) => t.replace(/\$/g, '').replace(/\\displaystyle/g, '').replace(/\\vp\\!/g, 'v.p. ').replace(/\\dd\s*/g, ' d')
+  .replace(/\\int_\{-\\infty\}\^\{\\infty\}/g, '∫ ').replace(/\\int_0\^\{2\\pi\}/g, '∫₀^2π ').replace(/\\oint_\{([^{}]*)\}/g, '∮ ').replace(/\\oint_\\alpha/g, '∮ ')
+  .replace(/\^3/g, '³').replace(/\^4/g, '⁴').replace(/\^5/g, '⁵').replace(/\\sqrt(\d)/g, '√$1').replace(/\\d?frac\{([^{}]*)\}\{([^{}]*)\}/g, '$1/($2)').replace(/\\sqrt\{([^{}]*)\}/g, '√($1)')
   .replace(/\\bar z\^\{\\,2\}/g, 'z̄²').replace(/\\bar z/g, 'z̄').replace(/\\bar f/g, 'f̄').replace(/\^2/g, '²').replace(/\^\{\\,2\}/g, '²')
   .replace(/\\partial/g, '∂').replace(/\\pi/g, 'π').replace(/\\infty/g, '∞').replace(/\\int/g, '∫').replace(/\\oint/g, '∮').replace(/\\theta/g, 'θ')
   .replace(/\\(Re|Im|arg|Log|ln|cos|sen|tan|Res)\b/g, '$1').replace(/\\[,;!]/g, '').replace(/\\[a-zA-Z]+/g, '').replace(/[{}]/g, '').replace(/\s+/g, ' ').trim();

@@ -324,8 +324,9 @@ const JS = String.raw`
     w.appendChild(vid); w.appendChild(aviso);
     if (v.caps && v.caps.length) {
       var c = el('div', { 'class': 'caps' }, '<h3>Capítulos</h3>'), ol = el('ol');
-      v.caps.forEach(function (cp) {
-        var li = el('li'), b = el('button', { type: 'button', 'class': 'cap' }, '<time>' + mmss(cp[0]) + '</time><span>' + txt(cp[1]) + '</span>');
+      v.caps.forEach(function (cp, k) {
+        var esc = k > 0 && n.apuntes ? n.apuntes.escenas[k - 1] : null;   // el capítulo k corresponde a la escena k-1 de los apuntes
+        var li = el('li'), b = el('button', { type: 'button', 'class': 'cap' }, '<time>' + mmss(cp[0]) + '</time><span>' + (esc ? esc.titulo : txt(cp[1])) + '</span>');
         b.addEventListener('click', function () { try { vid.currentTime = cp[0]; var pr = vid.play(); if (pr && pr.catch) pr.catch(function () {}); } catch (e) {} });
         li.appendChild(b); ol.appendChild(li);
       });
