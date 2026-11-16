@@ -50,7 +50,7 @@ img,video{max-width:100%}
 .perfil label{font-size:.78rem;font-weight:600;color:var(--tenue);display:block;margin-bottom:3px}
 .perfil select,.perfil input[type=text]{width:100%;padding:.45em .6em;border:1px solid var(--linea);border-radius:7px;background:var(--fondo);min-width:0}
 .fila2{display:flex;gap:8px}.fila2>*{min-width:0}.fila2 input{flex:1}
-.chk{display:flex;gap:.55em;align-items:flex-start;font-size:.88rem;line-height:1.35}
+.perfil label.chk{display:flex;gap:.55em;align-items:flex-start;font-size:.88rem;font-weight:400;color:var(--tinta);line-height:1.35;margin:0}
 .chk input{margin-top:.2em;flex:none}
 .nota-p{margin:0;font-size:.8rem;color:var(--tenue);line-height:1.4}
 .btn{border:1px solid var(--linea);background:var(--sup);border-radius:8px;padding:.5em .95em;font-weight:600;line-height:1.2}

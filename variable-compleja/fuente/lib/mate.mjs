@@ -46,7 +46,7 @@ export function mate(html) {
 export const LECTURAS = {
   'z': 'zeta', 'w': 'doble u', 'x': 'equis', 'y': 'ye', 'f': 'efe', 'g': 'ge', 'u': 'u', 'v': 'uve',
   't': 'te', 'r': 'erre', 'i': 'i', 'e': 'e', 'a': 'a', 'b': 'be', 'c': 'ce', 'n': 'ene', 'h': 'hache', 'm': 'eme',
-  'R': 'erre mayúscula', 'F': 'efe mayúscula', 'M': 'eme mayúscula', 'L': 'ele mayúscula',
+  'R': 'erre', 'F': 'efe mayúscula', 'M': 'eme', 'L': 'ele',
   'z_0': 'zeta cero', 'x_0': 'equis cero', '\\pi': 'pi', '\\theta': 'theta', '2\\pi i': 'dos pi i', '\\pi i': 'pi i',
   'f(z)': 'efe de zeta', "f'(z)": 'efe prima de zeta', 'g(z)': 'ge de zeta', '\\bar z': 'zeta conjugado',
   '\\bar f': 'efe conjugada', '|z|': 'módulo de zeta', '\\infty': 'infinito', '\\varepsilon': 'épsilon',
