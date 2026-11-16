@@ -1,0 +1,272 @@
+// NIVEL 1 · Derivación compleja
+import { r } from '../lib/mate.mjs';
+import { plano, ejes, arco, circ, seg, curva, disco, sector, pto, etq, corte, PI } from '../lib/plano.mjs';
+
+const z0 = [1.1, 1.0];
+const figCaminos = plano({ x: [-0.7, 3.1], y: [-0.6, 2.7], w: 640 },
+  ejes(),
+  seg([2.9, 1.0], z0, { flecha: 0.5, c: 'c2 fina', desde: 1 }),
+  seg([1.1, 2.55], z0, { flecha: 0.5, c: 'c4 fina', desde: 1 }),
+  seg([-0.3, -0.25], z0, { flecha: 0.5, c: 'c3 fina', desde: 1 }),
+  curva((t) => { const rr = 1.25 * (1 - t), a = 5.2 + 7.5 * t; return [z0[0] + rr * Math.cos(a), z0[1] + rr * Math.sin(a)]; }, 0, 0.97,
+    { flecha: [0.35], c: 'fina', desde: 1, trazo: true }),
+  pto(z0, 'z_0', { pos: 'nw' }),
+  etq([2.55, 1.28], 'z_0+h', { c: 'ci', desde: 1 }),
+);
+
+const figDisco = plano({ x: [-0.7, 3.1], y: [-0.6, 2.7], w: 600 },
+  ejes(),
+  disco([1.5, 1.2], 0.95, { c: 'c2' }),
+  circ([1.5, 1.2], 0.95, { c: 'c2 fina aux', flecha: false }),
+  seg([1.5, 1.2], [1.5 + 0.95 * Math.cos(0.5), 1.2 + 0.95 * Math.sin(0.5)], { c: 'aux', tex: 'r', pos: 'n' }),
+  pto([1.5, 1.2], 'z_0', { pos: 'sw' }),
+);
+
+const zp = [1.55, 1.25];
+const figLog = plano({ x: [-2.6, 2.6], y: [-1.9, 2.3], w: 640 },
+  ejes(),
+  seg([0, 0], zp, { c: 'c2 fina', tex: 'r', pos: 'nw' }),
+  arco([0, 0], 0.62, 0, Math.atan2(zp[1], zp[0]), { c: 'c3 fina', flecha: false, tex: '\\theta', pos: 'e' }),
+  pto(zp, 'z=re^{i\\theta}', { pos: 'ne' }),
+  corte([-2.5, 0], [0, 0], { desde: 3 }),
+  etq([-1.35, 0.42], '\\theta=\\pi', { c: 'ro chica', desde: 3 }),
+  etq([-1.35, -0.42], '\\theta\\to-\\pi', { c: 'ro chica', desde: 3 }),
+);
+
+const S = 1.75;
+const figSectores = plano({ x: [-2.1, 2.1], y: [-2.1, 2.1], w: 620 },
+  ...[0, PI / 2, PI, 3 * PI / 2].map((a) => sector([0, 0], S, a, a + PI / 4, { c: 'c3', desde: 2 })),
+  ejes(),
+  seg([-1.45, -1.45], [1.45, 1.45], { c: 'aux' }),
+  seg([-1.45, 1.45], [1.45, -1.45], { c: 'aux' }),
+  ...[['z^2', PI / 8, 've'], ['-\\bar z^{2}', 3 * PI / 8, 'ro'], ['-z^2', 5 * PI / 8, 've'], ['\\bar z^{2}', 7 * PI / 8, 'ro'],
+    ['z^2', 9 * PI / 8, 've'], ['-\\bar z^{2}', 11 * PI / 8, 'ro'], ['-z^2', 13 * PI / 8, 've'], ['\\bar z^{2}', 15 * PI / 8, 'ro']]
+    .map(([t, a, c]) => etq([1.22 * Math.cos(a), 1.22 * Math.sin(a)], t, { c: c + ' chica', desde: 1 })),
+);
+
+export default {
+  id: 'nivel1',
+  n: 1,
+  etiqueta: 'NIVEL 1',
+  titulo: 'Derivación compleja',
+  sub: 'Cauchy–Riemann, analiticidad y funciones armónicas',
+  lista: 'Derivación compleja (lista de 10 ejercicios)',
+  escenas: [
+    {
+      portada: { nivel: 'NIVEL 1', titulo: 'Derivación compleja', sub: 'Cauchy–Riemann, analiticidad y funciones armónicas' },
+      pasos: [
+        { h: '', v: r`Nivel uno: derivación compleja. Este es el cimiento de todo el curso. Las integrales de los niveles siguientes se calculan con teoremas que exigen que la función sea analítica, así que primero hay que saber reconocer, con precisión, cuándo una función lo es.` },
+        { h: r`<ul class="l"><li>Decidir con Cauchy–Riemann <b>dónde</b> es derivable una función.</li><li>Distinguir <span class="am">derivable en un punto</span> de <span class="am">analítica</span>.</li><li>Reconocer funciones armónicas y construir una conjugada armónica.</li><li>Usar $\partial f/\partial\bar z$ como atajo.</li></ul>`,
+          v: r`Al terminar este nivel deberías poder hacer cuatro cosas. Uno: decidir, con las ecuaciones de Cauchy-Riemann, dónde es derivable una función. Dos: distinguir entre ser derivable en un punto y ser analítica. Tres: reconocer funciones armónicas y construir una conjugada armónica. Y cuatro: usar la derivada respecto a zeta conjugado como atajo de cálculo.` },
+      ],
+    },
+    {
+      t: 'La derivada compleja',
+      fig: figCaminos,
+      pasos: [
+        { h: r`<div class="def"><span class="rot">Definición.</span> $f$ es <b>derivable</b> en $z_0$ si existe $$f'(z_0)=\lim_{h\to 0}\frac{f(z_0+h)-f(z_0)}{h},\qquad h\in\C.$$</div>`,
+          v: r`La derivada compleja se define con la misma fórmula del cálculo en una variable: es el límite del cociente incremental cuando [[h]] tiende a cero.` },
+        { h: r`<p>La diferencia: $h$ es <span class="am">complejo</span> y puede tender a $0$ por <b>cualquier camino</b>. El límite debe ser el mismo por todos.</p>`,
+          v: r`La diferencia está en que [[h]] es un número complejo. Puede acercarse a cero por la horizontal, por la vertical, por una diagonal o en espiral, y el límite tiene que existir y ser el mismo por todos esos caminos. Por eso ser derivable en sentido complejo es una condición mucho más exigente que serlo en sentido real.` },
+        { h: r`<div class="ojo"><span class="rot">Ejemplo.</span> Para $f(z)=\bar z$ el cociente es $\dfrac{\bar h}{h}$: vale $1$ si $h$ es real y $-1$ si $h$ es imaginario puro. <b>No es derivable en ningún punto.</b></div>`,
+          v: r`Un ejemplo que conviene memorizar es la conjugación. Su cociente incremental es [[\bar h/h::hache conjugado sobre hache]]. Si [[h]] es real, vale uno. Si [[h]] es imaginario puro, vale menos uno. Los dos límites no coinciden, así que la función [[\bar z]], que parece inofensiva, no es derivable en ningún punto.` },
+      ],
+    },
+    {
+      t: 'De la definición a las ecuaciones de Cauchy–Riemann',
+      pasos: [
+        { h: r`<p>Escribimos $f(x+iy)=u(x,y)+i\,v(x,y)$ y calculamos $f'(z_0)$ por dos caminos.</p>`,
+          v: r`Escribamos la función separando parte real e imaginaria: [[f=u+iv::efe igual a u más i uve]], donde [[u]] y [[v]] son funciones reales de [[x]] y de [[y]]. Si la derivada existe, podemos calcularla por el camino que queramos. Elegimos dos.` },
+        { h: r`<p><span class="ci"><b>Horizontal</b></span> ($h=t$ real): $\quad f'(z_0)=u_x+i\,v_x$</p>`,
+          v: r`Por el camino horizontal, con [[h]] real, solo cambia [[x]], y el límite es la derivada parcial respecto a [[x]]: [[u_x+iv_x::u sub equis, más i uve sub equis]].` },
+        { h: r`<p><span class="vi"><b>Vertical</b></span> ($h=it$): $\quad f'(z_0)=\dfrac{u_y+i\,v_y}{i}=v_y-i\,u_y$</p>`,
+          v: r`Por el camino vertical, con [[h=it::hache igual a i te]], solo cambia [[y]], pero queda una [[i]] dividiendo. El resultado es [[v_y-iu_y::uve sub ye, menos i u sub ye]].` },
+        { h: r`<div class="teo"><span class="rot">Ecuaciones de Cauchy–Riemann.</span> $$u_x=v_y,\qquad u_y=-v_x\qquad\text{y además}\quad f'=u_x+i\,v_x.$$</div>`,
+          v: r`Como los dos resultados deben ser iguales, igualamos partes reales e imaginarias, y aparecen las ecuaciones de Cauchy-Riemann: [[u_x=v_y::u sub equis igual a uve sub ye]], y [[u_y=-v_x::u sub ye igual a menos uve sub equis]]. De paso obtenemos una fórmula para la derivada: [[f'=u_x+iv_x::efe prima es u sub equis, más i uve sub equis]].` },
+      ],
+    },
+    {
+      t: 'Qué garantiza Cauchy–Riemann… y qué no',
+      pasos: [
+        { h: r`<div class="teo"><span class="rot">Condición necesaria.</span> Si $f$ es derivable en $z_0$, entonces $u$ y $v$ tienen derivadas parciales en $z_0$ y cumplen C–R allí.</div>`,
+          v: r`Hay que tener muy claro en qué dirección funciona cada implicación, porque es una pregunta clásica de examen. Primera: Cauchy-Riemann es una condición necesaria. Si la función es derivable en un punto, entonces las ecuaciones se cumplen en ese punto. Dicho al revés: si fallan, la función no es derivable ahí.` },
+        { h: r`<div class="teo"><span class="rot">Condición suficiente.</span> Si $u_x,u_y,v_x,v_y$ existen en un entorno de $z_0$, son <b>continuas en $z_0$</b> y cumplen C–R en $z_0$, entonces $f$ es derivable en $z_0$.</div>`,
+          v: r`Segunda: para concluir que sí es derivable hace falta algo más. Las cuatro derivadas parciales deben existir cerca del punto, ser continuas en el punto, y cumplir las ecuaciones. Con esas tres cosas, la función es derivable.` },
+        { h: r`<div class="ojo"><span class="rot">Cuidado.</span> C–R en un punto, <b>sin</b> continuidad de las parciales, <b>no</b> garantiza derivabilidad.</div>`,
+          v: r`La advertencia es que las ecuaciones solas no bastan. Una función puede cumplir Cauchy-Riemann en un punto y, aun así, no ser derivable en él. El siguiente ejemplo, tomado de tu lista de ejercicios, lo muestra.` },
+      ],
+    },
+    {
+      t: r`Ejemplo 1 · $f(z)=\sqrt{|xy|}$ en $z=0$`,
+      ref: 'Derivación, ejercicio 2',
+      pasos: [
+        { h: r`<p>$u=\sqrt{|xy|}$, $v=0$. Sobre los ejes $u$ se anula, así que</p>$$u_x(0,0)=\lim_{t\to0}\frac{u(t,0)-u(0,0)}{t}=0,\qquad u_y(0,0)=0.$$<p>Como $v_x=v_y=0$: <span class="ve">C–R se cumple en $z=0$.</span></p>`,
+          v: r`La función es la raíz cuadrada del valor absoluto de [[xy::equis por ye]]. Su parte real es esa raíz y su parte imaginaria es cero. Sobre los dos ejes la función vale cero, así que las parciales de [[u]] en el origen, calculadas con la definición, son cero. Las de [[v]] también. Las ecuaciones de Cauchy-Riemann se cumplen en el origen.` },
+        { h: r`<p>Cociente incremental por la recta $y=x$, con $h=t(1+i)$, $t>0$:</p>$$\frac{f(h)-f(0)}{h}=\frac{\sqrt{t^2}}{t\,(1+i)}=\frac{1}{1+i}\neq 0.$$`,
+          v: r`Ahora vamos a la definición. Acerquémonos al origen por la diagonal [[y=x::ye igual a equis]]. El cociente incremental vale [[\frac{1}{1+i}::uno sobre uno más i]], que no depende de [[t]] y no es cero.` },
+        { h: r`<div class="ojo">Por el eje real el cociente vale $0$. Dos caminos, dos límites: <b>$f$ no es derivable en $0$</b>.</div><p class="pie">Falla la continuidad de las parciales en el origen.</p>`,
+          v: r`Pero por el eje real el cociente vale cero. Dos caminos dan dos límites distintos, así que la función no es derivable en el origen, aunque cumpla Cauchy-Riemann. Lo que falla es la hipótesis de continuidad de las derivadas parciales.` },
+      ],
+    },
+    {
+      t: 'Derivable en un punto no es lo mismo que analítica',
+      fig: figDisco,
+      pasos: [
+        { h: r`<div class="def"><span class="rot">Definición.</span> $f$ es <b>analítica</b> (u holomorfa) en $z_0$ si es derivable en <span class="am">todo un disco</span> $|z-z_0|<r$. Es <b>entera</b> si es analítica en todo $\C$.</div>`,
+          v: r`Segunda distinción clave. Una función es analítica en un punto si es derivable no solo en ese punto, sino en todo un disco alrededor de él. Ser analítica es una propiedad de regiones abiertas, no de puntos sueltos. Si es analítica en todo el plano, se llama entera.` },
+        { h: r`<p><b class="ci">Ejemplo.</b> $f(z)=|z|^2=x^2+y^2$: $\;u_x=2x,\;u_y=2y,\;v\equiv 0$.</p><p>C–R $\iff 2x=0$ y $2y=0\iff z=0$.</p>`,
+          v: r`Mira la función módulo de zeta al cuadrado, que es [[x^2+y^2::equis cuadrado más ye cuadrado]]. Las ecuaciones de Cauchy-Riemann piden que [[2x::dos equis]] y [[2y::dos ye]] sean cero, y eso solo pasa en el origen.` },
+        { h: r`<div class="res">Derivable <b>solo en $z=0$</b> ⟹ <b>no es analítica en ningún punto.</b></div>`,
+          v: r`Como las parciales son continuas, la función sí es derivable en el origen. Pero no lo es en ningún otro punto, así que no existe ningún disco donde sea derivable. Conclusión: es derivable en un punto y no es analítica en ninguno.` },
+        { h: r`<p class="pie">Sumas, productos, cocientes (denominador $\neq 0$) y composiciones de analíticas son analíticas. Polinomios, $e^z$, $\sen z$ y $\cos z$ son enteras.</p>`,
+          v: r`En la práctica, las funciones construidas con sumas, productos, cocientes y composiciones de funciones analíticas son analíticas donde el denominador no se anula. Los polinomios, la exponencial, el seno y el coseno son enteras. Las sospechosas son las que usan conjugado, módulo, parte real o parte imaginaria.` },
+      ],
+    },
+    {
+      t: r`Un atajo potente: la derivada respecto a $\bar z$`,
+      pasos: [
+        { h: r`<p>Con $x=\dfrac{z+\bar z}{2}$, $\;y=\dfrac{z-\bar z}{2i}$ se definen</p>$$\frac{\partial f}{\partial z}=\frac12\left(f_x-i\,f_y\right),\qquad \frac{\partial f}{\partial\bar z}=\frac12\left(f_x+i\,f_y\right).$$`,
+          v: r`Hay una forma muy eficiente de empaquetar las dos ecuaciones de Cauchy-Riemann en una sola. Como [[x]] y [[y]] se pueden escribir en términos de [[z]] y de [[\bar z]], toda función se puede pensar como función de esas dos variables, y se definen dos derivadas formales: una respecto a [[z]] y otra respecto a [[\bar z]].`,
+          nota: r`En efecto, $\tfrac12(f_x+if_y)=\tfrac12\big[(u_x-v_y)+i\,(v_x+u_y)\big]$, que se anula exactamente cuando $u_x=v_y$ y $u_y=-v_x$. Para usar el criterio como condición suficiente se necesita además que $f$ sea diferenciable en sentido real (por ejemplo, parciales continuas).` },
+        { h: r`<div class="teo">$$\text{C–R}\iff \frac{\partial f}{\partial\bar z}=0,\qquad\text{y en ese caso}\quad f'=\frac{\partial f}{\partial z}.$$</div>`,
+          v: r`Si haces la cuenta, la derivada respecto a [[\bar z]] igualada a cero es exactamente el par de ecuaciones de Cauchy-Riemann. Y cuando se cumple, la derivada compleja es la derivada respecto a [[z]].` },
+        { h: r`<div class="idea"><span class="rot">Regla práctica.</span> Se deriva tratando $z$ y $\bar z$ como variables independientes: $\partial_{\bar z}(z)=0$, $\;\partial_{\bar z}(\bar z)=1$.<br>«Analítica = la fórmula no depende de $\bar z$».</div>`,
+          v: r`La regla práctica es tratar [[z]] y [[\bar z]] como si fueran variables independientes, y derivar con las reglas de siempre. Informalmente, una función es analítica cuando su fórmula no depende de [[\bar z]]. Úsalo cuando la función venga escrita con módulos, conjugados o partes reales.` },
+      ],
+    },
+    {
+      t: r`Ejemplo 2 · ¿Dónde es derivable $f(z)=(z-i)^2\,\Re(iz^2)$?`,
+      ref: 'Derivación, ejercicio 3',
+      pasos: [
+        { h: r`<p>Se elimina la parte real con $\Re(w)=\dfrac{w+\bar w}{2}$, $\;w=iz^2$, $\;\bar w=-i\,\bar z^{\,2}$:</p>$$f(z)=\frac{i}{2}\,(z-i)^2\left(z^2-\bar z^{\,2}\right).$$`,
+          v: r`Este es el ejercicio tres de la lista. La parte real estropea la analiticidad, así que la escribimos con conjugados: la parte real de un número es la mitad de la suma del número y su conjugado. El conjugado de [[iz^2::i zeta cuadrado]] es [[-i\bar z^{2}::menos i por zeta conjugado al cuadrado]]. La función queda expresada solo con [[z]] y [[\bar z]].` },
+        { h: r`$$\frac{\partial f}{\partial\bar z}=\frac{i}{2}\,(z-i)^2\,(-2\bar z)=-i\,\bar z\,(z-i)^2.$$`,
+          v: r`Derivamos respecto a [[\bar z]], tratando [[z]] como constante. Solo se deriva el término [[\bar z^{2}::zeta conjugado al cuadrado]], y queda [[-i\bar z(z-i)^2::menos i, por zeta conjugado, por zeta menos i al cuadrado]].` },
+        { h: r`<p>Se anula solo si $\bar z=0$ o $z=i$.</p><div class="res"><b>$f$ es derivable únicamente en $z=0$ y en $z=i$</b>, y no es analítica en ningún punto.</div>`,
+          v: r`Ese producto se anula únicamente cuando [[z]] es cero, o cuando [[z]] es [[i]]. Como la función es un polinomio en [[x]] y [[y]], sus parciales son continuas, y concluimos que es derivable exactamente en esos dos puntos. Al ser puntos aislados, no es analítica en ninguno.` },
+        { h: r`<p>Derivada: $f'=\dfrac{\partial f}{\partial z}=i\,(z-i)\left(z^2-\bar z^{\,2}\right)+i\,z\,(z-i)^2\;\Rightarrow\; f'(0)=0,\;\; f'(i)=0.$</p>`,
+          v: r`El ejercicio pide además la derivada. Es la derivada respecto a [[z]], que se calcula con la regla del producto. Al evaluar, da cero en los dos puntos.` },
+      ],
+    },
+    {
+      t: r`Ejemplo 3 · Constantes para que $f=x+ay+i(bx+cy)$ sea analítica`,
+      ref: 'Derivación, ejercicio 1',
+      pasos: [
+        { h: r`<p>$u=x+ay,\quad v=bx+cy$</p>$$u_x=1,\quad u_y=a,\quad v_x=b,\quad v_y=c.$$`,
+          v: r`El ejercicio uno es el uso más directo de las ecuaciones. Identificamos [[u]] y [[v]], y calculamos las cuatro parciales, que son constantes.` },
+        { h: r`<p>C–R: $\;1=c\;$ y $\;a=-b$.</p><div class="res">$c=1,\qquad b=-a,\qquad a\in\R$ libre.</div>`,
+          v: r`Cauchy-Riemann impone que [[c]] sea uno, y que [[b]] sea menos [[a]]. El parámetro [[a]] queda libre: hay toda una familia de soluciones.` },
+        { h: r`<p>Entonces $f(z)=(x+iy)-ai\,(x+iy)=(1-ai)\,z$, y</p>$$f(1+i)=(1-ai)(1+i)=(1+a)+i\,(1-a).$$`,
+          v: r`Con esas constantes la función se factoriza como [[(1-ai)z::uno menos a i, por zeta]], que es claramente analítica, porque es una constante por zeta. Evaluando en [[1+i::uno más i]] se obtiene [[(1+a)+i(1-a)::uno más a, más i por uno menos a]]. Reescribir la función en términos de zeta es la mejor verificación.` },
+      ],
+    },
+    {
+      t: 'Dos consecuencias que se preguntan en teoría',
+      ref: 'Derivación, ejercicio 4',
+      pasos: [
+        { h: r`<div class="teo"><span class="rot">Hecho base.</span> Si $f$ es analítica en un dominio $D$ (abierto y conexo) y $f'=0$ en $D$, entonces $f$ es constante.</div>`,
+          v: r`Dos resultados teóricos que salen directo de Cauchy-Riemann. El punto de partida es este: si una función es analítica en un dominio, es decir, en un abierto conexo, y su derivada es cero, entonces es constante, porque todas las parciales de [[u]] y de [[v]] se anulan.` },
+        { h: r`<p><b>¿$f$ y $\bar f$ analíticas a la vez?</b> C–R para $f=u+iv$ y para $\bar f=u-iv$:</p>$$u_x=v_y,\;\;u_x=-v_y\;\Rightarrow\;u_x=v_y=0;\qquad u_y=-v_x,\;\;u_y=v_x\;\Rightarrow\;u_y=v_x=0.$$<div class="res">Solo si $f$ es constante.</div>`,
+          v: r`Primera aplicación: ¿cuándo son analíticas a la vez [[f]] y su conjugada? Escribimos Cauchy-Riemann para las dos. La conjugada tiene parte imaginaria [[-v::menos uve]], así que sus ecuaciones llevan los signos cambiados. Juntando las cuatro ecuaciones, todas las parciales son cero. Eso solo ocurre cuando la función es constante.` },
+        { h: r`<p><b>Función analítica con valores reales</b> ($v\equiv0$): C–R da $u_x=u_y=0$ ⟹ constante.</p><div class="res">$|f|^2$ es analítica en $D\iff|f|$ es constante en $D$.<br>Y si $f$ es analítica con $|f|$ constante, entonces $f$ es constante.</div>`,
+          v: r`Segunda aplicación: una función analítica que solo toma valores reales tiene [[v]] igual a cero, y Cauchy-Riemann obliga a que [[u]] sea constante. Por eso el módulo al cuadrado de una función, que es real, solo puede ser analítico si es constante. Y un resultado relacionado: una función analítica de módulo constante es constante.`,
+          nota: r`Para lo último: si $|f|^2=c$ y $c=0$, entonces $f\equiv0$. Si $c\neq0$, $\bar f=c/f$ es analítica, y por el caso anterior $f$ es constante.` },
+      ],
+    },
+    {
+      t: 'Funciones armónicas',
+      pasos: [
+        { h: r`<div class="def"><span class="rot">Definición.</span> $u(x,y)$ es <b>armónica</b> si $\;\Delta u=u_{xx}+u_{yy}=0$ (ecuación de Laplace).</div>`,
+          v: r`Pasemos a las funciones armónicas. Una función real de dos variables es armónica si cumple la ecuación de Laplace: la suma de sus dos segundas derivadas puras es cero.` },
+        { h: r`<div class="teo"><span class="rot">Teorema.</span> Si $f=u+iv$ es analítica, $u$ y $v$ son armónicas: $\;u_{xx}=(v_y)_x=(v_x)_y=-u_{yy}$.</div>`,
+          v: r`La conexión con este curso es que las partes real e imaginaria de una función analítica siempre son armónicas. La demostración ocupa una línea: derivamos la primera ecuación de Cauchy-Riemann respecto a [[x]], intercambiamos el orden de derivación y usamos la segunda ecuación. Sale que [[u_{xx}::u sub equis equis]] es igual a menos [[u_{yy}::u sub ye ye]].` },
+        { h: r`<div class="def"><span class="rot">Conjugada armónica.</span> $v$ es conjugada armónica de $u$ si $f=u+iv$ es analítica.</div>`,
+          v: r`Y al revés: dada una función armónica [[u]], una conjugada armónica es una función [[v]] que la completa a una función analítica. Encontrarla es resolver las ecuaciones de Cauchy-Riemann con [[v]] como incógnita.`,
+          nota: r`En un dominio simplemente conexo toda función armónica tiene conjugada armónica. En dominios con agujeros puede no existir: $\ln|z|$ es armónica en $\C\setminus\{0\}$, pero su candidata a conjugada, $\arg z$, no se puede definir de forma continua alrededor del origen.` },
+        { h: r`<div class="idea"><span class="rot">Receta.</span> ① $v=\displaystyle\int u_x\dd y+g(x)$ &nbsp;&nbsp; ② imponer $v_x=-u_y$ para hallar $g$.<br>No es simétrica: si $v$ es conjugada de $u$, la conjugada de $v$ es $-u$.</div>`,
+          v: r`La receta tiene dos pasos. Primero, integrar [[u_x::u sub equis]] respecto a [[y]], lo que deja una función desconocida de [[x]]. Segundo, imponer la otra ecuación para determinar esa función. Ojo: la relación no es simétrica. Si [[v]] es conjugada de [[u]], la conjugada de [[v]] es menos [[u]].` },
+      ],
+    },
+    {
+      t: r`Ejemplo 4 · Conjugada armónica de $u=\dfrac{x}{x^2+y^2}$`,
+      ref: 'Derivación, ejercicio 6',
+      pasos: [
+        { h: r`$$u_x=\frac{y^2-x^2}{(x^2+y^2)^2},\qquad u_y=\frac{-2xy}{(x^2+y^2)^2}.$$<p>Derivando otra vez: $u_{xx}+u_{yy}=0$ en $\R^2\setminus\{(0,0)\}$ ✓</p>`,
+          v: r`Ejercicio seis. Calculamos las primeras parciales con la regla del cociente. Para verificar que es armónica hay que derivar una vez más y sumar. Es una cuenta larga pero mecánica, y da cero fuera del origen. En un momento veremos cómo evitarla.` },
+        { h: r`<p>① $\;v=\displaystyle\int\frac{y^2-x^2}{(x^2+y^2)^2}\dd y=\frac{-y}{x^2+y^2}+g(x)$</p>`,
+          v: r`Paso uno: integramos [[u_x::u sub equis]] respecto a [[y]]. La primitiva es [[\frac{-y}{x^2+y^2}::menos ye, sobre equis cuadrado más ye cuadrado]], como se comprueba derivando, más una función de [[x]].` },
+        { h: r`<p>② $\;v_x=\dfrac{2xy}{(x^2+y^2)^2}+g'(x)=-u_y=\dfrac{2xy}{(x^2+y^2)^2}\;\Rightarrow\;g'(x)=0$</p>`,
+          v: r`Paso dos: derivamos respecto a [[x]] e igualamos a menos [[u_y::u sub ye]]. Los términos coinciden, así que la derivada de [[g]] es cero, y [[g]] es una constante.` },
+        { h: r`<div class="res">$$v=\frac{-y}{x^2+y^2}+C,\qquad f=u+iv=\frac{x-iy}{x^2+y^2}=\frac{\bar z}{z\,\bar z}=\frac1z\;(+\,iC).$$</div>`,
+          v: r`La conjugada armónica es [[\frac{-y}{x^2+y^2}::menos ye, sobre equis cuadrado más ye cuadrado]], más una constante. Y al armar [[u+iv::u más i uve]] reconocemos la función [[1/z::uno sobre zeta]]. Ese es el atajo: [[u]] es la parte real de [[1/z::uno sobre zeta]], que es analítica fuera del origen, y eso ya prueba que es armónica.` },
+      ],
+    },
+    {
+      t: 'Cauchy–Riemann en polares y el logaritmo',
+      ref: 'Derivación, ejercicio 9',
+      fig: figLog,
+      pasos: [
+        { h: r`<div class="teo"><span class="rot">C–R en polares</span> ($z=re^{i\theta}$): $$u_r=\frac1r\,v_\theta,\qquad v_r=-\frac1r\,u_\theta,$$ $$f'(z)=e^{-i\theta}\left(u_r+i\,v_r\right).$$</div>`,
+          v: r`Cuando la función viene dada en términos del módulo y del argumento, conviene usar Cauchy-Riemann en coordenadas polares. Las ecuaciones son [[u_r=\frac1r v_\theta::u sub erre igual a uno sobre erre, por uve sub theta]]; y [[v_r=-\frac1r u_\theta::uve sub erre igual a menos uno sobre erre, por u sub theta]]. La derivada se calcula con las parciales respecto a [[r]], multiplicadas por [[e^{-i\theta}::e a la menos i theta]].` },
+        { h: r`<p>$\Log z=\ln r+i\theta,\;\; -\pi<\theta\le\pi$.<br>$u=\ln r,\; v=\theta$: $\;u_r=\dfrac1r=\dfrac1r\,v_\theta$ ✓ $\;\;v_r=0=-\dfrac1r\,u_\theta$ ✓</p>`,
+          v: r`El ejemplo estrella es el logaritmo principal: [[\ln r+i\theta::logaritmo natural de erre, más i theta]], con el argumento entre menos pi y pi. Aquí [[u]] es el logaritmo de [[r]], y [[v]] es [[\theta]]. Las dos ecuaciones se verifican de inmediato.` },
+        { h: r`<div class="res">$\dfrac{\dd}{\dd z}\Log z=e^{-i\theta}\cdot\dfrac1r=\dfrac1z$</div>`,
+          v: r`Y la fórmula de la derivada da [[e^{-i\theta}/r::e a la menos i theta, sobre erre]], que es [[1/z::uno sobre zeta]], como esperábamos.` },
+        { h: r`<div class="ojo"><span class="rot">Matiz.</span> Sobre el semieje real negativo $\theta$ salta de $\pi$ a $-\pi$: $\Log$ no es continuo allí. Es analítico en $\C\setminus(-\infty,0]$.</div>`,
+          v: r`Un matiz importante: sobre el semieje real negativo el argumento salta de pi a menos pi, de modo que el logaritmo ni siquiera es continuo en esos puntos. El logaritmo principal está definido allí, pero solo es analítico en el plano menos ese semieje, que se llama corte de rama. Este detalle va a reaparecer cuando integremos.` },
+      ],
+    },
+    {
+      t: r`Ejemplo 5 · Una $f$ analítica con $\arg f=xy$`,
+      ref: 'Derivación, ejercicios 8 y 7',
+      pasos: [
+        { h: r`<p>Idea: $f=e^{g}$ con $g=\ln|f|+i\arg f$. Se necesita $g$ analítica con $\Im g=xy$.</p>`,
+          v: r`Ejercicio ocho: encontrar una función analítica cuyo argumento sea [[xy::equis por ye]]. La idea es escribirla como una exponencial. Si [[f=e^g::efe es e a la ge]], el argumento de [[f]] es la parte imaginaria de [[g]]. Entonces necesitamos una función analítica cuya parte imaginaria sea [[xy::equis por ye]].` },
+        { h: r`<p>$z^2=(x^2-y^2)+2i\,xy\;\Rightarrow\;\Im\!\left(\tfrac12 z^2\right)=xy$.</p>`,
+          v: r`Y esa la conocemos: [[z^2::zeta al cuadrado]] tiene parte imaginaria [[2xy::dos equis ye]], así que basta tomar [[z^2/2::zeta cuadrado sobre dos]].` },
+        { h: r`<div class="res">$$f(z)=e^{z^2/2}:\qquad u=e^{\frac{x^2-y^2}{2}}\cos(xy),\quad v=e^{\frac{x^2-y^2}{2}}\sen(xy).$$</div>`,
+          v: r`Una solución es [[f(z)=e^{z^2/2}::efe de zeta igual a e elevado a zeta cuadrado sobre dos]]. Su módulo es [[e^{(x^2-y^2)/2}::e elevado a equis cuadrado menos ye cuadrado, sobre dos]], y su argumento es [[xy::equis ye]]. Se puede multiplicar por cualquier constante positiva.` },
+        { h: r`<p class="pie"><b>Ejercicio 7</b> (misma idea): si $\Re f=\varphi(x^2+y^2)$, la parte real es radial y armónica ⟹ $\varphi(t)=a\ln t+b\;$ y $\;f(z)=2a\Log z+c$.</p>`,
+          v: r`El ejercicio siete se resuelve con el mismo espíritu. Si la parte real depende solo de [[x^2+y^2::equis cuadrado más ye cuadrado]], es una función armónica radial, y las únicas son de la forma [[a\ln t+b::a por logaritmo de te, más be]]. La función analítica correspondiente es un múltiplo del logaritmo, más una constante.`,
+          nota: r`Una función radial $U(r)$ es armónica si $U''+\tfrac1r U'=0$, cuya solución general es $U=A\ln r+B$. Con $t=r^2$: $\varphi(t)=\tfrac{A}{2}\ln t+B$. La solución trivial ($\varphi$ constante, $f$ constante) también es válida.` },
+      ],
+    },
+    {
+      t: r`Ejemplo 6 · Dominio de analiticidad de $f=|x^2-y^2|+2i\,|xy|$`,
+      ref: 'Derivación, ejercicio 5',
+      fig: figSectores,
+      pasos: [
+        { h: r`<p>Recordar: $z^2=(x^2-y^2)+2i\,xy$. Los valores absolutos cambian signos según la región.</p>`,
+          v: r`Ejercicio cinco. La clave es reconocer los ingredientes de [[z^2::zeta al cuadrado]]: su parte real es [[x^2-y^2::equis cuadrado menos ye cuadrado]], y su parte imaginaria es [[2xy::dos equis ye]]. Los valores absolutos cambian el signo de cada parte según la región del plano.` },
+        { h: r`<table class="t"><tr><th>Región</th><th>$f$</th><th></th></tr><tr><td>$x^2-y^2>0,\;xy>0$</td><td>$z^2$</td><td class="ve">analítica</td></tr><tr><td>$x^2-y^2<0,\;xy<0$</td><td>$-z^2$</td><td class="ve">analítica</td></tr><tr><td>$x^2-y^2>0,\;xy<0$</td><td>$\bar z^{\,2}$</td><td class="ro">no</td></tr><tr><td>$x^2-y^2<0,\;xy>0$</td><td>$-\bar z^{\,2}$</td><td class="ro">no</td></tr></table>`,
+          v: r`Hay cuatro combinaciones de signos. Si ambas cantidades son positivas, la función es [[z^2::zeta cuadrado]], que es analítica. Si ambas son negativas, es [[-z^2::menos zeta cuadrado]], también analítica. Pero si tienen signos opuestos, aparece [[\bar z^{2}::zeta conjugado al cuadrado]] o su opuesto, que no son analíticas en ningún abierto.` },
+        { h: r`<div class="res">Analítica en cuatro sectores abiertos: $$0<\theta<\tfrac{\pi}{4},\quad \tfrac{\pi}{2}<\theta<\tfrac{3\pi}{4},$$ $$\pi<\theta<\tfrac{5\pi}{4},\quad \tfrac{3\pi}{2}<\theta<\tfrac{7\pi}{4}.$$</div>`,
+          v: r`En términos del ángulo, las regiones buenas son cuatro sectores abiertos de cuarenta y cinco grados, alternados, que aparecen sombreados en la figura. Sobre las rectas que los separan la función no es analítica, porque ningún disco centrado allí cabe dentro de un solo sector.`,
+          nota: r`En $z=0$ la función sí es derivable, porque $|f(z)/z|=|z|\to0$, pero no es analítica.` },
+      ],
+    },
+    {
+      t: r`Ejemplo 7 · Si $f=u+iv$ es analítica, $uv$ es armónica`,
+      ref: 'Derivación, ejercicio 10',
+      clase: 'amplia',
+      pasos: [
+        { h: r`<p>$f^2=(u^2-v^2)+i\,(2uv)$ es analítica, por ser producto de analíticas.</p>`,
+          v: r`Último ejemplo, el ejercicio diez: probar que el producto [[uv::u por uve]] es una función armónica. Se puede derivar a fuerza bruta, pero hay un argumento de una línea. El cuadrado de [[f]] es analítico, y su parte imaginaria es [[2uv::dos u uve]].` },
+        { h: r`<div class="res">$2uv=\Im\left(f^2\right)$ es armónica $\;\Longrightarrow\;$ $uv$ es armónica.</div>`,
+          v: r`Como la parte imaginaria de una función analítica es armónica, [[uv::u uve]] es armónica. La moraleja del nivel: antes de calcular, intenta reconocer la función analítica que está detrás.`,
+          nota: r`Verificación directa: $\Delta(uv)=u\,\Delta v+v\,\Delta u+2\,(u_xv_x+u_yv_y)=2\,(u_xv_x-v_xu_x)=0$, usando $u_y=-v_x$ y $v_y=u_x$.` },
+      ],
+    },
+    {
+      t: 'Errores frecuentes y resumen del nivel',
+      pasos: [
+        { h: r`<div class="ojo"><span class="rot">Errores que cuestan puntos</span><ul class="l"><li>Concluir «derivable» solo porque se cumple C–R (falta la continuidad de las parciales).</li><li>Confundir «derivable en un punto» con «analítica».</li><li>Olvidar el signo: $u_y=-v_x$.</li><li>Tratar a $\Log z$ como analítico sobre su corte $(-\infty,0]$.</li></ul></div>`,
+          v: r`Cuatro errores que cuestan puntos. Uno: concluir que una función es derivable solo porque cumple Cauchy-Riemann, sin revisar la continuidad de las parciales. Dos: confundir derivable en un punto con analítica. Tres: olvidar el signo menos de la segunda ecuación. Y cuatro: tratar al logaritmo principal como analítico sobre su corte de rama.` },
+        { h: r`<div class="res"><span class="rot">Resumen</span><ul class="l"><li>C–R: $u_x=v_y,\;u_y=-v_x\iff\partial f/\partial\bar z=0$; $\;f'=u_x+i\,v_x$.</li><li>Analítica = derivable en un abierto.</li><li>$f$ analítica ⟹ $u,v$ armónicas; la conjugada armónica se obtiene de C–R.</li><li>Polares: $u_r=\tfrac1r v_\theta,\;v_r=-\tfrac1r u_\theta$.</li></ul></div>`,
+          v: r`Resumen del nivel. Las ecuaciones de Cauchy-Riemann equivalen a que la derivada respecto a zeta conjugado sea cero. Analítica significa derivable en un abierto. Las partes real e imaginaria de una función analítica son armónicas, y la conjugada armónica se construye integrando las ecuaciones. Y en polares, las ecuaciones llevan el factor uno sobre erre.` },
+        { h: r`<p class="am"><b>Siguiente paso:</b> resuelve la práctica del Nivel 1. Con 70 % o más se desbloquea el Nivel 2.</p>`,
+          v: r`Ahora ve a la práctica del nivel uno. Cuando obtengas al menos setenta por ciento, se desbloquea el nivel dos: integrales sobre curvas.` },
+      ],
+    },
+  ],
+};
