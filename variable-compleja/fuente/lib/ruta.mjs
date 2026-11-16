@@ -4,7 +4,7 @@
 import { cssFuentes, cssKatex, CSS_BLOQUES } from './estilos.mjs';
 
 const CSS = String.raw`
-/* Disposición: una ruta de siete puntos sobre el eje real; debajo, el nivel activo con tres pest (video · apuntes · práctica). */
+/* Disposición: una ruta de siete puntos sobre el eje real; debajo, el nivel activo con tres pestañas (video · apuntes · práctica). */
 :root{
   --fondo:#f3f5fa;--sup:#ffffff;--fondo2:#e9edf5;--tinta:#141b2c;--tenue:#566175;--linea:#d6dce8;
   --ac:#9a5b00;--ac-lleno:#f0ae2e;--sobre-ac:#1f1602;
@@ -149,7 +149,7 @@ section.esc h3{font-size:1.2rem;font-weight:600;margin:0 0 10px;padding-top:10px
 .op{display:flex;gap:.7em;align-items:flex-start;border:1px solid var(--linea);border-radius:8px;padding:.55em .75em;cursor:pointer;min-width:0}
 .op:hover{border-color:var(--tenue)}
 .op input{margin-top:.3em;flex:none;accent-color:var(--ac-lleno)}
-.op span{min-width:0;overflow-x:auto;overflow-y:hidden}
+.op .txt{min-width:0;overflow-x:auto;overflow-y:hidden;flex:1}
 .op:has(input:checked){border-color:var(--ac-lleno);background:var(--ac-f)}
 .q.listo .op{cursor:default}
 .q.listo .op.correcta{border-color:var(--verde);background:var(--verde-f)}
@@ -162,7 +162,7 @@ section.esc h3{font-size:1.2rem;font-weight:600;margin:0 0 10px;padding-top:10px
 .sol .cuerpo{margin-top:.4em;overflow-x:auto;overflow-y:hidden}
 .sol .rep{margin:.5em 0 0;font-size:.85rem;color:var(--tenue)}
 .barra-p{position:sticky;bottom:calc(10px + env(safe-area-inset-bottom,0px));display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--sup);border:1px solid var(--linea);border-radius:var(--radio);padding:10px 14px;box-shadow:0 8px 24px rgba(10,16,30,.14)}
-.barra-p span{color:var(--tenue);font-size:.92rem;font-variant-numeric:tabular-nums}
+.barra-p #cuenta{color:var(--tenue);font-size:.92rem;font-variant-numeric:tabular-nums}
 .resultado{border-radius:var(--radio);padding:16px 18px;display:flex;flex-direction:column;gap:10px;border:1px solid var(--linea);scroll-margin-top:12px}
 .resultado.si{background:var(--verde-f);border-color:var(--verde)}
 .resultado.no{background:var(--ac-f);border-color:var(--ac-lleno)}
@@ -307,7 +307,7 @@ const JS = String.raw`
   function panelVideo(n) {
     var w = el('div', { 'class': 'pvideo' }), v = n.video;
     if (!v.src) {
-      w.appendChild(el('p', { 'class': 'aviso' }, 'El video de este nivel es el archivo <b>' + txt(v.archivo || '') + '</b> de la carpeta <b>videos/</b>. Ábrelo desde ahí; los apuntes y la práctica están en las otras pest.'));
+      w.appendChild(el('p', { 'class': 'aviso' }, 'El video de este nivel es el archivo <b>' + txt(v.archivo || '') + '</b> de la carpeta <b>videos/</b>. Ábrelo desde ahí; los apuntes y la práctica están en las otras pestañas.'));
       return w;
     }
     var vid = el('video', { controls: '', preload: 'metadata', playsinline: '', id: 'video-' + n.id });
@@ -381,7 +381,7 @@ const JS = String.raw`
         if (intento.resp[k] === j) inp.checked = true;
         if (intento.listo) inp.disabled = true;
         inp.addEventListener('change', function () { intento.resp[k] = j; contador(n); });
-        lab.appendChild(inp); lab.appendChild(el('span', null, p.ops[j]));
+        lab.appendChild(inp); lab.appendChild(el('span', { 'class': 'txt' }, p.ops[j]));
         ops.appendChild(lab);
       });
       fs.appendChild(ops);
@@ -501,7 +501,8 @@ const CUERPO = String.raw`
 
 /** datos: objeto serializable; devuelve { cabeza, cuerpo } (HTML). */
 export function paginaRuta(datos) {
-  const json = JSON.stringify(datos).replace(/</g, '\\u003c').replace(/ /g, '\\u2028').replace(/ /g, '\\u2029');
+  const json = JSON.stringify(datos).replace(/</g, '\\u003c')
+    .split(String.fromCharCode(0x2028)).join('\\u2028').split(String.fromCharCode(0x2029)).join('\\u2029');
   const cabeza = `<title>Ruta de Variable Compleja</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>${cssFuentes({ incrustar: true })}\n${cssKatex({ incrustar: true })}\n${CSS}</style>`;

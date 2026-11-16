@@ -21,7 +21,7 @@ FPS, SR = 30, 44100
 MPC = SR // FPS                       # muestras de audio por cuadro
 ENTRADA = 0.32                        # s entre que aparece el paso y empieza la voz
 COLA, COLA_ESCENA, COLA_FINAL = 0.55, 1.0, 2.0
-F_PASO, F_ESCENA, F_INICIO = 8, 14, 15  # cuadros de fundido
+F_PASO, F_ESCENA, F_INICIO = 8, 14, 0   # cuadros de fundido (sin fundido inicial: el primer cuadro sirve de carátula)
 CRF = os.environ.get('VC_CRF', '25')           # calidad de video (menor = mejor y más pesado)
 AUDIO_KBPS = os.environ.get('VC_AUDIO', '64k') # voz en mono: 64 kb/s es suficiente
 
