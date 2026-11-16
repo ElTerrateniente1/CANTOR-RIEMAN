@@ -1,0 +1,944 @@
+1
+00:00:00,320 --> 00:00:04,678
+Nivel tres: el teorema de Cauchy
+y la fórmula integral de Cauchy.
+
+2
+00:00:04,898 --> 00:00:07,832
+Este es el corazón del análisis complejo.
+
+3
+00:00:08,052 --> 00:00:11,908
+Vas a ver que, para integrar
+sobre una curva cerrada,
+
+4
+00:00:11,928 --> 00:00:18,263
+casi nunca hace falta parametrizar: basta
+con saber qué singularidades quedan dentro.
+
+5
+00:00:19,020 --> 00:00:20,109
+Objetivos.
+
+6
+00:00:20,329 --> 00:00:23,462
+Enunciar y aplicar el
+teorema de Cauchy Gursá.
+
+7
+00:00:23,682 --> 00:00:27,110
+Deformar contornos sin cambiar
+el valor de la integral.
+
+8
+00:00:27,330 --> 00:00:31,826
+Aplicar la fórmula integral de
+Cauchy y su versión para derivadas.
+
+9
+00:00:32,046 --> 00:00:37,431
+Y, lo más importante en la práctica, decidir
+correctamente qué singularidades quedan
+
+10
+00:00:37,451 --> 00:00:38,794
+dentro de la curva.
+
+11
+00:00:39,987 --> 00:00:45,386
+El teorema de Cauchy Gursá dice que si
+una función es analítica sobre una curva
+
+12
+00:00:45,406 --> 00:00:49,021
+cerrada simple, y en todos
+los puntos de su interior,
+
+13
+00:00:49,041 --> 00:00:52,180
+entonces su integral sobre la curva es cero.
+
+14
+00:00:52,920 --> 00:00:56,412
+La razón de fondo son las
+ecuaciones de Cauchy Riemann.
+
+15
+00:00:56,632 --> 00:01:00,163
+Si escribes la integral en
+parte real e imaginaria,
+
+16
+00:01:00,183 --> 00:01:05,942
+y aplicas el teorema de Green, aparecen
+dos integrales dobles cuyos integrandos son
+
+17
+00:01:05,962 --> 00:01:09,912
+exactamente las combinaciones
+que Cauchy Riemann anula.
+
+18
+00:01:10,653 --> 00:01:16,806
+La hipótesis es delicada: basta un solo
+punto en el interior donde la función no sea
+
+19
+00:01:16,826 --> 00:01:20,400
+analítica, para que el
+teorema deje de aplicar.
+
+20
+00:01:20,620 --> 00:01:25,830
+El ejemplo que ya conoces es uno sobre
+zeta sobre la circunferencia unitaria,
+
+21
+00:01:25,850 --> 00:01:27,736
+cuya integral es dos pi i.
+
+22
+00:01:28,920 --> 00:01:33,563
+La consecuencia más útil del teorema
+es el principio de deformación.
+
+23
+00:01:33,783 --> 00:01:39,977
+Si una función es analítica en toda la región
+comprendida entre dos curvas cerradas,
+
+24
+00:01:39,997 --> 00:01:46,701
+las integrales sobre ambas curvas coinciden,
+siempre que se recorran en el mismo sentido.
+
+25
+00:01:47,453 --> 00:01:53,083
+En palabras: puedes deformar el contorno
+como si fuera una banda elástica,
+
+26
+00:01:53,103 --> 00:01:59,865
+encogerlo o estirarlo, y la integral no cambia
+mientras no cruces ninguna singularidad.
+
+27
+00:02:00,085 --> 00:02:05,567
+En particular, puedes encogerlo hasta
+una circunferencia diminuta alrededor del
+
+28
+00:02:05,587 --> 00:02:07,030
+punto problemático.
+
+29
+00:02:07,787 --> 00:02:13,423
+Y si hay varias singularidades dentro, la
+integral sobre el contorno grande es la
+
+30
+00:02:13,443 --> 00:02:17,194
+suma de las integrales sobre
+circunferencias pequeñas,
+
+31
+00:02:17,214 --> 00:02:19,779
+una alrededor de cada singularidad.
+
+32
+00:02:19,999 --> 00:02:24,714
+Esta idea, llevada hasta el final,
+es el teorema de los residuos.
+
+33
+00:02:25,920 --> 00:02:28,576
+Llegamos a la fórmula integral de Cauchy.
+
+34
+00:02:28,796 --> 00:02:34,426
+Sea ge una función analítica sobre una
+curva cerrada simple y en su interior,
+
+35
+00:02:34,446 --> 00:02:37,061
+y sea zeta cero un punto interior.
+
+36
+00:02:37,281 --> 00:02:41,324
+Entonces la integral de ge de
+zeta, sobre zeta menos zeta cero,
+
+37
+00:02:41,344 --> 00:02:43,657
+vale dos pi i por ge de zeta cero.
+
+38
+00:02:44,420 --> 00:02:48,148
+La idea de la demostración
+combina dos cosas que ya tienes.
+
+39
+00:02:48,368 --> 00:02:54,165
+Por deformación, encogemos la curva a un
+círculo diminuto alrededor de zeta cero.
+
+40
+00:02:54,385 --> 00:03:00,010
+Sobre ese círculo, por continuidad, ge de
+zeta es prácticamente la constante ge de
+
+41
+00:03:00,030 --> 00:03:02,559
+zeta cero, que sale de la integral.
+
+42
+00:03:02,779 --> 00:03:06,006
+Y lo que queda es la integral
+fundamental del nivel dos,
+
+43
+00:03:06,026 --> 00:03:07,190
+que vale dos pi i.
+
+44
+00:03:07,953 --> 00:03:13,990
+La fórmula tiene una lectura sorprendente:
+los valores de una función analítica en
+
+45
+00:03:14,010 --> 00:03:20,777
+el interior de una curva quedan completamente
+determinados por sus valores sobre la curva.
+
+46
+00:03:20,997 --> 00:03:24,438
+Nada parecido ocurre con
+funciones de variable real.
+
+47
+00:03:25,653 --> 00:03:29,931
+Derivando la fórmula respecto a
+zeta cero bajo el signo integral,
+
+48
+00:03:29,951 --> 00:03:32,054
+se obtiene la versión general.
+
+49
+00:03:32,274 --> 00:03:35,811
+La integral de ge dividida
+por zeta menos zeta cero,
+
+50
+00:03:35,831 --> 00:03:39,574
+elevado a ene más uno, es
+dos pi i sobre ene factorial,
+
+51
+00:03:39,594 --> 00:03:42,655
+por la derivada enésima de ge en zeta cero.
+
+52
+00:03:43,420 --> 00:03:46,273
+Los tres casos que aparecen en los exámenes.
+
+53
+00:03:46,493 --> 00:03:50,222
+Con el factor a la primera
+potencia: dos pi i por ge.
+
+54
+00:03:50,442 --> 00:03:53,737
+Al cuadrado: dos pi i
+por la primera derivada.
+
+55
+00:03:53,957 --> 00:03:59,284
+Al cubo: pi i por la segunda derivada,
+porque se divide entre dos factorial.
+
+56
+00:03:59,504 --> 00:04:04,458
+Ojo con el desfase: el exponente es
+uno más que el orden de la derivada.
+
+57
+00:04:05,220 --> 00:04:11,469
+De paso, la fórmula demuestra algo notable:
+una función analítica es infinitamente
+
+58
+00:04:11,489 --> 00:04:15,278
+derivable, y todas sus
+derivadas son analíticas.
+
+59
+00:04:16,487 --> 00:04:21,901
+En la práctica, todos los ejercicios
+siguen la misma receta de cuatro pasos.
+
+60
+00:04:22,121 --> 00:04:26,821
+Uno: encontrar las singularidades,
+factorizando el denominador.
+
+61
+00:04:27,041 --> 00:04:28,455
+Dos: ubicarlas.
+
+62
+00:04:28,675 --> 00:04:33,730
+Para una circunferencia de centro ce y
+radio erre, un punto está dentro si su
+
+63
+00:04:33,750 --> 00:04:36,638
+distancia al centro es menor que el radio.
+
+64
+00:04:36,858 --> 00:04:42,859
+Tres: separar el integrando, dejando en el
+denominador solo el factor que se anula
+
+65
+00:04:42,879 --> 00:04:45,789
+dentro, y llamando ge a todo lo demás.
+
+66
+00:04:46,009 --> 00:04:48,142
+Y cuatro: aplicar la fórmula.
+
+67
+00:04:48,887 --> 00:04:50,643
+El paso dos decide todo.
+
+68
+00:04:50,863 --> 00:04:56,450
+Si ninguna singularidad queda dentro, la
+integral es cero por el teorema de Cauchy
+
+69
+00:04:56,470 --> 00:04:58,916
+Gursá, y no hay nada que calcular.
+
+70
+00:04:59,136 --> 00:05:02,684
+Y si una singularidad cae
+exactamente sobre la curva,
+
+71
+00:05:02,704 --> 00:05:06,123
+la integral no está definida
+en el sentido usual.
+
+72
+00:05:07,320 --> 00:05:09,748
+Ejercicio uno de la lista de Cauchy.
+
+73
+00:05:09,968 --> 00:05:14,907
+El denominador se factoriza como zeta
+menos dos i, por zeta más dos i.
+
+74
+00:05:15,127 --> 00:05:19,221
+La curva es la circunferencia
+de centro dos i y radio dos.
+
+75
+00:05:19,441 --> 00:05:22,702
+El punto dos i es el
+centro, así que está dentro.
+
+76
+00:05:22,922 --> 00:05:26,692
+El punto menos dos i está a
+distancia cuatro del centro,
+
+77
+00:05:26,712 --> 00:05:28,998
+mayor que el radio: queda fuera.
+
+78
+00:05:29,753 --> 00:05:33,790
+Dejamos en el denominador el
+factor que se anula dentro,
+
+79
+00:05:33,810 --> 00:05:37,773
+zeta menos dos i, y el resto
+es ge: coseno de dos zeta,
+
+80
+00:05:37,793 --> 00:05:42,114
+sobre zeta más dos i, que es
+analítica dentro de la curva.
+
+81
+00:05:42,853 --> 00:05:46,152
+Aplicamos la fórmula:
+dos pi i por ge de dos i.
+
+82
+00:05:46,372 --> 00:05:50,169
+Las i se cancelan, y queda pi
+medios por coseno de cuatro i.
+
+83
+00:05:50,389 --> 00:05:54,861
+Como el coseno de un imaginario
+puro es un coseno hiperbólico,
+
+84
+00:05:54,881 --> 00:05:59,135
+el resultado es pi medios por
+coseno hiperbólico de cuatro,
+
+85
+00:05:59,155 --> 00:06:00,361
+un número real.
+
+86
+00:06:01,553 --> 00:06:02,639
+Ejercicio tres.
+
+87
+00:06:02,859 --> 00:06:05,574
+El denominador es un polinomio bicuadrado.
+
+88
+00:06:05,794 --> 00:06:11,820
+Tratándolo como una cuadrática en zeta
+cuadrado, se factoriza como zeta cuadrado más
+
+89
+00:06:11,840 --> 00:06:14,550
+cuatro, por zeta cuadrado menos dos.
+
+90
+00:06:14,770 --> 00:06:19,906
+Hay cuatro singularidades: más menos
+dos i, y más menos raíz de dos.
+
+91
+00:06:20,653 --> 00:06:24,070
+Medimos distancias al
+centro, que es raíz de dos.
+
+92
+00:06:24,290 --> 00:06:27,405
+La propia raíz de dos está a distancia cero.
+
+93
+00:06:27,625 --> 00:06:31,369
+Menos raíz de dos está a
+distancia dos raíz de dos.
+
+94
+00:06:31,589 --> 00:06:35,632
+Y los puntos más menos dos i
+están a distancia raíz de seis.
+
+95
+00:06:35,852 --> 00:06:39,446
+El radio es uno, así que solo
+raíz de dos queda dentro.
+
+96
+00:06:40,187 --> 00:06:45,252
+Entonces ge es todo lo demás: zeta
+sobre zeta cuadrado más cuatro,
+
+97
+00:06:45,272 --> 00:06:47,319
+por zeta más raíz de dos.
+
+98
+00:06:48,053 --> 00:06:52,257
+Evaluamos ge en raíz de dos:
+el numerador es raíz de dos,
+
+99
+00:06:52,277 --> 00:06:55,731
+y el denominador es seis
+por dos raíz de dos.
+
+100
+00:06:55,951 --> 00:06:58,622
+Las raíces se cancelan y queda un doceavo.
+
+101
+00:06:58,842 --> 00:07:03,148
+La integral es dos pi i sobre
+doce, es decir, pi i sobre seis.
+
+102
+00:07:04,353 --> 00:07:05,596
+Ejercicio cinco.
+
+103
+00:07:05,816 --> 00:07:10,296
+La única singularidad es menos i,
+el centro de la circunferencia.
+
+104
+00:07:10,516 --> 00:07:15,058
+El integrando ya tiene la forma
+de la fórmula para derivadas:
+
+105
+00:07:15,078 --> 00:07:20,133
+ge es e a la i zeta, y el exponente
+tres significa que ene es dos.
+
+106
+00:07:20,887 --> 00:07:23,072
+Necesitamos la segunda derivada.
+
+107
+00:07:23,292 --> 00:07:28,984
+Cada derivada baja un factor i, así que la
+segunda derivada es menos e a la i zeta.
+
+108
+00:07:29,204 --> 00:07:32,590
+En menos i, el exponente es
+i por menos i, que es uno.
+
+109
+00:07:32,810 --> 00:07:34,918
+La segunda derivada vale menos e.
+
+110
+00:07:35,653 --> 00:07:39,255
+La integral es dos pi i sobre
+dos factorial, por menos e.
+
+111
+00:07:39,475 --> 00:07:41,485
+El resultado es menos pi e i.
+
+112
+00:07:42,687 --> 00:07:43,950
+Ejercicio diez.
+
+113
+00:07:44,170 --> 00:07:49,774
+El factor zeta cuadrado más uno, al
+cuadrado, es zeta menos i al cuadrado,
+
+114
+00:07:49,794 --> 00:07:51,966
+por zeta más i al cuadrado.
+
+115
+00:07:52,186 --> 00:07:56,015
+El círculo es pequeño, de
+radio un medio alrededor de i,
+
+116
+00:07:56,035 --> 00:07:59,248
+y solo contiene a i,
+que aparece al cuadrado.
+
+117
+00:07:59,468 --> 00:08:04,407
+Entonces ene es uno, y la integral es
+dos pi i por la derivada de ge en i.
+
+118
+00:08:05,153 --> 00:08:11,402
+Derivamos ge con la regla del producto, viéndola
+como producto de dos potencias negativas.
+
+119
+00:08:12,153 --> 00:08:14,055
+Evaluamos con cuidado en i.
+
+120
+00:08:14,275 --> 00:08:16,610
+zeta cuadrado más cuatro vale tres.
+
+121
+00:08:16,830 --> 00:08:20,504
+zeta más i vale dos i: su
+cuadrado es menos cuatro,
+
+122
+00:08:20,524 --> 00:08:22,527
+y su cubo es menos ocho i.
+
+123
+00:08:22,747 --> 00:08:25,232
+El primer término da i sobre dieciocho.
+
+124
+00:08:25,452 --> 00:08:30,095
+El segundo, usando que uno sobre i
+es menos i, da menos i sobre doce.
+
+125
+00:08:30,315 --> 00:08:33,022
+La suma es menos i sobre treinta y seis.
+
+126
+00:08:33,787 --> 00:08:38,013
+Multiplicando por dos pi i, el
+resultado es pi sobre dieciocho.
+
+127
+00:08:39,220 --> 00:08:43,828
+Ejercicio siete, con un parámetro
+complejo doble u distinto de cero.
+
+128
+00:08:44,048 --> 00:08:47,180
+Las singularidades son
+doble u y menos doble u.
+
+129
+00:08:47,400 --> 00:08:52,536
+La circunferencia está centrada en
+doble u y tiene radio módulo de doble u,
+
+130
+00:08:52,556 --> 00:08:54,532
+así que pasa por el origen.
+
+131
+00:08:54,752 --> 00:08:56,667
+El punto doble u está dentro.
+
+132
+00:08:56,887 --> 00:09:02,765
+El punto menos doble u está a distancia dos
+veces el módulo de doble u: queda fuera.
+
+133
+00:09:03,520 --> 00:09:09,472
+Con ge igual a uno sobre zeta más doble u,
+la fórmula da dos pi i sobre dos doble u,
+
+134
+00:09:09,492 --> 00:09:11,674
+es decir, pi i sobre doble u.
+
+135
+00:09:11,894 --> 00:09:18,688
+El método es el mismo de siempre: el parámetro
+solo exige razonar las distancias en general.
+
+136
+00:09:19,887 --> 00:09:21,096
+Ejercicio ocho.
+
+137
+00:09:21,316 --> 00:09:27,117
+La curva es el borde de un semidisco: la
+semicircunferencia superior de radio dos
+
+138
+00:09:27,137 --> 00:09:32,289
+veces el módulo de doble u, cerrada
+con el diámetro sobre el eje real.
+
+139
+00:09:32,509 --> 00:09:38,621
+Una advertencia honesta: en la lista, el
+segmento aparece con extremos más y menos
+
+140
+00:09:38,641 --> 00:09:42,052
+módulo de doble u, y así no cierra la curva.
+
+141
+00:09:42,272 --> 00:09:45,246
+Aquí asumo que se trata
+del diámetro completo.
+
+142
+00:09:45,987 --> 00:09:49,492
+Las singularidades son i
+doble u y menos i doble u.
+
+143
+00:09:49,712 --> 00:09:52,191
+Ambas tienen módulo menor que el radio.
+
+144
+00:09:52,411 --> 00:09:55,658
+La cuestión es cuál está
+en el semiplano superior.
+
+145
+00:09:55,878 --> 00:10:00,158
+Como la parte imaginaria de i doble
+u es la parte real de doble u,
+
+146
+00:10:00,178 --> 00:10:03,622
+todo depende del signo de
+la parte real de doble u.
+
+147
+00:10:04,387 --> 00:10:09,469
+Si la parte real de doble u es positiva,
+el polo de dentro es i doble u,
+
+148
+00:10:09,489 --> 00:10:11,948
+y la fórmula da pi por uno más i.
+
+149
+00:10:12,168 --> 00:10:15,866
+Si es negativa, el polo de
+dentro es menos i doble u,
+
+150
+00:10:15,886 --> 00:10:17,970
+y da pi por menos uno más i.
+
+151
+00:10:18,190 --> 00:10:21,520
+Curiosamente, doble u se
+cancela en ambos casos.
+
+152
+00:10:22,253 --> 00:10:27,000
+Si la parte real de doble u es cero,
+los polos caen sobre el diámetro,
+
+153
+00:10:27,020 --> 00:10:29,250
+y la integral no está definida.
+
+154
+00:10:29,470 --> 00:10:34,576
+El ejercicio nueve usa el mismo
+contorno, con el denominador al cuadrado.
+
+155
+00:10:34,796 --> 00:10:40,367
+Se resuelve igual, con la fórmula de la
+derivada, y da más o menos pi sobre dos
+
+156
+00:10:40,387 --> 00:10:44,824
+doble u cuadrado, según el signo
+de la parte real de doble u.
+
+157
+00:10:46,020 --> 00:10:47,257
+Ejercicio seis.
+
+158
+00:10:47,477 --> 00:10:50,826
+Aquí hay que revisar tres
+posibles fuentes de problemas.
+
+159
+00:10:51,046 --> 00:10:52,157
+El punto dos i.
+
+160
+00:10:52,377 --> 00:10:55,374
+El punto donde el logaritmo
+se anula, que es uno.
+
+161
+00:10:55,594 --> 00:10:59,824
+Y el corte de rama del logaritmo,
+sobre el semieje real negativo.
+
+162
+00:11:00,587 --> 00:11:05,074
+El punto uno está a distancia
+raíz de cinco del centro: fuera.
+
+163
+00:11:05,294 --> 00:11:10,843
+Y el disco está contenido en el semiplano
+de parte imaginaria mayor o igual que uno,
+
+164
+00:11:10,863 --> 00:11:12,840
+así que no toca el eje real.
+
+165
+00:11:13,060 --> 00:11:16,689
+Por tanto ge, que es uno sobre
+el logaritmo al cuadrado,
+
+166
+00:11:16,709 --> 00:11:18,914
+es analítica dentro de la curva.
+
+167
+00:11:19,653 --> 00:11:23,900
+La fórmula da dos pi i sobre el
+logaritmo de dos i al cuadrado.
+
+168
+00:11:24,120 --> 00:11:28,261
+El logaritmo principal de dos
+i es logaritmo natural de dos,
+
+169
+00:11:28,281 --> 00:11:29,788
+más pi medios por i.
+
+170
+00:11:30,008 --> 00:11:33,896
+Puedes dejar el resultado así,
+o desarrollar el cuadrado.
+
+171
+00:11:35,087 --> 00:11:37,829
+Dos ejercicios más de la lista, en breve.
+
+172
+00:11:38,049 --> 00:11:42,320
+El ejercicio dos: el denominador
+es zeta, por zeta menos i,
+
+173
+00:11:42,340 --> 00:11:46,606
+y dentro del círculo de radio
+un medio solo está el cero.
+
+174
+00:11:46,826 --> 00:11:50,213
+Evaluando ge en cero, la
+integral es menos dos pi.
+
+175
+00:11:50,953 --> 00:11:55,329
+El ejercicio cuatro: las
+singularidades son más menos pi i,
+
+176
+00:11:55,349 --> 00:11:57,704
+y dentro solo está menos pi i.
+
+177
+00:11:57,924 --> 00:12:02,338
+La fórmula da seno de pi i, que es
+i por el seno hiperbólico de pi.
+
+178
+00:12:03,553 --> 00:12:05,868
+¿Y si quedan dos singularidades dentro?
+
+179
+00:12:06,088 --> 00:12:11,489
+Tomemos la misma función de antes, pero
+sobre la circunferencia centrada en el
+
+180
+00:12:11,509 --> 00:12:14,965
+origen, de radio dos veces
+el módulo de doble u.
+
+181
+00:12:15,185 --> 00:12:18,451
+Ahora doble u y menos doble
+u están los dos dentro,
+
+182
+00:12:18,471 --> 00:12:22,198
+y la fórmula de Cauchy no se
+puede aplicar directamente.
+
+183
+00:12:22,953 --> 00:12:28,834
+La solución es el principio de deformación:
+rodeamos cada polo con un círculo
+
+184
+00:12:28,854 --> 00:12:33,802
+pequeño, aplicamos la fórmula de
+Cauchy en cada uno, y sumamos.
+
+185
+00:12:34,022 --> 00:12:38,331
+Las dos contribuciones son
+opuestas, y la integral vale cero.
+
+186
+00:12:39,087 --> 00:12:43,205
+Observa el patrón: cada
+singularidad aporta dos pi i,
+
+187
+00:12:43,225 --> 00:12:45,453
+multiplicado por un número.
+
+188
+00:12:45,673 --> 00:12:51,829
+Ese número se llama residuo, y sistematizar
+su cálculo es el tema del nivel cuatro.
+
+189
+00:12:53,020 --> 00:12:54,414
+Errores frecuentes.
+
+190
+00:12:54,634 --> 00:13:00,863
+No comprobar qué singularidades están dentro,
+o no factorizar el denominador por completo.
+
+191
+00:13:01,083 --> 00:13:04,753
+Dejar dentro de ge un factor
+que se anula en el interior.
+
+192
+00:13:04,973 --> 00:13:09,595
+Equivocarse con el desfase entre el
+exponente y el orden de la derivada,
+
+193
+00:13:09,615 --> 00:13:11,218
+u olvidar el factorial.
+
+194
+00:13:11,438 --> 00:13:13,335
+Y olvidar los cortes de rama.
+
+195
+00:13:14,087 --> 00:13:14,975
+Resumen.
+
+196
+00:13:15,195 --> 00:13:18,852
+Si la función es analítica
+sobre la curva y dentro,
+
+197
+00:13:18,872 --> 00:13:20,434
+la integral es cero.
+
+198
+00:13:20,654 --> 00:13:24,622
+Los contornos se pueden deformar
+sin cruzar singularidades.
+
+199
+00:13:24,842 --> 00:13:29,118
+Y la fórmula integral de Cauchy,
+con su versión para derivadas,
+
+200
+00:13:29,138 --> 00:13:32,055
+convierte una integral en una evaluación.
+
+201
+00:13:32,820 --> 00:13:38,311
+Resuelve ahora la práctica del nivel
+tres, para desbloquear el nivel cuatro:
+
+202
+00:13:38,331 --> 00:13:40,409
+el teorema de los residuos.
+

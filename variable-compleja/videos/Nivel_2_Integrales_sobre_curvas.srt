@@ -1,0 +1,836 @@
+1
+00:00:00,320 --> 00:00:02,833
+Nivel dos: integrales sobre curvas.
+
+2
+00:00:03,053 --> 00:00:07,657
+En el nivel anterior aprendiste
+a reconocer funciones analíticas.
+
+3
+00:00:07,877 --> 00:00:12,934
+Ahora vamos a integrar funciones complejas
+a lo largo de caminos en el plano.
+
+4
+00:00:13,154 --> 00:00:17,489
+Es la operación sobre la que se
+construye todo lo que sigue:
+
+5
+00:00:17,509 --> 00:00:21,766
+el teorema de Cauchy, su
+fórmula integral y los residuos.
+
+6
+00:00:22,520 --> 00:00:24,215
+Los objetivos son cuatro.
+
+7
+00:00:24,435 --> 00:00:29,666
+Parametrizar las curvas habituales:
+segmentos, circunferencias y arcos.
+
+8
+00:00:29,886 --> 00:00:33,836
+Calcular una integral de contorno
+a partir de la definición.
+
+9
+00:00:34,056 --> 00:00:39,514
+Reconocer cuándo se puede usar una primitiva,
+lo que ahorra casi todo el trabajo.
+
+10
+00:00:39,734 --> 00:00:43,617
+Y acotar el tamaño de una integral
+con la desigualdad eme ele.
+
+11
+00:00:44,820 --> 00:00:50,531
+Una curva es una función continua que a cada
+valor de un parámetro real te le asigna
+
+12
+00:00:50,551 --> 00:00:52,581
+un punto del plano complejo.
+
+13
+00:00:52,801 --> 00:00:58,293
+Pedimos que sea suave a trozos, es decir,
+que tenga derivada continua salvo en un
+
+14
+00:00:58,313 --> 00:01:00,202
+número finito de esquinas.
+
+15
+00:01:00,422 --> 00:01:05,829
+Toda curva tiene un punto inicial, un
+punto final y un sentido de recorrido,
+
+16
+00:01:05,849 --> 00:01:07,469
+y el sentido importa.
+
+17
+00:01:08,220 --> 00:01:12,099
+Las parametrizaciones que
+debes saber de memoria son dos.
+
+18
+00:01:12,319 --> 00:01:15,997
+El segmento que va de zeta
+cero a zeta uno es zeta cero,
+
+19
+00:01:16,017 --> 00:01:20,166
+más te por zeta uno menos zeta
+cero, con te entre cero y uno.
+
+20
+00:01:20,920 --> 00:01:24,217
+Y la circunferencia de centro
+ce y radio erre es ce,
+
+21
+00:01:24,237 --> 00:01:27,737
+más erre por e a la i te,
+con te entre cero y dos pi.
+
+22
+00:01:27,957 --> 00:01:33,270
+Al crecer te se recorre en sentido
+antihorario, que es la orientación positiva.
+
+23
+00:01:33,490 --> 00:01:39,217
+Un arco de circunferencia usa la misma
+fórmula, con el parámetro restringido a un
+
+24
+00:01:39,237 --> 00:01:40,847
+intervalo de ángulos.
+
+25
+00:01:42,053 --> 00:01:48,012
+La integral de una función compleja a lo
+largo de una curva se define reduciéndola a
+
+26
+00:01:48,032 --> 00:01:50,928
+una integral ordinaria en el parámetro.
+
+27
+00:01:51,148 --> 00:01:57,319
+Se sustituye zeta por gama de te, y el diferencial
+de zeta por gama prima de te, por de te.
+
+28
+00:01:58,053 --> 00:02:02,848
+La receta siempre es la misma,
+en cuatro pasos: parametrizar,
+
+29
+00:02:02,868 --> 00:02:06,935
+derivar la parametrización,
+sustituir, e integrar.
+
+30
+00:02:07,155 --> 00:02:11,624
+El integrando que resulta es una
+función compleja de variable real,
+
+31
+00:02:11,644 --> 00:02:15,047
+que se integra separando
+parte real e imaginaria.
+
+32
+00:02:15,787 --> 00:02:18,596
+Tres propiedades que se usan todo el tiempo.
+
+33
+00:02:18,816 --> 00:02:20,325
+La integral es lineal.
+
+34
+00:02:20,545 --> 00:02:24,785
+Si se recorre la curva en sentido
+contrario, cambia de signo.
+
+35
+00:02:25,005 --> 00:02:30,037
+Y si la curva está formada por varios
+tramos, la integral es la suma de las
+
+36
+00:02:30,057 --> 00:02:32,063
+integrales sobre cada tramo.
+
+37
+00:02:32,283 --> 00:02:36,736
+Además, el resultado no depende
+de la parametrización que elijas,
+
+38
+00:02:36,756 --> 00:02:39,148
+solo de la curva y de su sentido.
+
+39
+00:02:40,353 --> 00:02:44,446
+Empecemos con la integral más
+importante de todo el curso:
+
+40
+00:02:44,466 --> 00:02:51,463
+la de una potencia entera de zeta menos zeta cero
+sobre una circunferencia centrada en zeta cero.
+
+41
+00:02:51,683 --> 00:02:54,637
+Parametrizamos, derivamos y sustituimos.
+
+42
+00:02:54,857 --> 00:02:58,582
+Queda la integral de e a la
+i, por ene más uno, por te,
+
+43
+00:02:58,602 --> 00:03:00,084
+entre cero y dos pi.
+
+44
+00:03:00,820 --> 00:03:06,272
+Si ene es distinto de menos uno, la
+exponencial tiene una primitiva periódica,
+
+45
+00:03:06,292 --> 00:03:09,779
+y la integral sobre un
+periodo completo es cero.
+
+46
+00:03:09,999 --> 00:03:13,809
+Si ene es menos uno, el
+integrando es la constante uno,
+
+47
+00:03:13,829 --> 00:03:15,759
+y la integral vale dos pi.
+
+48
+00:03:16,520 --> 00:03:21,649
+Conclusión: la integral vale dos pi
+i cuando el exponente es menos uno,
+
+49
+00:03:21,669 --> 00:03:26,648
+y cero para cualquier otro exponente
+entero, sin importar el radio.
+
+50
+00:03:26,868 --> 00:03:28,716
+Grábate este resultado.
+
+51
+00:03:28,936 --> 00:03:33,873
+De aquí salen la fórmula integral de
+Cauchy y el teorema de los residuos.
+
+52
+00:03:35,087 --> 00:03:41,326
+Ejercicio seis de la lista de curvas:
+integrar zeta conjugado sobre el cuarto de
+
+53
+00:03:41,346 --> 00:03:46,491
+circunferencia unitaria del primer
+cuadrante, en sentido positivo,
+
+54
+00:03:46,511 --> 00:03:48,274
+es decir, de uno a i.
+
+55
+00:03:48,494 --> 00:03:52,959
+La parametrización es e a la i
+te, con te entre cero y pi medios.
+
+56
+00:03:53,720 --> 00:03:59,327
+Sobre la circunferencia unitaria, el
+conjugado de e a la i te es e a la menos i te.
+
+57
+00:03:59,547 --> 00:04:05,124
+Al multiplicar por la derivada, las
+exponenciales se cancelan y queda la integral de
+
+58
+00:04:05,144 --> 00:04:06,263
+la constante i.
+
+59
+00:04:06,483 --> 00:04:08,495
+El resultado es pi medios por i.
+
+60
+00:04:09,253 --> 00:04:13,840
+Como zeta conjugado no es analítica,
+su integral depende del camino.
+
+61
+00:04:14,060 --> 00:04:18,113
+Si en lugar del arco tomamos
+el segmento recto de uno a i,
+
+62
+00:04:18,133 --> 00:04:21,061
+el resultado es i, y no pi medios por i.
+
+63
+00:04:21,281 --> 00:04:27,229
+Con funciones no analíticas no hay atajos:
+hay que parametrizar la curva que te dan.
+
+64
+00:04:28,420 --> 00:04:29,506
+Ejercicio tres.
+
+65
+00:04:29,726 --> 00:04:32,045
+La curva ya viene parametrizada.
+
+66
+00:04:32,265 --> 00:04:35,841
+Su derivada es uno, más i
+sobre uno más te cuadrado.
+
+67
+00:04:36,061 --> 00:04:41,591
+La función es la parte real al cuadrado
+más uno, y sobre la curva la parte real es
+
+68
+00:04:41,611 --> 00:04:44,235
+te, así que vale te cuadrado más uno.
+
+69
+00:04:44,987 --> 00:04:50,500
+Al multiplicar, el factor te cuadrado más
+uno se cancela con el denominador de la
+
+70
+00:04:50,520 --> 00:04:51,802
+parte imaginaria.
+
+71
+00:04:52,022 --> 00:04:55,480
+La parte real es la integral
+de te cuadrado más uno,
+
+72
+00:04:55,500 --> 00:05:00,103
+que da cuatro tercios, y la parte
+imaginaria es la integral de uno.
+
+73
+00:05:00,323 --> 00:05:02,737
+Resultado: cuatro tercios más i.
+
+74
+00:05:03,920 --> 00:05:05,362
+Ahora el gran atajo.
+
+75
+00:05:05,582 --> 00:05:11,579
+Si la función tiene una primitiva analítica
+en un dominio que contiene a la curva,
+
+76
+00:05:11,599 --> 00:05:15,614
+la integral es la primitiva
+evaluada en el punto final,
+
+77
+00:05:15,634 --> 00:05:20,230
+menos la primitiva en el punto
+inicial, igual que en cálculo.
+
+78
+00:05:20,987 --> 00:05:23,036
+Dos consecuencias inmediatas.
+
+79
+00:05:23,256 --> 00:05:27,016
+La integral no depende del
+camino, solo de los extremos.
+
+80
+00:05:27,236 --> 00:05:30,869
+Y sobre cualquier curva cerrada
+contenida en ese dominio,
+
+81
+00:05:30,889 --> 00:05:32,419
+la integral vale cero.
+
+82
+00:05:33,153 --> 00:05:34,991
+¿Cuándo existe una primitiva?
+
+83
+00:05:35,211 --> 00:05:38,123
+Las funciones enteras la
+tienen en todo el plano.
+
+84
+00:05:38,343 --> 00:05:43,213
+En general, toda función analítica
+en un dominio simplemente conexo,
+
+85
+00:05:43,233 --> 00:05:46,229
+es decir, sin agujeros, tiene primitiva.
+
+86
+00:05:46,449 --> 00:05:51,560
+El contraejemplo clásico es uno
+sobre zeta en el plano sin el origen:
+
+87
+00:05:51,580 --> 00:05:57,656
+no puede tener primitiva allí, porque su
+integral sobre la circunferencia unitaria
+
+88
+00:05:57,676 --> 00:05:59,506
+es dos pi i, y no cero.
+
+89
+00:06:00,720 --> 00:06:05,760
+Ejercicio cuatro: integrar e a la
+i zeta sobre la curva te cuadrado,
+
+90
+00:06:05,780 --> 00:06:08,207
+más i por valor absoluto de te.
+
+91
+00:06:08,427 --> 00:06:11,228
+Parametrizar y sustituir sería doloroso.
+
+92
+00:06:11,448 --> 00:06:14,174
+Pero la función es entera y tiene primitiva.
+
+93
+00:06:14,394 --> 00:06:19,375
+Miremos los extremos: en te igual
+a menos uno, y en te igual a uno,
+
+94
+00:06:19,395 --> 00:06:22,725
+la curva está en el mismo punto, uno más i.
+
+95
+00:06:22,945 --> 00:06:26,639
+La curva baja al origen y
+regresa por el mismo camino.
+
+96
+00:06:27,387 --> 00:06:32,859
+Por el teorema fundamental, la integral es
+la primitiva en el punto final menos la
+
+97
+00:06:32,879 --> 00:06:36,617
+primitiva en el punto inicial,
+que son el mismo punto.
+
+98
+00:06:36,837 --> 00:06:38,383
+La integral vale cero.
+
+99
+00:06:39,120 --> 00:06:45,091
+El ejercicio ocho es idéntico: la misma
+función sobre el contorno de un triángulo.
+
+100
+00:06:45,311 --> 00:06:50,936
+Es una curva cerrada y la función tiene
+primitiva, así que la integral es cero,
+
+101
+00:06:50,956 --> 00:06:52,362
+sin calcular nada.
+
+102
+00:06:52,582 --> 00:06:56,213
+Antes de parametrizar,
+revisa siempre los extremos.
+
+103
+00:06:57,420 --> 00:07:02,725
+Ejercicio cinco: el logaritmo principal
+sobre el segmento que va de uno a i.
+
+104
+00:07:02,945 --> 00:07:08,898
+Primero, la verificación obligatoria: el
+segmento está en el primer cuadrante y no
+
+105
+00:07:08,918 --> 00:07:14,945
+toca el corte de rama, así que el logaritmo
+es analítico en una región sin agujeros
+
+106
+00:07:14,965 --> 00:07:16,833
+que contiene a la curva.
+
+107
+00:07:17,587 --> 00:07:22,198
+Una primitiva se obtiene integrando
+por partes, como en cálculo:
+
+108
+00:07:22,218 --> 00:07:25,160
+zeta por logaritmo de zeta, menos zeta.
+
+109
+00:07:25,380 --> 00:07:27,080
+Se comprueba derivando.
+
+110
+00:07:27,820 --> 00:07:28,835
+Evaluamos.
+
+111
+00:07:29,055 --> 00:07:34,228
+El logaritmo de i es pi medios por i,
+así que la primitiva en i vale menos pi
+
+112
+00:07:34,248 --> 00:07:35,447
+medios, menos i.
+
+113
+00:07:35,667 --> 00:07:40,341
+El logaritmo de uno es cero, y la
+primitiva en uno vale menos uno.
+
+114
+00:07:41,087 --> 00:07:43,724
+La resta da uno menos pi medios, menos i.
+
+115
+00:07:44,920 --> 00:07:48,804
+Ejercicio siete: uno sobre
+zeta cuadrado más cuatro,
+
+116
+00:07:48,824 --> 00:07:54,424
+sobre el semicírculo superior de radio
+uno, recorrido de uno a menos uno.
+
+117
+00:07:54,644 --> 00:07:58,220
+Las únicas singularidades
+están en más menos dos i,
+
+118
+00:07:58,240 --> 00:07:59,629
+lejos de la curva.
+
+119
+00:07:59,849 --> 00:08:04,694
+La función es analítica en el disco
+de radio dos, que no tiene agujeros.
+
+120
+00:08:05,453 --> 00:08:10,090
+Entonces, dentro de ese disco, la
+integral no depende del camino,
+
+121
+00:08:10,110 --> 00:08:15,965
+y podemos cambiar el semicírculo por el
+camino más cómodo con los mismos extremos:
+
+122
+00:08:15,985 --> 00:08:19,328
+el segmento del eje
+real, de uno a menos uno.
+
+123
+00:08:20,087 --> 00:08:23,303
+Sobre el eje real es una
+integral de cálculo uno.
+
+124
+00:08:23,523 --> 00:08:27,391
+Su primitiva es un medio del
+arco tangente de equis medios,
+
+125
+00:08:27,411 --> 00:08:30,827
+y el resultado es menos
+arco tangente de un medio.
+
+126
+00:08:32,020 --> 00:08:33,326
+Ejercicio nueve.
+
+127
+00:08:33,546 --> 00:08:39,038
+El arco de parábola con vértice en el
+origen que une uno menos i con uno más i es
+
+128
+00:08:39,058 --> 00:08:44,078
+equis igual a ye cuadrado, que se
+parametriza como te cuadrado más i te.
+
+129
+00:08:44,298 --> 00:08:50,090
+Todo el arco está en el semiplano derecho,
+y solo toca el corte de la raíz principal
+
+130
+00:08:50,110 --> 00:08:53,897
+en el origen, donde la
+función sigue siendo continua.
+
+131
+00:08:54,653 --> 00:08:58,354
+Como zeta por raíz de zeta
+es zeta a la tres medios,
+
+132
+00:08:58,374 --> 00:09:02,290
+una primitiva es dos quintos
+de zeta a la cinco medios,
+
+133
+00:09:02,310 --> 00:09:04,004
+con la rama principal.
+
+134
+00:09:04,224 --> 00:09:08,347
+Para evaluarla escribimos
+los extremos en forma polar:
+
+135
+00:09:08,367 --> 00:09:12,783
+módulo raíz de dos, y argumentos
+más y menos pi cuartos.
+
+136
+00:09:13,520 --> 00:09:19,876
+La diferencia de las dos exponenciales conjugadas
+es dos i por el seno de cinco pi octavos.
+
+137
+00:09:20,096 --> 00:09:26,141
+El resultado es imaginario puro:
+aproximadamente uno coma setenta y seis, por i.
+
+138
+00:09:27,353 --> 00:09:32,123
+Tres ejercicios más de la lista,
+resueltos en una línea cada uno.
+
+139
+00:09:32,343 --> 00:09:36,695
+El ejercicio uno: zeta cuadrado
+sobre la curva coseno de te,
+
+140
+00:09:36,715 --> 00:09:39,530
+que va de uno a cero por el eje real.
+
+141
+00:09:39,750 --> 00:09:44,774
+Con la primitiva zeta cubo sobre
+tres, el resultado es menos un tercio.
+
+142
+00:09:45,520 --> 00:09:51,293
+El ejercicio dos: uno sobre zeta sobre
+un arco de la circunferencia unitaria,
+
+143
+00:09:51,313 --> 00:09:53,164
+de amplitud pi cuartos.
+
+144
+00:09:53,384 --> 00:09:58,776
+El integrando se reduce a la constante
+i, y el resultado es pi cuartos por i.
+
+145
+00:09:58,996 --> 00:10:04,596
+En general, la integral de uno sobre zeta
+sobre un arco centrado en el origen es i
+
+146
+00:10:04,616 --> 00:10:06,381
+por el ángulo recorrido.
+
+147
+00:10:07,120 --> 00:10:11,330
+Y el ejercicio diez: la función
+parte imaginaria de zeta,
+
+148
+00:10:11,350 --> 00:10:15,633
+más i por parte real de zeta,
+que es i por zeta conjugado,
+
+149
+00:10:15,653 --> 00:10:17,109
+y no es analítica.
+
+150
+00:10:17,329 --> 00:10:21,590
+Parametrizamos el segmento de
+i a uno más dos i, sustituimos,
+
+151
+00:10:21,610 --> 00:10:23,906
+y la integral da uno más dos i.
+
+152
+00:10:25,120 --> 00:10:29,964
+La última herramienta del nivel
+no calcula integrales: las acota.
+
+153
+00:10:30,184 --> 00:10:34,219
+Si el módulo de la función no
+supera eme sobre la curva,
+
+154
+00:10:34,239 --> 00:10:39,143
+y la curva tiene longitud ele,
+entonces el módulo de la integral es,
+
+155
+00:10:39,163 --> 00:10:40,948
+a lo sumo, eme por ele.
+
+156
+00:10:41,687 --> 00:10:47,531
+Ejemplo típico: la función uno sobre zeta
+cuadrado más cuatro sobre un semicírculo
+
+157
+00:10:47,551 --> 00:10:49,173
+de radio erre grande.
+
+158
+00:10:49,393 --> 00:10:55,591
+Por la desigualdad triangular inversa, el
+denominador es al menos erre cuadrado menos cuatro.
+
+159
+00:10:55,811 --> 00:10:58,497
+La longitud del semicírculo es pi erre.
+
+160
+00:10:58,717 --> 00:11:02,236
+La cota es pi erre, sobre
+erre cuadrado menos cuatro,
+
+161
+00:11:02,256 --> 00:11:04,781
+que tiende a cero cuando erre crece.
+
+162
+00:11:05,520 --> 00:11:11,980
+Este tipo de argumento sirve para demostrar que la
+integral sobre un arco desaparece en el límite.
+
+163
+00:11:12,200 --> 00:11:17,338
+Es la pieza que hace funcionar el cálculo
+de integrales reales impropias con
+
+164
+00:11:17,358 --> 00:11:19,310
+residuos, en el nivel seis.
+
+165
+00:11:20,520 --> 00:11:22,299
+Resumamos la estrategia.
+
+166
+00:11:22,519 --> 00:11:26,964
+Ante una integral de contorno,
+pregúntate tres cosas, en orden.
+
+167
+00:11:27,184 --> 00:11:30,964
+Uno: ¿la función tiene conjugados,
+partes reales o módulos?
+
+168
+00:11:31,184 --> 00:11:34,411
+Entonces no es analítica,
+y hay que parametrizar.
+
+169
+00:11:34,631 --> 00:11:39,318
+Dos: ¿es analítica en una región sin
+agujeros que contiene a la curva?
+
+170
+00:11:39,538 --> 00:11:43,950
+Entonces usa una primitiva, o
+cambia el camino por uno más fácil.
+
+171
+00:11:44,170 --> 00:11:47,933
+Tres: ¿la curva es cerrada
+y encierra singularidades?
+
+172
+00:11:48,153 --> 00:11:50,790
+Ese es el tema de los niveles tres y cuatro.
+
+173
+00:11:51,553 --> 00:11:53,118
+Y los errores típicos.
+
+174
+00:11:53,338 --> 00:11:57,229
+Olvidar multiplicar por la
+derivada de la parametrización.
+
+175
+00:11:57,449 --> 00:12:01,210
+Usar una primitiva con una
+función que no es analítica.
+
+176
+00:12:01,430 --> 00:12:04,693
+Ignorar el sentido de
+recorrido, que cambia el signo.
+
+177
+00:12:04,913 --> 00:12:10,166
+Y usar el logaritmo o una raíz sin comprobar
+que la curva evita el corte de rama.
+
+178
+00:12:10,920 --> 00:12:13,794
+Ahora resuelve la práctica del nivel dos.
+
+179
+00:12:14,014 --> 00:12:20,056
+Al aprobarla se desbloquea el nivel tres:
+el teorema de Cauchy y la fórmula integral.
+

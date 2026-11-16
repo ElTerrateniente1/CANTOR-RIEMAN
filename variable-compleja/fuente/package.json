@@ -1,0 +1,12 @@
+{
+  "name": "variable-compleja-fuente",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Fuente del curso intensivo de variable compleja (videos, documento y prácticas)",
+  "type": "module",
+  "dependencies": {
+    "katex": "^0.16.11",
+    "@fontsource/ibm-plex-sans": "^5.0.0",
+    "@fontsource/source-serif-4": "^5.0.0"
+  }
+}

@@ -1,0 +1,788 @@
+WEBVTT
+
+00:00:00.320 --> 00:00:05.331
+Nivel seis, el último: integrales
+impropias sobre toda la recta real,
+
+00:00:05.351 --> 00:00:11.742
+incluyendo el caso en que el integrando tiene
+singularidades sobre el propio eje real.
+
+00:00:11.962 --> 00:00:16.915
+Es el tema más exigente del parcial,
+y combina todo lo que has aprendido.
+
+00:00:17.653 --> 00:00:18.742
+Objetivos.
+
+00:00:18.962 --> 00:00:23.329
+Calcular integrales de funciones
+racionales sobre toda la recta,
+
+00:00:23.349 --> 00:00:26.074
+cerrando el camino con un semicírculo.
+
+00:00:26.294 --> 00:00:32.503
+Tratar integrales con senos y cosenos mediante
+la exponencial compleja y el lema de Jordan.
+
+00:00:32.723 --> 00:00:35.329
+Entender qué es el valor
+principal de Cauchy.
+
+00:00:35.549 --> 00:00:41.491
+Y aplicar la regla según la cual un polo simple
+sobre el eje real cuenta como medio residuo.
+
+00:00:42.687 --> 00:00:44.624
+La estrategia general es esta.
+
+00:00:44.844 --> 00:00:47.180
+Queremos una integral sobre el eje real.
+
+00:00:47.400 --> 00:00:52.915
+Tomamos el segmento de menos erre a erre,
+y lo cerramos con un semicírculo de radio
+
+00:00:52.935 --> 00:00:55.056
+erre en el semiplano superior.
+
+00:00:55.276 --> 00:00:58.891
+Sobre ese contorno cerrado
+sí podemos usar residuos.
+
+00:00:59.653 --> 00:01:04.150
+El teorema de los residuos dice
+que la integral sobre el segmento,
+
+00:01:04.170 --> 00:01:09.829
+más la integral sobre el arco, es dos pi
+i por la suma de los residuos en los polos
+
+00:01:09.849 --> 00:01:16.264
+del semiplano superior, una vez que erre es
+suficientemente grande para encerrarlos a todos.
+
+00:01:17.020 --> 00:01:18.844
+Falta deshacerse del arco.
+
+00:01:19.064 --> 00:01:24.726
+Si la función es racional, y el grado del
+denominador supera al del numerador en al
+
+00:01:24.746 --> 00:01:28.628
+menos dos, la función decae
+como uno sobre erre cuadrado,
+
+00:01:28.648 --> 00:01:34.518
+y la cota eme ele del nivel dos muestra que
+la integral sobre el arco tiende a cero.
+
+00:01:34.738 --> 00:01:41.375
+En el límite, la integral real es dos pi i por
+la suma de los residuos del semiplano superior.
+
+00:01:42.587 --> 00:01:46.632
+Cuando el integrando tiene un
+coseno o un seno, hay una trampa.
+
+00:01:46.852 --> 00:01:50.509
+No se puede usar coseno de
+a zeta en el plano complejo,
+
+00:01:50.529 --> 00:01:55.196
+porque el coseno complejo crece
+exponencialmente lejos del eje real.
+
+00:01:55.416 --> 00:02:01.353
+En su lugar se usa la exponencial e a la
+i a zeta, y al final se toma la parte real
+
+00:02:01.373 --> 00:02:05.154
+para el coseno, o la parte
+imaginaria para el seno.
+
+00:02:05.920 --> 00:02:11.611
+La razón es que, para a positivo, el módulo
+de e a la i a zeta es e a la menos a ye,
+
+00:02:11.631 --> 00:02:15.283
+que en el semiplano superior
+es menor o igual que uno,
+
+00:02:15.303 --> 00:02:16.579
+y decae al subir.
+
+00:02:16.799 --> 00:02:19.857
+La exponencial ayuda, en lugar de estorbar.
+
+00:02:20.620 --> 00:02:24.331
+El lema de Jordan precisa
+esa ayuda: con a positivo,
+
+00:02:24.351 --> 00:02:29.066
+basta que el grado del denominador
+supere al del numerador en uno,
+
+00:02:29.086 --> 00:02:33.654
+y no en dos, para que la integral
+sobre el arco tienda a cero.
+
+00:02:34.420 --> 00:02:38.033
+Si a es negativo, la
+exponencial decae hacia abajo,
+
+00:02:38.053 --> 00:02:43.942
+y hay que cerrar por el semiplano inferior,
+con sentido horario y un signo menos.
+
+00:02:44.162 --> 00:02:48.167
+O más fácil: usar que el
+coseno es par y el seno impar,
+
+00:02:48.187 --> 00:02:51.015
+para trabajar siempre con a positivo.
+
+00:02:52.220 --> 00:02:55.475
+Ejercicio ocho de la
+lista de singularidades.
+
+00:02:55.695 --> 00:02:58.646
+Cambiamos el coseno por e a la cinco i zeta.
+
+00:02:58.866 --> 00:03:04.095
+El denominador tiene discriminante
+negativo: sus raíces son menos uno,
+
+00:03:04.115 --> 00:03:07.159
+más menos dos i, y no hay polos reales.
+
+00:03:07.379 --> 00:03:10.797
+En el semiplano superior
+está menos uno más dos i.
+
+00:03:11.553 --> 00:03:16.870
+El residuo, con la regla pe sobre cu,
+es la exponencial evaluada en el polo,
+
+00:03:16.890 --> 00:03:19.959
+sobre dos zeta más dos, que vale cuatro i.
+
+00:03:20.179 --> 00:03:24.713
+El exponente es cinco i, por menos
+uno más dos i, que da menos diez,
+
+00:03:24.733 --> 00:03:25.790
+menos cinco i.
+
+00:03:26.553 --> 00:03:32.955
+Por el lema de Jordan, la integral de la exponencial
+sobre la recta es dos pi i por ese residuo.
+
+00:03:33.175 --> 00:03:37.102
+Las i se cancelan, y queda pi
+medios, por e a la menos diez,
+
+00:03:37.122 --> 00:03:40.070
+por coseno de cinco, menos i seno de cinco.
+
+00:03:40.820 --> 00:03:44.541
+Tomando parte real, la integral
+del coseno es pi medios,
+
+00:03:44.561 --> 00:03:47.554
+por e a la menos diez, por coseno de cinco.
+
+00:03:47.774 --> 00:03:52.525
+Y gratis, la parte imaginaria da la
+integral correspondiente con seno.
+
+00:03:53.720 --> 00:04:00.014
+Ahora el caso que da nombre a la lista: el
+integrando tiene un polo en un punto del eje real.
+
+00:04:00.234 --> 00:04:03.625
+Entonces la integral
+impropia, en el sentido usual,
+
+00:04:03.645 --> 00:04:08.581
+diverge, igual que diverge la integral
+de uno sobre equis cerca de cero.
+
+00:04:09.320 --> 00:04:12.912
+Lo que sí puede existir es el
+valor principal de Cauchy.
+
+00:04:13.132 --> 00:04:17.167
+Se define quitando un intervalo
+simétrico, de radio épsilon,
+
+00:04:17.187 --> 00:04:22.370
+alrededor del polo; integrando sobre lo
+que queda; y tomando el límite cuando
+
+00:04:22.390 --> 00:04:23.997
+épsilon tiende a cero.
+
+00:04:24.217 --> 00:04:30.342
+La simetría es esencial: las áreas infinitas
+a izquierda y derecha del polo tienen
+
+00:04:30.362 --> 00:04:32.805
+signos opuestos, y se cancelan.
+
+00:04:33.553 --> 00:04:39.400
+El ejemplo mínimo: el valor principal de
+la integral de uno sobre equis entre menos
+
+00:04:39.420 --> 00:04:45.619
+uno y uno es cero, porque la función es impar,
+aunque la integral ordinaria no existe.
+
+00:04:45.839 --> 00:04:49.701
+Cuando en la lista aparece
+una integral con un polo real,
+
+00:04:49.721 --> 00:04:53.518
+se entiende siempre en el
+sentido del valor principal.
+
+00:04:54.720 --> 00:04:59.627
+Para calcular un valor principal con
+residuos, modificamos el contorno.
+
+00:04:59.847 --> 00:05:05.585
+Al llegar cerca del polo real, lo esquivamos
+por arriba con un semicírculo pequeño,
+
+00:05:05.605 --> 00:05:06.904
+de radio épsilon.
+
+00:05:07.124 --> 00:05:11.681
+Dentro del contorno quedan únicamente
+los polos del semiplano superior.
+
+00:05:12.420 --> 00:05:15.224
+La pieza nueva es el lema del arco pequeño.
+
+00:05:15.444 --> 00:05:19.899
+Si el polo es simple, la integral
+sobre el semicírculo pequeño,
+
+00:05:19.919 --> 00:05:24.656
+recorrido en sentido horario,
+tiende a menos pi i por el residuo.
+
+00:05:24.876 --> 00:05:29.809
+La intuición: cerca del polo, la
+función se comporta como el residuo,
+
+00:05:29.829 --> 00:05:31.959
+sobre zeta menos equis cero.
+
+00:05:32.179 --> 00:05:36.023
+Una vuelta completa daría dos
+pi i; media vuelta da pi i;
+
+00:05:36.043 --> 00:05:38.943
+y el sentido horario pone el signo menos.
+
+00:05:39.687 --> 00:05:45.167
+Pasando ese término al otro lado, obtenemos
+la fórmula de trabajo de este nivel.
+
+00:05:45.387 --> 00:05:51.141
+El valor principal es dos pi i por la suma
+de los residuos del semiplano superior,
+
+00:05:51.161 --> 00:05:55.295
+más pi i por la suma de los
+residuos en los polos reales.
+
+00:05:55.515 --> 00:05:57.610
+Los polos reales cuentan la mitad.
+
+00:05:58.353 --> 00:05:59.604
+Dos condiciones.
+
+00:05:59.824 --> 00:06:04.102
+Los polos reales tienen que ser
+simples; con un polo real doble,
+
+00:06:04.122 --> 00:06:06.928
+el valor principal en general no existe.
+
+00:06:07.148 --> 00:06:11.502
+Y el arco grande debe desaparecer,
+por la condición de los grados,
+
+00:06:11.522 --> 00:06:13.232
+o por el lema de Jordan.
+
+00:06:14.420 --> 00:06:15.725
+Ejercicio siete.
+
+00:06:15.945 --> 00:06:21.099
+Función racional con grados uno y tres,
+así que el arco grande desaparece.
+
+00:06:21.319 --> 00:06:26.187
+Los polos son: dos, que es real y
+simple; i, en el semiplano superior;
+
+00:06:26.207 --> 00:06:29.470
+y menos i, en el inferior,
+que no interviene.
+
+00:06:30.220 --> 00:06:31.344
+Los residuos.
+
+00:06:31.564 --> 00:06:36.274
+En dos, tapamos el factor equis
+menos dos y evaluamos: tres quintos.
+
+00:06:36.494 --> 00:06:40.357
+En i, tapamos zeta menos i:
+el numerador es uno más i,
+
+00:06:40.377 --> 00:06:44.742
+y el denominador es i menos dos,
+por dos i, que es menos dos,
+
+00:06:44.762 --> 00:06:45.961
+menos cuatro i.
+
+00:06:46.181 --> 00:06:50.543
+Racionalizando, el residuo es
+menos, tres menos i, sobre diez.
+
+00:06:51.287 --> 00:06:55.398
+Aplicamos la fórmula: dos pi
+i por el residuo de arriba,
+
+00:06:55.418 --> 00:06:57.678
+más pi i por el residuo real.
+
+00:06:57.898 --> 00:07:03.151
+Las partes imaginarias se cancelan, como
+debe ocurrir con un integrando real,
+
+00:07:03.171 --> 00:07:06.099
+y el valor principal es menos pi quintos.
+
+00:07:07.287 --> 00:07:08.503
+Ejercicio dos.
+
+00:07:08.723 --> 00:07:12.435
+Los polos son las tres
+raíces cúbicas de menos uno:
+
+00:07:12.455 --> 00:07:17.777
+el menos uno, que es real; e a la i
+pi tercios, en el semiplano superior;
+
+00:07:17.797 --> 00:07:19.527
+y su conjugado, abajo.
+
+00:07:20.287 --> 00:07:26.247
+Aquí la regla pe sobre cu es ideal, porque
+da una fórmula única para los tres polos:
+
+00:07:26.267 --> 00:07:31.799
+zeta cero sobre tres zeta cero al
+cuadrado, que es uno sobre tres zeta cero.
+
+00:07:32.019 --> 00:07:34.997
+En menos uno, el residuo es menos un tercio.
+
+00:07:35.217 --> 00:07:39.654
+En e a la i pi tercios, es e a la
+menos i pi tercios, sobre tres.
+
+00:07:40.420 --> 00:07:45.098
+Sustituimos en la fórmula, y sacamos
+factor común pi i sobre tres.
+
+00:07:45.318 --> 00:07:50.555
+Como e a la menos i pi tercios es un
+medio, menos raíz de tres medios por i,
+
+00:07:50.575 --> 00:07:53.738
+el paréntesis vale menos raíz de tres por i.
+
+00:07:53.958 --> 00:07:56.812
+El resultado es pi sobre raíz de tres.
+
+00:07:58.020 --> 00:08:02.421
+Los ejercicios tres, cuatro y
+cinco se resuelven de una sola vez,
+
+00:08:02.441 --> 00:08:06.438
+con la función e a la i pi
+zeta, sobre zeta cubo más uno.
+
+00:08:06.658 --> 00:08:12.450
+Los polos son los mismos del ejemplo
+anterior, y el residuo general es e a la i pi
+
+00:08:12.470 --> 00:08:15.708
+zeta cero, sobre tres zeta cero al cuadrado.
+
+00:08:16.453 --> 00:08:20.008
+En menos uno, la exponencial
+vale e a la menos i pi,
+
+00:08:20.028 --> 00:08:23.585
+que es menos uno, y el
+residuo es menos un tercio.
+
+00:08:23.805 --> 00:08:28.077
+En zeta uno, que es un medio,
+más raíz de tres medios por i,
+
+00:08:28.097 --> 00:08:31.797
+el exponente i pi zeta uno
+se separa en i pi medios,
+
+00:08:31.817 --> 00:08:37.806
+cuya exponencial es i, y una parte real
+negativa, que da el factor e a la menos raíz
+
+00:08:37.826 --> 00:08:39.305
+de tres, pi medios.
+
+00:08:39.525 --> 00:08:42.906
+El cuadrado de zeta uno es
+e a la dos pi i tercios.
+
+00:08:43.653 --> 00:08:45.130
+Aplicamos la fórmula.
+
+00:08:45.350 --> 00:08:50.977
+En el primer término, i por i da menos
+uno; y menos dos por e a la menos dos pi i
+
+00:08:50.997 --> 00:08:53.556
+tercios, es uno más raíz de tres i.
+
+00:08:53.776 --> 00:08:56.632
+El polo real aporta menos pi tercios por i.
+
+00:08:57.387 --> 00:09:01.953
+Separando parte real e imaginaria,
+obtenemos las dos integrales.
+
+00:09:02.173 --> 00:09:07.150
+La del coseno vale pi tercios, por e
+a la menos raíz de tres, pi medios.
+
+00:09:07.370 --> 00:09:12.763
+La del seno vale pi tercios, por la
+cantidad: raíz de tres por esa misma
+
+00:09:12.783 --> 00:09:14.633
+exponencial, menos uno.
+
+00:09:15.387 --> 00:09:17.109
+Un matiz para el examen.
+
+00:09:17.329 --> 00:09:22.053
+El seno de pi equis se anula en
+menos uno, justo donde está el polo.
+
+00:09:22.273 --> 00:09:26.844
+Por eso el integrando con seno tiene
+allí una singularidad evitable,
+
+00:09:26.864 --> 00:09:29.955
+y su integral converge en sentido ordinario.
+
+00:09:30.175 --> 00:09:34.310
+La del coseno, en cambio, solo
+existe como valor principal.
+
+00:09:35.520 --> 00:09:36.757
+Ejercicio seis.
+
+00:09:36.977 --> 00:09:40.646
+El denominador es equis, por
+equis a la cuarta más uno.
+
+00:09:40.866 --> 00:09:45.306
+Trabajamos con la exponencial,
+con a igual a pi por raíz de dos.
+
+00:09:45.526 --> 00:09:50.994
+Hay un polo real en cero, y cuatro polos
+en las raíces cuartas de menos uno,
+
+00:09:51.014 --> 00:09:54.749
+de los cuales dos están
+arriba: e a la i pi cuartos,
+
+00:09:54.769 --> 00:09:56.839
+y e a la tres i pi cuartos.
+
+00:09:57.587 --> 00:09:59.204
+En cero, el residuo es uno.
+
+00:09:59.424 --> 00:10:05.454
+Para los otros polos, usamos la regla pe
+sobre cu con el denominador sin factorizar,
+
+00:10:05.474 --> 00:10:09.123
+cuya derivada es cinco
+zeta a la cuarta, más uno.
+
+00:10:09.343 --> 00:10:12.917
+Como en esos polos zeta a
+la cuarta vale menos uno,
+
+00:10:12.937 --> 00:10:15.171
+la derivada vale menos cuatro.
+
+00:10:15.391 --> 00:10:18.627
+El residuo es menos la
+exponencial, sobre cuatro.
+
+00:10:19.387 --> 00:10:23.392
+El valor de a está elegido para
+que las cuentas salgan limpias.
+
+00:10:23.612 --> 00:10:29.223
+a por zeta uno es pi por uno más i, y la
+exponencial vale menos e a la menos pi.
+
+00:10:29.443 --> 00:10:31.385
+Con zeta dos ocurre lo mismo.
+
+00:10:31.605 --> 00:10:37.579
+Cada residuo es e a la menos pi, sobre cuatro,
+y la suma es e a la menos pi, sobre dos.
+
+00:10:38.320 --> 00:10:41.334
+La fórmula da pi i, por
+uno más e a la menos pi.
+
+00:10:41.554 --> 00:10:46.510
+Es imaginario puro, y su parte
+imaginaria es la integral del seno:
+
+00:10:46.530 --> 00:10:49.063
+pi, por uno más e a la menos pi.
+
+00:10:49.283 --> 00:10:55.347
+De nuevo, el seno cancela el polo en cero,
+y la integral converge en sentido ordinario.
+
+00:10:56.553 --> 00:10:57.816
+Ejercicio diez.
+
+00:10:58.036 --> 00:11:03.193
+Un coseno al cuadrado no se puede
+sustituir directamente por una exponencial.
+
+00:11:03.413 --> 00:11:07.078
+Primero se linealiza, con la
+identidad del ángulo doble.
+
+00:11:07.298 --> 00:11:13.188
+Necesitamos dos valores principales: el
+de uno sobre uno menos equis a la cuarta,
+
+00:11:13.208 --> 00:11:18.581
+y el de la exponencial e a la dos pi
+i equis sobre el mismo denominador.
+
+00:11:19.320 --> 00:11:23.258
+Los polos son las raíces
+cuartas de uno: más y menos uno,
+
+00:11:23.278 --> 00:11:25.829
+sobre el eje real, y más y menos i.
+
+00:11:26.049 --> 00:11:31.167
+Con la regla pe sobre cu, la derivada del
+denominador es menos cuatro zeta cubo.
+
+00:11:31.387 --> 00:11:35.288
+Y como en estos polos uno sobre
+zeta cubo es igual a zeta,
+
+00:11:35.308 --> 00:11:39.551
+el residuo es menos zeta cero
+por el numerador, sobre cuatro.
+
+00:11:40.287 --> 00:11:45.366
+Para la primera integral, los residuos
+en uno y en menos uno son opuestos,
+
+00:11:45.386 --> 00:11:46.471
+y se cancelan.
+
+00:11:46.691 --> 00:11:51.520
+El de i es menos i sobre cuatro,
+y el valor principal es pi medios.
+
+00:11:51.740 --> 00:11:56.036
+Para la segunda, la exponencial
+vale uno en los dos polos reales,
+
+00:11:56.056 --> 00:12:00.825
+que vuelven a cancelarse, y en i
+aporta el factor e a la menos dos pi.
+
+00:12:01.045 --> 00:12:04.388
+El resultado es pi medios,
+por e a la menos dos pi.
+
+00:12:05.153 --> 00:12:10.704
+Promediando, el valor principal es pi
+cuartos, por uno más e a la menos dos pi.
+
+00:12:11.920 --> 00:12:14.086
+Para terminar, el ejercicio uno.
+
+00:12:14.306 --> 00:12:17.777
+Reescribimos dos menos equis
+como menos equis menos dos,
+
+00:12:17.797 --> 00:12:20.037
+para no equivocarnos con el signo.
+
+00:12:20.257 --> 00:12:25.841
+Los polos son: dos, sobre el eje real,
+y las raíces del factor cuadrático,
+
+00:12:25.861 --> 00:12:31.661
+que ya encontramos en el nivel cuatro:
+menos dos, más menos raíz de tres i.
+
+00:12:32.420 --> 00:12:36.012
+En dos, el residuo es menos
+cuatro sobre diecinueve.
+
+00:12:36.232 --> 00:12:41.049
+En zeta uno, usamos la regla pe
+sobre cu para el factor cuadrático:
+
+00:12:41.069 --> 00:12:46.532
+su derivada, dos zeta más cuatro, es
+el doble del numerador, y se cancela.
+
+00:12:46.752 --> 00:12:52.284
+Queda menos uno sobre dos, por zeta uno
+menos dos, que racionalizando es cuatro más
+
+00:12:52.304 --> 00:12:54.899
+raíz de tres i, sobre treinta y ocho.
+
+00:12:55.653 --> 00:13:00.304
+En la fórmula final, las partes
+imaginarias se cancelan otra vez,
+
+00:13:00.324 --> 00:13:05.043
+y el valor principal es menos raíz
+de tres pi, sobre diecinueve.
+
+00:13:06.253 --> 00:13:09.864
+Para cerrar el curso, el
+mapa de decisión completo.
+
+00:13:10.084 --> 00:13:13.515
+Si la función no es
+analítica, se parametriza.
+
+00:13:13.735 --> 00:13:18.125
+Si es analítica y la curva es
+abierta, se usa una primitiva,
+
+00:13:18.145 --> 00:13:19.882
+o se cambia de camino.
+
+00:13:20.102 --> 00:13:25.960
+Si la curva es cerrada y encierra
+singularidades, fórmula de Cauchy o residuos.
+
+00:13:26.180 --> 00:13:29.987
+Si es una integral
+trigonométrica sobre un periodo,
+
+00:13:30.007 --> 00:13:32.378
+el cambio al círculo unitario.
+
+00:13:32.598 --> 00:13:38.308
+Si es una integral sobre toda la recta,
+el semicírculo y los polos del semiplano
+
+00:13:38.328 --> 00:13:42.172
+superior, con la exponencial
+si hay senos o cosenos.
+
+00:13:42.392 --> 00:13:47.533
+Y si hay polos reales simples, valor
+principal, contando esos polos con pi i,
+
+00:13:47.553 --> 00:13:49.080
+en lugar de dos pi i.
+
+00:13:50.287 --> 00:13:52.439
+Los errores típicos de este nivel.
+
+00:13:52.659 --> 00:13:55.967
+Usar el coseno complejo en
+lugar de la exponencial.
+
+00:13:56.187 --> 00:14:01.258
+Contar los polos reales con dos pi i,
+o incluir los del semiplano inferior.
+
+00:14:01.478 --> 00:14:04.094
+No verificar la condición de los grados.
+
+00:14:04.314 --> 00:14:08.019
+Olvidar tomar la parte real
+o la imaginaria al final.
+
+00:14:08.239 --> 00:14:12.597
+Y aplicar la regla del medio residuo
+a un polo real que no es simple.
+
+00:14:13.353 --> 00:14:14.241
+Resumen.
+
+00:14:14.461 --> 00:14:19.709
+Para una función racional sin polos
+reales, con dos grados de diferencia,
+
+00:14:19.729 --> 00:14:24.034
+la integral es dos pi i por la
+suma de residuos de arriba.
+
+00:14:24.254 --> 00:14:29.245
+Con una exponencial de frecuencia
+positiva basta un grado de diferencia,
+
+00:14:29.265 --> 00:14:30.916
+por el lema de Jordan.
+
+00:14:31.136 --> 00:14:34.700
+Y con polos reales simples,
+el valor principal suma,
+
+00:14:34.720 --> 00:14:37.390
+además, pi i por los residuos reales.
+
+00:14:38.153 --> 00:14:40.233
+Has completado los seis niveles.
+
+00:14:40.453 --> 00:14:45.993
+Resuelve la práctica del nivel seis, y al
+aprobarla se desbloquea el simulacro de
+
+00:14:46.013 --> 00:14:48.603
+parcial, que mezcla todos los temas.
+
+00:14:48.823 --> 00:14:50.490
+Mucho éxito en el examen.
+

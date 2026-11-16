@@ -27,3 +27,10 @@ python3 documento/generar_pdf_temas_2_3.py
 python3 presentacion/generar_toro.py
 (cd presentacion && npm install && node generar_pptx.js)
 ```
+
+## Variable compleja: curso intensivo por niveles
+
+La carpeta [`variable-compleja/`](variable-compleja/) contiene un curso de preparación para un parcial
+de variable compleja (derivación, integrales sobre curvas, fórmula integral de Cauchy, residuos,
+integrales trigonométricas e impropias con valor principal): seis videos, una guía de estudio en PDF
+y prácticas por niveles con desbloqueo progresivo. Ver [`variable-compleja/README.md`](variable-compleja/README.md).
