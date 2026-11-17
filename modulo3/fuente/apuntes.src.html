@@ -1,0 +1,168 @@
+<header class="portada">
+  <p class="kicker">Módulo 3 · Propiedades de los espacios topológicos</p>
+  <h1>Axiomas de separación: $T_0$, $T_1$ y $T_2$</h1>
+  <p class="sub">Apuntes de clase ampliados · espacios de Kolmogórov, Fréchet y Hausdorff</p>
+</header>
+
+<div class="caja ojo">
+<b>Cómo leer este documento.</b> Desarrolla los apuntes de la clase en el mismo orden, con las demostraciones completas y los ejemplos verificados paso a paso. Los recuadros <span class="et enlinea">Ojo con los apuntes</span> marcan los puntos donde lo anotado no coincide con la definición estándar o con la cuenta: ahí se indica qué se supuso para poder avanzar y qué conviene confirmar con la profesora. El ejemplo de la sección 7.4 y los ejercicios no se vieron en clase.
+</div>
+
+<h2>1. Panorama</h2>
+<p>En un espacio topológico $(X,\T)$ los abiertos son la única herramienta para distinguir un punto de otro. Los axiomas de separación miden cuánto distinguen:</p>
+<table class="mapa">
+<tr><td>$T_0$</td><td>Kolmogórov</td><td>Los abiertos distinguen dos puntos distintos.</td></tr>
+<tr><td>$T_1$</td><td>Fréchet</td><td>Cada uno de los dos puntos se separa del otro.</td></tr>
+<tr><td>$T_2$</td><td>Hausdorff</td><td>Los dos puntos se separan con vecindades disjuntas.</td></tr>
+<tr><td>$T_3$</td><td>regular</td><td>Se separa un punto de un cerrado que no lo contiene (se verá después).</td></tr>
+<tr><td>$T_4$</td><td>normal</td><td>Se separan dos cerrados disjuntos (se verá después).</td></tr>
+</table>
+<p>El resultado que organiza toda la clase es $$T_2\;\Longrightarrow\;T_1\;\Longrightarrow\;T_0,$$ y ninguna de las dos implicaciones se puede invertir.</p>
+
+<div class="caja ojo">
+<span class="et ojo-et">Ojo con los apuntes</span>
+<ul>
+<li>En los apuntes aparece «axiomas de extensión». El nombre habitual en la literatura es <b>axiomas de separación</b>; aquí se usa ese.</li>
+<li>«Tao cero, tao uno…» se escribe $T_0, T_1,\dots$ La letra $T$ viene del alemán <i>Trennungsaxiom</i> («axioma de separación»).</li>
+<li>Para $T_3$ y $T_4$ hay dos convenciones según el libro: algunos autores llaman $T_3$ a «regular» y otros a «regular y además $T_1$» (lo mismo con $T_4$ y «normal»). Cuando llegue ese tema, hay que usar la convención de la profesora.</li>
+</ul>
+</div>
+
+<h2>2. La herramienta: vecindades</h2>
+<figure class="der">{{D:vecindad}}</figure>
+<div class="caja def"><b>Definición (vecindad).</b> Sea $(X,\T)$ un espacio topológico y $x\in X$. Un conjunto $N\subseteq X$ es <em>vecindad</em> de $x$ si existe un abierto $U\in\T$ tal que $x\in U\subseteq N$. El <em>sistema de vecindades</em> de $x$ es $\N_x=\{N\subseteq X : N \text{ es vecindad de } x\}$.</div>
+<p>Tres hechos que se usan en todas las demostraciones:</p>
+<ol class="hechos">
+<li>Toda vecindad de $x$ contiene a $x$.</li>
+<li>Todo abierto que contiene a $x$ es vecindad de $x$.</li>
+<li>Un conjunto es abierto si y solo si es vecindad de cada uno de sus puntos.</li>
+</ol>
+<p class="nota">Se supone aquí que una vecindad no tiene que ser abierta, solo contener un abierto alrededor del punto. Si en el curso «vecindad» significa «abierto que contiene al punto», todos los enunciados y las demostraciones siguen valiendo sin cambios.</p>
+
+<h2>3. Axioma $T_0$: espacio de Kolmogórov</h2>
+<figure class="der">{{D:t0}}</figure>
+<div class="caja def"><b>Definición.</b> Sea $(X,\T)$ un espacio topológico. $X$ es $T_0$ si para todo par de puntos $x\neq y$ de $X$ se tiene $\N_x\neq\N_y$.</div>
+<p>Es decir: dos puntos distintos nunca tienen exactamente las mismas vecindades; la topología no los confunde.</p>
+<div class="caja prop"><b>Forma equivalente.</b> $X$ es $T_0$ si y solo si para todo par $x\neq y$ existe un abierto que contiene a uno de los dos puntos y no al otro.</div>
+<p class="dem"><b>Demostración.</b> ($\Leftarrow$) Si $U$ es abierto con $x\in U$ e $y\notin U$, entonces $U\in\N_x$ (hecho 2) y $U\notin\N_y$ (hecho 1), así que $\N_x\neq\N_y$. ($\Rightarrow$) Si $\N_x\neq\N_y$, hay una vecindad que está en un sistema y no en el otro; digamos $N\in\N_x$ y $N\notin\N_y$. Existe un abierto $U$ con $x\in U\subseteq N$. Si $y$ estuviera en $U$, tendríamos $y\in U\subseteq N$ y $N$ sería vecindad de $y$. Luego $y\notin U$. $\qquad\blacksquare$</p>
+<p>En $T_0$ no se elige cuál de los dos puntos queda dentro del abierto: basta con que funcione para uno. Esa es la diferencia con $T_1$.</p>
+
+<h2>4. Ejemplo 1: la topología del punto $0$ en $\R$</h2>
+<figure class="der">{{D:particular}}</figure>
+<p>Sea $X=\R$ con $$\T=\{A\subseteq\R : 0\in A\}\cup\{\varnothing\}.$$</p>
+<div class="caja ojo"><span class="et ojo-et">Ojo con los apuntes</span> En los apuntes figura $\T=\{A\subseteq\R : 0\in A\}$. Así escrita no es una topología, porque $\varnothing$ no contiene al $0$. Se supone que la profesora incluye $\varnothing$ (es el ejemplo conocido como «topología del punto particular»).</div>
+<p><b>Es una topología.</b> $\varnothing$ y $\R$ están en $\T$. Si varios conjuntos contienen al $0$, su unión también, y la intersección de dos de ellos también (y si alguno es $\varnothing$, la intersección es $\varnothing$).</p>
+<p><b>Vecindades.</b> Todo abierto no vacío contiene al $0$. Por eso $$N\in\N_x\iff\{0,x\}\subseteq N .$$ En efecto, si $x\in U\subseteq N$ con $U$ abierto, entonces $0\in U$ y $\{0,x\}\subseteq N$; y al revés, $\{0,x\}$ es abierto. La vecindad más pequeña de $x$ es $\{0,x\}$ (para $x=0$ es $\{0\}$).</p>
+<p><b>Es $T_0$.</b> Sean $x\neq y$.</p>
+<ul>
+<li>Si uno de los dos es $0$, digamos $x=0$: el abierto $\{0\}$ contiene a $0$ y no a $y$.</li>
+<li>Si $x,y\neq0$: el abierto $\{0,x\}$ contiene a $x$ y no a $y$.</li>
+</ul>
+<p>En ambos casos hay un abierto que contiene a uno y no al otro. <span class="si">Cumple $T_0$.</span></p>
+
+<h2>5. Axioma $T_1$: espacio de Fréchet</h2>
+<figure class="der">{{D:anidadas}}</figure>
+<div class="caja def"><b>Definición.</b> Sea $(X,\T)$ un espacio topológico. $X$ es $T_1$ si para todo $x\in X$ $$\bigcap_{N\in\N_x}N=\{x\}.$$</div>
+<p>Como $x$ está en todas sus vecindades, la intersección siempre contiene a $x$. Lo que pide $T_1$ es que no contenga nada más: cualquier $y\neq x$ queda fuera de alguna vecindad de $x$.</p>
+<div class="caja ojo"><span class="et ojo-et">Ojo con los apuntes</span>
+<ul>
+<li>Esta definición aparece rotulada «Axioma tao 2»; por el contenido y por el teorema que sigue, es la de $T_1$.</li>
+<li>Los apuntes dicen «intersección <i>finita</i> de las vecindades». Tiene que ser la intersección de <b>todas</b> las vecindades de $x$. Razón: una intersección finita de vecindades de $x$ es otra vez una vecindad de $x$; si fuera igual a $\{x\}$, entonces $\{x\}$ sería abierto para todo $x$ y la topología sería la discreta. Con «finita», ni siquiera $\R$ con la topología usual cumpliría el axioma.</li>
+</ul></div>
+
+<h3>5.1 Teorema 3.1</h3>
+<figure class="der">{{D:t1}}</figure>
+<div class="caja teo"><b>Teorema 3.1.</b> Un espacio topológico $(X,\T)$ es $T_1$ si y solo si para todo par $x\neq y$ en $X$ existe $N\in\N_x$ tal que $y\notin N$, y existe $M\in\N_y$ tal que $x\notin M$.</div>
+<p class="dem"><b>Demostración.</b> ($\Rightarrow$) Sea $X$ un espacio $T_1$ y $x\neq y$. Como $y\notin\{x\}=\bigcap_{N\in\N_x}N$, existe alguna $N\in\N_x$ con $y\notin N$. Aplicando lo mismo al punto $y$: como $x\notin\{y\}=\bigcap_{M\in\N_y}M$, existe $M\in\N_y$ con $x\notin M$.</p>
+<p class="dem">($\Leftarrow$) Fijemos $x$. Ya sabemos que $x\in\bigcap\N_x$. Si $y\neq x$, por hipótesis hay una $N\in\N_x$ con $y\notin N$, así que $y\notin\bigcap\N_x$. Por lo tanto $\bigcap\N_x=\{x\}$. $\qquad\blacksquare$</p>
+<p class="nota">En los apuntes el enunciado dice «existe $N\in\N_x$ tal que $y$ no pertenece a $M$»; es una errata de copiado: es $y\notin N$.</p>
+<p>Las vecindades $N$ y $M$ <b>pueden cortarse</b>; solo se pide que cada una deje fuera al otro punto. Comparación: $T_0$ pide que exista $N$ <i>o</i> exista $M$; $T_1$ pide que existan <i>las dos</i>.</p>
+
+<h3>5.2 El ejemplo 1 no es $T_1$ (lo que explicó la profesora)</h3>
+<p>Apliquemos el teorema 3.1 a $\T=\{A\subseteq\R:0\in A\}\cup\{\varnothing\}$.</p>
+<ul>
+<li><b>Si $x$ e $y$ son ambos distintos de $0$:</b> $N=\{0,x\}$ es vecindad de $x$ y no contiene a $y$; $M=\{0,y\}$ es vecindad de $y$ y no contiene a $x$. Para estos pares la condición <span class="si">se cumple</span>.</li>
+<li><b>Si uno de ellos es $0$,</b> digamos $y=0$ y $x\neq0$: toda vecindad de $x$ contiene a $\{0,x\}$, o sea, contiene a $y=0$. No existe $N\in\N_x$ con $y\notin N$. La condición <span class="no">falla</span>.</li>
+</ul>
+<p>Eso es lo que significa la frase de clase «se cumple cuando $x$ e $y$ son distintos de $0$, y cuando uno de ellos es $0$ no se cumple». Como el teorema exige la condición para <i>todos</i> los pares, basta un par que falle: <span class="no">el espacio no es $T_1$</span>.</p>
+<p>Con la definición se ve lo mismo: $\bigcap_{N\in\N_x}N=\{0,x\}$, que es distinto de $\{x\}$ siempre que $x\neq0$. El $0$ «se cuela» en todas las vecindades de todos los puntos.</p>
+
+<h2>6. $T_1$ implica $T_0$, y no al revés</h2>
+<h3>6.1 El espacio $\{\varnothing,\{0\},X\}$</h3>
+<figure class="der">{{D:sierpinski}}</figure>
+<p>Sea $X=\{0,1\}$ con $\T=\{\varnothing,\{0\},X\}$ (espacio de Sierpiński). Comparemos las vecindades de $x=1$ e $y=0$: $$\N_0=\{\{0\},X\},\qquad \N_1=\{X\}.$$</p>
+<ul>
+<li><b>$T_0$:</b> $\N_0\neq\N_1$. <span class="si">Se cumple.</span> (El abierto $\{0\}$ contiene a $0$ y no a $1$.)</li>
+<li><b>$T_1$:</b> $\bigcap\N_1=X=\{0,1\}\neq\{1\}$. <span class="no">No se cumple.</span> La única vecindad de $1$ es $X$, que contiene a $0$.</li>
+</ul>
+<div class="caja ojo"><span class="et ojo-et">Ojo con los apuntes</span> Aquí hay dos suposiciones. (1) Los apuntes no dicen quién es $X$; se tomó $X=\{0,1\}$ porque se comparan $x=1$ e $y=0$. (2) Los apuntes dicen que «se cumplía para ambos axiomas», pero la cuenta da que <b>solo se cumple $T_0$</b>. Lo más probable es que la profesora usara este espacio justamente como ejemplo de $T_0$ que no es $T_1$, que es lo que necesita el corolario siguiente. Si en cambio $X$ fuera $\R$ con esa misma topología, ni siquiera sería $T_0$: los puntos $1$ y $2$ tendrían la misma única vecindad, $\R$. Conviene confirmar en clase cuál era $X$ y qué se concluyó.</div>
+
+<h3>6.2 Corolario</h3>
+<div class="caja teo"><b>Corolario.</b> Todo espacio $T_1$ es $T_0$. El recíproco es falso.</div>
+<p class="dem"><b>Demostración.</b> Sea $X$ un espacio $T_1$ y $x\neq y$. Por el teorema 3.1 existe $N\in\N_x$ con $y\notin N$. Como toda vecindad de $y$ contiene a $y$, $N\notin\N_y$. Así $\N_x\neq\N_y$ y $X$ es $T_0$. El recíproco falla en el ejemplo 1 y en el espacio de Sierpiński: ambos son $T_0$ y no son $T_1$. $\qquad\blacksquare$</p>
+
+<h3>6.3 Teorema 3.2</h3>
+<div class="caja teo"><b>Teorema 3.2.</b> Sea $(X,\T)$ un espacio topológico. $X$ es $T_1$ si y solo si $\{x\}$ es un conjunto cerrado para todo $x\in X$.</div>
+<p class="dem"><b>Demostración.</b> ($\Rightarrow$) Sea $x\in X$; hay que ver que $X\setminus\{x\}$ es abierto. Tomemos $y\in X\setminus\{x\}$, es decir, $y\neq x$. Por el teorema 3.1 existe $M\in\N_y$ con $x\notin M$, o sea $M\subseteq X\setminus\{x\}$. Un conjunto que contiene a una vecindad de $y$ es vecindad de $y$; luego $X\setminus\{x\}$ es vecindad de cada uno de sus puntos y, por el hecho 3, es abierto. Entonces $\{x\}$ es cerrado.</p>
+<p class="dem">($\Leftarrow$) Sean $x\neq y$. Como $\{y\}$ es cerrado, $N=X\setminus\{y\}$ es abierto; contiene a $x$ y no a $y$. Como $\{x\}$ es cerrado, $M=X\setminus\{x\}$ es abierto; contiene a $y$ y no a $x$. Por el teorema 3.1, $X$ es $T_1$. $\qquad\blacksquare$</p>
+<p><b>Uso práctico.</b> Para decidir si un espacio es $T_1$ basta mirar si los puntos son cerrados:</p>
+<ul>
+<li>Ejemplo 1: $\R\setminus\{0\}$ no contiene al $0$ y no es vacío, así que no es abierto; $\{0\}$ no es cerrado. No es $T_1$. (Los demás puntos sí son cerrados: si $x\neq0$, $\R\setminus\{x\}$ contiene al $0$. Pero basta un punto que falle.)</li>
+<li>Sierpiński: $X\setminus\{0\}=\{1\}$ no es abierto; $\{0\}$ no es cerrado. No es $T_1$.</li>
+</ul>
+
+<h2 style="break-before:page">7. Axioma $T_2$: espacio de Hausdorff</h2>
+<figure class="der">{{D:t2}}</figure>
+<div class="caja def"><b>Definición.</b> Sea $(X,\T)$ un espacio topológico. $X$ es $T_2$ (o de Hausdorff) si para todo par $x\neq y$ en $X$ existen $N\in\N_x$ y $M\in\N_y$ tales que $N\cap M=\varnothing$.</div>
+<p class="nota">En los apuntes falta la condición «$x\neq y$». Es necesaria: si $x=y$, toda vecindad de $x$ corta a toda vecindad de $y$ (ambas contienen al punto).</p>
+<p>En $T_1$ las vecindades $N$ y $M$ podían cortarse; en $T_2$ se exige que sean disjuntas.</p>
+
+<h3>7.1 $T_2$ implica $T_1$</h3>
+<p class="dem">Sea $X$ de Hausdorff y $x\neq y$. Tomemos $N\in\N_x$, $M\in\N_y$ con $N\cap M=\varnothing$. Como $y\in M$, $y\notin N$. Como $x\in N$, $x\notin M$. Es la condición del teorema 3.1, luego $X$ es $T_1$. $\qquad\blacksquare$</p>
+
+<h3>7.2 Ejemplo: $\R$ con la topología usual</h3>
+<figure class="der">{{D:recta}}</figure>
+<p>Sean $x=2$, $y=5$, $U=(1,3)$ y $V=(4,6)$. $U$ y $V$ son abiertos, $2\in U$, $5\in V$ y $U\cap V=\varnothing$.</p>
+<p>En general, para $x\neq y$ en $\R$ se toma $r=\tfrac{|x-y|}{2}$, $U=(x-r,x+r)$ y $V=(y-r,y+r)$. Con $x=2$, $y=5$ da $r=1{,}5$, $U=(0{,}5;\,3{,}5)$ y $V=(3{,}5;\,6{,}5)$, también disjuntos. Luego $\R$ usual es de Hausdorff.</p>
+<div class="caja prop"><b>Todo espacio métrico es de Hausdorff.</b> Sean $x\neq y$ en $(X,d)$ y $r=\tfrac{d(x,y)}{2}>0$. Las bolas $B(x,r)$ y $B(y,r)$ son abiertas. Si existiera $z$ en ambas, por la desigualdad triangular $d(x,y)\le d(x,z)+d(z,y)&lt;r+r=d(x,y)$, absurdo. Luego son disjuntas.</div>
+
+<h3>7.3 Ejemplo 2: $X=\{a,b,c\}$ con $\T=\{\varnothing,X,\{a\}\}$</h3>
+<figure class="der">{{D:abc}}</figure>
+<p>Vecindades: $$\N_a=\{\{a\},\{a,b\},\{a,c\},X\},\qquad \N_b=\N_c=\{X\}.$$ El único abierto que contiene a $b$ (o a $c$) es $X$.</p>
+<ul>
+<li><b>$T_2$:</b> <span class="no">no.</span> La única vecindad de $b$ es $X$, y $X\cap N=N\neq\varnothing$ para toda vecindad $N$ de cualquier otro punto.</li>
+<li><b>$T_1$:</b> <span class="no">no.</span> $\{a\}$ no es cerrado, porque $\{b,c\}$ no es abierto (teorema 3.2).</li>
+<li><b>$T_0$:</b> <span class="no">no.</span> $b\neq c$ pero $\N_b=\N_c$.</li>
+</ul>
+<p class="nota">Los apuntes solo dan el espacio; se supone que el objetivo era mostrar un espacio que no es de Hausdorff. De paso resulta que no cumple ninguno de los tres axiomas.</p>
+
+<h3>7.4 Ejemplo adicional: $T_1$ no implica $T_2$</h3>
+<p>En $X=\R$ se declaran abiertos $\varnothing$ y los conjuntos de complemento finito (<i>topología cofinita</i>). Los cerrados son $\R$ y los conjuntos finitos.</p>
+<ul>
+<li><b>$T_1$:</b> <span class="si">sí.</span> Cada $\{x\}$ es finito, luego cerrado (teorema 3.2).</li>
+<li><b>$T_2$:</b> <span class="no">no.</span> Si $U,V$ son abiertos no vacíos, $\R\setminus(U\cap V)=(\R\setminus U)\cup(\R\setminus V)$ es finito; como $\R$ es infinito, $U\cap V\neq\varnothing$. No hay dos abiertos no vacíos disjuntos.</li>
+</ul>
+
+<h2>8. Resumen</h2>
+<table class="resumen">
+<tr><th>Espacio</th><th>$T_0$</th><th>$T_1$</th><th>$T_2$</th></tr>
+<tr><td>$\R$ con la topología usual (y todo espacio métrico)</td><td class="si">✓</td><td class="si">✓</td><td class="si">✓</td></tr>
+<tr><td>$\R$ con la topología cofinita</td><td class="si">✓</td><td class="si">✓</td><td class="no">✗</td></tr>
+<tr><td>$\R$ con $\T=\{A:0\in A\}\cup\{\varnothing\}$ (ejemplo 1)</td><td class="si">✓</td><td class="no">✗</td><td class="no">✗</td></tr>
+<tr><td>$\{0,1\}$ con $\T=\{\varnothing,\{0\},X\}$</td><td class="si">✓</td><td class="no">✗</td><td class="no">✗</td></tr>
+<tr><td>$\{a,b,c\}$ con $\T=\{\varnothing,X,\{a\}\}$ (ejemplo 2)</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
+</table>
+<table class="mapa">
+<tr><td>$T_0$</td><td colspan="2">$x\neq y\Rightarrow\N_x\neq\N_y$. Para verificar: un abierto que contenga a un punto y no al otro.</td></tr>
+<tr><td>$T_1$</td><td colspan="2">$\bigcap\N_x=\{x\}$. Para verificar: ¿cada $\{x\}$ es cerrado? (teorema 3.2), o $N$ y $M$ del teorema 3.1.</td></tr>
+<tr><td>$T_2$</td><td colspan="2">$x\neq y\Rightarrow$ existen $N\in\N_x$, $M\in\N_y$ con $N\cap M=\varnothing$.</td></tr>
+</table>
+
+<h2>9. Ejercicios de comprobación</h2>
+<ol>
+<li>En $X=\{a,b\}$ con la topología indiscreta $\T=\{\varnothing,X\}$, ¿se cumple $T_0$?</li>
+<li>En $X=\{a,b,c\}$ con la topología discreta (todo subconjunto es abierto), ¿se cumple $T_2$?</li>
+<li>Sea $X$ un conjunto <i>finito</i> con una topología $T_1$. Pruebe que la topología es la discreta.</li>
+<li>En el ejemplo 1, ¿por qué el par $x=3$, $y=7$ no sirve para decidir si el espacio es $T_1$?</li>
+</ol>
+<p class="nota"><b>Respuestas.</b> (1) No: $\N_a=\N_b=\{X\}$. (2) Sí: $\{x\}$ y $\{y\}$ son abiertos disjuntos. (3) Por el teorema 3.2 cada punto es cerrado; todo subconjunto de $X$ es unión finita de puntos, luego cerrado; entonces todo subconjunto es también abierto. (4) Porque $T_1$ exige la condición para todos los pares; ese par la cumple, pero el par $x=3$, $y=0$ no.</p>

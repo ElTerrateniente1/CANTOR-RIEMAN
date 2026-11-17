@@ -27,3 +27,19 @@ python3 documento/generar_pdf_temas_2_3.py
 python3 presentacion/generar_toro.py
 (cd presentacion && npm install && node generar_pptx.js)
 ```
+
+## Módulo 3 · Axiomas de separación (T₀, T₁, T₂)
+
+Apuntes de clase ampliados sobre los espacios de Kolmogórov, Fréchet y Hausdorff.
+
+| Archivo | Contenido |
+|---|---|
+| [`modulo3/Axiomas_de_separacion_T0_T1_T2.mp4`](modulo3/Axiomas_de_separacion_T0_T1_T2.mp4) | Video narrado en español (15 diapositivas, voz sintética). Subtítulos en el `.srt` del mismo nombre. |
+| [`modulo3/Axiomas_de_separacion_T0_T1_T2_apuntes.pdf`](modulo3/Axiomas_de_separacion_T0_T1_T2_apuntes.pdf) | Apuntes ampliados (7 páginas): definiciones, teoremas 3.1 y 3.2 con demostración, ejemplos verificados, notas sobre los apuntes originales y ejercicios. |
+| [`modulo3/Axiomas_de_separacion_T0_T1_T2_diapositivas.pdf`](modulo3/Axiomas_de_separacion_T0_T1_T2_diapositivas.pdf) | Las mismas diapositivas del video, en PDF. |
+| `modulo3/fuente/` | Fuentes: `diapositivas.src.html`, `apuntes.src.html`, `diagramas.mjs`, `build.mjs` (PDF y cuadros, con KaTeX y Playwright) y `narrar.py` (voz Kokoro y montaje con ffmpeg). |
+
+```bash
+cd modulo3/fuente && npm install && node build.mjs
+pip install kokoro-onnx soundfile && python3 narrar.py CARPETA_CON_MODELOS_KOKORO
+```

@@ -1,0 +1,27 @@
+body { font-size: 10.4pt; line-height: 1.47; }
+.portada { border-bottom: 2px solid var(--tinta); margin-bottom: 14pt; padding-bottom: 8pt; }
+.portada .kicker { font-size: 9pt; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--azul); margin: 0; }
+.portada h1 { font-size: 23pt; line-height: 1.15; margin: 4pt 0 4pt; }
+.portada .sub { color: var(--gris); margin: 0; }
+h2 { font-size: 14.5pt; margin: 18pt 0 6pt; break-after: avoid; clear: both; padding-top: 2pt; }
+h3 { font-size: 11.5pt; margin: 12pt 0 4pt; break-after: avoid; clear: both; }
+p { margin: 0 0 7pt; }
+ul, ol { margin: 0 0 7pt; padding-left: 1.3em; }
+li { margin-bottom: 3pt; }
+.caja { padding: 7pt 11pt; margin: 6pt 0 9pt; break-inside: avoid; overflow: hidden; }
+.caja ul { margin-bottom: 0; }
+.caja .katex-display { margin: .4em 0 .2em; }
+.et { display: block; font-size: 8.5pt; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--ambar); margin-bottom: 2pt; }
+.nota { font-size: 9.6pt; }
+.dem { text-align: justify; }
+figure.der { float: right; width: 36%; margin: 0 0 6pt 14pt; break-inside: avoid; }
+table { break-inside: avoid; }
+table.mapa { border-collapse: collapse; margin: 4pt 0 9pt; width: 100%; }
+table.mapa td { padding: 3.5pt 10pt 3.5pt 0; border-bottom: 1px solid #e2dfd4; vertical-align: top; }
+table.mapa td:first-child { white-space: nowrap; font-weight: 600; }
+table.mapa td:nth-child(2):not([colspan]) { white-space: nowrap; color: var(--azul); font-weight: 600; }
+table.resumen { margin: 4pt 0 10pt; }
+table.resumen th, table.resumen td { padding: 4.5pt 8pt; }
+table.resumen td.si, table.resumen td.no { font-size: 13pt; width: 48pt; }
+.katex-display { margin: .5em 0; }
+.et.enlinea { display: inline; }

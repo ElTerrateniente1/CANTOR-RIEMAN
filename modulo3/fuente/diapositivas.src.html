@@ -1,0 +1,238 @@
+<!-- Cada <section> es una diapositiva. data-s="k" = aparece en el paso k.
+     <aside data-s="k"> = narración del paso k (no se muestra). -->
+
+<section class="slide portada">
+  <p class="kicker">Módulo 3 · Propiedades de los espacios topológicos</p>
+  <h1>Axiomas de separación</h1>
+  <p class="sub">$T_0$ Kolmogórov &nbsp;·&nbsp; $T_1$ Fréchet &nbsp;·&nbsp; $T_2$ Hausdorff</p>
+  <p class="pie">Apuntes de clase ampliados</p>
+  <aside data-s="0">Módulo tres: propiedades de los espacios topológicos. En esta clase empezamos los axiomas de separación. Vamos a estudiar con detalle los tres primeros: te cero, te uno y te dos, con todos los ejemplos que se vieron en clase.</aside>
+</section>
+
+<section class="slide" data-kicker="Panorama">
+  <h2>¿Qué mide un axioma de separación?</h2>
+  <p>En un espacio topológico $(X,\T)$ los abiertos son la única herramienta para distinguir puntos. Cada axioma exige distinguirlos un poco mejor.</p>
+  <div class="tarjetas">
+    <div class="tarjeta" data-s="1"><b>$T_0$ · Kolmogórov</b><span>Los abiertos distinguen dos puntos distintos.</span></div>
+    <div class="tarjeta" data-s="2"><b>$T_1$ · Fréchet</b><span>Cada punto se separa del otro.</span></div>
+    <div class="tarjeta" data-s="3"><b>$T_2$ · Hausdorff</b><span>Se separan con vecindades disjuntas.</span></div>
+    <div class="tarjeta tenue" data-s="4"><b>$T_3$ regular · $T_4$ normal</b><span>Separan puntos de cerrados, y cerrados entre sí. Quedan para después.</span></div>
+  </div>
+  <p class="cadena" data-s="5">$T_2 \;\Longrightarrow\; T_1 \;\Longrightarrow\; T_0$ <span class="nota">y ningún recíproco es cierto</span></p>
+  <aside data-s="0">¿Qué mide un axioma de separación? En un espacio topológico, los abiertos son la única herramienta que tenemos para distinguir un punto de otro. Cada axioma exige que los abiertos distingan los puntos un poco mejor que el anterior.</aside>
+  <aside data-s="1">Te cero, o espacio de Kolmogórov: los abiertos alcanzan a distinguir dos puntos distintos.</aside>
+  <aside data-s="2">Te uno, o espacio de Fréchet: cada uno de los dos puntos se puede separar del otro.</aside>
+  <aside data-s="3">Te dos, o espacio de Hausdorff: los dos puntos se separan con vecindades que no se tocan.</aside>
+  <aside data-s="4">Te tres y te cuatro, los espacios regulares y normales, separan puntos de conjuntos cerrados, y cerrados entre sí. Esos quedan para más adelante.</aside>
+  <aside data-s="5">La idea que hay que llevarse es esta cadena: te dos implica te uno, y te uno implica te cero. Y ninguna de las implicaciones contrarias es cierta. Lo vamos a comprobar con ejemplos.</aside>
+</section>
+
+<section class="slide" data-kicker="Recordatorio">
+  <h2>La herramienta: vecindades</h2>
+  <div class="cols">
+    <div>
+      <div class="caja def"><b>Vecindad.</b> Sea $(X,\T)$ un espacio topológico y $x\in X$. Un conjunto $N\subseteq X$ es <em>vecindad</em> de $x$ si existe un abierto $U$ con $$x\in U\subseteq N.$$</div>
+      <p data-s="1">$\N_x$ = sistema de vecindades de $x$: la colección de todas sus vecindades.</p>
+      <ul data-s="1">
+        <li>Toda vecindad de $x$ contiene a $x$.</li>
+        <li>Todo abierto que contiene a $x$ es vecindad de $x$.</li>
+      </ul>
+    </div>
+    <div>{{D:vecindad}}</div>
+  </div>
+  <aside data-s="0">Antes de empezar, recordemos la herramienta que usan todas las definiciones: las vecindades. Fijamos un espacio topológico. Un conjunto ene es vecindad del punto equis, si existe un abierto u que contiene a equis, y que está contenido en ene.</aside>
+  <aside data-s="1">El sistema de vecindades de equis, que escribimos ene sub equis, es la colección de todas sus vecindades. Hay dos hechos que usaremos todo el tiempo. Primero: toda vecindad de equis contiene a equis. Segundo: todo abierto que contiene a equis es vecindad de equis.</aside>
+</section>
+
+<section class="slide" data-kicker="Axioma T₀ · Kolmogórov">
+  <h2>$T_0$: los puntos distintos se distinguen</h2>
+  <div class="cols">
+    <div>
+      <div class="caja def"><b>Definición.</b> $(X,\T)$ es $T_0$ si para todo par $x\neq y$ en $X$ $$\N_x\neq\N_y .$$</div>
+      <p data-s="1"><b>Equivalente:</b> existe un abierto que contiene a uno de los dos puntos y no al otro.</p>
+      <p data-s="2" class="nota-caja">No se elige a cuál de los dos: basta con que funcione para uno.</p>
+    </div>
+    <div>{{D:t0}}</div>
+  </div>
+  <aside data-s="0">Primer axioma: te cero. Un espacio topológico es te cero si, cada vez que tomamos dos puntos distintos, equis y ye, sus sistemas de vecindades son distintos. Es decir, la topología no los confunde.</aside>
+  <aside data-s="1">Hay una forma equivalente, que es la más cómoda para verificar: existe un abierto que contiene a uno de los dos puntos, y que no contiene al otro.</aside>
+  <aside data-s="2">Atención a un detalle: no elegimos cuál de los dos puntos queda dentro del abierto. Basta con que funcione para uno de ellos. Esa es justamente la diferencia con te uno, como veremos enseguida.</aside>
+</section>
+
+<section class="slide" data-kicker="Ejemplo 1">
+  <h2>La topología del punto $0$ en $\R$</h2>
+  <div class="cols">
+    <div>
+      <p>$X=\R$, &nbsp; $\T=\{A\subseteq\R : 0\in A\}\cup\{\varnothing\}$</p>
+      <p class="nota">Hay que añadir $\varnothing$ para que $\T$ sea una topología.</p>
+      <p data-s="1"><b>Vecindades:</b> $N\in\N_x \iff \{0,x\}\subseteq N$.<br>La más pequeña es $\{0,x\}$.</p>
+      <div data-s="2">
+        <p><b>¿Es $T_0$?</b> Sean $x\neq y$.</p>
+        <ul>
+          <li>Si $x=0$: $\{0\}$ es abierto, contiene a $0$ y no a $y$.</li>
+          <li>Si $x,y\neq 0$: $\{0,x\}$ es abierto, contiene a $x$ y no a $y$.</li>
+        </ul>
+      </div>
+      <p data-s="3" class="veredicto si">Sí es $T_0$ ✓</p>
+    </div>
+    <div>{{D:particular}}</div>
+  </div>
+  <aside data-s="0">Primer ejemplo de la clase. Tomamos los números reales, pero con una topología distinta de la usual: un conjunto es abierto si contiene al cero. A esa colección hay que añadirle el conjunto vacío, porque toda topología debe contenerlo.</aside>
+  <aside data-s="1">¿Cómo son las vecindades? Todo abierto no vacío contiene al cero. Por eso, un conjunto ene es vecindad de equis exactamente cuando contiene a cero y a equis. La vecindad más pequeña de equis es el conjunto formado por cero y equis.</aside>
+  <aside data-s="2">Verifiquemos te cero. Tomamos dos puntos distintos. Si uno de ellos es el cero, el conjunto que solo tiene al cero es abierto, contiene al cero y no contiene al otro punto. Si ninguno es cero, el conjunto cero, equis, es abierto, contiene a equis y no contiene a ye.</aside>
+  <aside data-s="3">En los dos casos encontramos un abierto que distingue a los puntos. Por lo tanto, este espacio sí es te cero.</aside>
+</section>
+
+<section class="slide" data-kicker="Axioma T₁ · Fréchet">
+  <h2>$T_1$: lo único común a las vecindades de $x$ es $x$</h2>
+  <div class="cols">
+    <div>
+      <div class="caja def"><b>Definición.</b> $(X,\T)$ es $T_1$ si para todo $x\in X$ $$\bigcap_{N\in\N_x} N=\{x\}.$$</div>
+      <p data-s="1">Cualquier otro punto $y\neq x$ queda fuera de <em>alguna</em> vecindad de $x$.</p>
+      <p data-s="2" class="nota-caja"><b>Ojo:</b> es la intersección de <em>todas</em> las vecindades, no de una cantidad finita. Una intersección finita de vecindades vuelve a ser una vecindad; en $\R$ usual contiene un intervalo y nunca es $\{x\}$.</p>
+    </div>
+    <div>{{D:anidadas}}</div>
+  </div>
+  <aside data-s="0">Segundo axioma: te uno, o espacio de Fréchet. Un espacio es te uno si, para cada punto equis, la intersección de todas las vecindades de equis es exactamente el conjunto que solo contiene a equis.</aside>
+  <aside data-s="1">Dicho de otra forma: lo único que tienen en común todas las vecindades de equis, es el propio equis. Cualquier otro punto ye queda fuera de alguna de ellas.</aside>
+  <aside data-s="2">Un cuidado con los apuntes. Se trata de la intersección de todas las vecindades, no de una cantidad finita. Si intersectamos un número finito de vecindades, obtenemos otra vez una vecindad. En la recta real usual, esa vecindad contiene un intervalo, así que nunca se reduce a un solo punto.</aside>
+</section>
+
+<section class="slide compacta" data-kicker="Teorema 3.1">
+  <h2>$T_1$ en términos de dos puntos</h2>
+  <div class="cols">
+    <div>
+      <div class="caja teo"><b>Teorema 3.1.</b> $(X,\T)$ es $T_1$ si y solo si para todo par $x\neq y$ existen $$N\in\N_x \text{ con } y\notin N \quad\text{y}\quad M\in\N_y \text{ con } x\notin M.$$</div>
+      <p data-s="1"><b>($\Rightarrow$)</b> Como $y\notin\{x\}=\bigcap\N_x$, alguna $N\in\N_x$ no contiene a $y$. Intercambiando los papeles se obtiene $M$.</p>
+      <p data-s="2"><b>($\Leftarrow$)</b> $x$ está en todas sus vecindades, y cada $y\neq x$ queda fuera de alguna. Luego $\bigcap\N_x=\{x\}$.</p>
+      <p data-s="3" class="nota-caja">$N$ y $M$ pueden cortarse. En $T_0$ bastaba una de las dos; en $T_1$ se piden ambas.</p>
+    </div>
+    <div>{{D:t1}}</div>
+  </div>
+  <aside data-s="0">El teorema tres punto uno traduce te uno a un lenguaje de dos puntos. Un espacio es te uno, si y solo si, para todo par de puntos distintos, equis y ye, existe una vecindad ene de equis que no contiene a ye, y existe una vecindad eme de ye que no contiene a equis.</aside>
+  <aside data-s="1">Veamos por qué. Supongamos que el espacio es te uno. Como ye es distinto de equis, ye no está en la intersección de las vecindades de equis. Eso significa que alguna vecindad ene de equis no contiene a ye. Intercambiando los papeles de equis y ye, obtenemos eme.</aside>
+  <aside data-s="2">Recíprocamente. Equis está en todas sus vecindades, y cada punto ye distinto de equis queda fuera de alguna. Entonces la intersección de todas es solamente equis.</aside>
+  <aside data-s="3">Dos observaciones. Las vecindades ene y eme sí pueden cortarse. Y compare con te cero: allí bastaba una de las dos condiciones; en te uno se piden las dos.</aside>
+</section>
+
+<section class="slide" data-kicker="Ejemplo 1, otra vez">
+  <h2>El ejemplo 1 no es $T_1$</h2>
+  <div class="cols">
+    <div>
+      <p>Aplicamos el teorema 3.1 a $\T=\{A : 0\in A\}\cup\{\varnothing\}$.</p>
+      <p><b>Si $x,y\neq 0$:</b> $N=\{0,x\}$ no contiene a $y$, y $M=\{0,y\}$ no contiene a $x$. <span class="si">✓</span></p>
+      <p data-s="1"><b>Si $y=0$:</b> toda vecindad de $x$ contiene al $0$. No existe $N\in\N_x$ con $0\notin N$. <span class="no">✗</span></p>
+      <p data-s="2">Con la definición: $\displaystyle\bigcap_{N\in\N_x}N=\{0,x\}\neq\{x\}$ si $x\neq 0$.</p>
+      <p data-s="3" class="veredicto no">Es $T_0$ pero no es $T_1$</p>
+    </div>
+    <div>{{D:particular}}</div>
+  </div>
+  <aside data-s="0">Volvamos al primer ejemplo, y apliquemos el teorema tres punto uno. Esto es lo que explicó la profesora. Si equis y ye son los dos distintos de cero, tomamos ene igual al conjunto cero, equis, que no contiene a ye. Y eme igual al conjunto cero, ye, que no contiene a equis. Para estos pares, la condición se cumple.</aside>
+  <aside data-s="1">Pero si uno de los puntos es el cero, digamos ye igual a cero, la condición falla. Toda vecindad de equis contiene al cero. No existe ninguna vecindad de equis que deje fuera al cero.</aside>
+  <aside data-s="2">Lo mismo se ve con la definición. La intersección de todas las vecindades de equis es el conjunto cero, equis. Y eso no es igual al conjunto que solo tiene a equis, cuando equis no es cero.</aside>
+  <aside data-s="3">Como la condición debe valer para todos los pares de puntos, y falla cuando uno es el cero, este espacio es te cero, pero no es te uno.</aside>
+</section>
+
+<section class="slide" data-kicker="Ejemplo: espacio de Sierpiński">
+  <h2>$X=\{0,1\}$, &nbsp; $\T=\{\varnothing,\{0\},X\}$</h2>
+  <div class="cols">
+    <div>
+      <p>$\N_0=\{\{0\},X\}$ &nbsp;&nbsp; $\N_1=\{X\}$</p>
+      <p data-s="1"><b>$T_0$</b> <span class="si">✓</span> &nbsp; porque $\N_0\neq\N_1$.</p>
+      <p data-s="2"><b>$T_1$</b> <span class="no">✗</span> &nbsp; porque $\bigcap\N_1=X\neq\{1\}$: la única vecindad de $1$ contiene a $0$.</p>
+      <div data-s="3" class="caja teo"><b>Corolario.</b> $T_1\Rightarrow T_0$, y el recíproco es falso.<br><span class="nota">La $N$ del teorema 3.1 está en $\N_x$ y no en $\N_y$, porque $y\notin N$.</span></div>
+    </div>
+    <div>{{D:sierpinski}}</div>
+  </div>
+  <aside data-s="0">Otro ejemplo de la clase: el espacio con abiertos vacío, el conjunto cero, y el total. Aquí tomamos como espacio el conjunto de dos puntos, cero y uno. Comparemos las vecindades. Las vecindades del cero son dos: el conjunto cero, y todo el espacio. El uno tiene una sola vecindad: todo el espacio.</aside>
+  <aside data-s="1">Los dos sistemas de vecindades son distintos. Por lo tanto, el espacio es te cero.</aside>
+  <aside data-s="2">Pero no es te uno. La única vecindad del uno es todo el espacio, que contiene al cero. La intersección de las vecindades del uno no es solamente el uno. En los apuntes quedó anotado que aquí se cumplen los dos axiomas. Al hacer la cuenta, con este conjunto de dos puntos, solo se cumple te cero. Conviene revisarlo con la profesora.</aside>
+  <aside data-s="3">Y con esto tenemos el corolario. Te uno implica te cero, porque la vecindad ene del teorema pertenece al sistema de equis, y no al de ye. Pero el recíproco es falso: este espacio y el ejemplo uno son te cero y no son te uno.</aside>
+</section>
+
+<section class="slide" data-kicker="Teorema 3.2">
+  <h2>$T_1$ equivale a que los puntos sean cerrados</h2>
+  <div class="caja teo"><b>Teorema 3.2.</b> $(X,\T)$ es $T_1$ si y solo si $\{x\}$ es cerrado para todo $x\in X$.</div>
+  <p data-s="1"><b>($\Rightarrow$)</b> Sea $y\in X\setminus\{x\}$. Por 3.1 existe $M\in\N_y$ con $x\notin M$, es decir, $M\subseteq X\setminus\{x\}$. Así $X\setminus\{x\}$ es vecindad de cada uno de sus puntos: es abierto, y $\{x\}$ es cerrado.</p>
+  <p data-s="2"><b>($\Leftarrow$)</b> Sean $x\neq y$. $N=X\setminus\{y\}$ es abierto, contiene a $x$ y no a $y$. $M=X\setminus\{x\}$ es abierto, contiene a $y$ y no a $x$. Por 3.1, $X$ es $T_1$.</p>
+  <p data-s="3" class="nota-caja"><b>Comprobación.</b> Ejemplo 1: $\{0\}$ no es cerrado, porque $\R\setminus\{0\}$ no contiene al $0$. Sierpiński: $\{0\}$ no es cerrado, porque $\{1\}$ no es abierto. Ninguno es $T_1$.</p>
+  <aside data-s="0">El teorema tres punto dos da el criterio más práctico. Un espacio es te uno, si y solo si, cada conjunto de un solo punto es cerrado.</aside>
+  <aside data-s="1">Demostración de la ida. Queremos ver que el complemento del punto equis es abierto. Tomamos un punto ye en ese complemento. Por el teorema anterior, ye tiene una vecindad eme que no contiene a equis. Es decir, eme está dentro del complemento. Entonces el complemento es vecindad de cada uno de sus puntos, y por eso es abierto.</aside>
+  <aside data-s="2">Para la vuelta, tomamos dos puntos distintos. El complemento de ye es abierto, contiene a equis y no a ye. El complemento de equis es abierto, contiene a ye y no a equis. Esas son las vecindades que pide el teorema tres punto uno.</aside>
+  <aside data-s="3">Comprobemos con los ejemplos. En el ejemplo uno, el conjunto que solo tiene al cero no es cerrado, porque su complemento no contiene al cero y entonces no es abierto. En el espacio de Sierpiński, el conjunto cero tampoco es cerrado. El criterio confirma que ninguno de los dos es te uno.</aside>
+</section>
+
+<section class="slide" data-kicker="Axioma T₂ · Hausdorff">
+  <h2>$T_2$: vecindades que no se tocan</h2>
+  <div class="cols">
+    <div>
+      <div class="caja def"><b>Definición.</b> $(X,\T)$ es $T_2$ (de Hausdorff) si para todo par $x\neq y$ existen $N\in\N_x$ y $M\in\N_y$ con $$N\cap M=\varnothing .$$</div>
+      <p data-s="1">En $T_1$ las vecindades $N$ y $M$ podían cortarse. En $T_2$ no.</p>
+      <p data-s="2" class="nota-caja"><b>$T_2\Rightarrow T_1$.</b> Si $N\cap M=\varnothing$: como $y\in M$, $y\notin N$; como $x\in N$, $x\notin M$. Es la condición del teorema 3.1.</p>
+    </div>
+    <div>{{D:t2}}</div>
+  </div>
+  <aside data-s="0">Tercer axioma: te dos, o espacio de Hausdorff. Un espacio es te dos si, para todo par de puntos distintos, existen una vecindad ene de equis, y una vecindad eme de ye, cuya intersección es vacía.</aside>
+  <aside data-s="1">Compare con te uno. Allí las vecindades podían cortarse. Aquí se exige que sean disjuntas: los puntos quedan realmente separados.</aside>
+  <aside data-s="2">De aquí sale que te dos implica te uno. Si ene y eme no se cortan, entonces ye, que está en eme, no está en ene. Y equis, que está en ene, no está en eme. Esa es exactamente la condición del teorema tres punto uno.</aside>
+</section>
+
+<section class="slide" data-kicker="Ejemplo: la recta real">
+  <h2>$\R$ con la topología usual es de Hausdorff</h2>
+  <div class="cols">
+    <div>
+      <p>$x=2$, &nbsp; $y=5$, &nbsp; $U=(1,3)$, &nbsp; $V=(4,6)$.</p>
+      <p>$U$ y $V$ son abiertos, $2\in U$, $5\in V$ y $U\cap V=\varnothing$.</p>
+      <p data-s="1"><b>En general:</b> con $r=\tfrac{|x-y|}{2}$, sirven $U=(x-r,\,x+r)$ y $V=(y-r,\,y+r)$.</p>
+      <p data-s="2" class="nota-caja"><b>Todo espacio métrico es $T_2$.</b> Con $r=\tfrac{d(x,y)}{2}$: si $z\in B(x,r)\cap B(y,r)$, entonces $d(x,y)\le d(x,z)+d(z,y)&lt;2r=d(x,y)$, absurdo.</p>
+    </div>
+    <div>{{D:recta}}</div>
+  </div>
+  <aside data-s="0">Ejemplo de la clase. En la recta real, con la topología usual, tomamos equis igual a dos, y ye igual a cinco. El intervalo abierto de uno a tres es una vecindad del dos. El intervalo abierto de cuatro a seis es una vecindad del cinco. Y los dos intervalos no se cortan.</aside>
+  <aside data-s="1">Esto funciona para cualquier par de puntos distintos. Tomamos como radio la mitad de la distancia entre ellos, y usamos los intervalos centrados en equis y en ye con ese radio.</aside>
+  <aside data-s="2">El mismo argumento vale en cualquier espacio métrico, usando bolas abiertas. Si un punto zeta estuviera en las dos bolas, la desigualdad triangular diría que la distancia entre equis y ye es menor que ella misma. Eso es absurdo. Por lo tanto, todo espacio métrico es de Hausdorff.</aside>
+</section>
+
+<section class="slide" data-kicker="Ejemplo 2">
+  <h2>$X=\{a,b,c\}$, &nbsp; $\T=\{\varnothing,X,\{a\}\}$</h2>
+  <div class="cols">
+    <div>
+      <p>$\N_a=\{\{a\},\{a,b\},\{a,c\},X\}$<br>$\N_b=\N_c=\{X\}$</p>
+      <p data-s="1"><b>$T_2$</b> <span class="no">✗</span> &nbsp; La única vecindad de $b$ es $X$, que corta a toda vecindad de cualquier otro punto.</p>
+      <p data-s="2"><b>$T_1$</b> <span class="no">✗</span> &nbsp; $\{a\}$ no es cerrado: $\{b,c\}$ no es abierto.</p>
+      <p data-s="3"><b>$T_0$</b> <span class="no">✗</span> &nbsp; $\N_b=\N_c$ con $b\neq c$.</p>
+    </div>
+    <div>{{D:abc}}</div>
+  </div>
+  <aside data-s="0">Segundo ejemplo de la clase: un conjunto de tres puntos, a, be y ce, donde los únicos abiertos son el vacío, el total, y el conjunto que solo tiene al punto a. Las vecindades de a son todos los conjuntos que contienen a a. En cambio, be y ce tienen una sola vecindad: todo el espacio.</aside>
+  <aside data-s="1">No es de Hausdorff. La única vecindad de be es todo el espacio, y todo el espacio corta a cualquier vecindad de cualquier otro punto. No hay forma de separar.</aside>
+  <aside data-s="2">Tampoco es te uno. Por el teorema tres punto dos, basta ver que el punto a no es cerrado: su complemento, el conjunto be, ce, no es abierto.</aside>
+  <aside data-s="3">Y ni siquiera es te cero. Los puntos be y ce son distintos, pero tienen exactamente las mismas vecindades. La topología no puede distinguirlos.</aside>
+</section>
+
+<section class="slide" data-kicker="Ejemplo adicional (no visto en clase)">
+  <h2>$T_1$ no implica $T_2$: la topología cofinita</h2>
+  <p>$X=\R$. Son abiertos $\varnothing$ y los conjuntos cuyo complemento es finito.</p>
+  <p data-s="1"><b>$T_1$</b> <span class="si">✓</span> &nbsp; Los cerrados son $X$ y los conjuntos finitos. En particular $\{x\}$ es cerrado, y se aplica el teorema 3.2.</p>
+  <p data-s="2"><b>$T_2$</b> <span class="no">✗</span> &nbsp; Si $U$ y $V$ son abiertos no vacíos, a $U\cap V$ solo le falta una cantidad finita de puntos de $\R$. Como $\R$ es infinito, $U\cap V\neq\varnothing$.</p>
+  <p class="cadena" data-s="3">$T_2 \;\Longrightarrow\; T_1 \;\Longrightarrow\; T_0$ <span class="nota">y ningún recíproco es cierto</span></p>
+  <aside data-s="0">Falta ver que te uno no implica te dos. Este ejemplo no se vio en clase, pero completa el panorama. En los reales, declaramos abiertos al vacío, y a los conjuntos cuyo complemento es finito. Se llama topología cofinita.</aside>
+  <aside data-s="1">Es te uno. Los cerrados son el total y los conjuntos finitos. En particular, cada punto es cerrado, y aplicamos el teorema tres punto dos.</aside>
+  <aside data-s="2">Pero no es de Hausdorff. Si tomamos dos abiertos no vacíos, a cada uno le falta solo una cantidad finita de puntos. A su intersección también le falta solo una cantidad finita. Como los reales son infinitos, la intersección nunca es vacía.</aside>
+  <aside data-s="3">Así queda completa la cadena. Te dos implica te uno, te uno implica te cero, y ninguna implicación se puede invertir.</aside>
+</section>
+
+<section class="slide" data-kicker="Resumen">
+  <h2>Todos los ejemplos, en una tabla</h2>
+  <table class="resumen">
+    <tr><th>Espacio</th><th>$T_0$</th><th>$T_1$</th><th>$T_2$</th></tr>
+    <tr><td>$\R$ con la topología usual (y todo espacio métrico)</td><td class="si">✓</td><td class="si">✓</td><td class="si">✓</td></tr>
+    <tr><td>$\R$ con la topología cofinita</td><td class="si">✓</td><td class="si">✓</td><td class="no">✗</td></tr>
+    <tr><td>$\R$ con $\T=\{A:0\in A\}\cup\{\varnothing\}$</td><td class="si">✓</td><td class="no">✗</td><td class="no">✗</td></tr>
+    <tr><td>$\{0,1\}$ con $\T=\{\varnothing,\{0\},X\}$</td><td class="si">✓</td><td class="no">✗</td><td class="no">✗</td></tr>
+    <tr><td>$\{a,b,c\}$ con $\T=\{\varnothing,X,\{a\}\}$</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
+  </table>
+  <p data-s="1"><b>Para verificar:</b> $T_0$: un abierto que contenga a un punto y no al otro. &nbsp; $T_1$: ¿los puntos son cerrados? &nbsp; $T_2$: vecindades disjuntas.</p>
+  <aside data-s="0">Resumamos todos los ejemplos en una tabla. La recta real usual, y todo espacio métrico, cumplen los tres axiomas. La topología cofinita es te uno, pero no te dos. El ejemplo uno y el espacio de Sierpiński son te cero, pero no te uno. Y el espacio de tres puntos no cumple ninguno.</aside>
+  <aside data-s="1">Para verificar cada axioma en un ejercicio. Para te cero, busque un abierto que contenga a un punto y no al otro. Para te uno, pregunte si los puntos son cerrados. Para te dos, busque vecindades disjuntas. Más adelante vienen los espacios regulares y normales.</aside>
+</section>

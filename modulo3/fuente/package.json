@@ -1,0 +1,9 @@
+{
+  "name": "modulo3-axiomas-separacion",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@fontsource/ibm-plex-sans": "^5.0.0",
+    "katex": "^0.16.0"
+  }
+}

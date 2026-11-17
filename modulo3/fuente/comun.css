@@ -1,0 +1,22 @@
+:root {
+  --tinta: #1d2433; --gris: #6b7280; --papel: #fbfaf6;
+  --azul: #2563eb; --naranja: #d9480f; --verde: #1a7f4b; --rojo: #c92a2a; --morado: #6d28d9; --ambar: #b45309;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "IBM Plex Sans", "DejaVu Sans", sans-serif; color: var(--tinta); }
+.katex { font-size: 1.06em; }
+svg.diag { width: 100%; height: auto; display: block; }
+svg.diag .ml { font-family: KaTeX_Math, KaTeX_Main, serif; font-style: italic; }
+svg.diag .tl { font-family: "IBM Plex Sans", "DejaVu Sans", sans-serif; }
+.si { color: var(--verde); font-weight: 600; }
+.no { color: var(--rojo); font-weight: 600; }
+.nota { color: var(--gris); }
+.caja { border-left: 6px solid var(--azul); background: #2563eb0f; border-radius: 0 10px 10px 0; }
+.caja.teo { border-color: var(--morado); background: #6d28d90f; }
+.caja.prop { border-color: var(--verde); background: #1a7f4b0f; }
+.caja.ojo, .nota-caja { border-left: 6px solid var(--ambar); background: #b453090f; border-radius: 0 10px 10px 0; }
+table.resumen { border-collapse: collapse; width: 100%; }
+table.resumen th, table.resumen td { border-bottom: 1px solid #d6d3c9; text-align: center; }
+table.resumen th:first-child, table.resumen td:first-child { text-align: left; }
+table.resumen th { color: var(--gris); font-weight: 600; }
+.nw { white-space: nowrap; }

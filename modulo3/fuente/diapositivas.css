@@ -1,0 +1,38 @@
+@page { size: 1920px 1080px; margin: 0; }
+body { background: var(--papel); }
+.slide {
+  width: 1920px; height: 1080px; padding: 125px 90px 60px; position: relative; overflow: hidden;
+  background: var(--papel); font-size: 40px; line-height: 1.4; page-break-after: always;
+}
+.slide::before { content: attr(data-kicker); position: absolute; top: 56px; left: 100px;
+  font-size: 26px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--azul); }
+.slide::after { content: attr(data-pie); position: absolute; bottom: 30px; right: 60px; font-size: 22px; color: var(--gris); }
+.slide aside { display: none; }
+.slide h2 { font-size: 64px; line-height: 1.15; margin: 0 0 42px; font-weight: 600; }
+.slide p { margin: 0 0 24px; }
+.slide ul { margin: 0 0 24px; padding-left: 1.1em; }
+.slide li { margin-bottom: 10px; }
+.cols { display: grid; grid-template-columns: 1.25fr 1fr; gap: 56px; align-items: start; }
+.cols svg.diag { margin-top: -10px; }
+.caja, .nota-caja { padding: 22px 30px; margin: 0 0 28px; }
+.caja .katex-display { margin: .45em 0 .1em; }
+.nota-caja, .nota { font-size: 35px; }
+.veredicto { font-size: 44px; font-weight: 600; margin-top: 8px; }
+.veredicto.si { color: var(--verde); } .veredicto.no { color: var(--rojo); }
+.tarjetas { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin: 34px 0; }
+.tarjeta { background: #fff; border: 2px solid #e2dfd4; border-radius: 16px; padding: 24px 30px; }
+.tarjeta b { display: block; color: var(--azul); font-size: 42px; margin-bottom: 6px; }
+.tarjeta.tenue b { color: var(--gris); }
+.cadena { font-size: 50px; text-align: center; margin-top: 30px !important; }
+.cadena .nota { font-size: 30px; margin-left: 30px; }
+table.resumen { margin: 10px 0 36px; }
+table.resumen th, table.resumen td { padding: 17px 20px; }
+table.resumen td.si, table.resumen td.no { font-size: 42px; width: 150px; }
+.portada { padding-top: 300px; }
+.portada::before { content: none; }
+.portada .kicker { font-size: 32px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--azul); }
+.portada h1 { font-size: 124px; margin: 20px 0 30px; line-height: 1.05; }
+.portada .sub { font-size: 46px; }
+.portada .pie { color: var(--gris); margin-top: 70px; }
+.slide.compacta { font-size: 36px; }
+.slide.compacta .nota-caja { font-size: 33px; }
