@@ -1,0 +1,203 @@
+1
+00:00:00,500 --> 00:00:16,525
+Módulo tres: propiedades de los espacios topológicos. En esta clase empezamos los axiomas de separación. Vamos a estudiar con detalle los tres primeros: te cero, te uno y te dos, con todos los ejemplos que se vieron en clase.
+
+2
+00:00:17,225 --> 00:00:31,574
+¿Qué mide un axioma de separación? En un espacio topológico, los abiertos son la única herramienta que tenemos para distinguir un punto de otro. Cada axioma exige que los abiertos distingan los puntos un poco mejor que el anterior.
+
+3
+00:00:32,274 --> 00:00:38,678
+Te cero, o espacio de Kolmogórov: los abiertos alcanzan a distinguir dos puntos distintos.
+
+4
+00:00:39,378 --> 00:00:45,313
+Te uno, o espacio de Fréchet: cada uno de los dos puntos se puede separar del otro.
+
+5
+00:00:46,013 --> 00:00:52,204
+Te dos, o espacio de Hausdorff: los dos puntos se separan con vecindades que no se tocan.
+
+6
+00:00:52,904 --> 00:01:02,764
+Te tres y te cuatro, los espacios regulares y normales, separan puntos de conjuntos cerrados, y cerrados entre sí. Esos quedan para más adelante.
+
+7
+00:01:03,464 --> 00:01:16,516
+La idea que hay que llevarse es esta cadena: te dos implica te uno, y te uno implica te cero. Y ninguna de las implicaciones contrarias es cierta. Lo vamos a comprobar con ejemplos.
+
+8
+00:01:17,216 --> 00:01:32,810
+Antes de empezar, recordemos la herramienta que usan todas las definiciones: las vecindades. Fijamos un espacio topológico. Un conjunto ene es vecindad del punto equis, si existe un abierto u que contiene a equis, y que está contenido en ene.
+
+9
+00:01:33,510 --> 00:01:51,636
+El sistema de vecindades de equis, que escribimos ene sub equis, es la colección de todas sus vecindades. Hay dos hechos que usaremos todo el tiempo. Primero: toda vecindad de equis contiene a equis. Segundo: todo abierto que contiene a equis es vecindad de equis.
+
+10
+00:01:52,336 --> 00:02:06,352
+Primer axioma: te cero. Un espacio topológico es te cero si, cada vez que tomamos dos puntos distintos, equis y ye, sus sistemas de vecindades son distintos. Es decir, la topología no los confunde.
+
+11
+00:02:07,052 --> 00:02:16,058
+Hay una forma equivalente, que es la más cómoda para verificar: existe un abierto que contiene a uno de los dos puntos, y que no contiene al otro.
+
+12
+00:02:16,758 --> 00:02:30,280
+Atención a un detalle: no elegimos cuál de los dos puntos queda dentro del abierto. Basta con que funcione para uno de ellos. Esa es justamente la diferencia con te uno, como veremos enseguida.
+
+13
+00:02:30,980 --> 00:02:46,318
+Primer ejemplo de la clase. Tomamos los números reales, pero con una topología distinta de la usual: un conjunto es abierto si contiene al cero. A esa colección hay que añadirle el conjunto vacío, porque toda topología debe contenerlo.
+
+14
+00:02:47,018 --> 00:03:02,058
+¿Cómo son las vecindades? Todo abierto no vacío contiene al cero. Por eso, un conjunto ene es vecindad de equis exactamente cuando contiene a cero y a equis. La vecindad más pequeña de equis es el conjunto formado por cero y equis.
+
+15
+00:03:02,758 --> 00:03:20,294
+Verifiquemos te cero. Tomamos dos puntos distintos. Si uno de ellos es el cero, el conjunto que solo tiene al cero es abierto, contiene al cero y no contiene al otro punto. Si ninguno es cero, el conjunto cero, equis, es abierto, contiene a equis y no contiene a ye.
+
+16
+00:03:20,994 --> 00:03:28,930
+En los dos casos encontramos un abierto que distingue a los puntos. Por lo tanto, este espacio sí es te cero.
+
+17
+00:03:29,630 --> 00:03:42,486
+Segundo axioma: te uno, o espacio de Fréchet. Un espacio es te uno si, para cada punto equis, la intersección de todas las vecindades de equis es exactamente el conjunto que solo contiene a equis.
+
+18
+00:03:43,186 --> 00:03:53,289
+Dicho de otra forma: lo único que tienen en común todas las vecindades de equis, es el propio equis. Cualquier otro punto ye queda fuera de alguna de ellas.
+
+19
+00:03:53,989 --> 00:04:13,484
+Un cuidado con los apuntes. Se trata de la intersección de todas las vecindades, no de una cantidad finita. Si intersectamos un número finito de vecindades, obtenemos otra vez una vecindad. En la recta real usual, esa vecindad contiene un intervalo, así que nunca se reduce a un solo punto.
+
+20
+00:04:14,184 --> 00:04:30,252
+El teorema tres punto uno traduce te uno a un lenguaje de dos puntos. Un espacio es te uno, si y solo si, para todo par de puntos distintos, equis y ye, existe una vecindad ene de equis que no contiene a ye, y existe una vecindad eme de ye que no contiene a equis.
+
+21
+00:04:30,951 --> 00:04:48,069
+Veamos por qué. Supongamos que el espacio es te uno. Como ye es distinto de equis, ye no está en la intersección de las vecindades de equis. Eso significa que alguna vecindad ene de equis no contiene a ye. Intercambiando los papeles de equis y ye, obtenemos eme.
+
+22
+00:04:48,769 --> 00:04:59,705
+Recíprocamente. Equis está en todas sus vecindades, y cada punto ye distinto de equis queda fuera de alguna. Entonces la intersección de todas es solamente equis.
+
+23
+00:05:00,405 --> 00:05:12,326
+Dos observaciones. Las vecindades ene y eme sí pueden cortarse. Y compare con te cero: allí bastaba una de las dos condiciones; en te uno se piden las dos.
+
+24
+00:05:13,026 --> 00:05:33,387
+Volvamos al primer ejemplo, y apliquemos el teorema tres punto uno. Esto es lo que explicó la profesora. Si equis y ye son los dos distintos de cero, tomamos ene igual al conjunto cero, equis, que no contiene a ye. Y eme igual al conjunto cero, ye, que no contiene a equis. Para estos pares, la condición se cumple.
+
+25
+00:05:34,087 --> 00:05:45,961
+Pero si uno de los puntos es el cero, digamos ye igual a cero, la condición falla. Toda vecindad de equis contiene al cero. No existe ninguna vecindad de equis que deje fuera al cero.
+
+26
+00:05:46,661 --> 00:05:58,620
+Lo mismo se ve con la definición. La intersección de todas las vecindades de equis es el conjunto cero, equis. Y eso no es igual al conjunto que solo tiene a equis, cuando equis no es cero.
+
+27
+00:05:59,320 --> 00:06:08,186
+Como la condición debe valer para todos los pares de puntos, y falla cuando uno es el cero, este espacio es te cero, pero no es te uno.
+
+28
+00:06:08,886 --> 00:06:29,785
+Otro ejemplo de la clase: el espacio con abiertos vacío, el conjunto cero, y el total. Aquí tomamos como espacio el conjunto de dos puntos, cero y uno. Comparemos las vecindades. Las vecindades del cero son dos: el conjunto cero, y todo el espacio. El uno tiene una sola vecindad: todo el espacio.
+
+29
+00:06:30,485 --> 00:06:36,099
+Los dos sistemas de vecindades son distintos. Por lo tanto, el espacio es te cero.
+
+30
+00:06:36,799 --> 00:06:57,958
+Pero no es te uno. La única vecindad del uno es todo el espacio, que contiene al cero. La intersección de las vecindades del uno no es solamente el uno. En los apuntes quedó anotado que aquí se cumplen los dos axiomas. Al hacer la cuenta, con este conjunto de dos puntos, solo se cumple te cero. Conviene revisarlo con la profesora.
+
+31
+00:06:58,658 --> 00:07:14,099
+Y con esto tenemos el corolario. Te uno implica te cero, porque la vecindad ene del teorema pertenece al sistema de equis, y no al de ye. Pero el recíproco es falso: este espacio y el ejemplo uno son te cero y no son te uno.
+
+32
+00:07:14,799 --> 00:07:23,550
+El teorema tres punto dos da el criterio más práctico. Un espacio es te uno, si y solo si, cada conjunto de un solo punto es cerrado.
+
+33
+00:07:24,250 --> 00:07:45,878
+Demostración de la ida. Queremos ver que el complemento del punto equis es abierto. Tomamos un punto ye en ese complemento. Por el teorema anterior, ye tiene una vecindad eme que no contiene a equis. Es decir, eme está dentro del complemento. Entonces el complemento es vecindad de cada uno de sus puntos, y por eso es abierto.
+
+34
+00:07:46,578 --> 00:08:01,319
+Para la vuelta, tomamos dos puntos distintos. El complemento de ye es abierto, contiene a equis y no a ye. El complemento de equis es abierto, contiene a ye y no a equis. Esas son las vecindades que pide el teorema tres punto uno.
+
+35
+00:08:02,019 --> 00:08:20,917
+Comprobemos con los ejemplos. En el ejemplo uno, el conjunto que solo tiene al cero no es cerrado, porque su complemento no contiene al cero y entonces no es abierto. En el espacio de Sierpiński, el conjunto cero tampoco es cerrado. El criterio confirma que ninguno de los dos es te uno.
+
+36
+00:08:21,617 --> 00:08:34,408
+Tercer axioma: te dos, o espacio de Hausdorff. Un espacio es te dos si, para todo par de puntos distintos, existen una vecindad ene de equis, y una vecindad eme de ye, cuya intersección es vacía.
+
+37
+00:08:35,108 --> 00:08:44,921
+Compare con te uno. Allí las vecindades podían cortarse. Aquí se exige que sean disjuntas: los puntos quedan realmente separados.
+
+38
+00:08:45,621 --> 00:09:00,273
+De aquí sale que te dos implica te uno. Si ene y eme no se cortan, entonces ye, que está en eme, no está en ene. Y equis, que está en ene, no está en eme. Esa es exactamente la condición del teorema tres punto uno.
+
+39
+00:09:00,973 --> 00:09:19,073
+Ejemplo de la clase. En la recta real, con la topología usual, tomamos equis igual a dos, y ye igual a cinco. El intervalo abierto de uno a tres es una vecindad del dos. El intervalo abierto de cuatro a seis es una vecindad del cinco. Y los dos intervalos no se cortan.
+
+40
+00:09:19,773 --> 00:09:30,827
+Esto funciona para cualquier par de puntos distintos. Tomamos como radio la mitad de la distancia entre ellos, y usamos los intervalos centrados en equis y en ye con ese radio.
+
+41
+00:09:31,528 --> 00:09:50,148
+El mismo argumento vale en cualquier espacio métrico, usando bolas abiertas. Si un punto zeta estuviera en las dos bolas, la desigualdad triangular diría que la distancia entre equis y ye es menor que ella misma. Eso es absurdo. Por lo tanto, todo espacio métrico es de Hausdorff.
+
+42
+00:09:50,848 --> 00:10:09,608
+Segundo ejemplo de la clase: un conjunto de tres puntos, a, be y ce, donde los únicos abiertos son el vacío, el total, y el conjunto que solo tiene al punto a. Las vecindades de a son todos los conjuntos que contienen a a. En cambio, be y ce tienen una sola vecindad: todo el espacio.
+
+43
+00:10:10,308 --> 00:10:20,604
+No es de Hausdorff. La única vecindad de be es todo el espacio, y todo el espacio corta a cualquier vecindad de cualquier otro punto. No hay forma de separar.
+
+44
+00:10:21,304 --> 00:10:30,916
+Tampoco es te uno. Por el teorema tres punto dos, basta ver que el punto a no es cerrado: su complemento, el conjunto be, ce, no es abierto.
+
+45
+00:10:31,616 --> 00:10:42,420
+Y ni siquiera es te cero. Los puntos be y ce son distintos, pero tienen exactamente las mismas vecindades. La topología no puede distinguirlos.
+
+46
+00:10:43,120 --> 00:10:57,882
+Falta ver que te uno no implica te dos. Este ejemplo no se vio en clase, pero completa el panorama. En los reales, declaramos abiertos al vacío, y a los conjuntos cuyo complemento es finito. Se llama topología cofinita.
+
+47
+00:10:58,582 --> 00:11:08,238
+Es te uno. Los cerrados son el total y los conjuntos finitos. En particular, cada punto es cerrado, y aplicamos el teorema tres punto dos.
+
+48
+00:11:08,938 --> 00:11:24,810
+Pero no es de Hausdorff. Si tomamos dos abiertos no vacíos, a cada uno le falta solo una cantidad finita de puntos. A su intersección también le falta solo una cantidad finita. Como los reales son infinitos, la intersección nunca es vacía.
+
+49
+00:11:25,510 --> 00:11:34,214
+Así queda completa la cadena. Te dos implica te uno, te uno implica te cero, y ninguna implicación se puede invertir.
+
+50
+00:11:34,914 --> 00:11:53,568
+Resumamos todos los ejemplos en una tabla. La recta real usual, y todo espacio métrico, cumplen los tres axiomas. La topología cofinita es te uno, pero no te dos. El ejemplo uno y el espacio de Sierpiński son te cero, pero no te uno. Y el espacio de tres puntos no cumple ninguno.
+
+51
+00:11:54,268 --> 00:12:12,171
+Para verificar cada axioma en un ejercicio. Para te cero, busque un abierto que contenga a un punto y no al otro. Para te uno, pregunte si los puntos son cerrados. Para te dos, busque vecindades disjuntas. Más adelante vienen los espacios regulares y normales.
