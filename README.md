@@ -17,6 +17,15 @@ topología, con una transición para enlazarlo con los aportes de Cauchy y Weier
 La presentación (3 diapositivas sobre el tema más 1 de transición, con notas del
 orador) está publicada como Artifact de claude.ai y se descarga desde allí como .pptx o PDF.
 
+## Álgebra 2 · Anillos (carpeta `algebra2/`)
+
+| Archivo | Contenido |
+|---|---|
+| [`algebra2/Guia_Anillos_Modulos_0-2.pdf`](algebra2/Guia_Anillos_Modulos_0-2.pdf) | Guía de estudio (20 páginas): problemas de clase de homomorfismos resueltos y revisados (ℤ→ℤ₃₀, ℤ₂₀→ℤ₃₀, ℤ₁₂↔ℤ₂₄, g(n)=6n, idempotentes, divisores de cero, centro) y resumen de los módulos 0, 1 y 2 del folleto, con ejercicios resueltos y erratas. |
+| [`algebra2/guia_anillos_modulos_0_2.html`](algebra2/guia_anillos_modulos_0_2.html) | Versión web de la guía (MathJax), con calculadora de homomorfismos ℤₘ→ℤₙ. |
+| `algebra2/verificar_homomorfismos.py` | Comprueba por fuerza bruta todos los homomorfismos usados en la guía. |
+| `algebra2/generar_pdf_guia.js` | Genera el PDF desde el HTML con Playwright. |
+
 ## Regenerar los archivos
 
 ```bash
@@ -26,4 +35,11 @@ python3 documento/generar_pdf.py
 python3 documento/generar_pdf_temas_2_3.py
 python3 presentacion/generar_toro.py
 (cd presentacion && npm install && node generar_pptx.js)
+```
+
+Guía de Álgebra 2:
+
+```bash
+python3 algebra2/verificar_homomorfismos.py
+node algebra2/generar_pdf_guia.js   # necesita Playwright; ver comentario inicial del script
 ```

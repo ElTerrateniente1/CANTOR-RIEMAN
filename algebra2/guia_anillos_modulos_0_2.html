@@ -1,0 +1,664 @@
+<title>Guía de Anillos · Álgebra 2</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Grotesk:wght@500;700&display=swap">
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+    svg: { fontCache: 'global' },
+    options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'input'] }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js" defer></script>
+<style>
+  /* Layout: columna de lectura de ~70ch con índice lateral fijo en pantallas anchas; recuadros por función (definición, teorema, solución, ojo). */
+  :root {
+    --bg: #f7f8fb;
+    --surface: #ffffff;
+    --fg: #1b2030;
+    --muted: #5a6276;
+    --rule: #dde1ea;
+    --accent: #2f4fb5;
+    --def-bg: #eef2fd;   --def-fg: #2f4fb5;
+    --thm-bg: #f2effb;   --thm-fg: #5b3fa8;
+    --sol-bg: #ecf6f1;   --sol-fg: #1f7a52;
+    --ojo-bg: #fdf4e6;   --ojo-fg: #9a5a00;
+    --ex-bg:  #f3f5f8;   --ex-fg:  #4a5368;
+    --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12151d; --surface: #191d28; --fg: #e3e6ee; --muted: #9aa2b6; --rule: #2c3242; --accent: #8ea6ff;
+      --def-bg: #1a2240; --def-fg: #9db2ff; --thm-bg: #231c3a; --thm-fg: #c2adff;
+      --sol-bg: #142a22; --sol-fg: #7fd3a9; --ojo-bg: #2e2412; --ojo-fg: #f0bd6a; --ex-bg: #1d2230; --ex-fg: #b4bccd;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12151d; --surface: #191d28; --fg: #e3e6ee; --muted: #9aa2b6; --rule: #2c3242; --accent: #8ea6ff;
+    --def-bg: #1a2240; --def-fg: #9db2ff; --thm-bg: #231c3a; --thm-fg: #c2adff;
+    --sol-bg: #142a22; --sol-fg: #7fd3a9; --ojo-bg: #2e2412; --ojo-fg: #f0bd6a; --ex-bg: #1d2230; --ex-fg: #b4bccd;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--fg);
+    font-family: var(--font-body); font-size: 1.06rem; line-height: 1.62;
+  }
+  .wrap {
+    max-width: 1180px; margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 2.5rem 4rem;
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.5rem;
+  }
+  @media (min-width: 1080px) {
+    .wrap { grid-template-columns: 240px minmax(0, 1fr); }
+    nav.toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 1.5rem); align-self: start; max-height: calc(100vh - 3rem); overflow-y: auto; }
+  }
+  main { min-width: 0; max-width: 72ch; }
+
+  header.cab { grid-column: 1 / -1; display: grid; gap: .6rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
+  .eyebrow { font-family: var(--font-mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  h1, h2, h3, h4 { font-family: var(--font-display); text-wrap: balance; line-height: 1.2; margin: 0; }
+  h1 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); font-weight: 700; }
+  .lede { color: var(--muted); max-width: 62ch; margin: 0; }
+  h2 { font-size: 1.65rem; margin-top: 3.2rem; padding-top: 1rem; border-top: 2px solid var(--fg); }
+  h3 { font-size: 1.25rem; margin-top: 2.2rem; }
+  h4 { font-size: 1.02rem; margin-top: 1.4rem; color: var(--muted); }
+  p { margin: .8rem 0; }
+  a { color: var(--accent); }
+  a:focus-visible, summary:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  nav.toc { font-family: var(--font-display); font-size: .92rem; }
+  nav.toc .t { font-family: var(--font-mono); font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
+  nav.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: .15rem; }
+  nav.toc ol ol { padding-left: .9rem; margin: .15rem 0 .4rem; }
+  nav.toc a { color: var(--fg); text-decoration: none; display: block; padding: .12rem 0; }
+  nav.toc a:hover { color: var(--accent); }
+  nav.toc ol ol a { color: var(--muted); font-size: .86rem; }
+
+  .box { border-radius: 4px; padding: .9rem 1.1rem; margin: 1.1rem 0; background: var(--ex-bg); }
+  .box > .lbl { font-family: var(--font-mono); font-size: .74rem; letter-spacing: .07em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: .2rem; color: var(--ex-fg); }
+  .box > p:first-of-type { margin-top: .2rem; }
+  .box > :last-child { margin-bottom: 0; }
+  .def { background: var(--def-bg); } .def > .lbl { color: var(--def-fg); }
+  .thm { background: var(--thm-bg); } .thm > .lbl { color: var(--thm-fg); }
+  .sol { background: var(--sol-bg); } .sol > .lbl { color: var(--sol-fg); }
+  .ojo { background: var(--ojo-bg); } .ojo > .lbl { color: var(--ojo-fg); }
+
+  .tw { overflow-x: auto; margin: 1rem 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .95rem; font-variant-numeric: tabular-nums; background: var(--surface); }
+  th, td { border-bottom: 1px solid var(--rule); padding: .45rem .6rem; text-align: left; vertical-align: top; }
+  th { font-family: var(--font-display); font-weight: 500; font-size: .85rem; color: var(--muted); border-bottom: 2px solid var(--rule); }
+  ul, ol { padding-left: 1.3rem; }
+  li { margin: .25rem 0; }
+  .verdict { font-family: var(--font-display); font-weight: 700; padding: .05rem .5rem; border-radius: 3px; font-size: .88rem; }
+  .v-ok { background: var(--sol-bg); color: var(--sol-fg); }
+  .v-no { background: var(--ojo-bg); color: var(--ojo-fg); }
+
+  details { border: 1px solid var(--rule); border-radius: 4px; background: var(--surface); margin: .7rem 0; }
+  summary { cursor: pointer; padding: .6rem .9rem; font-family: var(--font-display); font-weight: 500; }
+  details > div { padding: 0 .9rem .8rem; }
+
+  .jer { display: grid; gap: .5rem; margin: 1rem 0; }
+  .jer div { border: 1px solid var(--rule); border-radius: 4px; padding: .55rem .8rem .55rem; background: var(--surface); }
+  .jer div div { margin-top: .5rem; }
+  .jer b { font-family: var(--font-display); font-weight: 500; }
+  .jer small { color: var(--muted); display: block; }
+
+  .calc { border: 1px solid var(--rule); border-radius: 4px; background: var(--surface); padding: 1rem 1.1rem; margin: 1.2rem 0; }
+  .calc form { display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; align-items: end; }
+  .calc label { display: grid; gap: .2rem; font-family: var(--font-display); font-size: .85rem; color: var(--muted); }
+  .calc input { font: inherit; font-family: var(--font-mono); width: 7rem; padding: .35rem .5rem; border: 1px solid var(--rule); border-radius: 3px; background: var(--bg); color: var(--fg); }
+  .calc button { font-family: var(--font-display); font-weight: 500; padding: .45rem 1rem; border: 0; border-radius: 3px; background: var(--accent); color: var(--surface); cursor: pointer; }
+  .calc .out { font-family: var(--font-mono); font-size: .86rem; margin-top: .9rem; }
+  .calc .out p { margin: .3rem 0; }
+  .mono { font-family: var(--font-mono); font-size: .9em; }
+  footer { margin-top: 3rem; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+  mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+  @media print { nav.toc { display: none; } .wrap { display: block; } details { break-inside: avoid; } details > div { display: block; } }
+</style>
+
+<div class="wrap">
+  <header class="cab">
+    <span class="eyebrow">Álgebra 2 · Anillos · Guía de estudio</span>
+    <h1>Homomorfismos, grupos, anillos y dominios enteros</h1>
+    <p class="lede">Problemas de clase resueltos y revisados, más un resumen completo de los módulos 0, 1 y 2 del folleto. Cada resultado numérico de la Parte I se comprobó por fuerza bruta (script <span class="mono">verificar_homomorfismos.py</span>).</p>
+  </header>
+
+  <nav class="toc" aria-label="Índice">
+    <div class="t">Contenido</div>
+    <ol>
+      <li><a href="#parte1">I. Problemas de clase</a>
+        <ol>
+          <li><a href="#metodo">Método general</a></li>
+          <li><a href="#p1">ℤ → ℤ/30ℤ</a></li>
+          <li><a href="#p2">ℤ/20ℤ → ℤ/30ℤ</a></li>
+          <li><a href="#p3">ℤ/12ℤ ↔ ℤ/24ℤ y g(n)=6n</a></li>
+          <li><a href="#p4">Idempotentes</a></li>
+          <li><a href="#p5">Divisores de cero</a></li>
+          <li><a href="#p6">Centro del anillo</a></li>
+          <li><a href="#calc">Calculadora</a></li>
+          <li><a href="#correc">Correcciones a los apuntes</a></li>
+        </ol>
+      </li>
+      <li><a href="#m0">II. Módulo 0 · Grupos</a></li>
+      <li><a href="#m1">III. Módulo 1 · Anillos</a></li>
+      <li><a href="#m2">IV. Módulo 2 · Dominios enteros</a></li>
+      <li><a href="#repaso">V. Repaso y práctica</a>
+        <ol>
+          <li><a href="#jerarquia">Jerarquía de estructuras</a></li>
+          <li><a href="#errores">Errores frecuentes</a></li>
+          <li><a href="#practica">Ejercicios con solución</a></li>
+          <li><a href="#erratas">Erratas del folleto</a></li>
+        </ol>
+      </li>
+    </ol>
+  </nav>
+
+  <main>
+<!-- ============================================================ PARTE I -->
+    <h2 id="parte1">I. Problemas de clase</h2>
+    <p>Convención del folleto (Def. 5.1): un <b>homomorfismo de anillos</b> $\varphi:R\to S$ cumple $\varphi(a+b)=\varphi(a)+\varphi(b)$ y $\varphi(ab)=\varphi(a)\varphi(b)$. <b>No se exige</b> $\varphi(1)=1$; por eso la función cero cuenta como homomorfismo. Si tu profesor usa la otra convención (homomorfismos unitarios), solo sobreviven los que tienen <span style="white-space:nowrap">$f(1)=1$;</span> lo señalo en cada problema.</p>
+
+    <h3 id="metodo">Método general: homomorfismos $\mathbb{Z}_m\to\mathbb{Z}_n$</h3>
+    <div class="box thm"><span class="lbl">Receta</span>
+      <p>Sea $k=f(1)$. Entonces $f(x)=kx$ y $f$ es homomorfismo de anillos <b>si y solo si</b>:</p>
+      <ol>
+        <li><b>Producto:</b> $k^2\equiv k \pmod n$ ($k$ idempotente en $\mathbb{Z}_n$).</li>
+        <li><b>Buena definición</b> (solo si el dominio es $\mathbb{Z}_m$): $n\mid mk$, equivalente a $\dfrac{n}{\gcd(m,n)}\mid k$.</li>
+      </ol>
+    </div>
+
+    <h4>Paso 1. $f$ queda determinado por $f(1)$</h4>
+    <p>Por aditividad, $f(2)=f(1+1)=f(1)+f(1)=2k$, $f(3)=3k$ y, por inducción, $f(n)=nk$ para $n\ge 1$. Además $f(0)=0$ y $f(-n)=-f(n)=-nk$ (Lema 5.5). Luego $f(n)=nk$ para todo $n\in\mathbb{Z}$.</p>
+
+    <h4>Paso 2. Condición del producto (necesaria y suficiente)</h4>
+    <p><i>Necesaria:</i> con $a=b=1$, $f(1)=f(1\cdot1)=f(1)^2$, o sea $k=k^2$.</p>
+    <p><i>Suficiente:</i> si $k^2=k$, entonces $f(a)f(b)=(ak)(bk)=ab\,k^2=ab\,k=f(ab)$. La aditividad $f(a+b)=(a+b)k=ak+bk$ es automática.</p>
+    <div class="box ojo"><span class="lbl">Ojo</span>
+      <p>En clase solo se probó la parte <i>necesaria</i> ($a=b=1$). Para afirmar que los $k$ encontrados <b>sí</b> son homomorfismos hace falta la parte suficiente, que es la línea de arriba.</p>
+    </div>
+    <p>Hay otra forma de verlo: $1$ es idempotente en el dominio y los homomorfismos llevan idempotentes en idempotentes (<a href="#p4">problema 4</a>), así que $f(1)$ tiene que ser idempotente.</p>
+
+    <h4>Paso 3. Buena definición</h4>
+    <p>En $\mathbb{Z}_m$ se tiene $[m]=[0]$, así que debe valer $f(m)=f(0)=0$, es decir $mk\equiv 0\pmod n$. Es también suficiente: si $x\equiv y\pmod m$, $x-y=mt$ y $kx-ky=mkt\equiv0\pmod n$.</p>
+
+    <h4>Atajo para contar idempotentes</h4>
+    <p>Por el Teorema Chino del Resto, si $n=p_1^{a_1}\cdots p_r^{a_r}$ entonces $\mathbb{Z}_n$ tiene exactamente $2^r$ idempotentes (en cada factor $p_i^{a_i}$ solo hay $0$ y $1$). Así, $\mathbb{Z}_{30}$ ($30=2\cdot3\cdot5$) tiene $2^3=8$, y $\mathbb{Z}_{24}$ ($24=2^3\cdot3$) tiene $2^2=4$. Sirve para saber cuántos debes encontrar antes de buscarlos.</p>
+
+    <h4>Núcleo e imagen de $f_k$</h4>
+    <p>$\ker f_k=\{x : n\mid kx\}$. Si el dominio es $\mathbb{Z}$, $\ker f_k=\dfrac{n}{\gcd(k,n)}\mathbb{Z}$. La imagen es el subgrupo $\langle k\rangle\subseteq\mathbb{Z}_n$, que coincide con $\langle \gcd(k,n)\rangle$ y tiene $\dfrac{n}{\gcd(k,n)}$ elementos. Por el Lema 5.5(3), $f(1)=k$ es la identidad del anillo imagen.</p>
+
+    <!-- P1 -->
+    <h3 id="p1">Problema 1. Homomorfismos $\mathbb{Z}\to\mathbb{Z}/30\mathbb{Z}$</h3>
+    <p>Solo hay condición de producto: $k^2\equiv k\pmod{30}$ con $0\le k\le 29$. Por el Teorema Chino del Resto, $k\equiv 0$ o $1$ módulo $2$, $3$ y $5$, lo que da $8$ valores:</p>
+    $$k\in\{0,\,1,\,6,\,10,\,15,\,16,\,21,\,25\}.$$
+    <p>Comprobación: $6^2=36\equiv6$, $10^2=100\equiv10$, $15^2=225\equiv15$, $16^2=256\equiv16$, $21^2=441\equiv21$, $25^2=625\equiv25 \pmod{30}$.</p>
+    <div class="tw"><table>
+      <thead><tr><th>$f_k(n)$</th><th>$\gcd(k,30)$</th><th>$\ker f_k$</th><th>$\operatorname{Im} f_k$</th><th>1.er teorema de isomorfía</th></tr></thead>
+      <tbody>
+        <tr><td>$0$</td><td>30</td><td>$\mathbb{Z}$</td><td>$\{0\}$</td><td>$\mathbb{Z}/\mathbb{Z}\cong\{0\}$</td></tr>
+        <tr><td>$n$</td><td>1</td><td>$30\mathbb{Z}$</td><td>$\mathbb{Z}_{30}$</td><td>$\mathbb{Z}/30\mathbb{Z}\cong\mathbb{Z}_{30}$</td></tr>
+        <tr><td>$6n$</td><td>6</td><td>$5\mathbb{Z}$</td><td>$\{0,6,12,18,24\}$</td><td>$\mathbb{Z}/5\mathbb{Z}\cong\langle 6\rangle\cong\mathbb{Z}_5$</td></tr>
+        <tr><td>$10n$</td><td>10</td><td>$3\mathbb{Z}$</td><td>$\{0,10,20\}$</td><td>$\mathbb{Z}/3\mathbb{Z}\cong\langle 10\rangle\cong\mathbb{Z}_3$</td></tr>
+        <tr><td>$15n$</td><td>15</td><td>$2\mathbb{Z}$</td><td>$\{0,15\}$</td><td>$\mathbb{Z}/2\mathbb{Z}\cong\langle 15\rangle\cong\mathbb{Z}_2$</td></tr>
+        <tr><td>$16n$</td><td>2</td><td>$15\mathbb{Z}$</td><td>pares $\{0,2,\dots,28\}$</td><td>$\mathbb{Z}/15\mathbb{Z}\cong\langle 2\rangle\cong\mathbb{Z}_{15}$</td></tr>
+        <tr><td>$21n$</td><td>3</td><td>$10\mathbb{Z}$</td><td>múltiplos de 3</td><td>$\mathbb{Z}/10\mathbb{Z}\cong\langle 3\rangle\cong\mathbb{Z}_{10}$</td></tr>
+        <tr><td>$25n$</td><td>5</td><td>$6\mathbb{Z}$</td><td>múltiplos de 5</td><td>$\mathbb{Z}/6\mathbb{Z}\cong\langle 5\rangle\cong\mathbb{Z}_6$</td></tr>
+      </tbody>
+    </table></div>
+    <p>Ejemplo de cálculo: $\ker f_6=\{n: 30\mid 6n\}=\{n: 5\mid n\}=5\mathbb{Z}$. La imagen $\{0,6,12,18,24\}$ tiene identidad $6$ (porque $6\cdot 6=36\equiv 6$), no $1$.</p>
+    <p>Si se exige $f(1)=1$, solo queda $f_1$, el homomorfismo natural (Ejemplo 5.2).</p>
+
+    <!-- P2 -->
+    <h3 id="p2">Problema 2. Homomorfismos $\mathbb{Z}/20\mathbb{Z}\to\mathbb{Z}/30\mathbb{Z}$ y sus núcleos</h3>
+    <p>Condiciones: $k^2\equiv k\pmod{30}$ y $30\mid 20k$. La segunda equivale a $3\mid 2k$, es decir, $3\mid k$ (también sale de $\tfrac{30}{\gcd(20,30)}=3$). De los 8 idempotentes, los múltiplos de 3 son:</p>
+    $$k\in\{0,\,6,\,15,\,21\}\quad\Longrightarrow\quad 4\text{ homomorfismos}.$$
+    <div class="tw"><table>
+      <thead><tr><th>$f_k$</th><th>$\ker f_k\subseteq\mathbb{Z}_{20}$</th><th>$|\ker|$</th><th>$\operatorname{Im} f_k\subseteq\mathbb{Z}_{30}$</th><th>$\mathbb{Z}_{20}/\ker f_k\cong\operatorname{Im} f_k$</th></tr></thead>
+      <tbody>
+        <tr><td>$f_0=0$</td><td>$\mathbb{Z}_{20}$</td><td>20</td><td>$\{0\}$</td><td>$\{0\}$</td></tr>
+        <tr><td>$f_6=6n$</td><td>$\{0,5,10,15\}=\langle[5]\rangle$</td><td>4</td><td>$\{0,6,12,18,24\}$</td><td>$\mathbb{Z}_{20}/\langle[5]\rangle\cong\langle 6\rangle\cong\mathbb{Z}_5$</td></tr>
+        <tr><td>$f_{15}=15n$</td><td>$\{0,2,4,\dots,18\}=\langle[2]\rangle$</td><td>10</td><td>$\{0,15\}$</td><td>$\mathbb{Z}_{20}/\langle[2]\rangle\cong\{0,15\}\cong\mathbb{Z}_2$</td></tr>
+        <tr><td>$f_{21}=21n$</td><td>$\{0,10\}=\langle[10]\rangle$</td><td>2</td><td>$\{0,3,6,\dots,27\}$</td><td>$\mathbb{Z}_{20}/\langle[10]\rangle\cong\langle 3\rangle\cong\mathbb{Z}_{10}$</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box sol"><span class="lbl">Cálculo de cada núcleo</span>
+      <ul>
+        <li>$f_6$: $30\mid 6n \iff 5\mid n$, así que $\ker f_6=\{0,5,10,15\}$.</li>
+        <li>$f_{15}$: $30\mid 15n\iff 2\mid n$, así que $\ker f_{15}$ son las clases pares.</li>
+        <li>$f_{21}$: $30\mid 21n \iff 10\mid 7n \iff 10\mid n$ (pues $\gcd(7,10)=1$), así que $\ker f_{21}=\{0,10\}$.</li>
+      </ul>
+      <p><b>Control de cardinalidad</b> (Lagrange): $|\mathbb{Z}_{20}|=|\ker|\cdot|\operatorname{Im}|$. Se cumple $20=4\cdot5=10\cdot2=2\cdot10=20\cdot1$.</p>
+    </div>
+    <div class="box ojo"><span class="lbl">Corrección</span>
+      <p>En los apuntes aparece "$R/20\mathbb{Z}$ para $f_6$". Lo correcto es $(\mathbb{Z}/20\mathbb{Z})/\ker f_6=\mathbb{Z}_{20}/\langle[5]\rangle\cong\{0,6,12,18,24\}$. El núcleo es $\langle[5]\rangle$, no $20\mathbb{Z}$. Ese cociente tiene 5 elementos y es isomorfo a $\mathbb{Z}_5$ como anillo: la imagen tiene identidad $6$ y $6a\cdot 6b\equiv 6ab \pmod{30}$, así que $6a\mapsto [a]_5$ es un isomorfismo.</p>
+      <p>Con la convención $f(1)=1$ no hay ninguno: $k=1$ no cumple $3\mid k$.</p>
+    </div>
+
+    <!-- P3 -->
+    <h3 id="p3">Problema 3. Homomorfismos entre $\mathbb{Z}/12\mathbb{Z}$ y $\mathbb{Z}/24\mathbb{Z}$; el caso $g(n)=6n$</h3>
+    <h4>a) $\mathbb{Z}_{12}\to\mathbb{Z}_{24}$</h4>
+    <p>Idempotentes de $\mathbb{Z}_{24}$: $k\equiv0,1 \pmod 8$ y $k\equiv 0,1\pmod 3$, lo que da $\{0,1,9,16\}$ ($9^2=81\equiv9$, $16^2=256\equiv16$). Buena definición: $24\mid 12k\iff 2\mid k$. Quedan:</p>
+    $$k\in\{0,16\}\quad\Longrightarrow\quad 2\text{ homomorfismos}.$$
+    <ul>
+      <li>$f_0=0$: $\ker=\mathbb{Z}_{12}$, $\operatorname{Im}=\{0\}$.</li>
+      <li>$f_{16}(n)=16n$: $24\mid16n\iff 3\mid 2n\iff 3\mid n$, así que $\ker f_{16}=\{0,3,6,9\}=\langle[3]\rangle$ y $\operatorname{Im}=\{0,16,8\}$ (pues $16\cdot2=32\equiv8$, $16\cdot3=48\equiv0$). Por el primer teorema de isomorfía, $\mathbb{Z}_{12}/\langle[3]\rangle\cong\{0,8,16\}\cong\mathbb{Z}_3$, con identidad $16$ en la imagen. Cardinalidad: $12=4\cdot3$.</li>
+    </ul>
+
+    <h4>b) $\mathbb{Z}_{24}\to\mathbb{Z}_{12}$ (por si "entre" incluye ambos sentidos)</h4>
+    <p>Idempotentes de $\mathbb{Z}_{12}$: $\{0,1,4,9\}$. La condición $12\mid 24k$ siempre se cumple, así que hay <b>4 homomorfismos</b>:</p>
+    <div class="tw"><table>
+      <thead><tr><th>$f_k$</th><th>$\ker\subseteq\mathbb{Z}_{24}$</th><th>$\operatorname{Im}\subseteq\mathbb{Z}_{12}$</th><th>Isomorfía</th></tr></thead>
+      <tbody>
+        <tr><td>$0$</td><td>$\mathbb{Z}_{24}$</td><td>$\{0\}$</td><td>$\{0\}$</td></tr>
+        <tr><td>$n$</td><td>$\{0,12\}$</td><td>$\mathbb{Z}_{12}$</td><td>$\mathbb{Z}_{24}/\langle[12]\rangle\cong\mathbb{Z}_{12}$</td></tr>
+        <tr><td>$4n$</td><td>$\langle[3]\rangle$ (8 elem.)</td><td>$\{0,4,8\}$</td><td>$\mathbb{Z}_{24}/\langle[3]\rangle\cong\mathbb{Z}_3$</td></tr>
+        <tr><td>$9n$</td><td>$\langle[4]\rangle$ (6 elem.)</td><td>$\{0,3,6,9\}$</td><td>$\mathbb{Z}_{24}/\langle[4]\rangle\cong\mathbb{Z}_4$</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>c) El primer teorema de isomorfía para $g(n)=6n$, $g:\mathbb{Z}_{12}\to\mathbb{Z}_{24}$</h4>
+    <div class="box ojo"><span class="lbl">Punto clave</span>
+      <p>$g$ <b>no es un homomorfismo de anillos</b>: $6^2=36\equiv 12\not\equiv 6\pmod{24}$. Concretamente, $g(1\cdot1)=6$ pero $g(1)g(1)=12$. Por eso $6$ no aparece en el inciso a).</p>
+      <p>Sí está bien definida ($24\mid 12\cdot6=72$) y es aditiva, así que es un <b>homomorfismo de grupos</b> $(\mathbb{Z}_{12},+)\to(\mathbb{Z}_{24},+)$. El teorema de isomorfía vale en la versión de grupos (Módulo 0).</p>
+    </div>
+    <div class="box sol"><span class="lbl">Solución (versión de grupos)</span>
+      <ul>
+        <li>$\ker g=\{n\in\mathbb{Z}_{12}: 24\mid 6n\}=\{n: 4\mid n\}=\{0,4,8\}=\langle[4]\rangle$.</li>
+        <li>$\operatorname{Im} g=\{0,6,12,18\}=\langle 6\rangle\subseteq\mathbb{Z}_{24}$.</li>
+        <li>Primer teorema de isomorfía: $$\mathbb{Z}_{12}/\langle[4]\rangle\;\cong\;\{0,6,12,18\}\;\cong\;\mathbb{Z}_4\quad\text{(como grupos)}.$$ Cardinalidad: $12=3\cdot4$. El isomorfismo es $\mu(n+\langle[4]\rangle)=6n$.</li>
+      </ul>
+      <p><b>Por qué falla como anillos:</b> $\mathbb{Z}_{12}/\langle[4]\rangle\cong\mathbb{Z}_4$ tiene identidad. En cambio, en $\{0,6,12,18\}$ todo producto cae en $\{0,12\}$ (por ejemplo $6\cdot6=12$, $6\cdot 12=0$, $18\cdot18=324\equiv12$), así que no tiene identidad. No pueden ser anillos isomorfos.</p>
+    </div>
+    <p>Si en tu curso $g(n)=6n$ se plantea con otro dominio o codominio, revisa el enunciado. Con $\mathbb{Z}_{12}\to\mathbb{Z}_{24}$ la única lectura correcta es la de grupos.</p>
+
+    <!-- P4 -->
+    <h3 id="p4">Problema 4. Si $x$ es idempotente, ¿$\varphi(x)$ es idempotente?</h3>
+    <p><span class="verdict v-ok">CIERTO</span></p>
+    <div class="box sol"><span class="lbl">Demostración</span>
+      <p>Sea $\varphi:R\to S$ homomorfismo y $x^2=x$. Entonces $$\varphi(x)^2=\varphi(x)\varphi(x)=\varphi(x\cdot x)=\varphi(x^2)=\varphi(x).$$ Luego $\varphi(x)$ es idempotente en $S$. Puede ocurrir que $\varphi(x)=0$, que también es idempotente; no hay excepción. $\blacksquare$</p>
+    </div>
+    <p>La afirmación del enunciado escrita como "entonces $\varphi$ es idempotente" debe leerse "entonces $\varphi(x)$ es idempotente". Que la <i>función</i> $\varphi$ sea idempotente ($\varphi\circ\varphi=\varphi$) es otra cosa y en general ni siquiera tiene sentido si $R\ne S$.</p>
+
+    <!-- P5 -->
+    <h3 id="p5">Problema 5. Si $x$ es divisor de cero, ¿$\varphi(x)$ es divisor de cero?</h3>
+    <p><span class="verdict v-no">FALSO</span>. Hay contraejemplos.</p>
+    <div class="box sol"><span class="lbl">Contraejemplo principal</span>
+      <p>$\varphi:\mathbb{Z}_6\to\mathbb{Z}_3$, $\varphi([n]_6)=[n]_3$. Está bien definida porque $3\mid 6$, y es homomorfismo (es el caso $k=1$ de la receta: $1^2=1$ y $3\mid 6\cdot1$).</p>
+      <p>$x=[2]_6$ es divisor de cero en $\mathbb{Z}_6$, pues $[2][3]=[0]$ con $[3]\ne[0]$. Pero $\varphi(x)=[2]_3$ es una <b>unidad</b> de $\mathbb{Z}_3$ ($2\cdot2=4\equiv1$), y $\mathbb{Z}_3$ es cuerpo, así que no tiene divisores de cero.</p>
+    </div>
+    <p>Otros contraejemplos:</p>
+    <ul>
+      <li>La proyección $\pi:\mathbb{Z}\oplus\mathbb{Z}\to\mathbb{Z}$, $\pi(a,b)=a$: $(1,0)$ es divisor de cero porque $(1,0)(0,1)=(0,0)$, pero $\pi(1,0)=1$ no lo es.</li>
+      <li>El homomorfismo cero: $\varphi(x)=0$, y por definición (Def. 2.4) un divisor de cero debe ser $\ne0$. Es un contraejemplo válido pero trivial; en un examen conviene dar uno de los anteriores.</li>
+    </ul>
+    <div class="box thm"><span class="lbl">Qué sí es cierto</span>
+      <p>Si $\varphi$ es <b>inyectivo</b>, sí se conserva: si $xy=0$ con $x,y\ne0$, entonces $\varphi(x)\varphi(y)=\varphi(0)=0$ y, por inyectividad (Prop. 5.16), $\varphi(x)\ne0$ y $\varphi(y)\ne0$.</p>
+      <p>La diferencia con el problema 4: "ser idempotente" es una <b>ecuación</b> ($x^2=x$) y los homomorfismos conservan ecuaciones. "Ser divisor de cero" exige además que algo sea <b>distinto de cero</b>, y los homomorfismos no conservan desigualdades porque pueden mandar elementos no nulos a $0$.</p>
+    </div>
+
+    <!-- P6 -->
+    <h3 id="p6">Problema 6. Centro del anillo: $\varphi$ sobreyectivo implica $\varphi(Z(R))\subseteq Z(S)$</h3>
+    <div class="box def"><span class="lbl">Definición</span>
+      <p>$Z(R)=\{x\in R : ax=xa\ \ \forall a\in R\}$ es el centro de $R$.</p>
+    </div>
+    <div class="box sol"><span class="lbl">Demostración</span>
+      <p>Sea $y\in\varphi(Z(R))$, o sea $y=\varphi(x)$ con $x\in Z(R)$. Hay que ver que $ys=sy$ para todo $s\in S$.</p>
+      <p>Sea $s\in S$. Como $\varphi$ es sobreyectivo, existe $a\in R$ con $\varphi(a)=s$. Como $x\in Z(R)$, $xa=ax$. Aplicando $\varphi$:
+      $$\varphi(x)\,s=\varphi(x)\varphi(a)=\varphi(xa)=\varphi(ax)=\varphi(a)\varphi(x)=s\,\varphi(x).$$
+      Como $s$ era arbitrario, $\varphi(x)\in Z(S)$. Por tanto $\varphi(Z(R))\subseteq Z(S)$. $\blacksquare$</p>
+    </div>
+    <p>La demostración de los apuntes es correcta. Solo hay que escribir $Z(S)$ con mayúscula: es el centro del anillo $S$, no de un elemento $s$.</p>
+    <div class="box ojo"><span class="lbl">¿Hace falta la sobreyectividad?</span>
+      <p>Sí. Contraejemplo: sea $D$ el anillo de matrices diagonales $2\times2$ reales y $\iota:D\hookrightarrow M_2(\mathbb{R})$ la inclusión, que es homomorfismo inyectivo pero no sobreyectivo. $D$ es conmutativo, así que $Z(D)=D$. Pero $E=\begin{pmatrix}1&0\\0&0\end{pmatrix}\in D$ no está en $Z(M_2(\mathbb{R}))$:
+      $$E\begin{pmatrix}0&1\\0&0\end{pmatrix}=\begin{pmatrix}0&1\\0&0\end{pmatrix}\ne\begin{pmatrix}0&0\\0&0\end{pmatrix}=\begin{pmatrix}0&1\\0&0\end{pmatrix}E.$$
+      Sin sobreyectividad, $\varphi(x)$ solo conmuta con los elementos de la imagen $\varphi(R)$, es decir, $\varphi(Z(R))\subseteq Z(\varphi(R))$.</p>
+    </div>
+
+    <!-- Calculadora -->
+    <h3 id="calc">Calculadora: homomorfismos $\mathbb{Z}_m\to\mathbb{Z}_n$</h3>
+    <p>Para practicar: escribe $m$ ($0$ significa el dominio $\mathbb{Z}$) y $n$. Prueba cada $k$ con las dos condiciones de la receta y da núcleo e imagen. Haz el ejercicio a mano primero y úsala solo para verificar.</p>
+    <div class="calc">
+      <form id="calc-form">
+        <label for="calc-m">Dominio $m$ (0 = ℤ)<input id="calc-m" type="number" min="0" max="200" value="20"></label>
+        <label for="calc-n">Codominio $n$<input id="calc-n" type="number" min="2" max="200" value="30"></label>
+        <button type="submit">Calcular</button>
+      </form>
+      <div class="out" id="calc-out" aria-live="polite"></div>
+    </div>
+
+    <!-- Correcciones -->
+    <h3 id="correc">Correcciones a los apuntes de clase</h3>
+    <div class="tw"><table>
+      <thead><tr><th>En los apuntes</th><th>Correcto</th></tr></thead>
+      <tbody>
+        <tr><td>$f(2)=f(1)+1$</td><td>$f(2)=f(1+1)=f(1)+f(1)=2k$</td></tr>
+        <tr><td>Buscar $k$ con $0\lt k\lt 29$</td><td>$0\le k\le 29$ (el $0$ y el $29$ también se prueban)</td></tr>
+        <tr><td>Solo se listan $f_0,f_1,f_6,f_{10}$</td><td>Son 8: faltan $f_{15},f_{16},f_{21},f_{25}$</td></tr>
+        <tr><td>Solo se prueba $k=k^2$ como necesaria</td><td>Falta la suficiencia: $f(a)f(b)=abk^2=abk=f(ab)$</td></tr>
+        <tr><td>"$30/20k$"</td><td>$30\mid 20k$ ("30 divide a $20k$")</td></tr>
+        <tr><td>"$R/20\mathbb{Z}$" para $f_6$</td><td>$\mathbb{Z}_{20}/\langle[5]\rangle\cong\{0,6,12,18,24\}\cong\mathbb{Z}_5$</td></tr>
+        <tr><td>"entonces $\varphi$ es idempotente"</td><td>"entonces $\varphi(x)$ es idempotente"</td></tr>
+        <tr><td>$\varphi(x)\in Z(s)$</td><td>$\varphi(x)\in Z(S)$</td></tr>
+      </tbody>
+    </table></div>
+
+<!-- ============================================================ MODULO 0 -->
+    <h2 id="m0">II. Módulo 0 · Grupos</h2>
+
+    <h3>Operación binaria y grupo</h3>
+    <div class="box def"><span class="lbl">Operación binaria</span>
+      <p>Una función $*:G\times G\to G$. Lo esencial es la <b>cerradura</b>: $a,b\in G\Rightarrow a*b\in G$. Es asociativa si $(a*b)*c=a*(b*c)$ y conmutativa si $a*b=b*a$.</p>
+    </div>
+    <div class="box def"><span class="lbl">Grupo</span>
+      <p>$(G,*)$ con: (1) asociatividad; (2) neutro $e$: $e*a=a*e=a$; (3) inversos: para cada $a$ existe $a^{-1}$ con $a*a^{-1}=a^{-1}*a=e$. Si además $a*b=b*a$ para todo $a,b$, el grupo es <b>abeliano</b>.</p>
+    </div>
+    <p><b>Ejemplos:</b> $(\mathbb{Z},+)$, $(\mathbb{Q},+)$, $(\mathbb{R},+)$ y $(\mathbb{C},+)$ son abelianos. $(\mathbb{Z},\cdot)$ <b>no</b> es grupo porque $2$ no tiene inverso en $\mathbb{Z}$. $(\mathbb{Q}\setminus\{0\},\cdot)$ sí lo es, con $a^{-1}=1/a$.</p>
+
+    <h3>Consecuencias de los axiomas</h3>
+    <ul>
+      <li><b>Neutro único:</b> si $e,e'$ son neutros, $e=e*e'=e'$.</li>
+      <li><b>Inverso único:</b> si $b,c$ son inversos de $a$, $b=b*e=b*(a*c)=(b*a)*c=e*c=c$.</li>
+      <li>$(a^{-1})^{-1}=a$.</li>
+      <li>$(a*b)^{-1}=b^{-1}*a^{-1}$ (<b>se invierte el orden</b>; en abelianos da igual).</li>
+      <li>Potencias: $a^0=e$, $a^{-n}=(a^{-1})^n=(a^n)^{-1}$, $a^ma^n=a^{m+n}$, $(a^m)^n=a^{mn}$. En notación aditiva: $na$.</li>
+    </ul>
+
+    <h3>Subgrupos</h3>
+    <div class="box thm"><span class="lbl">Criterio del subgrupo</span>
+      <p>$H\le G\iff H\ne\varnothing$ y $a,b\in H\Rightarrow ab^{-1}\in H$. En notación aditiva: $a-b\in H$.</p>
+    </div>
+    <p>Ejemplo: $2\mathbb{Z}\le\mathbb{Z}$, porque $2m-2n=2(m-n)\in 2\mathbb{Z}$.</p>
+    <p>Dos subgrupos importantes: el <b>centralizador</b> de $a$, $C(a)=\{b\in G: ba=ab\}$, y el <b>centro</b> del grupo, $Z(G)=\{a\in G: ab=ba\ \forall b\in G\}$. El folleto intercambia estos nombres; ver <a href="#erratas">erratas</a>.</p>
+
+    <h3>Grupos cíclicos y orden</h3>
+    <ul>
+      <li>$\langle a\rangle=\{a^n:n\in\mathbb{Z}\}$ (aditivo: $\{na\}$). $G$ es <b>cíclico</b> si $G=\langle a\rangle$ para algún $a$.</li>
+      <li>$\mathbb{Z}_4=\langle1\rangle$. En $\mathbb{Z}_6$ los generadores son $1$ y $5$: $5,10,15,20,25,30\equiv 5,4,3,2,1,0$.</li>
+      <li>Si $a$ genera, $a^{-1}$ también. En $\mathbb{Z}_n$, $[a]$ genera si y solo si $\gcd(a,n)=1$.</li>
+      <li>Todo grupo cíclico es abeliano.</li>
+      <li>$|G|$ es el número de elementos. $\operatorname{ord}(a)$ es el menor $n\ge1$ con $a^n=e$ (aditivo: $na=0$). En $\mathbb{Z}_6$, $\operatorname{ord}(2)=3$.</li>
+    </ul>
+
+    <h3>Clases laterales y Lagrange</h3>
+    <p>$aH=\{ah:h\in H\}$ y $Ha=\{ha: h\in H\}$. Forman una partición de $G$ en bloques del mismo tamaño $|H|$. El índice $[G:H]$ es el número de clases. Ejemplo: en $\mathbb{Z}_6$ con $H=\{0,3\}$, las clases son $\{0,3\},\{1,4\},\{2,5\}$, así que $[\mathbb{Z}_6:H]=3$.</p>
+    <div class="box thm"><span class="lbl">Teorema de Lagrange</span>
+      <p>Si $G$ es finito y $H\le G$, entonces $|G|=[G:H]\,|H|$. En particular, $|H|$ divide a $|G|$ y $\operatorname{ord}(a)$ divide a $|G|$.</p>
+    </div>
+
+    <h3>Subgrupos normales y cociente</h3>
+    <ul>
+      <li>$H\trianglelefteq G\iff a^{-1}Ha\subseteq H$ para todo $a$, lo que equivale a $aH=Ha$ para todo $a$. En un grupo abeliano todo subgrupo es normal.</li>
+      <li>Si $H\trianglelefteq G$, $G/H=\{aH\}$ es un grupo con $(aH)(bH)=(ab)H$. Ejemplo: $\mathbb{Z}/n\mathbb{Z}=\{0+n\mathbb{Z},\dots,(n-1)+n\mathbb{Z}\}$.</li>
+    </ul>
+
+    <h3>Homomorfismos de grupos</h3>
+    <div class="box def"><span class="lbl">Definición</span>
+      <p>$f:(G,*)\to(H,\circ)$ con $f(a*b)=f(a)\circ f(b)$. Nombres: <b>monomorfismo</b> (inyectivo), <b>epimorfismo</b> (sobreyectivo), <b>isomorfismo</b> (biyectivo, se escribe $G\cong H$).</p>
+    </div>
+    <ul>
+      <li>$f(e_G)=e_H$ y $f(a^{-1})=f(a)^{-1}$ (aditivo: $f(0)=0$, $f(-a)=-f(a)$).</li>
+      <li>$\ker f=\{a: f(a)=e_H\}\trianglelefteq G$ e $\operatorname{Im}f=\{f(a)\}\le H$.</li>
+      <li>$f$ es inyectiva si y solo si $\ker f=\{e_G\}$.</li>
+      <li>Ejemplo: $f:\mathbb{Z}\to\mathbb{Z}_6$, $f(x)=x\bmod 6$. Se tiene $\ker f=6\mathbb{Z}$ e $\operatorname{Im}f=\mathbb{Z}_6$.</li>
+    </ul>
+    <div class="box thm"><span class="lbl">Teoremas de isomorfía (grupos)</span>
+      <ol>
+        <li>$G/\ker f\cong\operatorname{Im} f$. Ejemplo: $\mathbb{Z}/6\mathbb{Z}\cong\mathbb{Z}_6$.</li>
+        <li>Si $H\le G$ y $N\trianglelefteq G$: $H/(H\cap N)\cong HN/N$.</li>
+        <li>Si $N\subseteq K$ son normales en $G$: $(G/N)/(K/N)\cong G/K$.</li>
+      </ol>
+    </div>
+
+<!-- ============================================================ MODULO 1 -->
+    <h2 id="m1">III. Módulo 1 · Anillos</h2>
+    <p>El concepto surge para generalizar las propiedades de $\mathbb{Z}$. Según el folleto, el término lo usó Hilbert en 1892 y Dedekind ya había trabajado con la estructura antes.</p>
+    <div class="box def"><span class="lbl">Definición 1.1 · Anillo</span>
+      <p>$(R,+,\cdot)$ con $R\ne\varnothing$ tal que, para todo $a,b,c$:</p>
+      <ol>
+        <li>$a+b=b+a$</li>
+        <li>$(a+b)+c=a+(b+c)$</li>
+        <li>existe $0$ con $a+0=a$</li>
+        <li>existe $-a$ con $a+(-a)=0$</li>
+        <li>$(ab)c=a(bc)$</li>
+        <li>$a(b+c)=ab+ac$ y $(a+b)c=ac+bc$</li>
+      </ol>
+      <p>Los axiomas 1 a 4 dicen que <b>$(R,+)$ es un grupo abeliano</b> (Obs. 1.4). Para probar que algo es anillo hay que verificar también la cerradura y que las operaciones están bien definidas.</p>
+    </div>
+    <div class="tw"><table>
+      <thead><tr><th>Concepto</th><th>Qué se añade</th></tr></thead>
+      <tbody>
+        <tr><td>Anillo con identidad (1.5)</td><td>7) existe $1\ne0$ con $a1=1a=a$</td></tr>
+        <tr><td>Unidad (1.6)</td><td>$a$ tiene inverso multiplicativo $a^{-1}$: $aa^{-1}=a^{-1}a=1$</td></tr>
+        <tr><td>Anillo con división (1.7)</td><td>con identidad y todo $a\ne0$ es unidad</td></tr>
+        <tr><td>Anillo conmutativo (1.8)</td><td>8) $ab=ba$</td></tr>
+        <tr><td>Cuerpo o campo (1.9)</td><td>conmutativo y con división</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>Divisibilidad</b> (en conmutativo): $a\mid b$ si existe $t$ con $b=ta$.</p>
+
+    <h3>Ejemplos fundamentales</h3>
+    <ul>
+      <li>$\mathbb{Z}$: conmutativo con identidad. Sus unidades son $\pm1$.</li>
+      <li>$\mathbb{Z}_n$: clases $[m]=\{m,m\pm n,\dots\}$, con $[m]+[k]=[m+k]$ y $[m][k]=[mk]$. Es conmutativo con identidad $[1]$. Sus unidades son $\mathbb{Z}_n^*=\{[a]:\gcd(a,n)=1\}$.</li>
+      <li>$M_n(\mathbb{Z})$: <b>no conmutativo</b>, con identidad.</li>
+      <li>$R_1\oplus R_2$: operaciones componente a componente.</li>
+      <li>$\mathbb{Z}[i]=\{a+bi\}$ (enteros gaussianos): conmutativo con identidad.</li>
+      <li>$\mathbb{Q},\mathbb{R},\mathbb{C}$ son cuerpos. También $\mathbb{Q}(\sqrt2)=\{a+b\sqrt2: a,b\in\mathbb{Q}\}$, porque el inverso se obtiene racionalizando:
+        $$\frac{1}{a+b\sqrt2}=\frac{a}{a^2-2b^2}-\frac{b}{a^2-2b^2}\sqrt2.$$
+        El denominador $a^2-2b^2\ne0$ porque $\sqrt2$ es irracional.</li>
+    </ul>
+    <details><summary>Ejercicio del folleto: las operaciones de $\mathbb{Z}_n$ están bien definidas</summary><div>
+      <p>Si $[a]=[a']$ y $[b]=[b']$, entonces $a'=a+ns$ y $b'=b+nt$. Así $a'+b'=(a+b)+n(s+t)$, de modo que $[a'+b']=[a+b]$. Para el producto: $a'b'-ab=a(b'-b)+b'(a'-a)=n(at+b's)$, de modo que $[a'b']=[ab]$.</p>
+    </div></details>
+
+    <h3>Propiedades básicas</h3>
+    <div class="box thm"><span class="lbl">Teoremas 1.18 y 1.19, Proposiciones 1.20 y 1.21</span>
+      <ul>
+        <li>El $0$ y los opuestos son únicos. El $1$ (si existe) es único, y el inverso multiplicativo (si existe) es único.</li>
+        <li>$a0=0a=0$. Prueba: $a0+0=a0=a(0+0)=a0+a0$; se cancela $a0$.</li>
+        <li>$a(-b)=(-a)b=-(ab)$. Prueba: $ab+a(-b)=a(b-b)=a0=0$.</li>
+      </ul>
+    </div>
+
+    <h3>Subanillos</h3>
+    <div class="box thm"><span class="lbl">Teorema 1.23 · Test del subanillo</span>
+      <p>$\varnothing\ne S\subseteq R$ es subanillo si y solo si para todo $a,b\in S$: $a-b\in S$ y $ab\in S$.</p>
+    </div>
+    <p>Idea de la prueba: con $a=b=x$ se obtiene $0\in S$; con $a=0$ se obtiene $-x\in S$; con $y-(-x)$ se obtiene la cerradura de la suma. La asociatividad y la distributividad se heredan de $R$.</p>
+    <p>Ejemplos: $\{0\}$ y $R$ son subanillos (el trivial y el total). $S=\left\{\begin{pmatrix}a&0\\0&b\end{pmatrix}: a,b\in\mathbb{Z}\right\}$ es subanillo de $M_2(\mathbb{Z})$ porque la resta y el producto de diagonales son diagonales.</p>
+
+<!-- ============================================================ MODULO 2 -->
+    <h2 id="m2">IV. Módulo 2 · Dominios enteros</h2>
+    <div class="box def"><span class="lbl">Definición 2.1 · Dominio entero</span>
+      <p>Anillo conmutativo con identidad que cumple la <b>cancelación</b>: si $a\ne0$ y $ab=ac$, entonces $b=c$.</p>
+    </div>
+    <div class="box def"><span class="lbl">Definición 2.4 · Divisor de cero</span>
+      <p>$a\ne0$ es divisor de cero si existe $b\ne0$ con $ab=0$. Ejemplo: en $\mathbb{Z}_6$, $[2][3]=[0]$.</p>
+    </div>
+
+    <h3>Resultados centrales</h3>
+    <div class="box thm"><span class="lbl">Proposición 2.2</span>
+      <p>Todo cuerpo es dominio entero: de $ab=ac$ se sigue $a^{-1}ab=a^{-1}ac$, luego $b=c$. El recíproco es falso: $\mathbb{Z}$ es dominio pero no cuerpo.</p>
+    </div>
+    <div class="box thm"><span class="lbl">Teorema 2.6</span>
+      <p>Un anillo conmutativo con identidad es dominio entero si y solo si no tiene divisores de cero.</p>
+      <p>($\Rightarrow$) Si $ab=0=a0$ y $a\ne0$, cancelando queda $b=0$. ($\Leftarrow$) Si $ab=ac$, entonces $a(b-c)=0$; como $a\ne0$ y no hay divisores de cero, $b-c=0$.</p>
+    </div>
+    <div class="box thm"><span class="lbl">Ejemplo 2.7 y Teorema 2.9</span>
+      <p>$\mathbb{Z}_p$ ($p$ primo) no tiene divisores de cero, por el lema de Euclides. En general, $[m]\ne[0]$ es divisor de cero en $\mathbb{Z}_n$ si y solo si $\gcd(m,n)\ne1$. Ejemplo: en $\mathbb{Z}_6$ son $[2],[3],[4]$.</p>
+      <p>Consecuencia útil: en $\mathbb{Z}_n$ todo elemento no nulo es <b>o bien unidad o bien divisor de cero</b>, según $\gcd(m,n)$ sea $1$ o no.</p>
+    </div>
+    <div class="box thm"><span class="lbl">Teorema 2.11 · Todo dominio entero finito es cuerpo</span>
+      <p>Sea $D=\{0,1,a_1,\dots,a_n\}$ y $b\ne0$. Los productos $b\cdot1,ba_1,\dots,ba_n$ son distintos (por cancelación) y no nulos (no hay divisores de cero). Son tantos como los elementos de $D\setminus\{0\}$, así que los recorren todos (principio del palomar). En particular, uno de ellos es $1$, y $b$ es unidad.</p>
+    </div>
+    <div class="box thm"><span class="lbl">Corolario 2.12</span>
+      <p>$\mathbb{Z}_n$ es cuerpo si y solo si $n$ es primo. Si $n=st$ con $1\lt s,t\lt n$, entonces $[s][t]=[0]$ y hay divisores de cero.</p>
+    </div>
+
+    <h3>Irreducibles y primos</h3>
+    <div class="box def"><span class="lbl">Definiciones 2.13 a 2.15 (en un dominio $D$)</span>
+      <ul>
+        <li><b>Asociados:</b> $a=ub$ con $u$ unidad. En $\mathbb{Z}$, $a$ y $-a$ son asociados.</li>
+        <li><b>Irreducible:</b> $a\ne0$, no unidad, y si $a=bc$ entonces $b$ o $c$ es unidad.</li>
+        <li><b>Primo:</b> $a\ne0$, no unidad, y si $a\mid bc$ entonces $a\mid b$ o $a\mid c$.</li>
+      </ul>
+    </div>
+    <div class="box thm"><span class="lbl">Teorema 2.17</span>
+      <p>En todo dominio, <b>primo implica irreducible</b>. Si $a=bc$ entonces $a\mid bc$; supongamos $a\mid b$, es decir $b=ad$. Entonces $b=ad=bcd$, y cancelando $b$ queda $1=cd$, así que $c$ es unidad.</p>
+      <p>El recíproco <b>falla</b> en general. En $\mathbb{Z}$ sí coinciden, por el lema de Euclides.</p>
+    </div>
+
+    <h4>El dominio $\mathbb{Z}[\sqrt d]$ y la norma</h4>
+    <p>$\mathbb{Z}[\sqrt d]=\{a+b\sqrt d: a,b\in\mathbb{Z}\}$, con $d\ne1$ libre de cuadrados. Su norma es $N(a+b\sqrt d)=|a^2-db^2|$ y cumple (Prop. 2.18):</p>
+    <ol>
+      <li>$N(x)=0\iff x=0$.</li>
+      <li>$N(xy)=N(x)N(y)$.</li>
+      <li>$N(x)=1\iff x$ es unidad.</li>
+      <li>Si $N(x)$ es primo, $x$ es irreducible en $\mathbb{Z}[\sqrt d]$.</li>
+    </ol>
+    <details><summary>Solución de los ejercicios 2) y 4) de la Proposición 2.18</summary><div>
+      <p><b>2)</b> $(a+b\sqrt d)(c+e\sqrt d)=(ac+dbe)+(ae+bc)\sqrt d$. Entonces
+      $$(ac+dbe)^2-d(ae+bc)^2=a^2c^2+d^2b^2e^2-da^2e^2-db^2c^2=(a^2-db^2)(c^2-de^2).$$
+      Tomando valor absoluto, $N(xy)=N(x)N(y)$.</p>
+      <p><b>4)</b> Si $N(x)=p$ primo, entonces $x\ne0$ y $x$ no es unidad, porque $N(x)\ne0,1$. Si $x=yz$, entonces $N(y)N(z)=p$, así que $N(y)=1$ o $N(z)=1$, y por 3) uno de los dos es unidad.</p>
+    </div></details>
+    <div class="box ex"><span class="lbl">Ejemplo 2.19 · Irreducible que no es primo</span>
+      <p>En $\mathbb{Z}[\sqrt{-3}]$, $N(a+b\sqrt{-3})=a^2+3b^2$.</p>
+      <p><b>$1+\sqrt{-3}$ es irreducible:</b> tiene norma $4$. Si $1+\sqrt{-3}=xy$ con $x,y$ no unidades, entonces $N(x)=N(y)=2$, pero $a^2+3b^2=2$ no tiene soluciones enteras.</p>
+      <p><b>No es primo:</b> $(1+\sqrt{-3})(1-\sqrt{-3})=4=2\cdot2$, así que $1+\sqrt{-3}$ divide a $2\cdot 2$. Si fuera primo dividiría a $2$, es decir $(1+\sqrt{-3})(a+b\sqrt{-3})=2$, lo que da $a-3b=2$ y $a+b=0$. Entonces $b=-\tfrac12\notin\mathbb{Z}$, contradicción.</p>
+    </div>
+
+    <h3>Característica</h3>
+    <div class="box def"><span class="lbl">Definición 2.20</span>
+      <p>$\operatorname{char}(R)$ es el menor $n\ge1$ con $n\cdot x=0$ para todo $x\in R$. Si no existe, $\operatorname{char}(R)=0$. Ejemplos: $\operatorname{char}(\mathbb{Z})=0$ y $\operatorname{char}(\mathbb{Z}_n)=n$.</p>
+    </div>
+    <div class="box thm"><span class="lbl">Teorema 2.23, Proposición 2.24, Teorema 2.25</span>
+      <ul>
+        <li>Con identidad, basta mirar el $1$: $\operatorname{char}(R)$ es el orden aditivo de $1$, porque $n\cdot x=(n\cdot1)x$.</li>
+        <li>Si $\operatorname{char}(R)=n\ne0$ y $m\cdot1=0$, entonces $n\mid m$ (por el algoritmo de la división).</li>
+        <li>La característica de un <b>dominio entero</b> es $0$ o un primo. Si $n=st$, entonces $0=n\cdot1=(s\cdot1)(t\cdot1)$; esta igualdad sale de la distributividad y es el "ejercicio 2.6" que cita el folleto. Así $s\cdot1=0$ o $t\cdot1=0$, lo que contradice la minimalidad de $n$.</li>
+      </ul>
+    </div>
+
+<!-- ============================================================ REPASO -->
+    <h2 id="repaso">V. Repaso y práctica</h2>
+
+    <h3 id="jerarquia">Jerarquía de estructuras</h3>
+    <div class="jer">
+      <div><b>Anillo</b><small>$(R,+)$ grupo abeliano, $\cdot$ asociativo y distributivo. Ej.: $2\mathbb{Z}$ (sin $1$), $M_2(\mathbb{Z})$</small>
+        <div><b>Anillo conmutativo con identidad</b><small>Ej.: $\mathbb{Z}_6$, $\mathbb{Z}\oplus\mathbb{Z}$ (pueden tener divisores de cero)</small>
+          <div><b>Dominio entero</b><small>sin divisores de cero, equivalente a cancelación. Ej.: $\mathbb{Z}$, $\mathbb{Z}[i]$, $\mathbb{Z}[\sqrt{-3}]$</small>
+            <div><b>Cuerpo</b><small>todo $a\ne0$ es unidad. Ej.: $\mathbb{Q},\mathbb{R},\mathbb{C},\mathbb{Z}_p,\mathbb{Q}(\sqrt2)$. Un dominio <b>finito</b> ya es cuerpo.</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="errores">Errores frecuentes en examen</h3>
+    <ul>
+      <li>Olvidar la <b>buena definición</b> cuando el dominio es $\mathbb{Z}_m$. Es la condición $n\mid mk$.</li>
+      <li>Dar solo la condición necesaria $k^2=k$ sin comprobar que es suficiente.</li>
+      <li>Confundir "$a\mid b$" con "$a/b$".</li>
+      <li>Escribir el cociente con el ideal equivocado: es $R/\ker\varphi$, no $R/(\text{el módulo del dominio})$.</li>
+      <li>Aplicar el teorema de isomorfía <b>de anillos</b> a una función que solo es homomorfismo de grupos, como $g(n)=6n$ en $\mathbb{Z}_{12}\to\mathbb{Z}_{24}$.</li>
+      <li>Creer que $\varphi(1_R)=1_S$ siempre. Solo es la identidad de la <b>imagen</b> (Lema 5.5(3)).</li>
+      <li>Creer que los homomorfismos conservan divisores de cero. Conservan ecuaciones, no desigualdades.</li>
+      <li>Usar sobreyectividad sin decirlo, o no usarla cuando hace falta (centro).</li>
+    </ul>
+
+    <h3 id="practica">Ejercicios con solución</h3>
+    <details><summary>1. Homomorfismos $\mathbb{Z}_{12}\to\mathbb{Z}_{30}$ (Ejemplo 5.6 del folleto)</summary><div>
+      <p>Buena definición: $30\mid12k\iff5\mid 2k\iff 5\mid k$. Los idempotentes de $\mathbb{Z}_{30}$ múltiplos de 5 son $k\in\{0,10,15,25\}$: <b>4 homomorfismos</b>.</p>
+      <p>Núcleos: $\ker f_{10}=\{0,3,6,9\}$, $\ker f_{15}=\{0,2,4,6,8,10\}$, $\ker f_{25}=\{0,6\}$. Imágenes: $\{0,10,20\}$, $\{0,15\}$ y $\{0,5,\dots,25\}$.</p>
+    </div></details>
+    <details><summary>2. Homomorfismos $\mathbb{Z}\to\mathbb{Z}$ (Ejemplo 5.7)</summary><div>
+      <p>$k^2=k$ en $\mathbb{Z}$ da $k(k-1)=0$, y como $\mathbb{Z}$ es dominio, $k=0$ o $k=1$. Son la función cero y la identidad.</p>
+    </div></details>
+    <details><summary>3. Homomorfismos $\mathbb{Z}_6\to\mathbb{Z}_6$</summary><div>
+      <p>$6\mid 6k$ siempre. Los idempotentes de $\mathbb{Z}_6$ son $\{0,1,3,4\}$ ($3^2=9\equiv3$, $4^2=16\equiv4$). Hay 4, lo que coincide con $2^2$ porque $6=2\cdot3$.</p>
+    </div></details>
+    <details><summary>4. Unidades y divisores de cero de $\mathbb{Z}_{12}$</summary><div>
+      <p>Unidades: $\gcd(a,12)=1$, es decir $\{1,5,7,11\}$. Divisores de cero: $\{2,3,4,6,8,9,10\}$. Junto con el $0$ completan los 12 elementos.</p>
+    </div></details>
+    <details><summary>5. Característica de $\mathbb{Z}_3\oplus\mathbb{Z}_4$. ¿Es dominio?</summary><div>
+      <p>El $1$ es $(1,1)$, y $n(1,1)=(0,0)$ si y solo si $3\mid n$ y $4\mid n$, así que la característica es $\operatorname{mcm}(3,4)=12$. No es primo, luego por el Teorema 2.25 no es dominio. Directamente: $(1,0)(0,1)=(0,0)$.</p>
+    </div></details>
+    <details><summary>6. ¿$2$ es irreducible en $\mathbb{Z}[\sqrt{-3}]$? ¿Es primo?</summary><div>
+      <p>$N(2)=4$. Una factorización no trivial necesitaría elementos de norma 2, y $a^2+3b^2=2$ no tiene solución entera, así que <b>es irreducible</b>.</p>
+      <p><b>No es primo:</b> $2\mid(1+\sqrt{-3})(1-\sqrt{-3})=4$, pero $2\nmid 1\pm\sqrt{-3}$, porque $\tfrac12\pm\tfrac12\sqrt{-3}\notin\mathbb{Z}[\sqrt{-3}]$.</p>
+    </div></details>
+    <details><summary>7. Si $e$ es idempotente en un anillo con 1, $1-e$ también lo es</summary><div>
+      <p>$(1-e)^2=1-2e+e^2=1-2e+e=1-e$. Además $e(1-e)=e-e^2=0$, así que si $e\ne0,1$, entonces $e$ es divisor de cero.</p>
+    </div></details>
+    <details><summary>8. Probar que $\mathbb{Z}[\sqrt2]=\{a+b\sqrt2:a,b\in\mathbb{Z}\}$ es subanillo de $\mathbb{R}$</summary><div>
+      <p>No es vacío ($0\in$). Para la resta: $(a+b\sqrt2)-(c+d\sqrt2)=(a-c)+(b-d)\sqrt2$. Para el producto: $(a+b\sqrt2)(c+d\sqrt2)=(ac+2bd)+(ad+bc)\sqrt2$. Ambos tienen coeficientes enteros; por el test del subanillo, es subanillo. No es cuerpo: $2$ no tiene inverso, porque $\tfrac12\notin\mathbb{Z}[\sqrt2]$.</p>
+    </div></details>
+    <details><summary>9. Órdenes de los elementos de $\mathbb{Z}_{12}$ y Lagrange</summary><div>
+      <p>$\operatorname{ord}([a])=\dfrac{12}{\gcd(a,12)}$. Los órdenes que aparecen son $1,2,3,4,6,12$, todos divisores de 12, como exige Lagrange. Generadores: $1,5,7,11$.</p>
+    </div></details>
+    <details><summary>10. ¿Es $\varphi:\mathbb{Z}_4\to\mathbb{Z}_{10}$, $\varphi(x)=5x$ homomorfismo? (Ejemplo 5.4)</summary><div>
+      <p>Por la receta: $25\equiv5\pmod{10}$ (idempotente) y $10\mid 4\cdot5=20$ (bien definida). Sí lo es. $\ker\varphi=\{0,2\}$, $\operatorname{Im}\varphi=\{0,5\}$ y $\mathbb{Z}_4/\{0,2\}\cong\mathbb{Z}_2$.</p>
+    </div></details>
+
+    <h3 id="erratas">Erratas y puntos dudosos del folleto</h3>
+    <p>Las señalo para que no te confundan. Las tres primeras son terminología estándar; las demás son errores tipográficos evidentes.</p>
+    <ol>
+      <li><b>Módulo 0, §7:</b> llama "centro del grupo" a $C(a)=\{b: ba=ab\}$ y "conmutador" a $Z(G)$. En la terminología estándar, $C(a)$ es el <b>centralizador</b> de $a$ y $Z(G)$ es el <b>centro</b>. El "conmutador" (subgrupo derivado) es otro objeto, generado por los elementos $aba^{-1}b^{-1}$.</li>
+      <li><b>Lema 5.5(5):</b> dice "$\varphi(a)$ divide a $|a|$". Debe ser "el <b>orden aditivo</b> de $\varphi(a)$ divide a $|a|$", como se corrige en la propia demostración.</li>
+      <li><b>Prop. 2.18(4):</b> dice "irreducible en $\mathbb{Z}$". Debe ser "irreducible en $\mathbb{Z}[\sqrt d]$".</li>
+      <li><b>Def. 1.6:</b> "$a-1$" debe leerse $a^{-1}$ (error de formato).</li>
+      <li><b>Teorema 2.11:</b> la igualdad $L=D\setminus\{0\}$ usa implícitamente que ambos conjuntos son finitos y tienen el mismo número de elementos (palomar). Conviene decirlo.</li>
+    </ol>
+
+    <footer>
+      Guía elaborada a partir del folleto <i>Álgebra 2 · Anillos</i> (Módulos 0, 1, 2; Def. 5.1 y Lema 5.5 del Módulo 5) y de los apuntes de clase. Resultados de la Parte I verificados con <span class="mono">algebra2/verificar_homomorfismos.py</span>.
+    </footer>
+  </main>
+</div>
+
+<script>
+(function () {
+  function gcd(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { var t = a % b; a = b; b = t; } return a; }
+  function setLine(parent, text) { var p = document.createElement('p'); p.textContent = text; parent.appendChild(p); }
+  function run() {
+    var m = parseInt(document.getElementById('calc-m').value, 10);
+    var n = parseInt(document.getElementById('calc-n').value, 10);
+    var out = document.getElementById('calc-out');
+    out.textContent = '';
+    if (!(n >= 2 && n <= 200) || !(m >= 0 && m <= 200) || m === 1) {
+      setLine(out, 'Usa 2 ≤ n ≤ 200 y m = 0 (para ℤ) o 2 ≤ m ≤ 200.');
+      return;
+    }
+    var dom = m === 0 ? 'ℤ' : 'ℤ_' + m;
+    var ks = [];
+    for (var k = 0; k < n; k++) {
+      if ((k * k) % n === k && (m === 0 || (m * k) % n === 0)) ks.push(k);
+    }
+    setLine(out, dom + ' → ℤ_' + n + ': ' + ks.length + ' homomorfismo(s), k = f(1) ∈ {' + ks.join(', ') + '}');
+    ks.forEach(function (k) {
+      var g = gcd(k, n), ker, im = [];
+      for (var x = 0; x < n / g; x++) im.push((k * x) % n);
+      im.sort(function (a, b) { return a - b; });
+      if (m === 0) { ker = (n / g) + 'ℤ'; }
+      else {
+        var kk = [];
+        for (var y = 0; y < m; y++) if ((k * y) % n === 0) kk.push(y);
+        ker = '{' + kk.join(', ') + '} (' + kk.length + ' elem.)';
+      }
+      var imTxt = im.length > 16 ? '⟨' + g + '⟩ (' + im.length + ' elem.)' : '{' + im.join(', ') + '}';
+      setLine(out, 'f(x) = ' + k + 'x   ker = ' + ker + '   Im = ' + imTxt + (k === 1 ? '   ← unitario' : ''));
+    });
+  }
+  var form = document.getElementById('calc-form');
+  form.addEventListener('submit', function (e) { e.preventDefault(); run(); });
+  run();
+})();
+</script>
