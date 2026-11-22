@@ -1,0 +1,199 @@
+\simu{1}{confianza}
+
+%--------------------------------------------------------------
+\subsection*{Grupo I}
+\sol{1.- Corriente, intensidad y densidad de corriente}
+\textbf{Corriente eléctrica}: movimiento ordenado de portadores de carga bajo la acción de un campo eléctrico. \textbf{Intensidad}: carga que atraviesa una sección por unidad de tiempo, $I=dq/dt$ ($\mathrm{A}=\mathrm{C/s}$). \textbf{Sentido convencional}: el del movimiento de las cargas positivas, opuesto al de los electrones en un metal.
+
+\textbf{Densidad de corriente}: vector $\vj$ con la dirección de la velocidad de las cargas positivas y módulo $j=dI/dS_\perp$ ($\mathrm{A/m^2}$).
+
+\textbf{Demostración}: sea $d\vec S=\hat n\,dS$ un elemento de superficie que forma un ángulo $\theta$ con $\vj$. Su proyección perpendicular a $\vj$ es $dS_\perp=dS\cos\theta$, de modo que $dI=j\,dS\cos\theta=\vj\cdot d\vec S$. Sumando sobre toda la superficie:
+\[
+\boxed{I=\int_S\vj\cdot d\vec S}
+\]
+La intensidad es el flujo de $\vj$. Para $\vj$ uniforme y normal a una sección $A$: $I=jA$.
+\clave{Figura con $\vj$, $d\vec S$ y el ángulo $\theta$, y explicar por qué se usa la proyección $dS\cos\theta$.}
+
+\sol{2.- $\vj=nq\vec v_d$ y velocidad de deriva}
+\textbf{Deducción}: en un tiempo $dt$ cruzan $dS_\perp$ los portadores contenidos en un cilindro de base $dS_\perp$ y altura $v_d\,dt$: $dN=n\,v_d\,dt\,dS_\perp$. La carga es $dq=q\,dN$, así que $j=\dfrac{dq}{dt\,dS_\perp}=nqv_d$ y, vectorialmente, $\vj=nq\vec v_d$.
+
+\textbf{Cálculo}: $A=\pi(1.00\times10^{-3})^2=3.14\times10^{-6}\uu{m^2}$.
+\[
+j=\frac{I}{A}=\frac{3.00}{3.14\times10^{-6}}=9.55\times10^{5}\uu{A/m^2},
+\]
+\[
+v_d=\frac{j}{ne}=\frac{9.55\times10^5}{(8.50\times10^{28})(1.602\times10^{-19})}=7.01\times10^{-5}\uu{m/s}.
+\]
+Tiempo para recorrer $1.00\uu{m}$: $t=1.00/7.01\times10^{-5}=1.43\times10^4\uu{s}\approx3.96\uu{h}$.
+
+\textbf{Interpretación}: la lámpara enciende al instante porque el campo eléctrico se establece en todo el circuito casi a la velocidad de la luz; los electrones de todo el cable empiezan a derivar a la vez.
+
+\sol{3.- Conductividad, resistividad y temperatura}
+\textbf{Conductividad} $\sigma$: constante de proporcionalidad entre $\vj$ y $\vE$, $\vj=\sigma\vE$ ($\mathrm{S/m}$). \textbf{Resistividad} $\rho=1/\sigma$ ($\Omega\cdot\mathrm{m}$): propiedad del material, no de la forma del conductor.
+
+\textbf{Temperatura}: al calentarse un metal aumenta la amplitud de vibración de los iones de la red, los electrones chocan con más frecuencia, disminuye el tiempo medio entre choques $\tau$ y, como $\sigma=ne^2\tau/m$, aumenta $\rho$. En un intervalo moderado, $\rho=\rho_0[1+\alpha(T-T_0)]$.
+
+\textbf{Cálculo} (despreciando la dilatación):
+\[
+R_{80}=10.0\,[1+3.90\times10^{-3}(60.0)]=\boxed{12.3\ohm},\qquad
+T=20.0+\frac{12.0/10.0-1}{3.90\times10^{-3}}=\boxed{71.3\,^\circ\mathrm{C}}.
+\]
+
+\sol{4.- De la ley de Ohm diferencial a la integral}
+\textbf{Ley de Ohm diferencial}: en cada punto de un conductor isótropo, $\vj=\sigma\vE$.
+
+\textbf{Deducción}: en un cilindro homogéneo de longitud $L$ y sección $A$ con sus extremos a potenciales $\varphi_1>\varphi_2$, por simetría el campo es uniforme y axial: $E=(\varphi_1-\varphi_2)/L=U/L$. Entonces $j=\sigma U/L$ es uniforme y
+\[
+I=\int_A\vj\cdot d\vec S=jA=\frac{\sigma A}{L}U\ \Longrightarrow\ \boxed{I=\frac UR},\qquad\boxed{R=\frac{L}{\sigma A}=\rho\frac LA}.
+\]
+\textbf{Verificación de unidades}: $[\rho L/A]=\Omega\cdot\mathrm m\cdot\mathrm m/\mathrm{m^2}=\Omega$.
+
+\sol{5.- Fem, diferencia de potencial y caída de tensión; circuito cerrado}
+\textbf{Fem}: trabajo que realizan las fuerzas extrañas (no electrostáticas) para llevar la unidad de carga positiva a través de la fuente, del borne $-$ al $+$: $\fem=A^*/q=\oint\vE^*\cdot d\vec l$.
+
+\textbf{Diferencias}: la \emph{diferencia de potencial} es el trabajo del campo electrostático por unidad de carga; la \emph{fem}, el de las fuerzas extrañas; la \emph{caída de tensión} $U_{12}=IR_{12}$, el trabajo total: $U_{12}=(\varphi_1-\varphi_2)+\fem_{12}$. En un tramo sin fuentes, caída de tensión y diferencia de potencial coinciden.
+
+\textbf{Deducción}: aplicando la ley de Ohm para un tramo no homogéneo a todo el circuito (desde un punto hasta él mismo, $\varphi_1=\varphi_2$), con resistencia total $R+r$: $I(R+r)=\fem$, de donde
+\[
+\boxed{I=\frac{\fem}{R+r}},\qquad\boxed{U_{\text{bornes}}=IR=\fem-Ir}.
+\]
+Casos límite: circuito abierto ($I=0$), $U=\fem$; cortocircuito ($R=0$), $I_{cc}=\fem/r$.
+
+%--------------------------------------------------------------
+\subsection*{Grupo II}
+\sol{6.- Alambre de nicrom}
+$A=\pi(0.250\times10^{-3})^2=1.96\times10^{-7}\uu{m^2}$.
+\[
+R=\rho\frac LA=\frac{(1.10\times10^{-6})(2.00)}{1.96\times10^{-7}}=11.2\ohm,\quad I=\frac{12.0}{11.2}=1.07\uu A,
+\]
+\[
+j=\frac IA=5.46\times10^6\uu{A/m^2},\qquad E=\frac UL=\frac{12.0}{2.00}=6.00\uu{V/m}.
+\]
+\textbf{Verificación}: $\rho j=(1.10\times10^{-6})(5.46\times10^6)=6.00\uu{V/m}=E$. \checkmark
+
+\sol{7.- Batería real}
+\[
+I=\frac{\fem}{R+r}=\frac{12.0}{6.00}=2.00\uu A,\qquad U=\fem-Ir=12.0-1.00=11.0\uu V.
+\]
+$P_\fem=\fem I=24.0\uu W$; $P_r=I^2r=2.00\uu W$; $P_R=I^2R=22.0\uu W$. Balance: $24.0=2.00+22.0$ \checkmark. Rendimiento: $\eta=R/(R+r)=U/\fem=91.7\%$.
+
+\sol{8.- Asociaciones}
+(a) $R_s=2.0+3.0+6.0=\boxed{11.0\ohm}$. \quad (b) $\dfrac1{R_p}=\dfrac12+\dfrac13+\dfrac16=1\Rightarrow\boxed{1.00\ohm}$. \quad (c) $R_{23}=\dfrac{3\cdot6}{9}=2.0\ohm$, $R=2.0+2.0=\boxed{4.00\ohm}$.
+
+Con $12.0\uu V$ en (c): $I_1=12.0/4.00=3.00\uu A$; la tensión sobre el paralelo es $3.00\cdot2.0=6.00\uu V$; $I_2=6.00/3.0=2.00\uu A$; $I_3=6.00/6.0=1.00\uu A$. Nodo: $2.00+1.00=3.00$ \checkmark.
+
+\sol{9.- Serie y paralelo desde Kirchhoff}
+\textbf{Serie}: entre resistencias consecutivas no hay derivaciones, así que por la regla de nodos la corriente $I$ es la misma en todas. Aplicando la regla de mallas al lazo formado con la fuente: $U=\sum IR_k=I\sum R_k$. El equivalente debe cumplir $U=IR_s$, luego $R_s=\sum R_k$.
+
+\textbf{Paralelo}: todas comparten los mismos dos nodos; la regla de mallas aplicada al lazo formado por dos resistencias da $I_iR_i=I_jR_j=U$. La regla de nodos da $I=\sum I_k=U\sum 1/R_k$, y como $I=U/R_p$: $1/R_p=\sum1/R_k$.
+
+\textbf{$R_p<R_{\min}$}: todos los términos son positivos, así que $\dfrac1{R_p}=\dfrac1{R_{\min}}+(\text{términos}>0)>\dfrac1{R_{\min}}$, es decir, $R_p<R_{\min}$. Físicamente, cada rama nueva añade un camino para la corriente.
+
+\sol{10.- Calentador}
+$R=U^2/P=120^2/1000=14.4\ohm$; $I=P/U=8.33\uu A$; $E=Pt=1.00\uu{kW}\times0.500\uu h=0.500\uu{kWh}=1.80\times10^6\uu J$.
+
+A $110\uu V$: $P'=110^2/14.4=840\uu W$. \textbf{Suposición}: $R$ constante. En realidad el elemento se calienta un poco menos y su $R$ baja ligeramente, de modo que $P'$ real es algo mayor que $840\uu W$.
+
+%--------------------------------------------------------------
+\subsection*{Grupo III}
+\sol{11.- Reglas de Kirchhoff}
+\textbf{1.ª regla (nodos)}: $\sum_kI_k=0$ en cada nodo. Se fundamenta en la conservación de la carga en régimen estacionario: aplicando $\oint\vj\cdot d\vec S=-dq/dt=0$ a una superficie que encierra el nodo, solo la atraviesan los conductores, así que la suma algebraica de sus corrientes es cero.
+
+\textbf{2.ª regla (mallas)}: $\sum_kI_kR_k=\sum_k\fem_k$ en cada contorno cerrado. Se fundamenta en la ley de Ohm para un tramo no homogéneo, $I_kR_k=\varphi_k-\varphi_{k+1}+\fem_k$, sumada a lo largo del contorno: las diferencias de potencial se cancelan porque el campo electrostático es conservativo ($\oint\vE\cdot d\vec l=0$). Expresa la conservación de la energía.
+
+\textbf{Procedimiento}: (1) asignar una corriente con sentido arbitrario a cada una de las $m$ ramas; (2) escribir $n-1$ ecuaciones de nodos; (3) escribir $m-n+1$ ecuaciones de malla en mallas independientes, cada una con al menos una rama nueva (por ejemplo, las «ventanas» de un circuito plano); (4) convenio de signos: $+IR$ si se recorre a favor de la corriente, $+\fem$ si se pasa de $-$ a $+$; (5) resolver; una corriente negativa indica que su sentido real es el opuesto; (6) verificar con el balance de potencias.
+
+\sol{12.- Circuito de dos mallas}
+\begin{center}\circSunoQdoce\end{center}
+\textbf{Sentidos elegidos}: $I_1$ hacia arriba por $\fem_1$ (de $B$ hacia $A$), $I_3$ hacia arriba por $\fem_2$, $I_2$ hacia abajo por $R_2$ (de $A$ a $B$).
+
+\textbf{Nodo $A$}: $I_1+I_3=I_2$.
+
+\textbf{Malla izquierda} (horaria: sube por $\fem_1$ y baja por $R_2$): $\fem_1=I_1R_1+I_2R_2\Rightarrow12=2I_1+6I_2$.
+
+\textbf{Malla derecha} (sube por $\fem_2$, pasa por $R_3$ hacia $A$ y baja por $R_2$): $\fem_2=I_3R_3+I_2R_2\Rightarrow6=3I_3+6I_2$.
+
+\textbf{Solución}: $I_1=6-3I_2$ e $I_3=2-2I_2$. Sustituyendo en el nodo: $8-5I_2=I_2\Rightarrow$
+\[
+\boxed{I_2=\tfrac43\uu A=1.33\uu A},\qquad\boxed{I_1=2.00\uu A},\qquad\boxed{I_3=-\tfrac23\uu A=-0.667\uu A}.
+\]
+$I_3<0$: por $\fem_2$ la corriente baja, es decir, \emph{entra por su borne positivo}: la fuente 2 se está cargando. $\varphi_A-\varphi_B=I_2R_2=\boxed{8.00\uu V}$.
+
+\textbf{Balance de potencias}: $\fem_1$ entrega $12(2)=24.0\uu W$; $\fem_2$ \emph{absorbe} $6(2/3)=4.00\uu W$. Joule: $R_1$: $4(2)=8.00$; $R_2$: $(16/9)(6)=10.67$; $R_3$: $(4/9)(3)=1.33$; total $20.0\uu W$. Se cumple $24.0=20.0+4.00$ \checkmark.
+
+\textbf{Verificación con potenciales de nodo} (Millman): $\varphi_A-\varphi_B=\dfrac{12/2+6/3}{1/2+1/6+1/3}=8.00\uu V$ \checkmark.
+
+\sol{13.- Puente de Wheatstone}
+Con $I_G=0$, la corriente $I_1$ pasa por $R_1$ y $R_2$, e $I_3$ por $R_3$ y $R_x$. Equilibrio: $\varphi_c=\varphi_d$, luego $I_1R_1=I_3R_3$ (caídas desde $a$) e $I_1R_2=I_3R_x$ (caídas hasta $b$). Dividiendo:
+\[
+\frac{R_1}{R_2}=\frac{R_3}{R_x}\ \Rightarrow\ R_x=\frac{R_2R_3}{R_1}=\frac{150\cdot200}{100}=\boxed{300\ohm}.
+\]
+La condición no depende de la fem ni de la resistencia del galvanómetro.
+
+\sol{14.- Amperímetro y voltímetro}
+(a) \textbf{Shunt en paralelo} $R_s$: misma tensión en ambos, $I_gR_g=(I-I_g)R_s$:
+\[
+R_s=\frac{I_gR_g}{I-I_g}=\frac{(1.00\times10^{-3})(50.0)}{2.00-0.001}=\boxed{0.0250\ohm}\ \text{en paralelo}.
+\]
+(b) \textbf{Resistencia en serie} $R_m$: misma corriente, $U=I_g(R_g+R_m)$:
+\[
+R_m=\frac{U}{I_g}-R_g=10\,000-50.0=\boxed{9950\ohm}\ \text{en serie}.
+\]
+Un amperímetro ideal tiene $R\to0$ y un voltímetro ideal, $R\to\infty$, para no perturbar el circuito.
+
+\sol{15.- Puente de resistencias iguales}
+\begin{center}\circPuente{$R$}{$R$}{$R$}{$R$}{$R$}\end{center}
+\textbf{Simetría}: la reflexión respecto del eje $a$--$b$ intercambia $c$ y $d$ sin alterar $a$ ni $b$, así que $\varphi_c=\varphi_d$ (también es un puente equilibrado: $R/R=R/R$). Por la resistencia $c$--$d$ no circula corriente y se puede quitar:
+\[
+R_{eq}=(R+R)\,\|\,(R+R)=\boxed{R}.
+\]
+Si se sustituye por un cable, el resultado \textbf{no cambia}: unir dos puntos que ya están al mismo potencial no modifica ninguna corriente. Comprobación: $(R\|R)+(R\|R)=R/2+R/2=R$ \checkmark.
+
+%--------------------------------------------------------------
+\subsection*{Grupo IV}
+\sol{16.- Ley de Joule--Lenz}
+\textbf{Integral}: al pasar $dq=I\,dt$ por un conductor con diferencia de potencial $U$, el campo realiza el trabajo $dA=U\,dq=UI\,dt$. Si el conductor está fijo y no hay transformaciones químicas, ese trabajo se transforma íntegramente en calor: $dQ=UI\,dt=I^2R\,dt$, de donde $Q=\int I^2R\,dt$, y con $I$ constante, $Q=I^2Rt$.
+
+\textbf{Diferencial}: en un cilindro elemental de longitud $dl$ y sección $dS$ orientado según $\vj$: $dR=\rho\,dl/dS$, $dI=j\,dS$, así que $dP=dI^2\,dR=\rho j^2\,dV$. Por lo tanto
+\[
+\boxed{w=\frac{dP}{dV}=\rho j^2=\vj\cdot\vE=\sigma E^2}.
+\]
+\textbf{Significado}: $w$ es la potencia térmica por unidad de volumen ($\mathrm{W/m^3}$), es decir, el calor que se libera por segundo en cada metro cúbico del conductor. Es una ley local, válida aunque el conductor no sea homogéneo.
+
+\sol{17.- Máxima transferencia de potencia}
+$P(R)=I^2R=\dfrac{\fem^2R}{(R+r)^2}$. Derivando: $\dfrac{dP}{dR}=\fem^2\dfrac{(R+r)^2-2R(R+r)}{(R+r)^4}=\fem^2\dfrac{r-R}{(R+r)^3}=0\Rightarrow\boxed{R=r}$. Es un máximo porque $dP/dR>0$ para $R<r$ y $dP/dR<0$ para $R>r$.
+\[
+P_{\max}=\frac{\fem^2}{4r},\qquad\eta=\frac{R}{R+r}=50\%.
+\]
+Con $\fem=9.0\uu V$ y $r=1.5\ohm$: $R=1.5\ohm$, $I=3.0\uu A$, $P_{\max}=81/6=\boxed{13.5\uu W}$.
+
+\sol{18.- Bombillas en serie}
+$R_{60}=120^2/60=240\ohm$, $R_{100}=120^2/100=144\ohm$. En serie: $I=120/384=0.3125\uu A$.
+\[
+P_{60}=I^2(240)=\boxed{23.4\uu W},\qquad P_{100}=I^2(144)=\boxed{14.1\uu W}.
+\]
+\textbf{Brilla más la de $60\uu W$}: en serie la corriente es común y disipa más la de mayor resistencia.
+
+\textbf{Suposición}: resistencias constantes. No es realista: el filamento de tungsteno frío tiene una resistencia varias veces menor que caliente, y aquí trabajan por debajo de su temperatura nominal. Las potencias reales difieren de estas, pero la conclusión cualitativa se mantiene en la práctica.
+
+\sol{19.- Capacitor en régimen estacionario}
+\begin{center}\circSunoQdiecinueve\end{center}
+En régimen estacionario no pasa corriente por la rama del capacitor:
+\[
+I=\frac{\fem}{r+R_1+R_2}=\frac{12.0}{6.0}=2.00\uu A,\qquad U_C=IR_2=4.00\uu V,
+\]
+\[
+Q=CU_C=40.0\uu{\mu C},\quad W=\tfrac12CU_C^2=80.0\uu{\mu J}.
+\]
+\textbf{Sin $R_2$}: no hay ningún camino cerrado para la corriente continua, así que $I=0$, no hay caída en $r$ ni en $R_1$ y $U_C=\fem=12.0\uu V$. Entonces $Q'=\boxed{120\uu{\mu C}}$.
+
+\sol{20.- Cuadrado con diagonal}
+\begin{center}\circCuadrado\end{center}
+\textbf{Entre $A$ y $C$}: tres caminos en paralelo: $A$--$B$--$C$ ($2R$), $A$--$D$--$C$ ($2R$) y la diagonal ($R$):
+\[
+\frac1{R_{AC}}=\frac1{2R}+\frac1{2R}+\frac1R=\frac2R\ \Rightarrow\ \boxed{R_{AC}=R/2}.
+\]
+\textbf{Entre $B$ y $D$}: la reflexión respecto de la recta $BD$ intercambia $A$ y $C$ sin mover $B$ ni $D$, así que $\varphi_A=\varphi_C$ y por la diagonal no circula corriente:
+\[
+R_{BD}=(2R)\,\|\,(2R)=\boxed{R}.
+\]

@@ -1,0 +1,519 @@
+\documentclass[11pt]{article}
+\input{preambulo}
+\fancyhead[L]{\small Física II -- Tercer parcial}
+\fancyhead[R]{\small Guía de fundamentos y ruta de aprendizaje}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+{\color{azul}\rule{\linewidth}{1.5pt}}\\[0.6cm]
+{\Huge\bfseries Física II\\[0.3cm] Corriente eléctrica continua}\\[0.4cm]
+{\Large Guía de fundamentos físicos y matemáticos\\ y ruta de aprendizaje para el tercer examen parcial}\\[0.4cm]
+{\color{azul}\rule{\linewidth}{1.5pt}}\\[1.2cm]
+{\large Tema VII: conductividad y resistividad $\cdot$ fem $\cdot$ caída de tensión $\cdot$ ley de Ohm $\cdot$ resistencia eléctrica $\cdot$ conexión de resistencias $\cdot$ reglas de Kirchhoff $\cdot$ ley de Joule--Lenz $\cdot$ potencia de la corriente}\\[1.5cm]
+
+\begin{tcolorbox}[base,colback=fondo,colframe=azul,width=0.9\linewidth,title=Contenido del paquete]
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Esta guía}: análisis del estilo del profesor, predicción del examen, ruta de aprendizaje, técnicas de estudio y toda la teoría con sus deducciones.
+\item \textbf{Simulacros (enunciados)}: tres simulacros con el mismo formato del profesor (20 preguntas, 4 grupos de 5, se responde 1 por grupo), de dificultad creciente.
+\item \textbf{Solucionario}: solución completa de las 60 preguntas, con rúbrica de calificación.
+\end{enumerate}
+\end{tcolorbox}
+
+\vfill
+\begin{tcolorbox}[base,colback=red!3,colframe=rojo,width=0.9\linewidth,title=Nota de honestidad]
+\small Ningún material puede \emph{garantizar} un 100: la nota depende también de la redacción exacta que elija el profesor, del tiempo, de los nervios y de criterios de corrección que no conocemos. Lo que este paquete sí hace es cubrir los tipos de pregunta que, según los dos parciales anteriores y el temario, tienen más probabilidad de aparecer, y entrenar la forma de responder que este profesor premia. Las predicciones se basan en solo dos exámenes de muestra; trátalas como estimaciones, no como certezas.
+\end{tcolorbox}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+%=====================================================================
+\section{Ruta de aprendizaje}
+%=====================================================================
+
+\subsection{Diagnóstico del caso}
+Por lo que cuentas en el chat:
+\begin{itemize}
+\item Has aprendido parte del contenido por tu cuenta, así que el problema principal \textbf{no es de capacidad}, sino de \emph{transferencia}: pasar de entender un tema a resolver las preguntas tal como las formula este profesor.
+\item El profesor «es difícil de entender» y sus exámenes «son muy difíciles». Al leer los parciales 1 y 2 se ve por qué: casi todas las preguntas piden \textbf{deducir} expresiones generales con letras ($R$, $L$, $\sigma$, $q^*$\dots), no sustituir números en fórmulas.
+\item Los temas que más te cuestan son Kirchhoff y electromagnetismo. El tercer parcial es justamente el tema VII (corriente eléctrica), cuyo núcleo son las reglas de Kirchhoff. El electromagnetismo (temas VIII y IX) parece ir en un posible cuarto parcial; en tu temario aparece con un signo de interrogación, así que conviene confirmarlo con el profesor.
+\end{itemize}
+
+\subsection{Cómo pregunta este profesor (análisis de los parciales 1 y 2)}
+Los dos exámenes tienen \textbf{la misma estructura}: 20 preguntas, en 4 grupos de 5 preguntas consecutivas, y se responde \textbf{una por grupo} (4 en total, unos 25 puntos cada una). Las preguntas se repiten en cinco tipos:
+
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{@{}p{3.1cm}X p{4.3cm}@{}}
+\toprule
+\textbf{Tipo} & \textbf{Cómo lo redacta} & \textbf{Ejemplo real}\\
+\midrule
+A. Definición + deducción & «¿A qué se denomina\dots? Deduzca su expresión matemática.» & P1-6, P2-1, P2-9, P2-12\\
+B. Demostración de un teorema & «Demostrar que\dots», «Deduzca la ley de\dots» & P2-3 (circulación de $\vE$ nula), P1-16 (Gauss)\\
+C. Configuración geométrica simétrica, en letras & Cargas en vértices de rectángulos, cubos, hexágonos; anillos, discos, alambres, cilindros & P1-10, P2-4, P2-5, P2-6\\
+D. Cadena «del valor de\dots, calcular\dots» & Calcula una magnitud y a partir de ella otra & P2-6, P2-7, P2-8 ($\varphi\to\vE$)\\
+E. Circuito con truco topológico & Interruptores, cables cruzados, «¿en cuánto cambia\dots?» & P2-19, P2-20\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\textbf{Rasgos de lenguaje} que conviene reconocer:
+\begin{itemize}
+\item Usa $\varphi$ para el potencial, $q^*$ para cargas puntuales, «vector intensidad del campo eléctrico», «dieléctrico uniforme, isotrópico e infinito», «vector de inducción eléctrica $\vD$» y «segundo teorema electrostático fundamental». Esa terminología es típica de los textos de tradición soviética (Savéliev, Irodov). El nombre «ley de Joule--Lenz» de tu temario apunta en la misma dirección. \emph{Suposición razonable, no confirmada}: es probable que en el tercer parcial use \textbf{formas diferenciales} ($\vj=\sigma\vE$, $w=\sigma E^2$) y \textbf{fuerzas extrañas} para definir la fem.
+\item Usa $\varepsilon$ para la permitividad. Por eso, en este material la fem se escribe $\fem$, para no confundirlas.
+\item Usa $\sigma$ para la densidad superficial de carga y $\rho$ para la volumétrica. En el tema VII también se usan $\sigma$ (conductividad) y $\rho$ (resistividad). \textbf{Declara siempre qué significa cada letra} al inicio de tu respuesta: eso evita que te descuenten puntos por ambigüedad.
+\item Pide «letra muy clara y comprensible». La presentación cuenta.
+\end{itemize}
+
+\subsection{Predicción para el tercer parcial}
+Si mantiene el patrón (grupo I: teoría; grupo II: deducciones y cálculos «de geometría»; grupo III: cálculos y circuitos; grupo IV: los más largos más los circuitos con truco), el examen probablemente se reparte así. Las probabilidades son \emph{cualitativas}: salen de dos exámenes de muestra y del temario, no de una estadística.
+
+\begin{center}
+\small
+\begin{longtable}{@{}p{7.6cm}cp{4.6cm}@{}}
+\toprule
+\textbf{Pregunta probable} & \textbf{Prob.} & \textbf{Se practica en}\\
+\midrule
+\endhead
+Corriente, intensidad y densidad de corriente; deducir $\vj=nq\vec v_d$ & Alta & S1-1, S1-2\\
+Ecuación de continuidad (conservación de la carga) & Media-alta & S2-1\\
+Ley de Ohm en forma diferencial $\vj=\sigma\vE$ (modelo clásico) & Alta & S1-4, S2-2\\
+Resistividad y temperatura & Media & S1-3\\
+Fem, fuerzas extrañas, ley de Ohm para un tramo no homogéneo & Alta & S1-5, S2-3, S3-1\\
+Necesidad de la fem (circulación de $\vE$ electrostático $=0$) & Media & S2-4\\
+Resistencia de conductores de sección o resistividad variable (cono, esferas, coaxial, $\rho(x)$) & Muy alta & S2-6 a S2-10, S3-6 a S3-10\\
+Relación $RC=\varepsilon\rho$ y fugas en capacitores (enlaza con el parcial 2) & Media & S2-8, S3-4, S3-10\\
+Serie, paralelo, $\Delta$--Y, puente de Wheatstone & Alta & S1-8, S1-9, S1-13, S2-15\\
+Redes simétricas (cubo, tetraedro, hexágono, escalera infinita) & Alta & S1-20, S2-13, S2-14, S2-20, S3-13 a S3-15\\
+Enunciar y fundamentar las reglas de Kirchhoff & Muy alta & S1-11\\
+Circuitos de 2 y 3 mallas con varias fem & Muy alta & S1-12, S2-11, S2-12, S3-11, S3-12\\
+Circuito con interruptores: «¿en cuánto cambia $R_{eq}$?» & Alta & S2-18, S3-18\\
+Capacitores en circuitos de corriente continua (régimen estacionario) & Media-alta & S1-19, S2-19, S3-19\\
+Ley de Joule--Lenz integral y diferencial & Muy alta & S1-16, S2-5, S2-17, S3-5\\
+Potencia, rendimiento y máxima transferencia de potencia & Alta & S1-17, S2-16, S3-16\\
+Carga de un capacitor a través de $R$ (circuito RC) & Baja-media* & S3-17\\
+\bottomrule
+\end{longtable}
+\end{center}
+{\footnotesize *El circuito RC no figura en tu lista del temario, pero aparece en todos los libros de la bibliografía (Sears--Zemansky, Serway, Resnick). Está solo en el simulacro 3, como refuerzo.}
+
+\subsection{Las tres etapas}
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{@{}p{2.3cm}XXp{2.6cm}@{}}
+\toprule
+\textbf{Etapa} & \textbf{Objetivo} & \textbf{Qué estudiar antes} & \textbf{Para avanzar}\\
+\midrule
+Simulacro 1 \newline (confianza) & Dominar definiciones, fórmulas base y el procedimiento de Kirchhoff en circuitos de 2 mallas. Comprobar que ya sabes más de lo que crees. & Secciones 2.1--2.4, 2.6--2.9 de esta guía (sin las partes marcadas como avanzadas). & 75/100 o más en 4 preguntas cronometradas.\\
+\midrule
+Simulacro 2 \newline (nivel del profesor) & Resolver en letras las deducciones de resistencia con geometría, redes simétricas, circuitos con interruptor y capacitores en continua. & Toda la sección 2. Repasar del parcial 2 las capacitancias cilíndrica y esférica. & 75/100 o más.\\
+\midrule
+Simulacro 3 \newline (por encima del profesor) & Conductores no homogéneos, interfaces, fugas, redes de 4 nodos y combinaciones con dieléctricos. Si esto sale bien, el parcial real se siente más fácil. & Secciones 2.5 (avanzado), 2.8 (método de nodos) y 2.9 completa. & 60/100 o más ya es muy buena señal.\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\textbf{Cómo usar cada simulacro (20 preguntas):}
+\begin{enumerate}
+\item \textbf{Bajo condiciones de examen}: elige 1 pregunta por grupo (4 en total), sin apuntes, cronometrado. Si no sabes cuánto dura el examen real, usa 100 minutos y ajústalo cuando lo sepas.
+\item \textbf{Corrige con la rúbrica} del solucionario (25 puntos por pregunta) y anota cada error en un \emph{registro de errores}: qué hice, por qué estaba mal, cómo lo detecto la próxima vez.
+\item \textbf{Las 16 restantes son tarea}: resuélvelas en días distintos, mezclando grupos. No las leas resueltas antes de intentarlas.
+\end{enumerate}
+
+\subsection{Técnicas de estudio con respaldo empírico}
+\begin{itemize}
+\item \textbf{Práctica de recuperación} (testing effect): intentar responder sin mirar produce más retención a largo plazo que releer (Roediger y Karpicke, 2006; Dunlosky et al., 2013). Por eso el eje de la ruta son los simulacros.
+\item \textbf{Práctica espaciada}: repartir el estudio en varios días rinde más que concentrarlo en una sola sesión larga (Dunlosky et al., 2013). Plan mínimo: 45--60 min diarios, no 6 horas la víspera.
+\item \textbf{Práctica intercalada}: mezclar tipos de problema (un Kirchhoff, una resistencia por integración, un Joule) entrena a \emph{reconocer} qué método usar, que es exactamente lo que exige elegir 1 pregunta de cada 5.
+\item \textbf{Ejemplos resueltos que se van retirando}: primero estudia una deducción completa; después reprodúcela tapando pasos; al final hazla en blanco (efecto del ejemplo resuelto, Sweller y Cooper, 1985).
+\item \textbf{Autoexplicación}: en cada paso de una deducción, di en voz alta \emph{por qué} es válido («uso Gauss porque hay simetría esférica»). Es lo que el profesor quiere leer en tu hoja.
+\end{itemize}
+
+\subsection{Plantilla para responder preguntas de teoría}
+\begin{profe}[Plantilla «¿A qué se denomina\dots? Deduzca\dots»]
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Definición} en una o dos frases precisas, con el nombre de la magnitud.
+\item \textbf{Esquema o figura} con el sistema de referencia y la notación declarada.
+\item \textbf{Deducción} desde un principio más general (Gauss, conservación de la carga, trabajo del campo\dots), un paso por línea y justificando cada paso.
+\item \textbf{Resultado} enmarcado, con unidades SI y su análisis dimensional.
+\item \textbf{Interpretación o ejemplo}: qué significa físicamente, un caso límite o una aplicación. El profesor pide «de ejemplos» muy a menudo.
+\end{enumerate}
+\end{profe}
+
+\subsection{Estrategia el día del examen}
+\begin{enumerate}
+\item \textbf{5 minutos} para leer las 20 preguntas y marcar en cada grupo la que mejor dominas. Elige por \emph{certeza}, no por la que parece más corta.
+\item Empieza por la pregunta en la que tienes más seguridad: genera confianza y asegura puntos.
+\item Reparte el tiempo por igual entre las 4 preguntas y deja 10 minutos para revisar signos, unidades y casos límite.
+\item Si una deducción se traba, escribe el planteamiento físico completo (ley, simetría, superficie elegida). Casi siempre da puntos parciales.
+\item \textbf{Comprueba siempre}: dimensiones, un caso límite (por ejemplo, $R_2\to R_1$) y, en Kirchhoff, el \emph{balance de potencias}.
+\end{enumerate}
+
+\subsection{Plan sugerido para la primera sesión (domingo)}
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{@{}p{2.2cm}X@{}}
+\toprule
+\textbf{Tiempo} & \textbf{Actividad}\\
+\midrule
+0:00--0:10 & Diagnóstico oral: ¿qué es $\vj$?, ¿qué dice la ley de mallas?, ¿qué diferencia hay entre fem y diferencia de potencial?\\
+0:10--0:25 & Cómo pregunta el profesor (sección 1.2) y plantilla de respuesta (sección 1.6).\\
+0:25--1:15 & Simulacro 1 cronometrado: 4 preguntas, una por grupo.\\
+1:15--1:50 & Corrección con la rúbrica, explicación de los errores y énfasis en Kirchhoff (signos y balance de potencias).\\
+1:50--2:00 & Tarea: las 16 preguntas restantes del simulacro 1 y las secciones de la guía previas al simulacro 2.\\
+\bottomrule
+\end{tabularx}
+\end{center}
+\emph{Versión de 1 hora}: diagnóstico (5 min), 2 preguntas del simulacro 1, una de teoría y una de Kirchhoff (35 min), corrección (20 min).
+
+%=====================================================================
+\section{Fundamentos físicos y matemáticos}
+%=====================================================================
+
+\subsection{Herramientas matemáticas que vas a necesitar}
+\begin{itemize}
+\item \textbf{Flujo} de un campo vectorial a través de una superficie: $\Phi=\int_S \vec A\cdot d\vec S$. La corriente es el flujo de $\vj$.
+\item \textbf{Divergencia y teorema de Gauss--Ostrogradski}: $\oint_S \vec A\cdot d\vec S=\int_V \nabla\cdot\vec A\,dV$. Con él se pasa de las formas integrales a las diferenciales.
+\item \textbf{Circulación}: $\oint_L \vec A\cdot d\vec l$. Para el campo electrostático, $\oint\vE_{est}\cdot d\vec l=0$ (segundo teorema electrostático fundamental, parcial 2).
+\item \textbf{Gradiente}: $\vE=-\nabla\varphi$; en una dimensión, $E_x=-\dfrac{d\varphi}{dx}$.
+\item \textbf{Elementos de área por los que pasa la corriente} (los vas a usar en todas las resistencias):
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Geometría & Corriente & Área atravesada\\
+\midrule
+Cilíndrica (radio $r$, altura $H$) & radial & $A(r)=2\pi r H$\\
+Esférica & radial & $A(r)=4\pi r^2$\\
+Semiesférica (electrodo de tierra) & radial & $A(r)=2\pi r^2$\\
+Cono (radio $r(x)$) & axial & $A(x)=\pi r(x)^2$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\item \textbf{Integrales frecuentes}: $\int\frac{dr}{r}=\ln r$, $\int\frac{dr}{r^2}=-\frac1r$, $\int\frac{dx}{(a+kx)^2}=-\frac{1}{k(a+kx)}$.
+\end{itemize}
+
+%---------------------------------------------------------------------
+\subsection{Corriente eléctrica e intensidad}
+Se denomina \textbf{corriente eléctrica} al movimiento ordenado (dirigido) de portadores de carga. En los metales los portadores son electrones libres; en los electrolitos, iones; en los semiconductores, electrones y huecos. Por convenio, el \textbf{sentido de la corriente} es el del movimiento de las cargas positivas, opuesto al de los electrones.
+
+La \textbf{intensidad de corriente} es la carga que atraviesa una sección del conductor por unidad de tiempo:
+\[
+I=\frac{dq}{dt},\qquad [I]=\mathrm{A}=\mathrm{C/s}.
+\]
+La corriente es \textbf{continua (estacionaria)} si $I$ no depende del tiempo; en ese caso $q=It$.
+
+Para que exista corriente se necesitan dos cosas: portadores libres y un campo eléctrico dentro del conductor que los ponga en movimiento ordenado. Para mantenerla en el tiempo hace falta una fuente de fem (sección 2.6).
+
+%---------------------------------------------------------------------
+\subsection{Vector densidad de corriente}
+La intensidad no dice cómo se reparte la corriente por la sección. Para eso se define el \textbf{vector densidad de corriente} $\vj$: su dirección es la del movimiento de las cargas positivas y su módulo es la corriente por unidad de área perpendicular,
+\[
+j=\frac{dI}{dS_\perp},\qquad [j]=\mathrm{A/m^2}.
+\]
+\textbf{Relación con la intensidad.} A través de un elemento $d\vec S$ que forma un ángulo $\theta$ con $\vj$ pasa $dI=j\,dS\cos\theta=\vj\cdot d\vec S$. Por lo tanto
+\[
+\boxed{I=\int_S \vj\cdot d\vec S}
+\]
+es decir, \emph{la intensidad es el flujo del vector densidad de corriente}. Si $\vj$ es uniforme y perpendicular a la sección $A$: $I=jA$.
+
+\textbf{Deducción de $\vj=nq\vec v_d$.} Sean $n$ portadores por unidad de volumen, cada uno con carga $q$ y velocidad media de deriva $\vec v_d$. En un tiempo $dt$ atraviesan el área $dS_\perp$ todos los portadores contenidos en un cilindro de base $dS_\perp$ y altura $v_d\,dt$, es decir, $dN=n\,dS_\perp v_d\,dt$. La carga que pasa es $dq=q\,dN=nqv_d\,dS_\perp\,dt$, de donde
+\[
+j=\frac{dq}{dt\,dS_\perp}=nqv_d\quad\Longrightarrow\quad\boxed{\vj=nq\vec v_d=\rho_q\vec v_d}
+\]
+con $\rho_q=nq$ la densidad de carga \emph{móvil}. Si hay varios tipos de portadores, $\vj=\sum_k n_kq_k\vec v_k$.
+
+\begin{idea}[Orden de magnitud]
+En un cable de cobre ($n\approx8.5\times10^{28}\uu{m^{-3}}$) con $j\sim10^6\uu{A/m^2}$, $v_d\sim10^{-4}\uu{m/s}$, unos décimos de milímetro por segundo. La lámpara se enciende de inmediato porque lo que se propaga casi a la velocidad de la luz es el \emph{campo}, no los electrones.
+\end{idea}
+
+%---------------------------------------------------------------------
+\subsection{Ecuación de continuidad}
+La carga eléctrica se conserva. Si por una superficie cerrada $S$ sale una corriente neta, la carga encerrada $q$ disminuye en la misma cantidad:
+\[
+\boxed{\oint_S \vj\cdot d\vec S=-\frac{dq}{dt}}\qquad\text{(forma integral)}.
+\]
+Con $q=\int_V\rho_q\,dV$ y el teorema de Gauss--Ostrogradski, $\int_V\nabla\cdot\vj\,dV=-\int_V\frac{\partial\rho_q}{\partial t}dV$ para cualquier volumen, así que
+\[
+\boxed{\nabla\cdot\vj+\frac{\partial\rho_q}{\partial t}=0}\qquad\text{(forma diferencial)}.
+\]
+\textbf{Corriente estacionaria}: las cargas no se acumulan, $\partial\rho_q/\partial t=0$, por lo tanto $\oint\vj\cdot d\vec S=0$ y $\nabla\cdot\vj=0$. Las líneas de $\vj$ son cerradas o van de la fuente a la fuente; no empiezan ni terminan en el conductor. Aplicado a una superficie que rodea un nodo, esto es exactamente la \textbf{primera regla de Kirchhoff}: $\sum I_k=0$.
+
+%---------------------------------------------------------------------
+\subsection{Ley de Ohm en forma diferencial. Conductividad y resistividad}
+\subsubsection*{Modelo clásico de electrones libres (Drude)}
+\emph{Hipótesis}: los electrones de conducción se comportan como un gas de partículas libres que chocan con los iones de la red; tras cada choque la velocidad dirigida se anula en promedio; $\tau$ es el tiempo medio entre choques.
+
+Entre dos choques, el campo $\vE$ acelera al electrón: $m\vec a=-e\vE$. La velocidad dirigida que gana en un tiempo $t$ después del choque es $\vec u=-e\vE t/m$. Promediando sobre todos los electrones, el tiempo medio desde el último choque es $\tau$, así que
+\[
+\vec v_d=-\frac{e\tau}{m}\vE.
+\]
+\emph{(Matiz: algunos textos obtienen $-e\vE\tau/(2m)$ porque promedian la velocidad entre $0$ y su valor máximo con un recorrido libre fijo. El factor numérico depende del modelo de promedio; lo importante para el examen es la proporcionalidad $\vec v_d\propto\vE$. Si el profesor usa el factor $1/2$, adóptalo.)}
+
+Sustituyendo en $\vj=n(-e)\vec v_d$:
+\[
+\boxed{\vj=\sigma\vE},\qquad \sigma=\frac{ne^2\tau}{m}.
+\]
+Esta es la \textbf{ley de Ohm en forma diferencial (local)}. $\sigma$ es la \textbf{conductividad} ($\mathrm{S/m}=\Omega^{-1}\mathrm{m^{-1}}$) y su inversa $\rho=1/\sigma$ es la \textbf{resistividad} ($\Omega\cdot\mathrm{m}$). En forma equivalente, $\vE=\rho\vj$. La \textbf{movilidad} es $\mu=|v_d|/E=e\tau/m$, de modo que $\sigma=ne\mu$.
+
+\subsubsection*{Dependencia con la temperatura}
+Al aumentar $T$ crece la amplitud de vibración de los iones, los choques son más frecuentes, $\tau$ disminuye y $\rho$ aumenta. En un intervalo moderado es casi lineal:
+\[
+\rho(T)=\rho_0\,[1+\alpha(T-T_0)],\qquad R(T)=R_0\,[1+\alpha(T-T_0)]
+\]
+(la segunda supone que la dilatación del conductor es despreciable). Para el cobre, $\alpha\approx3.9\times10^{-3}\uu{K^{-1}}$. En los semiconductores $\rho$ disminuye con $T$, porque $n$ crece rápidamente. Algunos materiales tienen $\rho=0$ por debajo de una temperatura crítica (superconductividad).
+
+\begin{alerta}[Error frecuente]
+Confundir $\rho$ (resistividad) con $\rho$ (densidad de carga) y $\sigma$ (conductividad) con $\sigma$ (densidad superficial de carga). En este documento la densidad de carga se escribe $\rho_q$. Declara tu notación en el examen.
+\end{alerta}
+
+%---------------------------------------------------------------------
+\subsection{Ley de Ohm integral y cálculo de resistencias}
+\subsubsection*{De la forma diferencial a la integral}
+Tomemos un conductor cilíndrico homogéneo de longitud $L$ y sección $A$ con una diferencia de potencial $U=\varphi_1-\varphi_2$ entre sus extremos. El campo es uniforme, $E=U/L$, y $I=jA=\sigma EA=\sigma AU/L$. Entonces
+\[
+\boxed{I=\frac{U}{R}},\qquad \boxed{R=\rho\frac{L}{A}}.
+\]
+\textbf{Definición general}: la \textbf{resistencia} de un conductor entre dos electrodos equipotenciales es $R=U/I$, con unidad $\Omega=\mathrm{V/A}$. La ley de Ohm dice que, para muchos materiales y a temperatura constante, $R$ no depende de $U$ (conductores óhmicos).
+
+\subsubsection*{Tres métodos para calcular resistencias de geometría no trivial}
+\begin{metodo}[Método 1: rebanadas en serie (corriente axial)]
+Si la corriente atraviesa rebanadas sucesivas de espesor $dx$ y área $A(x)$, cada rebanada es una resistencia $dR=\rho(x)\,dx/A(x)$ y todas están en serie:
+\[
+R=\int_0^L\frac{\rho(x)\,dx}{A(x)}.
+\]
+\end{metodo}
+\begin{metodo}[Método 2: cascarones en serie (corriente radial)]
+Para electrodos cilíndricos o esféricos concéntricos, la corriente atraviesa cascarones de espesor $dr$: $dR=\rho\,dr/A(r)$ con $A(r)=2\pi rH$ o $4\pi r^2$.
+\end{metodo}
+\begin{metodo}[Método 3: vía el campo (el más «del profesor»)]
+(1) Supón una corriente $I$. (2) Por continuidad, $j(r)=I/A(r)$. (3) Por la ley de Ohm local, $E(r)=\rho j(r)$. (4) Integra: $U=\int_1^2 E\,dr$. (5) Calcula $R=U/I$. Este método produce además $\vj(r)$ y $\vE(r)$, que es lo que suele pedir la parte «del valor de\dots, calcular\dots».
+\end{metodo}
+\begin{metodo}[Método 4: tiras en paralelo]
+Si la corriente fluye a lo largo de tiras que están todas a la misma diferencia de potencial (por ejemplo, corriente azimutal en un anillo), se suman conductancias: $\dfrac1R=\int dG=\int\dfrac{dA_\perp}{\rho\,\ell}$.
+\end{metodo}
+
+\subsubsection*{Resultados que conviene saber deducir}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Geometría & Deducción & Resistencia\\
+\midrule
+Cono truncado (radios $a,b$, longitud $L$) & $r(x)=a+\frac{b-a}{L}x$, $\displaystyle\int_0^L\frac{\rho\,dx}{\pi r^2}$ & $\dfrac{\rho L}{\pi ab}$\\
+Esferas concéntricas $R_1<R_2$ & $\displaystyle\int_{R_1}^{R_2}\frac{\rho\,dr}{4\pi r^2}$ & $\dfrac{\rho}{4\pi}\Big(\dfrac1{R_1}-\dfrac1{R_2}\Big)$\\
+Cilindros coaxiales, altura $H$ & $\displaystyle\int_{R_1}^{R_2}\frac{\rho\,dr}{2\pi rH}$ & $\dfrac{\rho}{2\pi H}\ln\dfrac{R_2}{R_1}$\\
+Electrodo semiesférico de tierra, radio $a$ & $\displaystyle\int_a^\infty\frac{\rho\,dr}{2\pi r^2}$ & $\dfrac{\rho}{2\pi a}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection*{Relación $RC=\varepsilon\rho$ (puente con el parcial 2)}
+Si el espacio entre dos electrodos se llena con un medio de permitividad $\varepsilon$ y resistividad $\rho$, para \emph{cualquier} geometría se cumple:
+\[
+I=\oint_S\vj\cdot d\vec S=\frac1\rho\oint_S\vE\cdot d\vec S=\frac{1}{\rho}\frac{q}{\varepsilon}\quad\text{(Gauss en el dieléctrico: }\textstyle\oint\vD\cdot d\vec S=q).
+\]
+Como $R=U/I$ y $C=q/U$: $\boxed{RC=\varepsilon\rho}$. Ejemplo: el capacitor cilíndrico del parcial 2 tiene $C=\dfrac{2\pi\varepsilon H}{\ln(R_2/R_1)}$ y su resistencia de fuga es $R=\dfrac{\rho\ln(R_2/R_1)}{2\pi H}$; su producto es $\varepsilon\rho$. Un capacitor con fuga, aislado, se descarga como $q(t)=q_0e^{-t/(\varepsilon\rho)}$, sin importar su forma.
+
+\subsubsection*{Avanzado: carga dentro de conductores con corriente}
+\begin{itemize}
+\item \textbf{Conductor homogéneo} ($\sigma$ constante) con corriente estacionaria: $\nabla\cdot\vE=\nabla\cdot(\vj/\sigma)=0$, por lo tanto $\rho_q=\varepsilon_0\nabla\cdot\vE=0$. \emph{No hay carga neta en su interior}: la carga que crea el campo está en la superficie del conductor.
+\item \textbf{Conductor no homogéneo}: $\nabla\cdot\vE=\vj\cdot\nabla(1/\sigma)=\vj\cdot\nabla\rho$, así que $\rho_q=\varepsilon_0\,\vj\cdot\nabla\rho\neq0$.
+\item \textbf{Interfaz entre dos conductores} (la corriente va de 1 a 2): $j_{1n}=j_{2n}=j$ por continuidad, y $E_{1t}=E_{2t}$ porque la circulación del campo es nula. En la interfaz aparece una carga superficial $\sigma_s=\varepsilon_0(E_{2n}-E_{1n})=\varepsilon_0 j(\rho_2-\rho_1)$, y las líneas de corriente se \emph{refractan}: $\dfrac{\tan\alpha_1}{\tan\alpha_2}=\dfrac{\sigma_1}{\sigma_2}$.
+\end{itemize}
+
+%---------------------------------------------------------------------
+\subsection{Fuerza electromotriz, caída de tensión y ley de Ohm generalizada}
+\subsubsection*{Por qué hace falta una fem}
+El campo electrostático es conservativo: $\oint\vE_{est}\cdot d\vec l=0$. Si solo actuara él, el trabajo sobre una carga en un recorrido cerrado sería nulo, mientras que en el conductor se disipa energía (Joule) en cada vuelta. Una corriente estacionaria en un circuito cerrado es imposible solo con fuerzas electrostáticas. Hacen falta \textbf{fuerzas extrañas} (también llamadas «ajenas» o de origen no electrostático: químicas en una pila, magnéticas en un generador, térmicas en un termopar) que lleven las cargas positivas desde el potencial bajo al alto dentro de la fuente.
+
+\subsubsection*{Definición}
+Si $\vec F^*$ es la fuerza extraña sobre la carga $q$, se define el campo de fuerzas extrañas $\vE^*=\vec F^*/q$. La \textbf{fuerza electromotriz} de un tramo 1--2 es el trabajo de las fuerzas extrañas por unidad de carga positiva:
+\[
+\fem_{12}=\int_1^2\vE^*\cdot d\vec l,\qquad\fem=\oint\vE^*\cdot d\vec l\ \text{(circuito cerrado)},\qquad[\fem]=\mathrm{V}.
+\]
+
+\subsubsection*{Ley de Ohm generalizada}
+Sobre los portadores actúan los dos campos, así que la ley local se generaliza a
+\[
+\boxed{\vj=\sigma(\vE+\vE^*)}.
+\]
+Para un tramo 1--2 de sección $A$, con $\vE=\rho\vj-\vE^*$ e integrando a lo largo del tramo, siendo $j=I/A$:
+\[
+\int_1^2\vE\cdot d\vec l=\int_1^2\frac{\rho I\,dl}{A}-\int_1^2\vE^*\cdot d\vec l
+\quad\Longrightarrow\quad\varphi_1-\varphi_2=IR_{12}-\fem_{12},
+\]
+\[
+\boxed{IR_{12}=\varphi_1-\varphi_2+\fem_{12}}\qquad\text{(ley de Ohm para un tramo no homogéneo).}
+\]
+\textbf{Convenio de signos}: $I>0$ si va de 1 a 2; $\fem_{12}>0$ si la fuente impulsa las cargas positivas de 1 a 2 (al recorrerla de 1 a 2 se va del borne $-$ al $+$).
+
+\textbf{Casos particulares}:
+\begin{itemize}
+\item Tramo homogéneo ($\fem_{12}=0$): $IR=\varphi_1-\varphi_2$, la ley de Ohm ordinaria.
+\item Circuito cerrado ($\varphi_1=\varphi_2$): $\fem=I(R+r)$, de donde $\boxed{I=\dfrac{\fem}{R+r}}$, con $r$ la resistencia interna de la fuente.
+\item Tensión entre los bornes de la fuente: $U=\fem-Ir$. En circuito abierto, $U=\fem$; en cortocircuito ($R=0$), $I_{cc}=\fem/r$.
+\end{itemize}
+
+\subsubsection*{Fem, diferencia de potencial y caída de tensión}
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{@{}p{3.5cm}X@{}}
+\toprule
+\textbf{Diferencia de potencial} $\varphi_1-\varphi_2$ & Trabajo de las fuerzas \emph{electrostáticas} por unidad de carga al ir de 1 a 2. No depende del camino.\\
+\textbf{Fem} $\fem_{12}$ & Trabajo de las fuerzas \emph{extrañas} por unidad de carga. Solo existe dentro de las fuentes.\\
+\textbf{Caída de tensión} (voltaje) $U_{12}=IR_{12}$ & Trabajo \emph{total} (electrostático más extraño) por unidad de carga: $U_{12}=\varphi_1-\varphi_2+\fem_{12}$. En un tramo sin fuentes coincide con la diferencia de potencial.\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+%---------------------------------------------------------------------
+\subsection{Conexión de resistencias}
+\subsubsection*{Serie y paralelo (deducción con Kirchhoff)}
+\textbf{Serie}: la misma corriente $I$ pasa por todas (no hay nodos intermedios con derivaciones). Las caídas se suman: $U=\sum U_k=I\sum R_k$, así que $\boxed{R_s=\sum R_k}$.
+
+\textbf{Paralelo}: todas tienen la misma diferencia de potencial $U$ (sus extremos son los mismos dos nodos). Por la regla de nodos, $I=\sum I_k=U\sum 1/R_k$, así que $\boxed{\dfrac1{R_p}=\sum\dfrac1{R_k}}$. Para dos resistencias: $R_p=\dfrac{R_1R_2}{R_1+R_2}$.
+
+\subsubsection*{Transformación triángulo--estrella ($\Delta$--Y)}
+Un triángulo $R_{ab},R_{bc},R_{ca}$ equivale a una estrella con centro $O$ si la resistencia entre cada par de terminales, con el tercero libre, es la misma:
+\[
+R_a=\frac{R_{ab}R_{ca}}{R_{ab}+R_{bc}+R_{ca}},\quad R_b=\frac{R_{ab}R_{bc}}{\Sigma},\quad R_c=\frac{R_{bc}R_{ca}}{\Sigma}.
+\]
+\emph{Regla mnemotécnica}: la resistencia de la estrella en el vértice $a$ es el producto de los dos lados del triángulo que llegan a $a$, dividido por la suma de los tres. Si las tres son iguales, $R_Y=R_\Delta/3$.
+
+\subsubsection*{Técnicas de simetría (clave en el grupo IV)}
+\begin{enumerate}
+\item \textbf{Puntos equipotenciales}: si una simetría del circuito intercambia dos nodos sin alterar los terminales $a$ y $b$, esos nodos están al mismo potencial. Una resistencia entre ellos no lleva corriente y se puede quitar, o se pueden unir con un cable.
+\item \textbf{Antisimetría}: si una reflexión intercambia $a$ con $b$, poniendo $\varphi_a=+V$ y $\varphi_b=-V$ se cumple $\varphi(\text{nodo imagen})=-\varphi(\text{nodo})$; los nodos sobre el «plano medio» quedan a potencial $0$.
+\item \textbf{Reparto de corriente}: en el cubo, entre vértices opuestos, la corriente $I$ se divide en $3\times I/3$, luego $6\times I/6$ y luego $3\times I/3$. Entonces $U=IR(1/3+1/6+1/3)$ y $R=5R/6$.
+\end{enumerate}
+
+\subsubsection*{Puente de Wheatstone}
+Cuatro resistencias $R_1$ ($a$--$c$), $R_2$ ($c$--$b$), $R_3$ ($a$--$d$), $R_4$ ($d$--$b$), con un galvanómetro entre $c$ y $d$. Está en \textbf{equilibrio} ($I_G=0$) cuando $\varphi_c=\varphi_d$, es decir, cuando $I_1R_1=I_3R_3$ y $I_1R_2=I_3R_4$. Dividiendo:
+\[
+\boxed{\frac{R_1}{R_2}=\frac{R_3}{R_4}}\quad\Longleftrightarrow\quad R_1R_4=R_2R_3.
+\]
+
+\subsubsection*{Escalera infinita}
+Si una red infinita es igual a sí misma después de quitarle la primera celda, su resistencia de entrada $R_\infty$ cumple una ecuación de punto fijo. Para celdas con resistencia serie $R_1$ y paralelo $R_2$: $R_\infty=R_1+\dfrac{R_2R_\infty}{R_2+R_\infty}$, de donde $R_\infty=\dfrac{R_1}{2}+\sqrt{\dfrac{R_1^2}{4}+R_1R_2}$ (se toma la raíz positiva).
+
+%---------------------------------------------------------------------
+\subsection{Reglas de Kirchhoff}
+\subsubsection*{Enunciado y fundamento}
+\begin{idea}[Primera regla (de nodos)]
+La suma algebraica de las corrientes que concurren en un nodo es cero: $\sum_k I_k=0$, tomando como positivas las que entran y negativas las que salen (o al revés, de forma consistente). \textbf{Fundamento}: conservación de la carga en régimen estacionario, $\oint\vj\cdot d\vec S=0$.
+\end{idea}
+\begin{idea}[Segunda regla (de mallas)]
+En cualquier contorno cerrado de un circuito, $\sum_k I_kR_k=\sum_k\fem_k$. \textbf{Fundamento}: se aplica la ley de Ohm generalizada $I_kR_k=\varphi_k-\varphi_{k+1}+\fem_k$ a cada tramo del contorno y se suma; las diferencias de potencial se cancelan porque el campo electrostático es conservativo ($\oint\vE\cdot d\vec l=0$). Equivale a la conservación de la energía.
+\end{idea}
+
+\subsubsection*{Procedimiento (sin errores de signo)}
+\begin{metodo}[Receta de Kirchhoff]
+\begin{enumerate}[leftmargin=*]
+\item Marca los nodos ($n$) y las ramas ($m$). Asigna a cada rama una corriente con un sentido \emph{arbitrario}.
+\item Escribe $n-1$ ecuaciones de nodos (la última es dependiente).
+\item Elige $m-n+1$ mallas independientes (las «ventanas» del circuito plano) y un sentido de recorrido para cada una.
+\item En cada malla: $+IR$ si recorres la resistencia en el sentido de su corriente, $-IR$ en contra; $+\fem$ si recorres la fuente de $-$ a $+$, $-\fem$ de $+$ a $-$.
+\item Resuelve. \textbf{Una corriente negativa significa que su sentido real es el opuesto}: no cambies nada, solo interprétalo.
+\item \textbf{Comprueba} con el balance de potencias: $\sum\fem_kI_k$ (con signo) $=\sum I_k^2R_k$.
+\end{enumerate}
+\end{metodo}
+
+\subsubsection*{Método de potenciales de nodo (más rápido, mismo fundamento)}
+Fija $\varphi=0$ en un nodo. Para una rama entre $X$ e $Y$ con fem $\fem$ (que impulsa hacia $Y$) y resistencia $R$, la corriente de $X$ a $Y$ es $I_{XY}=(\varphi_X-\varphi_Y+\fem)/R$; esto es simplemente la ley de Ohm para un tramo no homogéneo. Escribe la regla de nodos en cada nodo desconocido. Para circuitos de \textbf{dos nodos} se obtiene directamente el teorema de Millman:
+\[
+\varphi_A-\varphi_B=\frac{\sum_k \fem_k/R_k}{\sum_k 1/R_k}\qquad(\fem_k>0\ \text{si impulsa hacia }A).
+\]
+En el examen, plantea siempre las ecuaciones de Kirchhoff (es lo que se pide) y usa los potenciales de nodo para \emph{verificar}.
+
+\subsubsection*{Capacitores en circuitos de corriente continua}
+En \textbf{régimen estacionario} (mucho tiempo después de conectar), por una rama con un capacitor no circula corriente. Procedimiento: (1) quita las ramas con capacitores; (2) resuelve el circuito resistivo con Kirchhoff; (3) la tensión de cada capacitor es la diferencia de potencial entre sus nodos (menos las fem que estén en su misma rama); (4) $Q=CU$. Si un interruptor cambia el circuito, la carga que pasa por un conductor es la variación de la carga neta del conjunto de placas aislado que queda de un lado de él.
+
+%---------------------------------------------------------------------
+\subsection{Ley de Joule--Lenz y potencia de la corriente}
+\subsubsection*{Forma integral}
+Al pasar una carga $dq=I\,dt$ por un tramo homogéneo con diferencia de potencial $U$, el campo realiza el trabajo $dW=U\,dq=UI\,dt$. Si el conductor está en reposo y no hay reacciones químicas, todo ese trabajo se convierte en calor (energía interna de la red, a través de los choques):
+\[
+\boxed{Q=\int_0^t I^2R\,dt}\ \xrightarrow{\ I\ \text{constante}\ }\ Q=I^2Rt=UIt=\frac{U^2}{R}t,\qquad P=UI=I^2R=\frac{U^2}{R}.
+\]
+\subsubsection*{Forma diferencial}
+Consideremos un cilindro elemental de longitud $dl$ y sección $dS$ orientado según $\vj$. Su resistencia es $dR=\rho\,dl/dS$ y por él pasa $dI=j\,dS$, así que $dP=dI^2\,dR=\rho j^2\,dl\,dS=\rho j^2\,dV$. La \textbf{potencia por unidad de volumen} (potencia térmica específica) es
+\[
+\boxed{w=\frac{dP}{dV}=\rho j^2=\vj\cdot\vE=\sigma E^2}\qquad[\mathrm{W/m^3}].
+\]
+Es una ley \emph{local}: sirve para conductores no homogéneos y geometrías arbitrarias. Para obtener la potencia total se integra: $P=\int_V\sigma E^2\,dV$.
+
+\begin{idea}[¿Serie o paralelo calienta más?]
+En serie (misma $I$), disipa más la resistencia mayor ($P=I^2R$). En paralelo (misma $U$), disipa más la menor ($P=U^2/R$). En un conductor de sección variable, el tramo más delgado es el que más se calienta: $dP/dx=I^2\rho/A(x)$.
+\end{idea}
+
+\subsubsection*{Balance energético del circuito}
+Multiplicando $\fem=I(R+r)$ por $I$: $\fem I=I^2R+I^2r$. La potencia de las fuerzas extrañas se reparte entre la carga útil y la resistencia interna. El \textbf{rendimiento} es
+\[
+\eta=\frac{P_{\text{útil}}}{P_{\text{total}}}=\frac{I^2R}{\fem I}=\frac{U}{\fem}=\frac{R}{R+r}.
+\]
+
+\subsubsection*{Máxima transferencia de potencia}
+$P(R)=\dfrac{\fem^2R}{(R+r)^2}$. Al derivar e igualar a cero: $\dfrac{dP}{dR}=\fem^2\dfrac{(R+r)-2R}{(R+r)^3}=0\Rightarrow\boxed{R=r}$, con $P_{\max}=\dfrac{\fem^2}{4r}$ y $\eta=50\%$. Máxima potencia y máximo rendimiento son objetivos distintos.
+
+\subsubsection*{Agrupación de fuentes iguales}
+$N$ fuentes $(\fem,r)$ en $k$ filas paralelas de $m$ fuentes en serie ($N=mk$) equivalen a una fuente de fem $m\fem$ y resistencia interna $mr/k$. La corriente $I=\dfrac{m\fem}{R+mr/k}$ es máxima cuando $\dfrac{mr}{k}=R$, es decir, cuando la resistencia interna equivalente es igual a la externa (si $m$ y $k$ no resultan enteros, se comparan los divisores de $N$ más cercanos).
+
+\subsubsection*{Carga de un capacitor a través de una resistencia}
+Al cargar $C$ con una fuente $\fem$ a través de $R$: la fuente entrega $W_\fem=Q\fem=C\fem^2$ y el capacitor almacena $C\fem^2/2$. Por lo tanto se disipa $Q_J=C\fem^2/2$, \emph{independiente de $R$}. La evolución es $q(t)=C\fem\,(1-e^{-t/RC})$ e $I(t)=\dfrac{\fem}{R}e^{-t/RC}$.
+
+%---------------------------------------------------------------------
+\subsection{Formulario de una página}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+Corriente & $I=\dfrac{dq}{dt}=\displaystyle\int_S\vj\cdot d\vec S$, \quad $\vj=nq\vec v_d$\\
+Continuidad & $\oint\vj\cdot d\vec S=-\dfrac{dq}{dt}$, \quad $\nabla\cdot\vj=-\dfrac{\partial\rho_q}{\partial t}$\\
+Ohm local & $\vj=\sigma\vE$, \quad $\sigma=\dfrac{ne^2\tau}{m}=\dfrac1\rho$, \quad $\vj=\sigma(\vE+\vE^*)$\\
+Temperatura & $\rho=\rho_0[1+\alpha(T-T_0)]$\\
+Resistencia & $R=\dfrac{U}{I}=\displaystyle\int\frac{\rho\,dl}{A}$, \quad $RC=\varepsilon\rho$\\
+Tramo no homogéneo & $IR_{12}=\varphi_1-\varphi_2+\fem_{12}$; \quad circuito: $I=\dfrac{\fem}{R+r}$, \ $U=\fem-Ir$\\
+Asociaciones & $R_s=\sum R_k$, \ $R_p^{-1}=\sum R_k^{-1}$, \ $R_a=\dfrac{R_{ab}R_{ca}}{\Sigma}$ ($\Delta\to$Y)\\
+Kirchhoff & $\sum I=0$ (nodo), \quad $\sum IR=\sum\fem$ (malla)\\
+Joule--Lenz & $Q=I^2Rt$, \quad $w=\rho j^2=\sigma E^2$, \quad $P=UI$\\
+Potencia & $\eta=\dfrac{R}{R+r}$, \quad $P_{\max}=\dfrac{\fem^2}{4r}$ para $R=r$\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{Los diez errores que más puntos cuestan}
+\begin{enumerate}
+\item No declarar la notación ($\sigma$, $\rho$, $\varepsilon$, $\fem$).
+\item Cambiar el sentido de una corriente que dio negativa y volver a resolver.
+\item Signo de la fem en la malla: se suma si se recorre de $-$ a $+$, sin importar el sentido de la corriente.
+\item Usar $R=\rho L/A$ cuando la sección o la resistividad varían. Hay que integrar.
+\item En corriente radial, usar el área $\pi r^2$ en lugar de $2\pi rH$ o $4\pi r^2$.
+\item Olvidar que en régimen estacionario no pasa corriente por un capacitor.
+\item Confundir fem con tensión en bornes ($U=\fem-Ir$).
+\item Escribir menos ecuaciones independientes que incógnitas, o ecuaciones de malla dependientes.
+\item No verificar con el balance de potencias, una comprobación que toma un minuto.
+\item En redes simétricas, quitar una resistencia sin justificar \emph{por qué} sus extremos son equipotenciales.
+\end{enumerate}
+
+%=====================================================================
+\section*{Referencias}
+\addcontentsline{toc}{section}{Referencias}
+\small
+\begin{itemize}
+\item Young, H. D. y Freedman, R. A. (Sears--Zemansky). \emph{Física universitaria}, vol.~2, caps.~25--26 (corriente, resistencia, fem, circuitos de corriente continua).
+\item Serway, R. A. y Jewett, J. W. \emph{Física para ciencias e ingeniería}, vol.~2, caps.~27--28.
+\item Resnick, R., Halliday, D. y Krane, K. S. \emph{Física}, vol.~2, caps.~32--33.
+\item Alonso, M. y Finn, E. J. \emph{Física}, vol.~2: campos y ondas.
+\item Savéliev, I. V. \emph{Curso de física general}, t.~2 (corriente continua, ley de Joule--Lenz, fuerzas extrañas). \emph{Fuera de tu bibliografía oficial; se cita porque la terminología del profesor coincide con este tipo de textos.}
+\item Irodov, I. E. \emph{Problemas de física general} (sección de corriente continua): muy buena fuente de problemas «estilo profesor».
+\item Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J. y Willingham, D. T. (2013). Improving students' learning with effective learning techniques. \emph{Psychological Science in the Public Interest}, 14(1), 4--58.
+\item Roediger, H. L. y Karpicke, J. D. (2006). Test-enhanced learning. \emph{Psychological Science}, 17(3), 249--255.
+\item Sweller, J. y Cooper, G. A. (1985). The use of worked examples as a substitute for problem solving in learning algebra. \emph{Cognition and Instruction}, 2(1), 59--89.
+\end{itemize}
+\end{document}

@@ -1,0 +1,52 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish,es-noshorthands,es-nodecimaldot,es-tabla]{babel}
+\usepackage[letterpaper,margin=2.2cm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{booktabs,tabularx,array,longtable}
+\usepackage[siunitx]{circuitikz}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,decorations.markings,patterns}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{azul}{RGB}{20,60,120}
+\definecolor{rojo}{RGB}{170,30,30}
+\definecolor{verde}{RGB}{20,110,60}
+\definecolor{gris}{RGB}{90,90,90}
+\definecolor{fondo}{RGB}{244,247,252}
+
+\ctikzset{bipoles/length=1.0cm}
+
+\newcommand{\fem}{\mathcal{E}}
+\newcommand{\vE}{\vec{E}}
+\newcommand{\vj}{\vec{j}}
+\newcommand{\vD}{\vec{D}}
+\newcommand{\dS}{\,d\vec{S}}
+\newcommand{\dl}{\,d\vec{l}}
+\newcommand{\ohm}{\,\Omega}
+\newcommand{\uu}[1]{\,\mathrm{#1}}
+
+\tcbset{
+  base/.style={enhanced,breakable,boxrule=0.6pt,arc=2pt,left=6pt,right=6pt,top=4pt,bottom=4pt,fonttitle=\bfseries},
+}
+\newtcolorbox{idea}[1][Idea clave]{base,colback=fondo,colframe=azul,title=#1}
+\newtcolorbox{alerta}[1][Error frecuente]{base,colback=red!4,colframe=rojo,title=#1}
+\newtcolorbox{metodo}[1][Método]{base,colback=green!4,colframe=verde,title=#1}
+\newtcolorbox{profe}[1][Lo que el profesor espera]{base,colback=yellow!6,colframe=orange!70!black,title=#1}
+
+\setlist{itemsep=2pt,topsep=3pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\small\thepage}

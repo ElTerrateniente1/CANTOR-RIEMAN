@@ -1,0 +1,43 @@
+\documentclass[11pt]{article}
+\input{preambulo}
+\input{circuitos}
+\fancyhead[L]{\small Física II -- Solucionario de los simulacros}
+\fancyhead[R]{\small Material de tutoría}
+
+\newcommand{\sol}[1]{\par\medskip\noindent{\color{azul}\large\bfseries #1}\par\nopagebreak\smallskip}
+\newcommand{\simu}[2]{\newpage\section*{Simulacro #1 -- #2}\addcontentsline{toc}{section}{Simulacro #1 -- #2}}
+\newcommand{\clave}[1]{\begin{profe}[Clave para la nota completa]#1\end{profe}}
+
+\begin{document}
+\begin{center}
+{\LARGE\bfseries Solucionario de los tres simulacros}\\[4pt]
+{\large Tercer parcial de Física II -- Corriente eléctrica continua}
+\end{center}
+
+\begin{alerta}[Úsalo bien]
+No leas una solución antes de haber intentado la pregunta durante al menos 15 minutos. Leer soluciones da una falsa sensación de dominio; lo que fija el aprendizaje es el intento previo (práctica de recuperación). Si te trabas, lee solo la primera línea de la solución y vuelve a intentarlo.
+\end{alerta}
+
+\section*{Rúbrica de calificación (25 puntos por pregunta)}
+\addcontentsline{toc}{section}{Rúbrica}
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}lcX@{}}
+\toprule
+\textbf{Criterio} & \textbf{Puntos} & \textbf{Qué se exige}\\
+\midrule
+Planteamiento físico & 8 & Ley o principio correcto, notación declarada, figura con sistema de referencia, simetría justificada, sentidos de corriente definidos.\\
+Desarrollo matemático & 10 & Pasos completos y justificados; integrales con límites correctos; sistema de Kirchhoff independiente y bien resuelto.\\
+Resultado y verificación & 4 & Resultado enmarcado, unidades SI, cifras razonables y una comprobación (dimensiones, caso límite o balance de potencias).\\
+Claridad & 3 & Orden, letra legible, conclusiones en palabras.\\
+\bottomrule
+\end{tabularx}
+\end{center}
+\textbf{Interpretación}: 90--100: listo para el parcial. 75--89: repasa los errores del registro y pasa al siguiente simulacro. Menos de 75: repite las preguntas falladas dentro de 2 o 3 días antes de avanzar.
+
+\tableofcontents
+
+\input{sol_s1}
+\input{sol_s2}
+\input{sol_s3}
+
+\end{document}

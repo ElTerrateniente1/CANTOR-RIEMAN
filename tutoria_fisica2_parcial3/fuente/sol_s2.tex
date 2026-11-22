@@ -1,0 +1,245 @@
+\simu{2}{nivel del profesor}
+
+%--------------------------------------------------------------
+\subsection*{Grupo I}
+\sol{1.- Ecuación de continuidad}
+\textbf{Principio}: la carga eléctrica se conserva. Sea $q$ la carga dentro de una superficie cerrada fija $S$. Si por $S$ sale una corriente neta $I_{\text{sal}}=\oint_S\vj\cdot d\vec S$, la carga interior disminuye al mismo ritmo:
+\[
+\boxed{\oint_S\vj\cdot d\vec S=-\frac{dq}{dt}}.
+\]
+\textbf{Forma diferencial}: con $q=\int_V\rho_q\,dV$ y el teorema de Gauss--Ostrogradski, $\int_V\big(\nabla\cdot\vj+\partial\rho_q/\partial t\big)dV=0$ para todo volumen $V$; como el volumen es arbitrario, el integrando se anula:
+\[
+\boxed{\nabla\cdot\vj+\frac{\partial\rho_q}{\partial t}=0}.
+\]
+\textbf{Corriente estacionaria}: la distribución de carga no cambia, $\partial\rho_q/\partial t=0$, así que $\nabla\cdot\vj=0$ y $\oint\vj\cdot d\vec S=0$: las líneas de corriente no tienen principio ni fin (son cerradas).
+
+\textbf{Primera regla de Kirchhoff}: se toma $S$ rodeando un nodo. Solo la cortan los conductores $k$, cada uno con flujo $\pm I_k$, así que $\oint\vj\cdot d\vec S=\sum_k(\pm I_k)=0$.
+
+\sol{2.- Modelo clásico y ley de Ohm diferencial}
+\textbf{Hipótesis}: (i) los electrones de conducción forman un gas de partículas libres; (ii) en cada choque con un ion pierden la velocidad dirigida (la velocidad después del choque tiene dirección aleatoria); (iii) el tiempo medio entre choques es $\tau$, independiente de $E$ para campos moderados.
+
+\textbf{Deducción}: entre choques, $m\,d\vec u/dt=-e\vE$, luego $\vec u(t)=-\dfrac{e\vE}{m}t$, con $t$ el tiempo desde el último choque. Promediando sobre el conjunto de electrones, el tiempo medio transcurrido desde el último choque es $\tau$:
+\[
+\vec v_d=\langle\vec u\rangle=-\frac{e\tau}{m}\vE\ \Longrightarrow\ \vj=-ne\vec v_d=\frac{ne^2\tau}{m}\vE\equiv\sigma\vE,\qquad\boxed{\sigma=\frac{ne^2\tau}{m}}.
+\]
+(Si se supone que todos los electrones tienen el mismo tiempo libre $\tau_0$, la velocidad media es la mitad de la máxima y resulta $\sigma=ne^2\tau_0/2m$. La ley es la misma, solo cambia el factor numérico; usa el convenio de tu profesor.)
+
+\textbf{Temperatura}: $n$ es prácticamente constante en un metal. Al subir $T$ aumentan las vibraciones de la red, los choques son más frecuentes, $\tau$ disminuye, $\sigma$ disminuye y $\rho=1/\sigma$ aumenta.
+
+\sol{3.- Fuerzas extrañas y ley de Ohm generalizada}
+\textbf{Fuerzas extrañas}: fuerzas de origen no electrostático (químicas, magnéticas, térmicas, etc.) que actúan sobre los portadores dentro de una fuente y los llevan en contra del campo electrostático. Se describen con el campo $\vE^*=\vec F^*/q$.
+
+\textbf{Fem}: $\fem_{12}=\dfrac{A^*_{12}}{q}=\displaystyle\int_1^2\vE^*\cdot d\vec l$.
+
+\textbf{Ley de Ohm generalizada (forma diferencial)}: la fuerza total por unidad de carga es $\vE+\vE^*$, así que $\vj=\sigma(\vE+\vE^*)$.
+
+\textbf{Tramo no homogéneo}: despejamos $\vE+\vE^*=\rho\vj$ e integramos a lo largo de un conductor delgado de sección $A$ desde 1 hasta 2, con $\vj\parallel d\vec l$ y $j=I/A$:
+\[
+\int_1^2\vE\cdot d\vec l+\int_1^2\vE^*\cdot d\vec l=I\int_1^2\frac{\rho\,dl}{A}
+\ \Longrightarrow\ (\varphi_1-\varphi_2)+\fem_{12}=IR_{12}.
+\]
+\[
+\boxed{IR_{12}=\varphi_1-\varphi_2+\fem_{12}}
+\]
+
+\sol{4.- Imposibilidad de una corriente estacionaria solo electrostática}
+Supongamos que en un circuito cerrado $L$ solo actúa el campo electrostático. Entonces $\vj=\sigma\vE$. Recorremos $L$ siguiendo una línea de corriente, de modo que $\vj\parallel d\vec l$ y $\vj\cdot d\vec l=j\,dl>0$:
+\[
+\oint_L\vE\cdot d\vec l=\oint_L\frac{\vj\cdot d\vec l}{\sigma}=\oint_L\rho j\,dl>0.
+\]
+Pero el campo electrostático es conservativo: $\oint_L\vE\cdot d\vec l=0$ (segundo teorema electrostático fundamental). La contradicción demuestra que $j=0$: \textbf{sin fuerzas extrañas no hay corriente estacionaria}.
+
+\textbf{Interpretación energética}: en el circuito se disipa continuamente la potencia de Joule $I^2R$, pero el campo electrostático no entrega energía neta en un ciclo cerrado. La fuente transforma otra forma de energía en energía eléctrica a razón de $P=\fem I$. Ejemplos: pila o batería (energía química, fuerzas de origen químico), generador (fuerza de Lorentz sobre las cargas de un conductor en movimiento, inducción), termopar (difusión térmica de portadores), celda solar (energía de los fotones absorbidos).
+
+\sol{5.- Joule--Lenz diferencial y su integración}
+\textbf{Deducción}: el campo realiza sobre los portadores contenidos en $dV$ la potencia $dP=\sum\vec F\cdot\vec v=(nq\,dV)\vE\cdot\vec v_d=\vj\cdot\vE\,dV$. En régimen estacionario la energía cinética media no aumenta, así que todo ese trabajo se cede a la red como calor:
+\[
+\boxed{w=\vj\cdot\vE=\sigma E^2=\rho j^2}.
+\]
+\textbf{Cilindro homogéneo} (longitud $L$, sección $A$, tensión $U$): $E=U/L$ uniforme, así que
+\[
+P=\int_Vw\,dV=\sigma\frac{U^2}{L^2}AL=\frac{\sigma A}{L}U^2=\frac{U^2}{R}=I^2R.
+\]
+
+%--------------------------------------------------------------
+\subsection*{Grupo II}
+\sol{6.- Cono truncado}
+Eje $x$ desde la base menor; el radio crece linealmente: $r(x)=a+\dfrac{b-a}{L}x$, con $dr=\dfrac{b-a}{L}dx$. Las rebanadas de espesor $dx$ están en serie (aproximación: superficies equipotenciales casi planas, válida si el cono no es muy abierto):
+\[
+R=\int_0^L\frac{\rho\,dx}{\pi r^2}=\frac{\rho L}{\pi(b-a)}\int_a^b\frac{dr}{r^2}=\frac{\rho L}{\pi(b-a)}\Big(\frac1a-\frac1b\Big)=\boxed{\frac{\rho L}{\pi ab}}.
+\]
+\textbf{Comprobación}: si $b=a$, $R=\rho L/(\pi a^2)$ \checkmark.
+
+\textbf{Campo}: $E(x)=\rho j=\dfrac{\rho I}{\pi\big(a+\frac{b-a}{L}x\big)^2}$. \textbf{Calor por unidad de longitud}: $\dfrac{dP}{dx}=I^2\dfrac{dR}{dx}=\dfrac{\rho I^2}{\pi r(x)^2}$, máximo en $x=0$ (base menor): el extremo delgado es el que más se calienta.
+
+\sol{7.- Esferas concéntricas}
+Corriente radial; cascarones de espesor $dr$ y área $4\pi r^2$ en serie:
+\[
+R=\int_{R_1}^{R_2}\frac{\rho\,dr}{4\pi r^2}=\boxed{\frac{\rho}{4\pi}\Big(\frac1{R_1}-\frac1{R_2}\Big)=\frac{\rho(R_2-R_1)}{4\pi R_1R_2}},\qquad I=\frac UR=\frac{4\pi R_1R_2\,U}{\rho(R_2-R_1)}.
+\]
+Del valor de $I$, por continuidad (el flujo de $\vj$ es igual a $I$ en cada esfera de radio $r$):
+\[
+\vj(r)=\frac{I}{4\pi r^2}\hat r=\frac{R_1R_2U}{\rho(R_2-R_1)}\frac{\hat r}{r^2},\qquad\vE(r)=\rho\vj=\frac{R_1R_2U}{(R_2-R_1)}\frac{\hat r}{r^2}.
+\]
+\textbf{Comprobación}: $\int_{R_1}^{R_2}E\,dr=U$ \checkmark. El campo es el mismo que en el capacitor esférico electrostático con tensión $U$.
+
+\sol{8.- Fuga en un cable coaxial y $RC=\varepsilon\rho$}
+Cascarones cilíndricos de área $2\pi rH$ en serie:
+\[
+R=\int_{R_1}^{R_2}\frac{\rho\,dr}{2\pi rH}=\boxed{\frac{\rho}{2\pi H}\ln\frac{R_2}{R_1}}.
+\]
+Con la capacitancia del capacitor cilíndrico (parcial 2), $C=\dfrac{2\pi\varepsilon H}{\ln(R_2/R_1)}$:
+\[
+RC=\frac{\rho\ln(R_2/R_1)}{2\pi H}\cdot\frac{2\pi\varepsilon H}{\ln(R_2/R_1)}=\boxed{\varepsilon\rho}.
+\]
+Con tensión $U$: $I=U/R$, $\vj(r)=\dfrac{I}{2\pi rH}\hat r=\dfrac{U}{\rho\,r\ln(R_2/R_1)}\hat r$ y $\vE(r)=\rho\vj=\dfrac{U}{r\ln(R_2/R_1)}\hat r$.
+
+\sol{9.- Resistividad variable y carga en el interior}
+\[
+R=\int_0^L\frac{\rho_0(1+x/L)}{A}dx=\frac{\rho_0}{A}\Big(L+\frac L2\Big)=\boxed{\frac{3\rho_0L}{2A}}.
+\]
+Con $j=I/A$ uniforme (continuidad, sección constante), $E(x)=\rho(x)j=\dfrac{\rho_0I}{A}\Big(1+\dfrac xL\Big)$: el campo \emph{no} es uniforme.
+
+\textbf{Gauss}: si se toma como superficie gaussiana un cilindro de sección $A$ entre $x$ y $x+dx$, el flujo neto es $[E(x+dx)-E(x)]A$, así que $\dfrac{dE}{dx}A\,dx=\dfrac{dq}{\varepsilon_0}$. Por lo tanto
+\[
+\rho_q=\varepsilon_0\frac{dE}{dx}=\boxed{\frac{\varepsilon_0\rho_0I}{AL}}\neq0\quad(\text{uniforme, positiva}).
+\]
+Carga total en el alambre: $\rho_qAL=\varepsilon_0\rho_0I$. Coincide con la fórmula general $\rho_q=\varepsilon_0\vj\cdot\nabla\rho$. \textbf{Conclusión}: en un conductor no homogéneo con corriente aparece carga volumétrica.
+
+\sol{10.- Electrodo semiesférico de puesta a tierra}
+La corriente sale radialmente por semiesferas de área $2\pi r^2$:
+\[
+R=\int_a^\infty\frac{\rho\,dr}{2\pi r^2}=\boxed{\frac{\rho}{2\pi a}}.
+\]
+$j(r)=\dfrac{I}{2\pi r^2}$, $E(r)=\dfrac{\rho I}{2\pi r^2}$, $\varphi(r)=\displaystyle\int_r^\infty E\,dr=\dfrac{\rho I}{2\pi r}$ (con $\varphi(\infty)=0$).
+\[
+U_{\text{paso}}=\varphi(r)-\varphi(r+d)=\frac{\rho I}{2\pi}\Big(\frac1r-\frac1{r+d}\Big)=\boxed{\frac{\rho Id}{2\pi r(r+d)}}.
+\]
+\textbf{Numérico}: $R=\dfrac{100}{2\pi(0.50)}=31.8\ohm$; potencial del electrodo, $\varphi(a)=IR=3.18\uu{kV}$;
+\[
+U_{\text{paso}}=\frac{(100)(100)(0.80)}{2\pi(2.0)(2.8)}=\boxed{227\uu V},
+\]
+peligroso para una persona. (Modelo de suelo homogéneo; los suelos reales son estratificados.)
+
+%--------------------------------------------------------------
+\subsection*{Grupo III}
+\sol{11.- Dos fuentes en paralelo: expresión general}
+Sentidos: $I_1$ e $I_2$ suben por las fuentes hacia $A$; $I_3$ baja por $R_3$.
+
+Nodo $A$: $I_1+I_2=I_3$. Malla 1 ($\fem_1$, $R_1$, $R_3$): $\fem_1=I_1R_1+I_3R_3$. Malla 2 ($\fem_2$, $R_2$, $R_3$): $\fem_2=I_2R_2+I_3R_3$.
+
+Al resolver (por ejemplo, por Cramer) con $D=R_1R_2+R_1R_3+R_2R_3$:
+\[
+\boxed{I_3=\frac{\fem_1R_2+\fem_2R_1}{D}},\quad\boxed{I_1=\frac{\fem_1(R_2+R_3)-\fem_2R_3}{D}},\quad\boxed{I_2=\frac{\fem_2(R_1+R_3)-\fem_1R_3}{D}}.
+\]
+Verificación: $I_1+I_2=(\fem_1R_2+\fem_2R_1)/D=I_3$ \checkmark.
+
+\textbf{$I_2=0$} $\iff\fem_2(R_1+R_3)=\fem_1R_3\iff\boxed{\fem_2=\dfrac{\fem_1R_3}{R_1+R_3}}$. Interpretación: la fem 2 iguala exactamente la tensión que $\fem_1$ establece sobre $R_3$ cuando trabaja sola.
+
+\sol{12.- Tres ramas con tres fuentes}
+\begin{center}\circSdosQdoce\end{center}
+Sentidos: las tres corrientes \emph{hacia arriba} (hacia $A$): $I_1$, $I_2$, $I_3$. Atención: $\fem_3$ tiene el borne positivo hacia $B$.
+
+Nodo $A$: $I_1+I_2+I_3=0$.
+
+Malla izquierda (sube por la rama 1 y baja por la rama 2): $\fem_1-\fem_2=I_1R_1-I_2R_2\Rightarrow4=2I_1-4I_2$.
+
+Malla derecha (sube por la rama 2 y baja por la rama 3; al bajar por $\fem_3$ se pasa de $-$ a $+$): $\fem_2+\fem_3=I_2R_2-I_3R_3\Rightarrow12=4I_2-4I_3$.
+
+Solución: $I_1=2+2I_2$, $I_3=I_2-3$; en el nodo, $4I_2-1=0$:
+\[
+\boxed{I_2=0.25\uu A},\qquad\boxed{I_1=2.50\uu A},\qquad\boxed{I_3=-2.75\uu A}\ (\text{baja }2.75\uu A).
+\]
+$\varphi_A-\varphi_B=\fem_1-I_1R_1=12-5=\boxed{7.0\uu V}$ (también $8-0.25\cdot4=7$ y $-4+2.75\cdot4=7$ \checkmark).
+
+\textbf{¿Quién entrega energía?} $\fem_1$: la corriente sale por su $+$, entrega $30.0\uu W$. $\fem_2$: sale por su $+$, entrega $2.0\uu W$. $\fem_3$: la corriente baja y sale por su $+$ (abajo), entrega $4(2.75)=11.0\uu W$. \textbf{Las tres entregan}; ninguna recibe.
+
+\textbf{Balance}: $30+2+11=43\uu W$; Joule: $2.5^2(2)+0.25^2(4)+2.75^2(4)=12.5+0.25+30.25=43.0\uu W$ \checkmark.
+
+\sol{13.- Escalera infinita de resistencias iguales}
+\begin{center}\circEscalera{$R$}{$R$}\end{center}
+Si se quita la primera celda (la $R$ en serie y la primera $R$ en paralelo), lo que queda a la derecha es otra escalera infinita idéntica, de resistencia $R_\infty$. Por lo tanto la red equivale a $R$ en serie con el paralelo de $R$ y $R_\infty$:
+\[
+R_\infty=R+\frac{R\,R_\infty}{R+R_\infty}\ \Rightarrow\ R_\infty^2-RR_\infty-R^2=0\ \Rightarrow\ \boxed{R_\infty=\frac{1+\sqrt5}{2}R\approx1.618R}
+\]
+(se descarta la raíz negativa, sin sentido físico). Es el número áureo.
+
+\sol{14.- Cubo entre vértices opuestos}
+Entra $I$ por el vértice $A$ y sale por el opuesto $B$. \textbf{Simetría}: las tres aristas que salen de $A$ son equivalentes (una rotación de $120^\circ$ en torno a la diagonal $AB$ las intercambia), así que cada una lleva $I/3$. Los tres vértices vecinos de $A$ están al mismo potencial; de cada uno salen dos aristas equivalentes con $I/6$ cada una (6 aristas intermedias). Las tres aristas que llegan a $B$ llevan $I/3$.
+
+Por el camino $A\to$ vecino $\to$ segundo vecino $\to B$:
+\[
+U=\frac I3R+\frac I6R+\frac I3R=\frac56IR\ \Rightarrow\ \boxed{R_{eq}=\frac56R}.
+\]
+
+\sol{15.- Transformación triángulo--estrella y puente asimétrico}
+\textbf{Deducción}: el triángulo ($R_{ab},R_{bc},R_{ca}$) y la estrella ($R_a,R_b,R_c$) son equivalentes si la resistencia entre cada par de terminales, con el tercero libre, es la misma. Con $\Sigma=R_{ab}+R_{bc}+R_{ca}$:
+\[
+R_a+R_b=\frac{R_{ab}(R_{bc}+R_{ca})}{\Sigma},\quad R_b+R_c=\frac{R_{bc}(R_{ab}+R_{ca})}{\Sigma},\quad R_c+R_a=\frac{R_{ca}(R_{ab}+R_{bc})}{\Sigma}.
+\]
+Sumando la 1.ª y la 3.ª y restando la 2.ª: $2R_a=\dfrac{2R_{ab}R_{ca}}{\Sigma}$, luego $\boxed{R_a=\dfrac{R_{ab}R_{ca}}{\Sigma}}$, y análogamente $R_b=\dfrac{R_{ab}R_{bc}}{\Sigma}$ y $R_c=\dfrac{R_{bc}R_{ca}}{\Sigma}$.
+
+\textbf{Aplicación}: el triángulo $a$--$c$--$d$ ($R_{ac}=1$, $R_{cd}=1$, $R_{da}=2$, $\Sigma=4\ohm$) se transforma en una estrella de centro $O$:
+\[
+R_{aO}=\frac{1\cdot2}{4}=0.5\ohm,\quad R_{cO}=\frac{1\cdot1}{4}=0.25\ohm,\quad R_{dO}=\frac{2\cdot1}{4}=0.5\ohm.
+\]
+Entonces $R_{ab}=0.5+\big[(0.25+2)\,\|\,(0.5+1)\big]=0.5+\dfrac{2.25\cdot1.5}{3.75}=0.5+0.9=\boxed{1.4\ohm}$.
+
+\textbf{Verificación por nodos} ($\varphi_a=U$, $\varphi_b=0$; por antisimetría, $\varphi_d=U-\varphi_c$): el nodo $c$ da $\varphi_c=4U/7$; la corriente total es $3U/7+2U/7=5U/7$, así que $R=7/5=1.4\ohm$ \checkmark.
+
+%--------------------------------------------------------------
+\subsection*{Grupo IV}
+\sol{16.- Agrupación óptima de fuentes}
+Cada fila equivale a una fuente $(m\fem,\,mr)$; $k$ filas iguales en paralelo equivalen a $(m\fem,\,mr/k)$:
+\[
+I=\frac{m\fem}{R+mr/k}=\frac{m\fem}{R+m^2r/N}\quad(k=N/m).
+\]
+\[
+\frac{dI}{dm}=\fem\frac{(R+m^2r/N)-m(2mr/N)}{(R+m^2r/N)^2}=0\ \Rightarrow\ R=\frac{m^2r}{N}=\boxed{\frac{mr}{k}=R}.
+\]
+La corriente es máxima cuando la resistencia interna de la batería equivalente es igual a la externa. En ese caso $m=\sqrt{NR/r}$ e $I_{\max}=\dfrac{\fem}{2}\sqrt{\dfrac{N}{rR}}$. (Si $m$ no resulta entero o no divide a $N$, se comparan los divisores de $N$ más cercanos.)
+
+\sol{17.- Potencia disipada entre esferas concéntricas}
+Del problema 7: $j(r)=\dfrac{I}{4\pi r^2}$, así que
+\[
+w(r)=\rho j^2=\frac{\rho I^2}{16\pi^2r^4}.
+\]
+Integrando en cascarones de volumen $dV=4\pi r^2dr$:
+\[
+P=\int_{R_1}^{R_2}\frac{\rho I^2}{16\pi^2r^4}4\pi r^2dr=\frac{\rho I^2}{4\pi}\Big(\frac1{R_1}-\frac1{R_2}\Big)=I^2R=\boxed{\frac{U^2}{R}}.
+\]
+$w\propto r^{-4}$: el calor se concentra junto a la esfera interior ($r=R_1$).
+
+\sol{18.- Interruptor en un puente}
+\begin{center}\circInterruptor\end{center}
+\textbf{$K$ abierto}: dos ramas de $3R$ en paralelo: $R_{ab}=\dfrac{3R}{2}$.
+
+\textbf{$K$ cerrado}: $c$ y $d$ forman un solo nodo: $R_{ab}=(R\|2R)+(2R\|R)=\dfrac{2R}{3}+\dfrac{2R}{3}=\dfrac{4R}{3}$.
+
+\[
+\Delta R=\frac{4R}{3}-\frac{3R}{2}=\boxed{-\frac R6}\quad(\text{disminuye en }R/6).
+\]
+\textbf{Corriente por $K$} ($\varphi_a=U$, $\varphi_b=0$): las dos mitades valen $2R/3$, así que $\varphi_c=\varphi_d=U/2$. Llega a $c$ desde $a$: $(U/2)/R=U/2R$; sale de $c$ hacia $b$: $(U/2)/2R=U/4R$. Por la regla de nodos en $c$:
+\[
+I_K=\frac{U}{2R}-\frac{U}{4R}=\boxed{\frac{U}{4R}}\quad\text{de }c\text{ hacia }d.
+\]
+
+\sol{19.- Capacitores, resistencias e interruptor}
+\begin{center}\circSdosQdiecinueve\end{center}
+Potencial de referencia en el riel inferior ($0$); riel superior a $18\uu V$. Por la rama resistiva circula $I=18/9=2.0\uu A$, de modo que $\varphi_c=18-2(3)=12\uu V$.
+
+\textbf{$K$ abierto}: $C_1$ y $C_2$ están en serie y tienen la misma carga: $C_s=\dfrac{2\cdot4}{6}=\dfrac43\uu{\mu F}$, $Q=C_s\fem=24\uu{\mu C}$. $U_1=12\uu V$, $U_2=6\uu V$, $\varphi_d=6\uu V$.
+
+\textbf{$K$ cerrado}: en régimen estacionario no pasa corriente por $K$, así que la corriente por $R_1$ y $R_2$ sigue siendo $2\uu A$ y $\varphi_d=\varphi_c=12\uu V$:
+\[
+U_1=6\uu V\Rightarrow Q_1=\boxed{12\uu{\mu C}},\qquad U_2=12\uu V\Rightarrow Q_2=\boxed{48\uu{\mu C}}.
+\]
+\textbf{Carga por $K$}: el nodo $d$ está formado por la placa inferior de $C_1$ y la superior de $C_2$. Su carga neta pasa de $-24+24=0$ a $-12+48=+36\uu{\mu C}$. Por lo tanto pasan $\boxed{36\uu{\mu C}}$ de $c$ a $d$ a través de $K$.
+
+\sol{20.- Tetraedro}
+\begin{center}\circTetraedro\end{center}
+Entre los vértices $1$ y $2$: la reflexión que deja fijos $1$ y $2$ intercambia $3$ y $4$, así que $\varphi_3=\varphi_4$ y por la arista $3$--$4$ no circula corriente. Quedan tres caminos en paralelo: la arista directa ($R$), $1$--$3$--$2$ ($2R$) y $1$--$4$--$2$ ($2R$):
+\[
+\frac1{R_{eq}}=\frac1R+\frac1{2R}+\frac1{2R}=\frac2R\ \Rightarrow\ \boxed{R_{eq}=\frac R2}.
+\]
+Quitar la arista $3$--$4$ \textbf{no cambia nada}, porque por ella no pasaba corriente. Es un puente de Wheatstone equilibrado.

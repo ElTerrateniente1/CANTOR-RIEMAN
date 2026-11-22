@@ -1,0 +1,181 @@
+\documentclass[11pt]{article}
+\input{preambulo}
+\input{circuitos}
+\fancyhead[L]{\small Física II -- Simulacros del tercer parcial}
+\fancyhead[R]{\small Material de tutoría (no es un examen oficial)}
+
+\newcommand{\cabecera}[3]{%
+\begin{center}
+{\Large\bfseries SIMULACRO N.\textordmasculine\ #1}\\[2pt]
+{\large Tercer examen parcial de Física II -- formato del profesor}\\[2pt]
+{\normalsize Nivel: #2}
+\end{center}
+\noindent\rule{\linewidth}{0.6pt}\\
+{\small De las 20 preguntas propuestas, resuelva \textbf{únicamente 4}: cada 5 preguntas consecutivas forman un grupo; escoja \textbf{una pregunta de cada grupo}. Resuelva a mano, con letra muy clara y comprensible, declarando la notación que use. Tiempo sugerido: #3. Puntaje: 25 puntos por pregunta.}\\
+\noindent\rule{\linewidth}{0.6pt}\\[2pt]
+Apellidos y nombres: \rule{6.5cm}{0.4pt}\hfill Fecha: \rule{3cm}{0.4pt}\par\medskip}
+
+\newcommand{\grupo}[1]{\par\medskip{\color{azul}\bfseries Grupo #1}\par\smallskip}
+\newcommand{\p}[1]{\par\smallskip\textbf{#1.-} }
+
+\begin{document}
+
+%=====================================================================
+\cabecera{1}{confianza (más fácil que el parcial)}{100 minutos}
+
+\grupo{I}
+\p{1} ¿A qué se denomina corriente eléctrica e intensidad de corriente? Defina el vector densidad de corriente $\vj$ y demuestre que la intensidad a través de una superficie cualquiera $S$ es igual al flujo de $\vj$ a través de ella. Indique unidades y el sentido convencional de la corriente.
+
+\p{2} Deduzca la relación entre el vector densidad de corriente y la velocidad de deriva de los portadores, $\vj=nq\vec v_d$. Un alambre de cobre de $2.00\uu{mm}$ de diámetro transporta una corriente de $3.00\uu{A}$. Si hay $n=8.50\times10^{28}$ electrones libres por $\mathrm{m^3}$, calcule $j$ y $v_d$. ¿Cuánto tarda en promedio un electrón en avanzar $1.00\uu{m}$ por el alambre?
+
+\p{3} ¿A qué se denominan conductividad y resistividad de un material? ¿Cómo y por qué varía la resistividad de un metal con la temperatura? Un alambre de cobre tiene una resistencia de $10.0\ohm$ a $20.0\,^\circ\mathrm{C}$ ($\alpha=3.90\times10^{-3}\uu{^\circ C^{-1}}$). Calcule su resistencia a $80.0\,^\circ\mathrm{C}$ y la temperatura a la que su resistencia vale $12.0\ohm$.
+
+\p{4} Enuncie la ley de Ohm en forma diferencial. A partir de ella, deduzca la ley de Ohm en forma integral, $I=U/R$, y la expresión $R=\rho L/A$ para un conductor cilíndrico homogéneo de longitud $L$ y sección $A$.
+
+\p{5} ¿A qué se denomina fuerza electromotriz $\fem$ de una fuente? Explique la diferencia entre fem, diferencia de potencial y caída de tensión. Deduzca la ley de Ohm para un circuito cerrado, $I=\fem/(R+r)$, y la tensión entre los bornes de la fuente.
+
+\grupo{II}
+\p{6} Un alambre de nicrom ($\rho=1.10\times10^{-6}\ohm\cdot\mathrm{m}$) de $2.00\uu{m}$ de longitud y $0.500\uu{mm}$ de diámetro se conecta a una diferencia de potencial de $12.0\uu{V}$. Calcule su resistencia, la intensidad de corriente, el módulo de la densidad de corriente y el módulo del campo eléctrico dentro del alambre. Verifique que $E=\rho j$.
+
+\p{7} Una batería de fem $\fem=12.0\uu{V}$ y resistencia interna $r=0.50\ohm$ alimenta una resistencia $R=5.50\ohm$. Calcule la corriente, la tensión entre los bornes de la batería, la potencia que desarrollan las fuerzas extrañas, la potencia disipada en $r$ y en $R$, y el rendimiento de la fuente.
+
+\p{8} Se tienen tres resistencias $R_1=2.0\ohm$, $R_2=3.0\ohm$ y $R_3=6.0\ohm$. Calcule la resistencia equivalente si se conectan (a) en serie, (b) en paralelo y (c) $R_1$ en serie con el paralelo de $R_2$ y $R_3$. En el caso (c), si se aplican $12.0\uu{V}$, calcule la corriente en cada resistencia.
+
+\p{9} Deduzca, a partir de las reglas de Kirchhoff, las expresiones de la resistencia equivalente de $N$ resistencias conectadas en serie y en paralelo. Demuestre que la resistencia equivalente en paralelo es siempre menor que la menor de las resistencias.
+
+\p{10} Un calentador eléctrico tiene una potencia nominal de $1000\uu{W}$ a $120\uu{V}$. Calcule su resistencia, la corriente que consume y la energía (en $\mathrm{kWh}$ y en $\mathrm{J}$) que convierte en calor en $30.0\uu{min}$. Si la tensión de la red baja a $110\uu{V}$, ¿qué potencia desarrolla? Indique qué suposición hace.
+
+\grupo{III}
+\p{11} Enuncie las reglas de Kirchhoff y explique en qué leyes de conservación se fundamenta cada una. Describa el procedimiento para escribir un sistema de ecuaciones independientes en un circuito con $n$ nodos y $m$ ramas.
+
+\p{12} En el circuito de la figura, $\fem_1=12.0\uu{V}$, $\fem_2=6.0\uu{V}$, $R_1=2.0\ohm$, $R_2=6.0\ohm$ y $R_3=3.0\ohm$ (fuentes ideales; la placa larga es el borne positivo). Calcule la corriente en cada rama y la diferencia de potencial $\varphi_A-\varphi_B$. Compruebe el balance de potencias.
+\begin{center}\circSunoQdoce\end{center}
+
+\p{13} Deduzca la condición de equilibrio del puente de Wheatstone. En un puente equilibrado, $R_1=100\ohm$ (rama $a$--$c$), $R_2=150\ohm$ ($c$--$b$) y $R_3=200\ohm$ ($a$--$d$). Calcule la resistencia desconocida $R_x$ conectada entre $d$ y $b$.
+
+\p{14} Un galvanómetro de resistencia interna $R_g=50.0\ohm$ alcanza su máxima deflexión con $I_g=1.00\uu{mA}$. Usando las reglas de Kirchhoff, calcule qué resistencia hay que conectar, y cómo, para convertirlo en (a) un amperímetro de $2.00\uu{A}$ de fondo de escala y (b) un voltímetro de $10.0\uu{V}$ de fondo de escala.
+
+\p{15} Cinco resistencias iguales $R$ se conectan como en la figura. Calcule la resistencia equivalente entre $a$ y $b$. ¿Cambia el resultado si la resistencia entre $c$ y $d$ se sustituye por un cable de resistencia nula? Justifique.
+\begin{center}\circPuente{$R$}{$R$}{$R$}{$R$}{$R$}\end{center}
+
+\grupo{IV}
+\p{16} Enuncie y deduzca la ley de Joule--Lenz en forma integral y en forma diferencial. ¿Qué representa físicamente la magnitud $w=\sigma E^2$?
+
+\p{17} Una fuente de fem $\fem$ y resistencia interna $r$ alimenta una resistencia variable $R$. Demuestre que la potencia transferida a $R$ es máxima cuando $R=r$ y calcule esa potencia máxima y el rendimiento en ese caso. Aplíquelo para $\fem=9.0\uu{V}$ y $r=1.5\ohm$.
+
+\p{18} Dos bombillas de $60\uu{W}$ y $100\uu{W}$, ambas diseñadas para $120\uu{V}$, se conectan en serie a una red de $120\uu{V}$. ¿Cuál brilla más? Calcule la potencia de cada una. Indique qué suposición hace y si es realista.
+
+\p{19} En el circuito de la figura, $\fem=12.0\uu{V}$, $r=1.0\ohm$, $R_1=3.0\ohm$, $R_2=2.0\ohm$ y $C=10.0\uu{\mu F}$. En régimen estacionario, calcule la corriente, la tensión y la carga del capacitor y su energía. Si luego se desconecta $R_2$, ¿cuál es la nueva carga del capacitor?
+\begin{center}\circSunoQdiecinueve\end{center}
+
+\p{20} Cuatro resistencias iguales $R$ forman un cuadrado $ABCD$ y una quinta resistencia $R$ une los vértices $A$ y $C$. Calcule la resistencia equivalente entre $A$ y $C$ y entre $B$ y $D$.
+\begin{center}\circCuadrado\end{center}
+
+\newpage
+%=====================================================================
+\cabecera{2}{igual al del profesor}{100 minutos}
+
+\grupo{I}
+\p{1} Deduzca la ecuación de continuidad (ley de conservación de la carga eléctrica) en forma integral y diferencial. ¿Qué condición impone en el caso de corrientes estacionarias? Demuestre que de ella se obtiene la primera regla de Kirchhoff.
+
+\p{2} A partir del modelo clásico de los electrones libres en un metal, deduzca la ley de Ohm en forma diferencial, $\vj=\sigma\vE$, y la expresión de la conductividad en función de la concentración de electrones, su carga, su masa y el tiempo medio entre choques. Explique, con el modelo, por qué la resistividad de los metales aumenta con la temperatura.
+
+\p{3} ¿A qué se denominan fuerzas extrañas? Defina la fem como el trabajo de las fuerzas extrañas y deduzca la ley de Ohm generalizada en forma diferencial y, a partir de ella, la ley de Ohm para un tramo no homogéneo de circuito: $IR_{12}=\varphi_1-\varphi_2+\fem_{12}$.
+
+\p{4} Demuestre que en un circuito cerrado no puede mantenerse una corriente estacionaria solo con fuerzas de origen electrostático. ¿Qué papel cumple la fuente de fem desde el punto de vista energético? De ejemplos de fuentes y del tipo de fuerzas extrañas que actúan en cada una.
+
+\p{5} Deduzca la ley de Joule--Lenz en forma diferencial, $w=\vj\cdot\vE=\sigma E^2$. A partir de ella, obtenga la forma integral $P=I^2R$ para un conductor cilíndrico homogéneo.
+
+\grupo{II}
+\p{6} Un conductor de resistividad $\rho$ tiene la forma de un cono truncado de longitud $L$ y radios $a$ y $b$ en sus bases ($b>a$). Calcule su resistencia entre las bases. Si por él circula una corriente $I$, calcule el módulo del campo eléctrico en función de la distancia $x$ a la base menor y diga en qué zona se disipa más calor por unidad de longitud.
+
+\p{7} El espacio entre dos esferas metálicas concéntricas de radios $R_1$ y $R_2$ ($R_1<R_2$) está lleno de un material de resistividad $\rho$. Calcule la resistencia entre las esferas. Si entre ellas se mantiene una diferencia de potencial $U$, calcule la intensidad de corriente y, del valor de esta, los vectores $\vj(r)$ y $\vE(r)$ en un punto del material.
+
+\p{8} Un cable coaxial está formado por dos cilindros conductores de radios $R_1$ y $R_2$ y longitud $H$ ($H\gg R_2$), separados por un aislante imperfecto de permitividad $\varepsilon$ y resistividad $\rho$. Calcule la resistencia de fuga entre los cilindros y, usando la capacitancia del capacitor cilíndrico, demuestre que $RC=\varepsilon\rho$. Si entre los cilindros hay una diferencia de potencial $U$, calcule $\vj(r)$ y $\vE(r)$.
+
+\p{9} Un alambre de longitud $L$ y sección constante $A$ tiene una resistividad que varía según $\rho(x)=\rho_0(1+x/L)$, donde $x$ se mide desde un extremo. Calcule su resistencia. Si circula una corriente $I$ en el sentido de $x$ creciente, calcule $E(x)$ y demuestre, aplicando la ley de Gauss, que en el interior del alambre existe una densidad volumétrica de carga. Calcúlela (tome la permitividad del material igual a $\varepsilon_0$).
+
+\p{10} Un electrodo de puesta a tierra semiesférico de radio $a$ está enterrado con su cara plana al ras del suelo, de resistividad $\rho$. Calcule la resistencia de puesta a tierra (entre el electrodo y un punto muy lejano). Si el electrodo inyecta al suelo una corriente $I$, calcule el potencial en la superficie a una distancia $r$ del centro y la «tensión de paso» entre dos puntos situados a distancias $r$ y $r+d$. Aplíquelo para $\rho=100\ohm\cdot\mathrm{m}$, $a=0.50\uu{m}$, $I=100\uu{A}$, $r=2.0\uu{m}$ y $d=0.80\uu{m}$.
+
+\grupo{III}
+\p{11} Dos fuentes ideales $\fem_1$ y $\fem_2$, con resistencias en serie $R_1$ y $R_2$ respectivamente, se conectan en paralelo (bornes positivos unidos en el nodo $A$) y alimentan una resistencia $R_3$ conectada entre $A$ y $B$. Usando las reglas de Kirchhoff, obtenga la expresión general de la corriente en cada rama. ¿Qué condición deben cumplir los parámetros para que por la fuente $\fem_2$ no circule corriente?
+
+\p{12} En el circuito de la figura, $\fem_1=12.0\uu{V}$, $\fem_2=8.0\uu{V}$, $\fem_3=4.0\uu{V}$ (observe la polaridad de cada fuente: la placa larga es el borne positivo), $R_1=2.0\ohm$, $R_2=4.0\ohm$ y $R_3=4.0\ohm$. Calcule la corriente en cada rama y $\varphi_A-\varphi_B$, e indique qué fuentes entregan energía y cuáles la reciben. Compruebe el balance de potencias.
+\begin{center}\circSdosQdoce\end{center}
+
+\p{13} Calcule la resistencia equivalente entre $a$ y $b$ de la red infinita en escalera de la figura, en la que todas las resistencias valen $R$.
+\begin{center}\circEscalera{$R$}{$R$}\end{center}
+
+\p{14} En cada una de las aristas de un cubo hay una resistencia $R$. Calcule la resistencia equivalente entre dos vértices diametralmente opuestos del cubo. Si por el vértice de entrada ingresa una corriente $I$, ¿qué corriente circula por cada arista?
+
+\p{15} Deduzca las fórmulas de la transformación triángulo--estrella. Úselas para calcular la resistencia equivalente entre $a$ y $b$ del puente de la figura, en el que $R_{ac}=1.0\ohm$, $R_{ad}=2.0\ohm$, $R_{cb}=2.0\ohm$, $R_{db}=1.0\ohm$ y $R_{cd}=1.0\ohm$.
+\begin{center}\circPuente{$1\,\Omega$}{$2\,\Omega$}{$2\,\Omega$}{$1\,\Omega$}{$1\,\Omega$}\end{center}
+
+\grupo{IV}
+\p{16} Se tienen $N$ fuentes iguales, de fem $\fem$ y resistencia interna $r$, agrupadas en $k$ filas paralelas, cada una de $m$ fuentes en serie ($N=mk$), que alimentan una resistencia externa $R$. Calcule la corriente en $R$ y demuestre que es máxima cuando la resistencia interna de la batería equivalente es igual a $R$.
+
+\p{17} Para el sistema de la pregunta 7 (esferas concéntricas con resistividad $\rho$ y diferencia de potencial $U$), calcule la potencia térmica por unidad de volumen $w(r)$ y, integrando sobre el volumen del material, demuestre que la potencia total disipada es $P=U^2/R$. ¿Dónde se disipa más calor por unidad de volumen?
+
+\p{18} En el circuito de la figura, ¿en cuánto cambia la resistencia equivalente entre los puntos $a$ y $b$ si se cierra el interruptor $K$? Si entre $a$ y $b$ se mantiene una diferencia de potencial $U$, ¿qué corriente circula por el interruptor cerrado y en qué sentido?
+\begin{center}\circInterruptor\end{center}
+
+\p{19} En el circuito de la figura, $\fem=18.0\uu{V}$ (fuente ideal), $R_1=3.0\ohm$, $R_2=6.0\ohm$, $C_1=2.0\uu{\mu F}$ y $C_2=4.0\uu{\mu F}$. Calcule la carga de cada capacitor en régimen estacionario con el interruptor $K$ abierto. Luego se cierra $K$: calcule las nuevas cargas y la carga que pasa por el interruptor.
+\begin{center}\circSdosQdiecinueve\end{center}
+
+\p{20} En cada una de las seis aristas de un tetraedro regular hay una resistencia $R$. Calcule la resistencia equivalente entre dos vértices cualesquiera. ¿Cambia el resultado si se quita la resistencia de la arista que une los otros dos vértices? Justifique.
+\begin{center}\circTetraedro\end{center}
+
+\newpage
+%=====================================================================
+\cabecera{3}{superior al del profesor}{110 minutos}
+
+\grupo{I}
+\p{1} Deduzca la ley de Ohm generalizada en forma diferencial, $\vj=\sigma(\vE+\vE^*)$, y a partir de ella la ley de Ohm para un circuito cerrado con una fuente de fem $\fem$ y resistencia interna $r$. Multiplicando por la corriente, interprete energéticamente cada término con la ley de Joule--Lenz y deduzca la expresión del rendimiento de la fuente.
+
+\p{2} Demuestre que en el interior de un conductor homogéneo por el que circula una corriente estacionaria la densidad volumétrica de carga es nula. Demuestre que en un conductor no homogéneo, $\rho=\rho(\vec r)$, aparece una densidad de carga $\rho_q=\varepsilon_0\,\vj\cdot\nabla\rho$. Calcule la densidad superficial de carga que aparece en la superficie de contacto entre dos conductores de resistividades $\rho_1$ y $\rho_2$ cuando la corriente, de densidad $j$, pasa perpendicularmente del primero al segundo.
+
+\p{3} Una corriente estacionaria pasa de un conductor de conductividad $\sigma_1$ a otro de conductividad $\sigma_2$ a través de una superficie plana de separación. Deduzca las condiciones de frontera para las componentes de $\vj$ y $\vE$ y demuestre la «ley de refracción» de las líneas de corriente: $\tan\alpha_1/\tan\alpha_2=\sigma_1/\sigma_2$, donde $\alpha_i$ son los ángulos con la normal.
+
+\p{4} El espacio entre las armaduras de un capacitor de forma arbitraria está lleno de un dieléctrico homogéneo e isótropo de permitividad $\varepsilon$ y resistividad $\rho$. Demuestre que $RC=\varepsilon\rho$, siendo $R$ la resistencia de fuga. Si el capacitor se carga con $q_0$ y se aísla, deduzca la ley de su descarga $q(t)$.
+
+\p{5} Utilizando el modelo clásico de los electrones libres, deduzca la ley de Joule--Lenz en forma diferencial: calcule la energía que un electrón cede a la red en cada choque y, a partir de ella, la potencia por unidad de volumen. Compruebe que el resultado es $w=\sigma E^2$ con la misma $\sigma$ que da la ley de Ohm en ese modelo.
+
+\grupo{II}
+\p{6} El espacio entre dos esferas metálicas concéntricas de radios $R_1$ y $R_2$ está lleno de un medio cuya conductividad varía según $\sigma(r)=\sigma_0R_1/r$. Calcule la resistencia entre las esferas. Si circula una corriente $I$ desde la esfera interior hacia la exterior, calcule $E(r)$ y la densidad volumétrica de carga $\rho_q(r)$ que aparece en el medio (permitividad $\varepsilon_0$), y la carga total acumulada en él.
+
+\p{7} Una placa conductora de espesor $h$ y resistividad $\rho$ tiene la forma de un sector de anillo plano de radios $a$ y $b$ ($a<b$) y ángulo central $\theta_0$. Los dos bordes rectos (radiales) están cubiertos por electrodos de resistencia despreciable. Calcule la resistencia entre esos electrodos (la corriente circula en dirección azimutal).
+
+\p{8} Un capacitor de placas planas paralelas de área $S$ tiene entre sus placas dos capas de materiales con pérdidas: la primera de espesor $d_1$, permitividad $\varepsilon_1$ y resistividad $\rho_1$; la segunda de espesor $d_2$, permitividad $\varepsilon_2$ y resistividad $\rho_2$. Se aplica una diferencia de potencial $U$. En régimen estacionario, calcule la densidad de corriente, el campo eléctrico en cada capa, la densidad superficial de carga libre en las placas y en la superficie de separación de las capas. ¿Qué condición deben cumplir los materiales para que en esa superficie no haya carga libre?
+
+\p{9} Dos electrodos semiesféricos de radio $a$ están enterrados al ras de un suelo de resistividad $\rho$, con sus centros separados una distancia $d\gg a$. Calcule, aproximadamente, la resistencia entre los electrodos. Aplíquelo para $\rho=50\ohm\cdot\mathrm{m}$, $a=0.30\uu{m}$ y $d=20\uu{m}$, y discuta qué parte de la resistencia se concentra cerca de los electrodos.
+
+\p{10} Un capacitor esférico de radios $R_1$ y $R_2$ está lleno de un dieléctrico de permitividad $\varepsilon$ y resistividad $\rho$. Se carga con $q_0$ y se aísla. Calcule la carga en función del tiempo, la corriente de fuga y la cantidad total de calor que se disipa en el dieléctrico durante la descarga completa. Compruebe el resultado por dos caminos: integrando la ley de Joule--Lenz y mediante la conservación de la energía.
+
+\grupo{III}
+\p{11} En el circuito de la figura, $\fem_1=24.0\uu{V}$, $\fem_2=14.0\uu{V}$ (fuentes ideales; la placa larga es el borne positivo), $R_1=2.0\ohm$, $R_2=2.0\ohm$, $R_3=4.0\ohm$, $R_4=1.0\ohm$, $R_5=2.0\ohm$ y $R_6=2.0\ohm$. Usando las reglas de Kirchhoff, calcule la corriente en cada una de las seis ramas y los potenciales de los nodos $A$, $B$ y $C$ respecto de $G$. Compruebe el balance de potencias.
+\begin{center}\circSdosK\end{center}
+
+\p{12} Dos fuentes reales $(\fem_1,r_1)$ y $(\fem_2,r_2)$ conectadas en paralelo (bornes iguales unidos) alimentan una resistencia $R$. Demuestre que el conjunto equivale a una única fuente de fem $\fem_{eq}=\dfrac{\fem_1r_2+\fem_2r_1}{r_1+r_2}$ y resistencia interna $r_{eq}=\dfrac{r_1r_2}{r_1+r_2}$. ¿Qué valor debe tener $R$ para que la segunda fuente no entregue ni reciba corriente?
+
+\p{13} Calcule la resistencia de entrada entre $a$ y $b$ de la escalera infinita de la figura, con resistencias en serie $R$ y en paralelo $2R$. Si entre $a$ y $b$ se aplica una tensión $U_0$, calcule la tensión en el nodo $n$-ésimo de la escalera. Comente una aplicación técnica de esta red.
+\begin{center}\circEscalera{$R$}{$2R$}\end{center}
+
+\p{14} En cada arista de un cubo hay una resistencia $R$. Calcule la resistencia equivalente (a) entre dos vértices de una misma diagonal de cara y (b) entre los dos extremos de una misma arista.
+
+\p{15} Seis resistencias iguales $R$ forman los lados de un hexágono regular y otras seis resistencias $R$ unen cada vértice con el centro $O$ (figura). Calcule la resistencia equivalente (a) entre dos vértices opuestos, $1$ y $4$, y (b) entre el centro $O$ y el vértice $1$.
+\begin{center}\circRueda\end{center}
+
+\grupo{IV}
+\p{16} Se dispone de $24$ pilas iguales, de fem $1.5\uu{V}$ y resistencia interna $0.50\ohm$ cada una, para alimentar una resistencia de $1.5\ohm$. ¿Cómo hay que agruparlas (filas iguales en paralelo de pilas en serie) para obtener la máxima corriente? Calcule esa corriente y la potencia en la resistencia. Discuta por qué la condición teórica de máximo no puede cumplirse exactamente.
+
+\p{17} Un capacitor descargado $C$ se conecta, a través de una resistencia $R$, a una fuente ideal $\fem$. Sin resolver ecuaciones diferenciales, demuestre que el calor disipado en $R$ durante la carga completa es $C\fem^2/2$, independiente de $R$. Luego deduzca $q(t)$ e $I(t)$ y verifique el resultado integrando la ley de Joule--Lenz. Aplíquelo para $C=100\uu{\mu F}$ y $\fem=12.0\uu{V}$.
+
+\p{18} En el circuito de la figura, todas las resistencias valen $R$. ¿En cuánto cambia la resistencia entre $a$ y $b$ si (a) se cierra solo el interruptor $K_1$, que une $c$ con $f$, y (b) se cierran ambos interruptores ($K_2$ une $d$ con $e$)? Los cables de los interruptores se cruzan sin contacto.
+\begin{center}\circInterruptoresDos\end{center}
+
+\p{19} En el circuito de la figura, $\fem_1=20.0\uu{V}$, $\fem_2=8.0\uu{V}$, $\fem_3=5.0\uu{V}$ (fuentes ideales; la placa larga es el borne positivo), $R_1=3.0\ohm$, $R_2=1.0\ohm$ y $C=4.0\uu{\mu F}$. En régimen estacionario, calcule la corriente en cada rama y la carga del capacitor, indicando qué placa queda positiva. Si luego se corta la rama de $\fem_2$, calcule la nueva carga del capacitor y la carga que pasa por $R_1$ durante el proceso.
+\begin{center}\circSdosCap\end{center}
+
+\p{20} Un capacitor cilíndrico de radios $R_1$ y $R_2$ y altura $H$ ($H\gg R_2$) está lleno de dos capas coaxiales de materiales con pérdidas: para $R_1<r<R_0$, permitividad $\varepsilon_1$ y conductividad $\sigma_1$; para $R_0<r<R_2$, permitividad $\varepsilon_2$ y conductividad $\sigma_2$. Entre las armaduras se mantiene una diferencia de potencial $U$. Calcule la corriente de fuga, el vector $\vE(r)$ en cada capa, la carga libre en la superficie de separación $r=R_0$ y la carga de la armadura interior. Calcule también la potencia disipada.
+
+\end{document}

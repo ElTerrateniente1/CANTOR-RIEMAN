@@ -1,3 +1,7 @@
 documento/.fuentes/
 __pycache__/
 presentacion/node_modules/
+*.aux
+*.log
+*.toc
+*.out

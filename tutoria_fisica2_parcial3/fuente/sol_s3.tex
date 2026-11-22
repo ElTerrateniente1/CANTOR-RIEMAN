@@ -1,0 +1,275 @@
+\simu{3}{superior al profesor}
+
+%--------------------------------------------------------------
+\subsection*{Grupo I}
+\sol{1.- Ley de Ohm generalizada y balance energético}
+Sobre un portador actúan la fuerza electrostática $q\vE$ y la extraña $q\vE^*$. Repitiendo el razonamiento del modelo clásico con la fuerza total, se obtiene $\vj=\sigma(\vE+\vE^*)$.
+
+\textbf{Circuito cerrado}: se despeja $\vE+\vE^*=\rho\vj$ y se integra a lo largo de todo el circuito (conductor delgado, $\vj\parallel d\vec l$, $j=I/A$):
+\[
+\underbrace{\oint\vE\cdot d\vec l}_{=0}+\underbrace{\oint\vE^*\cdot d\vec l}_{=\fem}=I\oint\frac{\rho\,dl}{A}=I(R+r)\ \Rightarrow\ \boxed{I=\frac{\fem}{R+r}}.
+\]
+\textbf{Energía}: multiplicando por $I$, $\fem I=I^2R+I^2r$. El término $\fem I$ es la potencia de las fuerzas extrañas (energía no eléctrica que se convierte en eléctrica por segundo). Por la ley de Joule--Lenz, $I^2R$ es el calor que se libera en el circuito externo e $I^2r$ el que se libera dentro de la fuente. El trabajo neto del campo electrostático en un ciclo es nulo: solo transporta la energía desde la fuente hasta la carga.
+\[
+\eta=\frac{I^2R}{\fem I}=\boxed{\frac{R}{R+r}=\frac{U}{\fem}}.
+\]
+
+\sol{2.- Carga en el interior de conductores con corriente}
+\textbf{Homogéneo}: régimen estacionario, $\nabla\cdot\vj=0$; con $\sigma$ constante, $\nabla\cdot\vE=\nabla\cdot\vj/\sigma=0$; por Gauss, $\rho_q=\varepsilon_0\nabla\cdot\vE=0$. Las cargas que crean el campo están en la superficie del conductor y en las fuentes.
+
+\textbf{No homogéneo}: $\vE=\rho\vj$, así que $\nabla\cdot\vE=\nabla\cdot(\rho\vj)=\rho\,\nabla\cdot\vj+\vj\cdot\nabla\rho=\vj\cdot\nabla\rho$. Por lo tanto
+\[
+\boxed{\rho_q=\varepsilon_0\,\vj\cdot\nabla\rho}.
+\]
+\textbf{Interfaz} (corriente normal, de 1 a 2): por continuidad, $j_1=j_2=j$, así que $E_1=\rho_1j$ y $E_2=\rho_2j$. Con un cilindro gaussiano delgado que atraviesa la interfaz, $\varepsilon_0(E_2-E_1)S=\sigma_sS$:
+\[
+\boxed{\sigma_s=\varepsilon_0 j(\rho_2-\rho_1)}.
+\]
+Si los medios tienen permitividades $\varepsilon_1$ y $\varepsilon_2$, la carga \emph{libre} es $\sigma_f=D_2-D_1=j(\varepsilon_2\rho_2-\varepsilon_1\rho_1)$ (ver el problema 8).
+
+\sol{3.- Refracción de las líneas de corriente}
+\textbf{Componente normal de $\vj$}: un cilindro aplanado sobre la interfaz y la continuidad estacionaria, $\oint\vj\cdot d\vec S=0$, dan $j_{1n}=j_{2n}$.
+
+\textbf{Componente tangencial de $\vE$}: un rectángulo estrecho que cruza la interfaz y $\oint\vE\cdot d\vec l=0$ dan $E_{1t}=E_{2t}$, es decir, $j_{1t}/\sigma_1=j_{2t}/\sigma_2$.
+
+Con $\alpha_i$ medidos desde la normal, $\tan\alpha_i=j_{it}/j_{in}$:
+\[
+\frac{\tan\alpha_1}{\tan\alpha_2}=\frac{j_{1t}/j_{1n}}{j_{2t}/j_{2n}}=\frac{j_{1t}}{j_{2t}}=\boxed{\frac{\sigma_1}{\sigma_2}}.
+\]
+\textbf{Consecuencia}: al pasar de un buen conductor a uno malo ($\sigma_1\gg\sigma_2$), las líneas salen casi perpendiculares a la superficie del buen conductor; por eso los electrodos metálicos se comportan como equipotenciales.
+
+\sol{4.- $RC=\varepsilon\rho$ para cualquier geometría y descarga}
+Sea $S$ una superficie cerrada que rodea la armadura positiva, de carga $q$, y que va por dentro del dieléctrico. Corriente de fuga:
+\[
+I=\oint_S\vj\cdot d\vec S=\frac1\rho\oint_S\vE\cdot d\vec S=\frac{1}{\rho\varepsilon}\oint_S\vD\cdot d\vec S=\frac{q}{\varepsilon\rho}
+\]
+(dieléctrico homogéneo: $\vD=\varepsilon\vE$; Gauss para $\vD$: flujo igual a la carga libre). Como $R=U/I$ y $C=q/U$:
+\[
+RC=\frac UI\cdot\frac qU=\frac qI=\boxed{\varepsilon\rho}.
+\]
+\textbf{Descarga} del capacitor aislado: $\dfrac{dq}{dt}=-I=-\dfrac{q}{\varepsilon\rho}\Rightarrow\boxed{q(t)=q_0e^{-t/\varepsilon\rho}}$. La constante de tiempo $\tau=\varepsilon\rho$ depende solo del material, no de la forma ni del tamaño.
+
+\sol{5.- Joule--Lenz desde el modelo clásico}
+\textbf{Modelo de tiempo libre fijo $\tau_0$}: tras cada choque el electrón parte con velocidad dirigida nula y la aumenta linealmente hasta $u_{\max}=eE\tau_0/m$ en el siguiente choque. Velocidad de deriva: $v_d=u_{\max}/2=eE\tau_0/2m$, luego $j=nev_d$ y
+\[
+\sigma=\frac{ne^2\tau_0}{2m}.
+\]
+\textbf{Energía cedida por choque}: la energía cinética del movimiento ordenado ganada en el recorrido libre, $\Delta K=\tfrac12mu_{\max}^2=\dfrac{e^2E^2\tau_0^2}{2m}$, se transfiere a la red en el choque.
+
+\textbf{Potencia por unidad de volumen}: hay $n$ electrones por unidad de volumen y cada uno choca $1/\tau_0$ veces por segundo:
+\[
+w=n\frac{\Delta K}{\tau_0}=\frac{ne^2\tau_0}{2m}E^2=\boxed{\sigma E^2}\quad\text{con la misma }\sigma\text{ de la ley de Ohm.}
+\]
+(Con la estadística de Drude, $\sigma=ne^2\tau/m$ y $\langle\Delta K\rangle=e^2E^2\langle t^2\rangle/2m=e^2E^2\tau^2/m$; de nuevo $w=\sigma E^2$. El modelo es coherente en ambas versiones.)
+
+%--------------------------------------------------------------
+\subsection*{Grupo II}
+\sol{6.- Esferas con conductividad variable}
+\[
+R=\int_{R_1}^{R_2}\frac{dr}{\sigma(r)\,4\pi r^2}=\int_{R_1}^{R_2}\frac{r\,dr}{4\pi\sigma_0R_1r^2}=\boxed{\frac{1}{4\pi\sigma_0R_1}\ln\frac{R_2}{R_1}}.
+\]
+$j=\dfrac{I}{4\pi r^2}$ y $E=\dfrac j\sigma=\boxed{\dfrac{I}{4\pi\sigma_0R_1\,r}}$, que decrece como $1/r$, no como $1/r^2$: debe haber carga en el medio.
+
+\textbf{Gauss en coordenadas esféricas}: $\nabla\cdot\vE=\dfrac1{r^2}\dfrac{d}{dr}(r^2E)=\dfrac1{r^2}\dfrac{I}{4\pi\sigma_0R_1}$, así que
+\[
+\rho_q(r)=\boxed{\frac{\varepsilon_0I}{4\pi\sigma_0R_1\,r^2}},\qquad Q_{\text{medio}}=\int_{R_1}^{R_2}\rho_q4\pi r^2dr=\boxed{\frac{\varepsilon_0I(R_2-R_1)}{\sigma_0R_1}}.
+\]
+\textbf{Comprobación} con $\rho_q=\varepsilon_0\vj\cdot\nabla\rho$: $\rho=r/(\sigma_0R_1)$, $d\rho/dr=1/(\sigma_0R_1)$, así que $\rho_q=\varepsilon_0\dfrac{I}{4\pi r^2}\dfrac{1}{\sigma_0R_1}$ \checkmark.
+
+\sol{7.- Sector de anillo con corriente azimutal}
+Por simetría, el potencial depende solo del ángulo: $\varphi=U\theta/\theta_0$, que cumple la ecuación de Laplace en coordenadas polares. El campo es azimutal: $E=\dfrac1r\dfrac{\partial\varphi}{\partial\theta}=\dfrac{U}{\theta_0r}$.
+
+\textbf{Tiras en paralelo}: la tira de radio $r$, ancho $dr$ y espesor $h$ tiene longitud $\theta_0r$ y está sometida a la tensión completa $U$. Su conductancia es $dG=\dfrac{h\,dr}{\rho\,\theta_0r}$:
+\[
+G=\frac{h}{\rho\theta_0}\int_a^b\frac{dr}{r}=\frac{h}{\rho\theta_0}\ln\frac ba\ \Rightarrow\ \boxed{R=\frac{\rho\,\theta_0}{h\ln(b/a)}}.
+\]
+\textbf{Comprobación}: si $b=a+\Delta$ con $\Delta\ll a$, $\ln(b/a)\approx\Delta/a$ y $R\approx\rho\,\theta_0a/(h\Delta)=\rho L/A$ \checkmark.
+
+\sol{8.- Capacitor plano con dos capas con pérdidas}
+Sentido de la corriente: de la placa 1 (a mayor potencial, en contacto con la capa 1) a la placa 2. Continuidad: la misma $j$ en ambas capas.
+\[
+U=E_1d_1+E_2d_2=j(\rho_1d_1+\rho_2d_2)\ \Rightarrow\ \boxed{j=\frac{U}{\rho_1d_1+\rho_2d_2}},\quad I=jS,\quad E_1=\rho_1j,\quad E_2=\rho_2j.
+\]
+\textbf{Cargas libres} (Gauss para $\vD$, con $D_i=\varepsilon_iE_i$):
+\[
+\sigma_{\text{placa 1}}=+\varepsilon_1\rho_1j,\qquad\sigma_{\text{interfaz}}=D_2-D_1=\boxed{j(\varepsilon_2\rho_2-\varepsilon_1\rho_1)},\qquad\sigma_{\text{placa 2}}=-\varepsilon_2\rho_2j.
+\]
+La suma es cero (el sistema es neutro) \checkmark. \textbf{Sin carga en la interfaz} $\iff\boxed{\varepsilon_1\rho_1=\varepsilon_2\rho_2}$, es decir, cuando ambos materiales tienen el mismo tiempo de relajación $\varepsilon\rho$.
+
+\sol{9.- Dos electrodos semiesféricos}
+Por superposición: el electrodo 1 inyecta $I$ y el 2 la extrae. Para $d\gg a$, cada electrodo es casi equipotencial y el potencial en el suelo es
+\[
+\varphi=\frac{\rho I}{2\pi}\Big(\frac1{r_1}-\frac1{r_2}\Big),\qquad\varphi_1\approx\frac{\rho I}{2\pi}\Big(\frac1a-\frac1d\Big),\qquad\varphi_2\approx-\varphi_1.
+\]
+\[
+R=\frac{\varphi_1-\varphi_2}{I}\approx\boxed{\frac{\rho}{\pi}\Big(\frac1a-\frac1d\Big)}.
+\]
+\textbf{Numérico}: $R\approx\dfrac{50}{\pi}\Big(\dfrac1{0.30}-\dfrac1{20}\Big)=15.9\times3.28=\boxed{52\ohm}$.
+
+\textbf{Discusión}: cada electrodo aporta $\rho/(2\pi a)=26.5\ohm$; el término $-1/d$ solo corrige un $1.5\%$. La resistencia de un electrodo hasta un radio $r$ es $\frac{\rho}{2\pi}\big(\frac1a-\frac1r\big)$, que para $r=10a$ ya es el $90\%$ del total: casi toda la resistencia está en las inmediaciones de los electrodos y apenas depende de la distancia entre ellos.
+
+\sol{10.- Descarga de un capacitor esférico con fuga}
+Por el problema 4, $\tau=\varepsilon\rho$, $q(t)=q_0e^{-t/\varepsilon\rho}$ e $I(t)=\dfrac{q_0}{\varepsilon\rho}e^{-t/\varepsilon\rho}$.
+
+\textbf{Camino 1 (Joule--Lenz)}: $E=\dfrac{q}{4\pi\varepsilon r^2}$, $w=\dfrac{E^2}{\rho}$:
+\[
+P(t)=\int_{R_1}^{R_2}\frac{q^2}{16\pi^2\varepsilon^2\rho r^4}4\pi r^2dr=\frac{q^2}{4\pi\varepsilon^2\rho}\Big(\frac1{R_1}-\frac1{R_2}\Big),
+\]
+\[
+Q_J=\int_0^\infty P\,dt=\frac{1}{4\pi\varepsilon^2\rho}\Big(\frac1{R_1}-\frac1{R_2}\Big)q_0^2\frac{\varepsilon\rho}{2}=\boxed{\frac{q_0^2}{8\pi\varepsilon}\Big(\frac1{R_1}-\frac1{R_2}\Big)}.
+\]
+\textbf{Camino 2 (energía)}: $C=\dfrac{4\pi\varepsilon R_1R_2}{R_2-R_1}$, así que $\dfrac{q_0^2}{2C}=\dfrac{q_0^2(R_2-R_1)}{8\pi\varepsilon R_1R_2}$, el mismo valor \checkmark. Toda la energía almacenada termina como calor en el dieléctrico.
+
+%--------------------------------------------------------------
+\subsection*{Grupo III}
+\sol{11.- Circuito de cuatro nodos y seis ramas}
+\begin{center}\circSdosK\end{center}
+\textbf{Corrientes}: $I_1$ ($G\to A$ por $\fem_1$), $I_2$ ($A\to B$), $I_3$ ($A\to C$), $I_4$ ($C\to B$), $I_5$ ($B\to G$), $I_6$ ($G\to C$ por $\fem_2$). Con $n=4$ y $m=6$: 3 ecuaciones de nodo y $6-4+1=3$ de malla.
+
+\textbf{Nodos}: $A$: $I_1=I_2+I_3$; \ $B$: $I_2+I_4=I_5$; \ $C$: $I_3+I_6=I_4$.
+
+\textbf{Mallas} (ventanas):
+\begin{itemize}
+\item $G\!-\!A\!-\!C\!-\!G$: $24-2I_1-4I_3+2I_6-14=0\Rightarrow2I_1+4I_3-2I_6=10$.
+\item $A\!-\!B\!-\!C\!-\!A$: $-2I_2+I_4+4I_3=0$.
+\item $C\!-\!B\!-\!G\!-\!C$: $-I_4-2I_5+14-2I_6=0\Rightarrow I_4+2I_5+2I_6=14$.
+\end{itemize}
+\textbf{Resolución eficiente (potenciales de nodo, equivalente a lo anterior)}: con $\varphi_G=0$,
+\[
+\begin{aligned}
+A:&\ \tfrac{\varphi_A-24}{2}+\tfrac{\varphi_A-\varphi_B}{2}+\tfrac{\varphi_A-\varphi_C}{4}=0\ \Rightarrow\ 5\varphi_A-2\varphi_B-\varphi_C=48\\
+B:&\ \tfrac{\varphi_B-\varphi_A}{2}+\tfrac{\varphi_B-\varphi_C}{1}+\tfrac{\varphi_B}{2}=0\ \Rightarrow\ -\varphi_A+4\varphi_B-2\varphi_C=0\\
+C:&\ \tfrac{\varphi_C-\varphi_A}{4}+\tfrac{\varphi_C-\varphi_B}{1}+\tfrac{\varphi_C-14}{2}=0\ \Rightarrow\ -\varphi_A-4\varphi_B+7\varphi_C=28
+\end{aligned}
+\]
+\[
+\boxed{\varphi_A=16\uu V,\quad\varphi_B=10\uu V,\quad\varphi_C=12\uu V.}
+\]
+\textbf{Corrientes}: $I_1=\frac{24-16}{2}=4\uu A$; $I_2=\frac{6}{2}=3\uu A$; $I_3=\frac44=1\uu A$; $I_4=\frac21=2\uu A$; $I_5=\frac{10}{2}=5\uu A$; $I_6=\frac{14-12}{2}=1\uu A$. Todas positivas: los sentidos supuestos eran los reales. Las tres ecuaciones de malla se cumplen: $8+4-2=10$, $-6+2+4=0$, $2+10+2=14$ \checkmark.
+
+\textbf{Balance}: fuentes: $24(4)+14(1)=110\uu W$. Joule: $32+18+4+4+50+2=110\uu W$ \checkmark.
+
+\sol{12.- Dos fuentes reales en paralelo (teorema de Thévenin)}
+Sea $U$ la tensión común sobre $R$. Nodo superior: $\dfrac{\fem_1-U}{r_1}+\dfrac{\fem_2-U}{r_2}=\dfrac UR$, es decir,
+\[
+U\Big(\frac1{r_1}+\frac1{r_2}+\frac1R\Big)=\frac{\fem_1}{r_1}+\frac{\fem_2}{r_2}.
+\]
+Para una única fuente $(\fem_{eq},r_{eq})$: $U\Big(\dfrac1{r_{eq}}+\dfrac1R\Big)=\dfrac{\fem_{eq}}{r_{eq}}$. Como debe valer para todo $R$, se identifican los coeficientes:
+\[
+\frac1{r_{eq}}=\frac1{r_1}+\frac1{r_2}\Rightarrow\boxed{r_{eq}=\frac{r_1r_2}{r_1+r_2}},\qquad\fem_{eq}=r_{eq}\Big(\frac{\fem_1}{r_1}+\frac{\fem_2}{r_2}\Big)=\boxed{\frac{\fem_1r_2+\fem_2r_1}{r_1+r_2}}.
+\]
+\textbf{$I_2=0$}: $U=\fem_2$, y la fuente 1 alimenta sola a $R$: $\fem_2=\dfrac{\fem_1R}{R+r_1}\Rightarrow\boxed{R=\dfrac{\fem_2r_1}{\fem_1-\fem_2}}$ (solo es posible si $\fem_1>\fem_2$).
+
+\sol{13.- Escalera R--2R}
+\begin{center}\circEscalera{$R$}{$2R$}\end{center}
+Autosemejanza: $R_\infty=R+\dfrac{2R\,R_\infty}{2R+R_\infty}\Rightarrow R_\infty^2-RR_\infty-2R^2=0\Rightarrow\boxed{R_\infty=2R}$.
+
+\textbf{Tensiones}: desde el nodo 1 hacia la derecha se ve $2R\,\|\,R_\infty=2R\|2R=R$. El nodo 1 es un divisor entre la $R$ en serie y esa $R$: $U_1=U_0/2$. Lo mismo ocurre en cada celda, así que
+\[
+\boxed{U_n=\frac{U_0}{2^n}}.
+\]
+\textbf{Aplicación}: la red R--2R es la base de los convertidores digital--analógico (DAC). Cada bit conmuta una corriente de peso $2^{-n}$ usando solo dos valores de resistencia, fáciles de fabricar con precisión.
+
+\sol{14.- Cubo: diagonal de cara y arista}
+Vértices $(x,y,z)\in\{0,1\}^3$.
+
+\textbf{(a) Diagonal de cara}, entre $A=(0,0,0)$ y $B=(1,1,0)$, con $\varphi_A=U$ y $\varphi_B=0$. La reflexión $x\leftrightarrow y$ fija $A$ y $B$ e intercambia $(1,0,0)\leftrightarrow(0,1,0)$. La simetría $(x,y)\to(1-x,1-y)$ intercambia $A\leftrightarrow B$ y lleva $(1,0,0)\to(0,1,0)$, así que esos dos vértices cumplen $\varphi=U-\varphi$: valen $U/2$. Igual ocurre con $(1,0,1)$ y $(0,1,1)$. Sea $p=\varphi(0,0,1)$; su nodo da $(p-U)+2(p-U/2)=0\Rightarrow p=2U/3$. Corriente que sale de $A$:
+\[
+I=\frac{U/2}{R}+\frac{U/2}{R}+\frac{U/3}{R}=\frac{4U}{3R}\ \Rightarrow\ \boxed{R_{eq}=\frac34R}.
+\]
+\textbf{(b) Arista}, entre $A=(0,0,0)$ y $B=(1,0,0)$, con $\varphi_A=+V$ y $\varphi_B=-V$. La antisimetría $x\to1-x$ da $\varphi(1,y,z)=-\varphi(0,y,z)$ y la simetría $y\leftrightarrow z$ da $\varphi(0,1,0)=\varphi(0,0,1)=p$; sea $\varphi(0,1,1)=s$.
+Nodo $(0,1,0)$: $(p-V)+(p-(-p))+(p-s)=0\Rightarrow4p-s=V$. Nodo $(0,1,1)$: $2(s-p)+(s-(-s))=0\Rightarrow s=p/2$. Por lo tanto $p=2V/7$.
+\[
+I=\frac{2V}{R}+2\,\frac{V-2V/7}{R}=\frac{24V}{7R},\qquad R_{eq}=\frac{2V}{I}=\boxed{\frac{7}{12}R}.
+\]
+Orden lógico: $R_{\text{arista}}<R_{\text{cara}}<R_{\text{opuestos}}$, es decir, $7/12<3/4<5/6$ \checkmark.
+
+\sol{15.- Rueda hexagonal}
+\begin{center}\circRueda\end{center}
+\textbf{(a) Vértices 1 y 4} ($\varphi_1=+V$, $\varphi_4=-V$). Por antisimetría, $\varphi_O=0$; por la simetría respecto del eje 1--4, $\varphi_2=\varphi_6=a$ y $\varphi_3=\varphi_5=-a$. Nodo 2 (vecinos 1, 3 y $O$): $(a-V)+(a+a)+(a-0)=0\Rightarrow a=V/4$.
+\[
+I=2\frac{V-V/4}{R}+\frac{V}{R}=\frac{5V}{2R},\qquad R_{14}=\frac{2V}{I}=\boxed{\frac45R}.
+\]
+\textbf{(b) Centro $O$ y vértice 1} ($\varphi_O=U$, $\varphi_1=0$). Por la simetría respecto del eje $O$--1: $\varphi_2=\varphi_6=x$, $\varphi_3=\varphi_5=y$, $\varphi_4=z$.
+\[
+\begin{aligned}
+\text{nodo 2: }& x+(x-y)+(x-U)=0\Rightarrow3x-y=U\\
+\text{nodo 3: }& (y-x)+(y-z)+(y-U)=0\Rightarrow3y-x-z=U\\
+\text{nodo 4: }& 2(z-y)+(z-U)=0\Rightarrow3z-2y=U
+\end{aligned}
+\quad\Rightarrow\quad x=\frac{11}{18}U,\ y=\frac56U,\ z=\frac89U.
+\]
+Corriente que llega a 1: $\dfrac UR+2\dfrac xR=\dfrac{20U}{9R}$, así que $\boxed{R_{O1}=\dfrac{9}{20}R}$.
+
+%--------------------------------------------------------------
+\subsection*{Grupo IV}
+\sol{16.- 24 pilas: agrupación óptima}
+Condición teórica: $mr/k=R$ con $mk=24$, es decir, $m^2=\dfrac{NR}{r}=\dfrac{24(1.5)}{0.50}=72$, $m=8.49$: no es entero ni divide a 24. Se comparan los divisores de 24:
+\begin{center}
+\begin{tabular}{lccccc}
+\toprule
+$m\times k$ & $4\times6$ & $6\times4$ & $8\times3$ & $12\times2$ & $24\times1$\\
+\midrule
+$I=\dfrac{1.5m}{1.5+0.5m/k}$ (A) & 3.27 & 4.00 & \textbf{4.24} & 4.00 & 2.67\\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Óptimo}: 3 filas de 8 pilas en serie. $\fem_{eq}=12\uu V$, $r_{eq}=8(0.5)/3=1.33\ohm$:
+\[
+I=\frac{12}{1.5+1.333}=\boxed{4.24\uu A},\qquad P_R=I^2R=\boxed{26.9\uu W}.
+\]
+La condición $r_{eq}=R$ no se cumple exactamente porque $m$ y $k$ deben ser enteros con $mk=N$; el máximo real es el divisor más cercano al valor teórico.
+
+\sol{17.- Carga de un capacitor a través de una resistencia}
+\textbf{Sin ecuaciones diferenciales}: la fuente ideal mueve la carga final $Q=C\fem$ a través de su fem constante, así que realiza el trabajo $W_\fem=Q\fem=C\fem^2$. El capacitor almacena $W_C=\tfrac12C\fem^2$. No hay otras formas de energía (sin radiación ni inductancia), por lo tanto
+\[
+Q_J=W_\fem-W_C=\boxed{\tfrac12C\fem^2},\quad\text{independiente de }R.
+\]
+\textbf{Evolución}: malla, $\fem=IR+q/C$ con $I=dq/dt$, es decir, $\dfrac{dq}{C\fem-q}=\dfrac{dt}{RC}$. Con $q(0)=0$:
+\[
+q(t)=C\fem\big(1-e^{-t/RC}\big),\qquad I(t)=\frac{\fem}{R}e^{-t/RC}.
+\]
+\textbf{Verificación}: $\displaystyle\int_0^\infty I^2R\,dt=\frac{\fem^2}{R}\cdot\frac{RC}{2}=\frac12C\fem^2$ \checkmark.
+
+\textbf{Numérico}: $Q=1.20\uu{mC}$; $W_\fem=14.4\uu{mJ}$; $W_C=7.20\uu{mJ}$; $Q_J=7.20\uu{mJ}$. La mitad de la energía entregada se pierde siempre, sea cual sea $R$.
+
+\sol{18.- Dos interruptores cruzados}
+\begin{center}\circInterruptoresDos\end{center}
+\textbf{Ambos abiertos}: $3R\,\|\,3R=\dfrac{3R}{2}$.
+
+\textbf{(a) Solo $K_1$} ($c\equiv f=X$): entre $a$ y $X$, la resistencia $a$--$c$ ($R$) está en paralelo con el camino $a$--$e$--$f$ ($2R$): $\dfrac{2R}{3}$. Entre $X$ y $b$, la resistencia $f$--$b$ ($R$) está en paralelo con $c$--$d$--$b$ ($2R$): $\dfrac{2R}{3}$. En total, $\dfrac{4R}{3}$:
+\[
+\Delta R_a=\frac{4R}{3}-\frac{3R}{2}=\boxed{-\frac R6}.
+\]
+\textbf{(b) $K_1$ y $K_2$} ($X=c\equiv f$, $Y=d\equiv e$): $a$--$X$ ($R$), $a$--$Y$ ($R$), $X$--$b$ ($R$), $Y$--$b$ ($R$), y entre $X$ e $Y$ las resistencias $c$--$d$ y $e$--$f$ en paralelo ($R/2$). La red es simétrica al intercambiar $X\leftrightarrow Y$, así que $\varphi_X=\varphi_Y$ y por $R/2$ no pasa corriente: $R_{ab}=(2R)\|(2R)=R$.
+\[
+\Delta R_b=R-\frac{3R}{2}=\boxed{-\frac R2}.
+\]
+\textbf{Observación}: cerrar $K_2$ después de $K_1$ reduce la resistencia en otros $R/3$.
+
+\sol{19.- Capacitor en una red con fuentes}
+\begin{center}\circSdosCap\end{center}
+\textbf{Régimen estacionario}: por la rama central ($\fem_3$, $C$) no pasa corriente. Por la malla exterior circula $I$ en sentido horario (sube por $\fem_1$ y baja por $\fem_2$):
+\[
+I=\frac{\fem_1-\fem_2}{R_1+R_2}=\frac{12}{4}=\boxed{3.0\uu A},\qquad\varphi_A-\varphi_B=\fem_1-IR_1=20-9=11\uu V\ (=8+3\cdot1\ \checkmark).
+\]
+($\fem_2$ recibe energía: la corriente entra por su borne $+$, a razón de $24\uu W$.)
+
+\textbf{Rama central}: de $B$ a $A$ se sube $\fem_3$ y luego la tensión del capacitor $U_C=\varphi_{\text{placa sup.}}-\varphi_{\text{placa inf.}}$: $11=5+U_C\Rightarrow U_C=6.0\uu V$. Queda positiva la \textbf{placa unida a $A$}, con $Q=CU_C=\boxed{24\uu{\mu C}}$.
+
+\textbf{Se corta la rama de $\fem_2$}: no queda ningún camino cerrado de corriente continua, así que $I=0$, $\varphi_A-\varphi_B=\fem_1=20\uu V$, $U_C=15\uu V$ y $Q'=\boxed{60\uu{\mu C}}$. La carga adicional de la placa superior, $60-24=\boxed{36\uu{\mu C}}$, llega a través de $R_1$ (sube por la rama de $\fem_1$).
+
+\sol{20.- Capacitor cilíndrico con dos capas con pérdidas}
+Resistencia de fuga: dos capas de cascarones en serie, con $dR=\dfrac{dr}{\sigma\,2\pi rH}$:
+\[
+R=\frac{1}{2\pi H}\Big[\frac{\ln(R_0/R_1)}{\sigma_1}+\frac{\ln(R_2/R_0)}{\sigma_2}\Big],\qquad\boxed{I=\frac UR=\frac{2\pi HU}{\frac{1}{\sigma_1}\ln\frac{R_0}{R_1}+\frac{1}{\sigma_2}\ln\frac{R_2}{R_0}}}.
+\]
+Campo: $j(r)=\dfrac{I}{2\pi rH}$ en ambas capas (continuidad), así que
+\[
+\vE_1(r)=\frac{I}{2\pi\sigma_1Hr}\hat r\ (R_1<r<R_0),\qquad\vE_2(r)=\frac{I}{2\pi\sigma_2Hr}\hat r\ (R_0<r<R_2).
+\]
+\textbf{Carga libre en $r=R_0$}: $\sigma_f=D_2-D_1=\varepsilon_2E_2-\varepsilon_1E_1=\boxed{\dfrac{I}{2\pi R_0H}\Big(\dfrac{\varepsilon_2}{\sigma_2}-\dfrac{\varepsilon_1}{\sigma_1}\Big)}$, con carga total $q_{R_0}=I\Big(\dfrac{\varepsilon_2}{\sigma_2}-\dfrac{\varepsilon_1}{\sigma_1}\Big)$.
+
+\textbf{Armadura interior}: $q_1=D_1(R_1)\,2\pi R_1H=\boxed{\dfrac{\varepsilon_1I}{\sigma_1}}$; la exterior tiene $q_2=-\dfrac{\varepsilon_2I}{\sigma_2}$. Comprobación: $q_1+q_{R_0}+q_2=0$ \checkmark. Si $\varepsilon_1/\sigma_1=\varepsilon_2/\sigma_2$, la interfaz queda sin carga (igual que en el problema 8).
+
+\textbf{Potencia disipada}: $P=UI=\boxed{U^2/R}$. También se obtiene integrando $\sigma E^2$ en el volumen de las dos capas.
