@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>AL2-M23-03 Solucionario y rúbrica</title>
+<link rel="stylesheet" href="estilos.css">
+<script src="../node_modules/katex/dist/katex.min.js"></script>
+<script src="../node_modules/katex/dist/contrib/auto-render.min.js"></script>
+<script>
+window.DOC = {
+  codigo: "AL2-M23-03", tipo: "Solucionario y rúbrica",
+  titulo: "Solucionario y rúbrica de calificación",
+  subtitulo: "Soluciones desarrolladas de la Práctica AL2-M23-02 (Forma A), criterios de puntaje parcial, errores frecuentes y respuestas de los 31 ejercicios de la guía",
+  version: "2.0", fecha: "24 de noviembre de 2026",
+  extra: [["Corresponde a", "AL2-M23-02 Práctica de parcial (Forma A) y AL2-M23-01 Guía de estudio"],
+          ["Uso", "Autocorrección del estudiante o calificación por el docente"]],
+  nota: "Las soluciones fueron redactadas y verificadas paso a paso a partir de los teoremas del folleto. Si tu docente usa otra convención (por ejemplo, para la definición de característica o de dominio entero), adapta la rúbrica a ella.",
+};
+</script>
+<script src="comun.js"></script>
+</head>
+<body>
+
+<h2 data-no-indice style="border:none;font-size:18pt;margin-top:0">Índice</h2>
+<div class="indice" data-auto></div>
+
+<!-- ===================================================== USO -->
+<h1 class="capitulo" data-indice="Uso del solucionario"><span class="num">Introducción</span>Uso del solucionario</h1>
+
+<h2>Criterios generales de calificación</h2>
+<ol>
+<li><b>Justificación obligatoria.</b> Una respuesta final correcta sin argumento recibe como máximo el 25 % del puntaje del ítem.</li>
+<li><b>Puntaje parcial.</b> Cada ítem tiene una rúbrica con criterios independientes. Se otorga el puntaje de cada criterio cumplido, aunque la respuesta final sea incorrecta.</li>
+<li><b>Errores de arrastre.</b> Si un error de cálculo temprano se propaga, se penaliza una sola vez, siempre que el razonamiento posterior sea correcto con el valor erróneo.</li>
+<li><b>Métodos alternativos.</b> Cualquier método correcto recibe el puntaje completo. Cuando hay alternativas habituales, se indican en la solución.</li>
+<li><b>Citas.</b> Citar un resultado del folleto por su número o enunciarlo es suficiente. Usar un resultado <i>complementario</i> de la guía sin demostrarlo descuenta hasta 1 punto, salvo que el docente lo haya permitido.</li>
+<li><b>Escala de criterios.</b> En las rúbricas, «completo» significa argumento correcto y explícito; «parcial» significa idea correcta con un paso faltante o mal justificado.</li>
+</ol>
+
+<h2>Clave de respuestas rápida</h2>
+<table>
+<thead><tr><th style="width:9%">Ítem</th><th>Respuesta</th><th style="width:9%">Ítem</th><th>Respuesta</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>V</td><td>11</td><td>8 unidades, 11 divisores de cero</td></tr>
+<tr><td>2</td><td>F (\(\Z\))</td><td>12</td><td>\(\cl5^{-1}=\cl8\), \(\cl9^{-1}=\cl3\), \(x=\cl6\)</td></tr>
+<tr><td>3</td><td>F (\(\cl3\cl5=\cl0\))</td><td>13</td><td>\(12\); \(0\); no existe</td></tr>
+<tr><td>4</td><td>V</td><td>14</td><td>\(\gen{12}\), \(\gen{72}\), \(\gen{864}\); \(x=-1,\ y=1\)</td></tr>
+<tr><td>5</td><td>F</td><td>15</td><td>6 ideales; maximales \(\gen{\cl2}\), \(\gen{\cl3}\)</td></tr>
+<tr><td>6</td><td>F (\(2\) en \(\Z[\sqrt{-3}]\))</td><td>16</td><td>\(\pm1,\pm i\); \(3\) sí; \(5\) no</td></tr>
+<tr><td>7</td><td>F (\(\Z\subseteq\Q\))</td><td>17</td><td>\(\pm1\); demostraciones</td></tr>
+<tr><td>8</td><td>V</td><td>18</td><td>\((1+i)^{-1}=2+i\); \(\car=3\)</td></tr>
+<tr><td>9</td><td>F (\(\{0\}\subseteq\Z\))</td><td>19</td><td>\(\gen2\) no es maximal ni primo; \(\gen{1+i}\) es maximal</td></tr>
+<tr><td>10</td><td>V</td><td>20–22</td><td>Demostraciones</td></tr>
+</tbody></table>
+
+<!-- ===================================================== PARTE I -->
+<h1 class="capitulo" data-indice="Parte I. Verdadero o falso"><span class="num">Parte I · 20 puntos</span>Verdadero o falso con justificación</h1>
+<div class="rubrica"><span class="rotulo">Rúbrica común a los ítems 1–10 (2 pts cada uno)</span>
+<table><tbody>
+<tr><td>Elección V/F correcta.</td><td>1</td></tr>
+<tr><td>Justificación correcta: argumento general (si es V) o contraejemplo concreto y verificado (si es F).</td><td>1</td></tr>
+<tr><td>Justificación parcial: idea correcta sin verificar el contraejemplo, o cita del teorema sin conectar con el enunciado.</td><td>0,5</td></tr>
+</tbody></table>
+<p class="pequeno">Si la elección es incorrecta, la justificación no puntúa.</p></div>
+
+<h2>Ítems 1 a 5</h2>
+<div class="sol"><span class="rotulo">1. «Todo cuerpo es un dominio entero.» · Verdadero</span>
+Proposición 2.2. Si \(F\) es cuerpo, \(a\neq0\) y \(ab=ac\), multiplicando por \(a^{-1}\) se obtiene \(b=c\). Equivalentemente, si \(ab=0\) con \(a\neq0\), entonces \(b=a^{-1}ab=0\).</div>
+<div class="sol"><span class="rotulo">2. «Todo dominio entero es un cuerpo.» · Falso</span>
+\(\Z\) es dominio entero (Ejemplo 2.3) pero no es cuerpo: \(2x=1\) no tiene solución en \(\Z\).</div>
+<div class="sol"><span class="rotulo">3. «\(\Z_{15}\) es un dominio entero.» · Falso</span>
+\(\cl3\cl5=\cl{15}=\cl0\) con \(\cl3,\cl5\neq\cl0\): hay divisores de cero (Teorema 2.6). También: \(15\) no es primo (Corolario 2.12).</div>
+<div class="sol"><span class="rotulo">4. «En \(\Z_n\), todo elemento no nulo es unidad o divisor de cero.» · Verdadero</span>
+Sea \(\cl m\neq\cl0\). Si \(\mcd(m,n)=1\), por Bézout \(mx+ny=1\) y \(\cl m\cl x=\cl1\): es unidad. Si \(\mcd(m,n)\neq1\), es divisor de cero por el Teorema 2.9.</div>
+<div class="sol"><span class="rotulo">5. «Existe un dominio entero de característica 10.» · Falso</span>
+Teorema 2.25: la característica de un DI es \(0\) o un primo. Directamente: si \(\car(D)=10\), entonces \(0=10\cdot1=(2\cdot1)(5\cdot1)\), y como \(D\) no tiene divisores de cero, \(2\cdot1=0\) o \(5\cdot1=0\), contra la minimalidad de \(10\).</div>
+
+<h2>Ítems 6 a 10</h2>
+<div class="sol"><span class="rotulo">6. «En todo DI, todo irreducible es primo.» · Falso</span>
+En \(\Z[\sqrt{-3}]\), \(2\) (o \(1+\sqrt{-3}\), Ejemplo 2.19) es irreducible pero no primo. Para \(2\): no hay elementos de norma 2, y \(2\mid(1+\sqrt{-3})(1-\sqrt{-3})=4\) sin dividir a ninguno de los factores.</div>
+<div class="sol"><span class="rotulo">7. «Todo subanillo de \(R\) es un ideal de \(R\).» · Falso</span>
+\(\Z\) es subanillo de \(\Q\), pero \(\tfrac12\cdot1=\tfrac12\notin\Z\): falla la absorción.</div>
+<div class="sol"><span class="rotulo">8. «Si un ideal \(I\) contiene una unidad, entonces \(I=R\).» · Verdadero</span>
+Si \(u\in I\) es unidad, \(1=u^{-1}u\in I\) por absorción, y por el Lema 3.7, \(I=R\).</div>
+<div class="sol"><span class="rotulo">9. «Todo ideal primo es maximal.» · Falso</span>
+En \(\Z\), \(\{0\}\) es primo porque \(\Z\) es DI (\(ab=0\Rightarrow a=0\) o \(b=0\)), pero no es maximal: \(\{0\}\subsetneq\gen2\subsetneq\Z\).</div>
+<div class="sol"><span class="rotulo">10. «En \(\Z\), \(\gen4\cap\gen6=\gen{12}\).» · Verdadero</span>
+\(k\in\gen4\cap\gen6\iff4\mid k\) y \(6\mid k\iff\mcm(4,6)=12\mid k\iff k\in\gen{12}\).</div>
+<div class="errores"><span class="rotulo">Errores frecuentes en la Parte I</span>
+<ul><li>Ítem 4: responder F pensando en elementos que no son ni unidades ni divisores de cero. En \(\Z_n\) eso no ocurre; en \(\Z\), sí (por ejemplo, \(2\)).</li>
+<li>Ítem 9: dar como contraejemplo un ideal que no es primo (por ejemplo, \(\gen6\)). El contraejemplo debe ser primo <i>y</i> no maximal.</li>
+<li>Ítem 10: confundir \(\gen4\cap\gen6\) con \(\gen4\gen6=\gen{24}\).</li></ul></div>
+
+<!-- ===================================================== PARTE II -->
+<h1 class="capitulo" data-indice="Parte II. Cálculo y respuesta corta"><span class="num">Parte II · 30 puntos</span>Cálculo y respuesta corta</h1>
+
+<h2>Ítem 11 · Unidades y divisores de cero en \(\Z_{20}\)</h2>
+<div class="sol"><span class="rotulo">Solución</span>
+Por §0.4 y el Teorema 2.9, \(\cl m\neq\cl0\) es unidad si \(\mcd(m,20)=1\) y divisor de cero en otro caso. Como \(20=2^2\cdot5\), las unidades son las clases de los \(m\) que no son múltiplos de \(2\) ni de \(5\).
+<p><b>(a)</b> Unidades: \(\cl1,\cl3,\cl7,\cl9,\cl{11},\cl{13},\cl{17},\cl{19}\). Son \(\varphi(20)=8\).</p>
+<p><b>(b)</b> Divisores de cero: \(\cl2,\cl4,\cl5,\cl6,\cl8,\cl{10},\cl{12},\cl{14},\cl{15},\cl{16},\cl{18}\). Son \(19-8=11\).</p>
+<p><b>(c)</b> Con \(d=\mcd(m,20)\), el compañero \(\cl{20/d}\) sirve: para \(\cl6\), \(d=2\) y \(\cl6\cl{10}=\cl{60}=\cl0\). Para \(\cl{15}\), \(d=5\) y \(\cl{15}\cl4=\cl{60}=\cl0\). (Otras respuestas válidas: \(\cl6\cl{10}\), \(\cl{15}\cl{8}=\cl{120}=\cl0\), etc.)</p></div>
+<div class="rubrica"><span class="rotulo">Rúbrica (5 pts)</span><table><tbody>
+<tr><td>(a) Lista correcta de unidades, con el criterio \(\mcd(m,20)=1\). Descontar 0,5 por cada omisión o elemento sobrante.</td><td>2</td></tr>
+<tr><td>(b) Lista correcta de divisores de cero, con el criterio del Teorema 2.9. Descontar 0,5 por cada error.</td><td>2</td></tr>
+<tr><td>(c) Compañeros correctos para \(\cl6\) y \(\cl{15}\), con el producto verificado.</td><td>1</td></tr>
+</tbody></table></div>
+<div class="errores"><span class="rotulo">Errores frecuentes</span><ul><li>Incluir \(\cl0\) entre los divisores de cero: por definición, un divisor de cero es no nulo.</li><li>Olvidar los múltiplos de \(5\) (\(\cl5\), \(\cl{15}\)).</li></ul></div>
+
+<h2>Ítem 12 · Inversos en \(\Z_{13}\)</h2>
+<div class="sol"><span class="rotulo">Solución</span>
+<p><b>(a)</b> \(13\) es primo, así que \(\Z_{13}\) es un cuerpo por el Corolario 2.12.</p>
+<p><b>(b)</b> \(5\cdot8=40=3\cdot13+1\), luego \(\cl5^{-1}=\cl8\). \(9\cdot3=27=2\cdot13+1\), luego \(\cl9^{-1}=\cl3\).</p>
+<p><b>(c)</b> \(\cl5x+\cl3=\cl7\iff\cl5x=\cl4\iff x=\cl5^{-1}\cl4=\cl8\cl4=\cl{32}=\cl6\). Comprobación: \(5\cdot6+3=33=2\cdot13+7\). <span class="respuesta-final">Respuesta: \(x=\cl6\).</span></p></div>
+<div class="rubrica"><span class="rotulo">Rúbrica (5 pts)</span><table><tbody>
+<tr><td>(a) Cita del Corolario 2.12 (o argumento: DI finito \(\Rightarrow\) cuerpo).</td><td>1</td></tr>
+<tr><td>(b) Cada inverso correcto y verificado (1 pt cada uno).</td><td>2</td></tr>
+<tr><td>(c) Despeje usando el inverso de \(\cl5\) (1 pt) y resultado correcto verificado (1 pt).</td><td>2</td></tr>
+</tbody></table></div>
+<div class="errores"><span class="rotulo">Errores frecuentes</span><ul><li>«Dividir» por 5 como en \(\Q\) (\(x=4/5\)): en \(\Z_{13}\) se multiplica por \(\cl5^{-1}\).</li></ul></div>
+
+<h2>Ítem 13 · Característica</h2>
+<div class="sol"><span class="rotulo">Solución</span>
+<p><b>(a)</b> La identidad es \((\cl1,\cl1)\) y \(n\cdot(\cl1,\cl1)=(\cl n_4,\cl n_6)\). Es cero si y solo si \(4\mid n\) y \(6\mid n\), es decir, \(12\mid n\). Por el Teorema 2.23, \(\car(\Z_4\oplus\Z_6)=12\).</p>
+<p><b>(b)</b> \(n\cdot(1,\cl1)=(n,\cl n)\), y su primera componente es \(n\neq0\) para todo \(n\ge1\). Luego \(\car(\Z\oplus\Z_5)=0\).</p>
+<p><b>(c)</b> No. Por el Teorema 2.25, la característica de un DI es \(0\) o un primo, y \(15=3\cdot5\) no es primo. (Argumento directo: \(0=15\cdot1=(3\cdot1)(5\cdot1)\) forzaría \(3\cdot1=0\) o \(5\cdot1=0\).)</p></div>
+<div class="rubrica"><span class="rotulo">Rúbrica (5 pts)</span><table><tbody>
+<tr><td>(a) Resultado \(12\) con el argumento del orden aditivo de \((\cl1,\cl1)\).</td><td>2</td></tr>
+<tr><td>(b) Resultado \(0\) con justificación.</td><td>1,5</td></tr>
+<tr><td>(c) «No», citando el Teorema 2.25 o con el argumento directo.</td><td>1,5</td></tr>
+</tbody></table></div>
+<div class="errores"><span class="rotulo">Errores frecuentes</span><ul><li>Responder \(4\cdot6=24\) en (a): el mínimo es el mcm, no el producto.</li><li>Responder \(5\) en (b), olvidando la componente \(\Z\).</li></ul></div>
+
+<h2>Ítem 14 · Operaciones con ideales de \(\Z\)</h2>
+<div class="sol"><span class="rotulo">Solución</span>
+Con \(24=2^3\cdot3\) y \(36=2^2\cdot3^2\): \(\mcd(24,36)=12\), \(\mcm(24,36)=72\) y \(24\cdot36=864\).
+<p>(a) \(\gen{24}+\gen{36}=\gen{12}\). (b) \(\gen{24}\cap\gen{36}=\gen{72}\). (c) \(\gen{24}\gen{36}=\gen{864}\).</p>
+<p>(d) \(12=36-24=24\cdot(-1)+36\cdot1\). Solución general: \(2x+3y=1\), es decir, \(x=-1+3t\), \(y=1-2t\) con \(t\in\Z\).</p></div>
+<div class="rubrica"><span class="rotulo">Rúbrica (5 pts)</span><table><tbody>
+<tr><td>(a), (b), (c): cada resultado correcto con la regla justificada (mcd / mcm / producto).</td><td>3 × 1</td></tr>
+<tr><td>(d) Combinación de Bézout correcta y verificada.</td><td>2</td></tr>
+</tbody></table></div>
+
+<h2>Ítem 15 · Ideales de \(\Z_{18}\)</h2>
+<div class="sol"><span class="rotulo">Solución</span>
+Los ideales son \(\gen{\cl d}\) con \(d\mid18\): \(d\in\{1,2,3,6,9,18\}\).
+<table><thead><tr><th>Ideal</th><th>Elementos</th><th>Tamaño</th><th>¿Maximal?</th></tr></thead><tbody>
+<tr><td>\(\gen{\cl1}=\Z_{18}\)</td><td>todos</td><td>18</td><td>No (no es propio)</td></tr>
+<tr><td>\(\gen{\cl2}\)</td><td>0, 2, 4, 6, 8, 10, 12, 14, 16</td><td>9</td><td><b>Sí</b></td></tr>
+<tr><td>\(\gen{\cl3}\)</td><td>0, 3, 6, 9, 12, 15</td><td>6</td><td><b>Sí</b></td></tr>
+<tr><td>\(\gen{\cl6}\)</td><td>0, 6, 12</td><td>3</td><td>No: \(\gen{\cl6}\subsetneq\gen{\cl2}\)</td></tr>
+<tr><td>\(\gen{\cl9}\)</td><td>0, 9</td><td>2</td><td>No: \(\gen{\cl9}\subsetneq\gen{\cl3}\)</td></tr>
+<tr><td>\(\gen{\cl0}\)</td><td>0</td><td>1</td><td>No</td></tr>
+</tbody></table>
+<p>Contenciones: \(\gen{\cl d}\subseteq\gen{\cl e}\iff e\mid d\).</p>
+<svg class="diagrama" width="300" height="205" viewBox="0 0 300 205" font-family="DejaVu Sans, sans-serif" font-size="13">
+  <g stroke="#1f3a5f" stroke-width="1.4">
+    <line x1="150" y1="30" x2="85" y2="72"/><line x1="150" y1="30" x2="215" y2="72"/>
+    <line x1="85" y1="96" x2="150" y2="132"/><line x1="215" y1="96" x2="150" y2="132"/><line x1="215" y1="96" x2="245" y2="132"/>
+    <line x1="150" y1="156" x2="150" y2="178"/><line x1="245" y1="156" x2="165" y2="180"/>
+  </g>
+  <g text-anchor="middle">
+    <rect x="105" y="6" width="90" height="24" rx="4" fill="#fff" stroke="#1f3a5f"/><text x="150" y="23">ℤ₁₈ = ⟨1⟩</text>
+    <rect x="55" y="72" width="60" height="24" rx="4" fill="#dff3e6" stroke="#2f855a"/><text x="85" y="89">⟨2⟩</text>
+    <rect x="185" y="72" width="60" height="24" rx="4" fill="#dff3e6" stroke="#2f855a"/><text x="215" y="89">⟨3⟩</text>
+    <rect x="120" y="132" width="60" height="24" rx="4" fill="#fff" stroke="#1f3a5f"/><text x="150" y="149">⟨6⟩</text>
+    <rect x="215" y="132" width="60" height="24" rx="4" fill="#fff" stroke="#1f3a5f"/><text x="245" y="149">⟨9⟩</text>
+    <rect x="120" y="178" width="60" height="24" rx="4" fill="#fff" stroke="#1f3a5f"/><text x="150" y="195">⟨0⟩</text>
+  </g>
+</svg>
+<p><b>Maximales:</b> \(\gen{\cl2}\) y \(\gen{\cl3}\), porque \(2\) y \(3\) son primos (§2.11 de la guía). Alternativa con el Módulo 4: \(\Z_{18}/\gen{\cl2}\cong\Z_2\) y \(\Z_{18}/\gen{\cl3}\cong\Z_3\) son cuerpos.</p></div>
+<div class="rubrica"><span class="rotulo">Rúbrica (5 pts)</span><table><tbody>
+<tr><td>Lista completa de los 6 ideales con sus elementos (descontar 0,5 por cada ideal omitido o mal descrito).</td><td>2</td></tr>
+<tr><td>Diagrama de contenciones correcto.</td><td>1,5</td></tr>
+<tr><td>Maximales correctos (\(\gen{\cl2}\), \(\gen{\cl3}\)) con justificación.</td><td>1,5</td></tr>
+</tbody></table></div>
+<div class="errores"><span class="rotulo">Errores frecuentes</span><ul><li>Considerar maximal a \(\gen{\cl9}\) o a \(\gen{\cl6}\) porque «9 y 6 no tienen muchos divisores»: lo que importa es que \(d\) sea primo.</li><li>Dibujar \(\gen{\cl9}\subseteq\gen{\cl2}\): falso, \(2\nmid9\).</li></ul></div>
+
+<h2>Ítem 16 · Irreducibilidad en \(\Z[i]\)</h2>
+<div class="sol"><span class="rotulo">Solución</span>
+<p><b>(a)</b> \(N(a+bi)=1\iff a^2+b^2=1\iff(a,b)\in\{(\pm1,0),(0,\pm1)\}\). Por la Proposición 2.18(3), las unidades son \(\pm1,\pm i\).</p>
+<p><b>(b)</b> \(3\) es irreducible. \(N(3)=9\neq0,1\). Si \(3=xy\) con \(x,y\) no unidades, \(N(x)N(y)=9\) con ambos factores mayores que \(1\), así que \(N(x)=N(y)=3\). Pero \(a^2+b^2=3\) no tiene soluciones: los cuadrados menores o iguales que 3 son \(0\) y \(1\), y \(0+0,\ 0+1,\ 1+1\neq3\).</p>
+<p><b>(c)</b> \(5\) <b>no</b> es irreducible: \(5=(2+i)(2-i)\), y \(N(2\pm i)=5\neq1\), así que ninguno de los factores es unidad.</p></div>
+<div class="rubrica"><span class="rotulo">Rúbrica (5 pts)</span><table><tbody>
+<tr><td>(a) Las cuatro unidades, con el argumento de la norma.</td><td>1,5</td></tr>
+<tr><td>(b) Reducción a \(N(x)=3\) (1 pt) y prueba de que no hay solución (1 pt).</td><td>2</td></tr>
+<tr><td>(c) Factorización explícita (1 pt) y verificación de que los factores no son unidades (0,5 pt).</td><td>1,5</td></tr>
+</tbody></table></div>
+<div class="errores"><span class="rotulo">Errores frecuentes</span><ul><li>Concluir que \(3\) es reducible porque \(N(3)=9\) no es primo (ver E5 en la guía).</li><li>En (c), no verificar que \(2\pm i\) no son unidades.</li></ul></div>
+
+<!-- ===================================================== PARTE III -->
+<h1 class="capitulo" data-indice="Parte III. Problemas"><span class="num">Parte III · 30 puntos</span>Problemas</h1>
+
+<h2>Ítem 17 · Un irreducible que no es primo en \(\Z[\sqrt{-5}]\)</h2>
+<div class="sol"><span class="rotulo">Solución</span>
+<p><b>(a)</b> \(N(a+b\sqrt{-5})=a^2+5b^2=1\) obliga a \(b=0\) (si no, la norma es al menos 5) y \(a^2=1\). Las unidades son \(\pm1\).</p>
+<p><b>(b)</b> \(2\neq0\) y \(N(2)=4\neq1\), así que \(2\) no es unidad. Supongamos \(2=xy\). Entonces \(N(x)N(y)=4\), y las opciones son \((1,4)\), \((2,2)\), \((4,1)\). El caso \((2,2)\) es imposible: si \(b=0\), \(a^2=2\) no tiene solución entera; si \(b\neq0\), \(a^2+5b^2\ge5\). Luego \(N(x)=1\) o \(N(y)=1\), y \(x\) o \(y\) es unidad. Por tanto \(2\) es irreducible.</p>
+<p><b>(c)</b> \(2\cdot3=6=(1+\sqrt{-5})(1-\sqrt{-5})\), así que \(2\mid(1+\sqrt{-5})(1-\sqrt{-5})\). Si \(2\) fuera primo, dividiría a uno de los factores. Pero si \(1+\sqrt{-5}=2(a+b\sqrt{-5})\), entonces \(2a=1\), imposible en \(\Z\). Análogamente, \(1-\sqrt{-5}=2(a+b\sqrt{-5})\) exige \(2a=1\). Por tanto \(2\) no es primo.</p>
+<p><i>Alternativa para (c) con normas:</i> si \(2\mid 1\pm\sqrt{-5}\), por multiplicatividad \(N(2)=4\) dividiría a \(N(1\pm\sqrt{-5})=6\) en \(\Z\), lo cual es falso.</p></div>
+<div class="rubrica"><span class="rotulo">Rúbrica (10 pts)</span><table><tbody>
+<tr><td>(a) Unidades \(\pm1\) con el argumento de la norma.</td><td>2</td></tr>
+<tr><td>(b) Verifica que \(2\) no es cero ni unidad.</td><td>1</td></tr>
+<tr><td>(b) Reduce a \(N(x)=N(y)=2\) mediante la multiplicatividad.</td><td>1,5</td></tr>
+<tr><td>(b) Prueba que \(a^2+5b^2=2\) no tiene solución y concluye.</td><td>1,5</td></tr>
+<tr><td>(c) Establece \(2\mid(1+\sqrt{-5})(1-\sqrt{-5})\).</td><td>1,5</td></tr>
+<tr><td>(c) Prueba que \(2\nmid1+\sqrt{-5}\) y \(2\nmid1-\sqrt{-5}\) y concluye.</td><td>2,5</td></tr>
+</tbody></table></div>
+<div class="errores"><span class="rotulo">Errores frecuentes</span><ul><li>Probar solo que \(2\nmid1+\sqrt{-5}\) y olvidar el otro factor.</li><li>Concluir «no primo» a partir de «tiene dos factorizaciones», sin exhibir el producto que divide.</li></ul></div>
+
+<h2 class="salto">Ítem 18 · Los anillos \(\Z_3[i]\) y \(\Z_5[i]\)</h2>
+<div class="sol"><span class="rotulo">Solución</span>
+<p><b>(a)</b> En \(\Z_5[i]\): \((2+i)(2-i)=4-i^2=4+1=5=0\), con \(2+i\neq0\) y \(2-i\neq0\). Hay divisores de cero, así que no es DI (Teorema 2.6).</p>
+<p><b>(b)</b> \(\Z_3[i]\) es conmutativo, con identidad y finito (9 elementos). Veamos que no tiene divisores de cero. Supongamos \((a+bi)(c+di)=0\) con \(a+bi\neq0\). Multiplicando por \(a-bi\):
+\[ (a-bi)(a+bi)(c+di)=(a^2+b^2)(c+di)=0. \]
+En \(\Z_3\), \(0^2=0\), \(1^2=1\) y \(2^2=4=1\), así que \(a^2+b^2\in\{0,1,2\}\) vale \(0\) solo si \(a=b=0\). Como \(a+bi\neq0\), \(a^2+b^2\) es un elemento no nulo de \(\Z_3\), y por tanto invertible. Multiplicando por su inverso, \(c+di=0\). Así \(\Z_3[i]\) es un DI finito y, por el Teorema 2.11, un cuerpo.</p>
+<p><b>(c)</b> \((1+i)(1-i)=1-i^2=2\) y \(2^{-1}=2\) en \(\Z_3\). Luego \((1+i)^{-1}=2(1-i)=2-2i=2+i\). Verificación: \((1+i)(2+i)=2+i+2i+i^2=1+3i=1\). <span class="respuesta-final">Respuesta: \((1+i)^{-1}=2+i\).</span></p>
+<p><b>(d)</b> \(1\cdot1=1\neq0\), \(2\cdot1=2\neq0\), \(3\cdot1=0\). Por el Teorema 2.23, \(\car(\Z_3[i])=3\).</p></div>
+<div class="rubrica"><span class="rotulo">Rúbrica (10 pts)</span><table><tbody>
+<tr><td>(a) Par de divisores de cero verificado.</td><td>2</td></tr>
+<tr><td>(b) Ausencia de divisores de cero: truco del conjugado (1,5 pts) y análisis de los cuadrados en \(\Z_3\) (1,5 pts).</td><td>3</td></tr>
+<tr><td>(b) Concluye con el Teorema 2.11 (finito + DI \(\Rightarrow\) cuerpo). Si da la fórmula explícita del inverso, también vale.</td><td>1</td></tr>
+<tr><td>(c) Inverso correcto (1 pt) y verificación (1 pt).</td><td>2</td></tr>
+<tr><td>(d) Característica 3 justificada.</td><td>2</td></tr>
+</tbody></table></div>
+<div class="errores"><span class="rotulo">Errores frecuentes</span><ul><li>Afirmar que \(\Z_3[i]\) es cuerpo «porque 3 es primo». El ejemplo de \(\Z_5[i]\) muestra que no basta.</li><li>Calcular \(\car=9\) confundiendo con el número de elementos.</li></ul></div>
+
+<h2>Ítem 19 · Ideales de los enteros gaussianos</h2>
+<div class="sol"><span class="rotulo">Solución</span>
+<p><b>(a)</b> \(2=(1+i)(1-i)\in\gen{1+i}\), luego \(\gen2\subseteq\gen{1+i}\). Es estricta: \(1+i\notin\gen2\), porque los elementos de \(\gen2\) son \(2(a+bi)=2a+2bi\), con ambos coeficientes pares. Y \(\gen{1+i}\neq\Z[i]\): si \(1=(1+i)x\), entonces \(1=N(1+i)N(x)=2N(x)\), imposible en \(\Z\). Es decir, \(1+i\) no es unidad (Lema 3.14(3) o Lema 3.7).</p>
+<p><b>(b)</b> \((\Rightarrow)\) Si \(a+bi=(1+i)(c+di)=(c-d)+(c+d)i\), entonces \(a+b=2c\) es par. \((\Leftarrow)\) Si \(a+b\) es par, también lo es \(b-a\), y
+\[ a+bi=(1+i)\cdot\frac{(a+b)+(b-a)i}{2}, \]
+con \(\frac{a+b}{2},\frac{b-a}{2}\in\Z\). Comprobación: \((1+i)\big((a+b)+(b-a)i\big)=(a+b)-(b-a)+\big((b-a)+(a+b)\big)i=2a+2bi\).</p>
+<p><b>(c)</b> Sea \(A\) un ideal con \(\gen{1+i}\subsetneq A\). Existe \(a+bi\in A\) con \(a+b\) impar. Entonces \((a-1)+bi\) tiene suma par, así que está en \(\gen{1+i}\subseteq A\), y \(1=(a+bi)-\big((a-1)+bi\big)\in A\). Por el Lema 3.7, \(A=\Z[i]\). Con (a), \(\gen{1+i}\) es propio: es maximal.</p>
+<p><b>(d)</b> No. \((1+i)(1-i)=2\in\gen2\), pero \(1+i\notin\gen2\) y \(1-i\notin\gen2\) (tienen coeficientes impares).</p></div>
+<div class="rubrica"><span class="rotulo">Rúbrica (10 pts)</span><table><tbody>
+<tr><td>(a) \(\gen2\subseteq\gen{1+i}\) (1 pt); contención estricta (1 pt); \(\gen{1+i}\) propio (1 pt).</td><td>3</td></tr>
+<tr><td>(b) Implicación directa (1,5 pts) y recíproca con el cociente explícito (1,5 pts).</td><td>3</td></tr>
+<tr><td>(c) Construcción de \(1\in A\) y uso del Lema 3.7.</td><td>2</td></tr>
+<tr><td>(d) «No es primo» con el par \(1\pm i\) verificado.</td><td>2</td></tr>
+</tbody></table></div>
+<div class="errores"><span class="rotulo">Errores frecuentes</span><ul><li>En (a), mostrar solo \(\gen2\subseteq\gen{1+i}\) sin probar que ambas contenciones son estrictas.</li><li>En (d), decir «no es primo porque \(2\) no es primo en \(\Z[i]\)» sin exhibir el par \(a,b\).</li></ul></div>
+
+<!-- ===================================================== PARTE IV -->
+<h1 class="capitulo" data-indice="Parte IV y bonificación. Demostraciones"><span class="num">Parte IV · 20 puntos + 5</span>Demostraciones</h1>
+
+<h2>Ítem 20 · Cuerpos e ideales</h2>
+<div class="sol"><span class="rotulo">Solución</span>
+<p>\((\Rightarrow)\) Sea \(R\) un cuerpo e \(I\neq\{0\}\) un ideal. Existe \(a\in I\), \(a\neq0\). Como \(a\) es unidad, \(1=a^{-1}a\in I\) por absorción, y por el Lema 3.7, \(I=R\). Así los únicos ideales son \(\{0\}\) y \(R\).</p>
+<p>\((\Leftarrow)\) Sea \(a\in R\), \(a\neq0\). El conjunto \(\gen a=\{ra: r\in R\}\) es un ideal (Teorema 3.8) y contiene \(a=1\cdot a\neq0\), luego \(\gen a\neq\{0\}\). Por hipótesis, \(\gen a=R\), así que \(1\in\gen a\): existe \(r\) con \(ra=1\). Como \(R\) es conmutativo, \(ar=1\) también, y \(a\) es unidad. Siendo \(a\neq0\) arbitrario, \(R\) es un cuerpo (\(R\) es conmutativo con \(1\neq0\) por hipótesis).</p></div>
+<div class="rubrica"><span class="rotulo">Rúbrica (10 pts)</span><table><tbody>
+<tr><td>(\(\Rightarrow\)) Toma \(a\neq0\) en \(I\) y usa que es unidad.</td><td>2</td></tr>
+<tr><td>(\(\Rightarrow\)) Obtiene \(1\in I\) y concluye con el Lema 3.7.</td><td>2</td></tr>
+<tr><td>(\(\Leftarrow\)) Considera el ideal \(\gen a\) y justifica que es ideal y no nulo.</td><td>2,5</td></tr>
+<tr><td>(\(\Leftarrow\)) Deduce \(\gen a=R\), luego \(1=ra\).</td><td>2,5</td></tr>
+<tr><td>Conclusión: \(a\) es unidad para todo \(a\neq0\), luego \(R\) es cuerpo.</td><td>1</td></tr>
+</tbody></table></div>
+<div class="errores"><span class="rotulo">Errores frecuentes</span><ul><li>En (\(\Leftarrow\)), usar \(\gen a\) sin justificar que \(a\in\gen a\) (requiere la identidad).</li><li>Demostrar solo una de las dos implicaciones.</li></ul></div>
+
+<h2>Ítem 21 · Ideales maximales y primos</h2>
+<div class="sol"><span class="rotulo">Solución</span>
+<p><b>(a)</b> Sea \(M\) maximal. Es propio por definición. Sean \(a,b\in R\) con \(ab\in M\) y \(a\notin M\); hay que probar que \(b\in M\).</p>
+<p>El conjunto \(M+\gen a=\{m+ra: m\in M,\ r\in R\}\) es un ideal (suma de ideales). Contiene a \(M\) y también a \(a=0+1\cdot a\notin M\), así que \(M\subsetneq M+\gen a\). Por maximalidad, \(M+\gen a=R\), y entonces \(1=m+ra\) para algunos \(m\in M\), \(r\in R\). Multiplicando por \(b\):
+\[ b=mb+r(ab). \]
+\(mb\in M\) y \(r(ab)\in M\) por absorción, así que \(b\in M\). Por tanto \(M\) es primo.</p>
+<p><b>(b)</b> En \(\Z\), el ideal \(\{0\}\). Es primo: es propio, y si \(ab\in\{0\}\), entonces \(ab=0\) y, como \(\Z\) es DI, \(a=0\) o \(b=0\). No es maximal: \(\{0\}\subsetneq\gen2\subsetneq\Z\), donde \(2\notin\{0\}\) y \(1\notin\gen2\).
+<br><i>Alternativa:</i> \(\Z\oplus\{0\}\) en \(\Z\oplus\Z\), con \(\Z\oplus\{0\}\subsetneq\Z\oplus2\Z\subsetneq\Z\oplus\Z\).</p></div>
+<div class="rubrica"><span class="rotulo">Rúbrica (10 pts)</span><table><tbody>
+<tr><td>(a) Plantea correctamente lo que hay que probar (\(ab\in M\), \(a\notin M\Rightarrow b\in M\)).</td><td>1</td></tr>
+<tr><td>(a) Justifica que \(M+\gen a\) es un ideal que contiene estrictamente a \(M\), luego es \(R\).</td><td>2,5</td></tr>
+<tr><td>(a) Obtiene \(1=m+ra\), multiplica por \(b\) y concluye con la absorción.</td><td>2,5</td></tr>
+<tr><td>(b) Ejemplo de ideal primo con justificación.</td><td>2</td></tr>
+<tr><td>(b) Ideal intermedio que prueba que no es maximal, con ambas contenciones estrictas.</td><td>2</td></tr>
+</tbody></table>
+<p class="pequeno">Si en (a) se usa el Teorema 4.9 y la Proposición 2.2 (\(R/M\) cuerpo \(\Rightarrow\) DI \(\Rightarrow M\) primo), se otorgan como máximo 3 de los 6 puntos, porque el enunciado pide no usar anillos cociente.</p></div>
+
+<h2>Ítem 22 · Bonificación: dominios enteros finitos</h2>
+<div class="sol"><span class="rotulo">Solución</span>
+Sea \(D\) un DI finito y \(b\neq0\). La función \(\lambda_b:D\to D\), \(x\mapsto bx\), es inyectiva: si \(bx=by\), por cancelación \(x=y\). Una función inyectiva de un conjunto finito en sí mismo es sobreyectiva, así que existe \(c\) con \(bc=1\). Por conmutatividad, \(cb=1\), y \(b\) es unidad. Como \(D\) es conmutativo con \(1\neq0\) y todo elemento no nulo es unidad, \(D\) es un cuerpo (Teorema 2.11).</div>
+<div class="rubrica"><span class="rotulo">Rúbrica (+5 pts)</span><table><tbody>
+<tr><td>Define la multiplicación por \(b\) y prueba que es inyectiva usando la cancelación.</td><td>2</td></tr>
+<tr><td>Usa la finitud para obtener la sobreyectividad.</td><td>2</td></tr>
+<tr><td>Concluye que \(1\) está en la imagen y \(b\) es unidad.</td><td>1</td></tr>
+</tbody></table></div>
+
+<!-- ===================================================== APÉNDICE A -->
+<h1 class="capitulo" data-indice="Apéndice A. Diagnóstico y plan de refuerzo"><span class="num">Apéndice A</span>Diagnóstico y plan de refuerzo</h1>
+<h2>Correspondencia entre ítems y contenidos</h2>
+<p>Si perdiste puntos en un ítem, repasa las secciones de la guía AL2-M23-01 y los capítulos del video AL2-M23-04 indicados.</p>
+<table>
+<thead><tr><th style="width:16%">Ítems</th><th style="width:34%">Tema</th><th>Guía (secciones)</th><th>Video (capítulo)</th></tr></thead>
+<tbody>
+<tr><td>1, 2, 22</td><td>Cuerpos y dominios enteros</td><td>§1.1, §1.3, §1.5</td><td>2 y 4</td></tr>
+<tr><td>3, 4, 11, 12</td><td>\(\Z_n\): unidades, divisores de cero, inversos</td><td>§0.4, §1.2, §1.4, §1.5</td><td>3 y 4</td></tr>
+<tr><td>5, 13</td><td>Característica</td><td>§1.10</td><td>6</td></tr>
+<tr><td>6, 16, 17</td><td>Irreducibles, primos y norma</td><td>§1.7, §1.8, §1.9</td><td>5</td></tr>
+<tr><td>18</td><td>Anillos finitos y cuerpos</td><td>§1.5, §1.10</td><td>4 y 6</td></tr>
+<tr><td>7, 8, 20</td><td>Definición de ideal; ideal unidad</td><td>§2.1, §2.2, §2.3</td><td>7</td></tr>
+<tr><td>10, 14</td><td>Ideales de \(\Z\) y operaciones</td><td>§2.4, §2.5, §2.7</td><td>8</td></tr>
+<tr><td>15</td><td>Ideales de \(\Z_n\)</td><td>§2.11</td><td>10</td></tr>
+<tr><td>9, 19, 21</td><td>Ideales primos y maximales</td><td>§2.8, §2.9, §2.10</td><td>9 y 10</td></tr>
+</tbody></table>
+<h2>Interpretación del puntaje</h2>
+<table>
+<thead><tr><th style="width:18%">Puntaje</th><th style="width:22%">Nivel</th><th>Recomendación</th></tr></thead>
+<tbody>
+<tr><td>90–105</td><td>Dominio sólido</td><td>Repasa solo los errores puntuales y practica la redacción de las demostraciones de prioridad alta (§3.2 de la guía).</td></tr>
+<tr><td>75–89</td><td>Buen nivel</td><td>Identifica la parte con menor porcentaje y resuelve los ejercicios avanzados de esa sección.</td></tr>
+<tr><td>60–74</td><td>Nivel suficiente con lagunas</td><td>Vuelve a ver los capítulos del video asociados a los ítems fallados y resuelve todos los ejercicios básicos e intermedios de la guía.</td></tr>
+<tr><td>0–59</td><td>Requiere refuerzo</td><td>Sigue el plan de estudio completo de §3.5 de la guía y repite la práctica al terminar.</td></tr>
+</tbody></table>
+<p class="pequeno">Los rangos son orientativos para el estudio individual. No corresponden a ninguna escala de calificación oficial.</p>
+
+<!-- ===================================================== APÉNDICE B -->
+<h1 class="capitulo" data-indice="Apéndice B. Respuestas de los ejercicios de la guía"><span class="num">Apéndice B</span>Respuestas de los ejercicios de la guía</h1>
+<p>Respuestas y esquemas de solución de los ejercicios de §1.13 y §2.14 de la guía AL2-M23-01. Cuando el ejercicio es una demostración desarrollada en la guía, se indica la sección.</p>
+
+<h2>Ejercicios del Módulo 2 (1–16)</h2>
+<ol>
+<li>\(\Z_{10}\): unidades \(\cl1,\cl3,\cl7,\cl9\); divisores de cero \(\cl2,\cl4,\cl5,\cl6,\cl8\). \(\Z_{14}\): unidades \(\cl1,\cl3,\cl5,\cl9,\cl{11},\cl{13}\); divisores de cero \(\cl2,\cl4,\cl6,\cl7,\cl8,\cl{10},\cl{12}\).</li>
+<li>Inversos en \(\Z_{11}\): \(1\leftrightarrow1\), \(2\leftrightarrow6\), \(3\leftrightarrow4\), \(5\leftrightarrow9\), \(7\leftrightarrow8\), \(10\leftrightarrow10\).</li>
+<li>Ninguno: \((1,0)(0,1)=(0,0)\) en \(\Z\oplus\Z\) y en \(\Z_2\oplus\Z_3\).</li>
+<li>Es subanillo de \(\C\) que contiene al \(1\) (corolario de §1.3), luego es DI. No es cuerpo: \(2(a+bi)=1\) exige \(2a=1\); o bien \(N(1+i)=2\neq1\).</li>
+<li>\(\car(\Z_9)=9\); \(\car(\Z_2\oplus\Z_3)=\mcm(2,3)=6\); \(\car(\Z\oplus\Z_3)=0\); \(\car(\Q)=0\).</li>
+<li>Guía, §1.4 (corolario de la dicotomía).</li>
+<li>\(S\) hereda la conmutatividad y la ausencia de divisores de cero de \(D\), y contiene \(1\neq0\). Por el Teorema 2.6, es DI.</li>
+<li>Guía, §1.8 (Proposición 2.18, parte 2).</li>
+<li>\(\Z[i]\): \(\pm1,\pm i\). \(\Z[\sqrt{-5}]\): \(\pm1\).</li>
+<li>\(3\): no existen elementos de norma \(3\), porque \(a^2+b^2=3\) no tiene solución. \(5=(2+i)(2-i)\), con factores de norma \(5\) que no son unidades.</li>
+<li>\(N(2+i)=5\) es primo; por la Proposición 2.18(4), \(2+i\) es irreducible.</li>
+<li>Guía, §1.9 (ejemplo complementario de \(\Z[\sqrt{-5}]\)). Normas \(4,9,6,6\); \(a^2+5b^2\notin\{2,3\}\).</li>
+<li>Guía, §1.5; también el Ítem 18 de la práctica.</li>
+<li>Guía, §1.10 (corolario complementario).</li>
+<li>\(a^2=a\Rightarrow a(a-1)=0\Rightarrow a=0\) o \(a=1\). En \(\Z_6\) es falso: \(\cl3^2=\cl3\) y \(\cl4^2=\cl4\).</li>
+<li>\(a^2=1\Rightarrow(a-1)(a+1)=0\Rightarrow a=\pm1\). En \(\Z_8\): \(\cl3^2=\cl5^2=\cl1\), con \(\cl3,\cl5\neq\pm\cl1\).</li>
+</ol>
+
+<h2>Ejercicios del Módulo 3 (17–31)</h2>
+<ol start="17">
+<li>(a) Sí. (b) No: \(3-1=2\) no es impar, y \(0\) no es impar. (c) Sí. (d) No: \((-1)\cdot1=-1\notin\N\). (e) Sí, es \(5\Z\).</li>
+<li>Guía, §2.7; también la solución del Ítem 21(a) usa \(M+\gen a\).</li>
+<li>\(\gen4\), \(\gen{24}\), \(\gen{96}\) y \(\gen3\). Para el último: \(\mcd(9,15,21)=3=2\cdot9-15\).</li>
+<li>\(\Z_8\): \(\gen{\cl1}\), \(\gen{\cl2}=\{0,2,4,6\}\), \(\gen{\cl4}=\{0,4\}\), \(\gen{\cl0}\); maximal: \(\gen{\cl2}\). \(\Z_{10}\): \(\gen{\cl1}\), \(\gen{\cl2}=\{0,2,4,6,8\}\), \(\gen{\cl5}=\{0,5\}\), \(\gen{\cl0}\); maximales: \(\gen{\cl2}\) y \(\gen{\cl5}\).</li>
+<li>Guía, §2.8 (ideal) y §2.10 (cadena \(\Z\oplus\{0\}\subsetneq\Z\oplus2\Z\subsetneq\Z\oplus\Z\)).</li>
+<li>Guía, §2.7. Ejemplo: \(\gen4\gen6=\gen{24}\subsetneq\gen{12}=\gen4\cap\gen6\).</li>
+<li>Guía, §2.6 (Lema 3.14, parte 2).</li>
+<li>\(4,6\in\gen4\cup\gen6\), pero \(6-4=2\) no es múltiplo de \(4\) ni de \(6\).</li>
+<li>Guía, §2.9 (teorema de ideales maximales de \(\Z\)).</li>
+<li>Los elementos son \(\cl{kd}\) con \(0\le k&lt;n/d\); son distintos porque \(0\le kd&lt;n\), y \(\cl{(n/d)d}=\cl n=\cl0\) cierra el ciclo.</li>
+<li>Guía, §2.3; también el Ítem 20 de la práctica.</li>
+<li>Guía, §2.9 (ejemplo resuelto de \(\Z[i]\)); también el Ítem 19.</li>
+<li>\(0\in\operatorname{Ann}(a)\); \((r-s)a=ra-sa=0\); \((tr)a=t(ra)=0\). En \(\Z_{12}\): \(4r\equiv0\pmod{12}\iff3\mid r\), así que \(\operatorname{Ann}(\cl4)=\{\cl0,\cl3,\cl6,\cl9\}=\gen{\cl3}\).</li>
+<li>Guía, §2.10; también el Ítem 21(a).</li>
+<li>Guía, §2.11, parte 5. Para \(n=12\), \(a=8\): \(\mcd(8,12)=4\), y \(\cl4=\cl8\cl2\), \(\cl8=\cl4\cl2\).</li>
+</ol>
+</body>
+</html>

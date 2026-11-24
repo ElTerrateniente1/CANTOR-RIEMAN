@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>AL2-M23-04 Guion del video</title>
+<link rel="stylesheet" href="../estilos.css">
+<script src="../../node_modules/katex/dist/katex.min.js"></script>
+<script src="../../node_modules/katex/dist/contrib/auto-render.min.js"></script>
+<script src="escenas.js"></script>
+<script src="tiempos.js"></script>
+<script>
+const mmss = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+window.DOC = {
+  codigo: "AL2-M23-04", tipo: "Video explicativo: guion y ficha técnica",
+  titulo: "Video explicativo: dominios enteros e ideales",
+  subtitulo: "Ficha técnica, índice de capítulos con marcas de tiempo y guion completo (pantalla y narración) del video narrado",
+  version: "2.0", fecha: "24 de noviembre de 2026",
+  extra: [["Archivo de video", "AL2-M23-04_Video_Dominios_enteros_e_ideales.mp4"],
+          ["Duración", mmss(TIEMPOS.total) + " · 11 capítulos · " + TIEMPOS.planos.length + " planos"],
+          ["Subtítulos", "Español, incluidos en el MP4 y en AL2-M23-04_Subtitulos_es.srt"]],
+};
+</script>
+<script src="../comun.js"></script>
+<style>
+  table.guion { font-size: 9.2pt; page-break-inside: auto; }
+  table.guion tr { page-break-inside: avoid; }
+  table.guion td:first-child { width: 11mm; font-family: "Source Sans 3", sans-serif; font-weight: 600; color: var(--azul); white-space: nowrap; }
+  table.guion td.pant { width: 44%; }
+  table.guion td.pant .rot { font-family: "Source Sans 3", sans-serif; font-weight: 700; margin-right: 1mm; }
+  table.guion td.pant .prueba { border: none; padding: 0; margin: 0; background: none; }
+  table.guion td.pant svg { width: 55mm; height: auto; }
+  table.guion td.pant table { font-size: 8pt; margin: 1mm 0; }
+  table.guion td.pant ol { margin: 0; padding-left: 5mm; }
+  table.guion td.pant .portada-video .grande { font-weight: 700; }
+  table.guion td.pant .dos { display: flex; gap: 3mm; align-items: center; }
+  table.guion tr.diap td { background: #e8eef6 !important; font-family: "Source Sans 3", sans-serif; font-weight: 700; color: var(--azul); }
+  table.guion tr.tarj td { background: #fdf8ea !important; }
+  .k-def { color: #2b6cb0; } .k-thm { color: #6b46c1; } .k-ej { color: #2f855a; } .k-met { color: #975a16; } .k-warn { color: #c53030; } .k-obs { color: #4a5568; }
+</style>
+</head>
+<body>
+
+<h2 data-no-indice style="border:none;font-size:18pt;margin-top:0">Índice</h2>
+<div class="indice" data-auto></div>
+
+<h1 class="capitulo" data-indice="Ficha técnica y uso"><span class="num">Parte 1</span>Ficha técnica y uso</h1>
+
+<h2>Ficha técnica</h2>
+<table id="ficha"></table>
+
+<h2>Cómo aprovechar el video</h2>
+<ol>
+<li><b>Primera vez:</b> míralo completo, sin pausas, para tener el mapa general (sesión 1 del plan de estudio de la guía).</li>
+<li><b>Estudio activo:</b> antes de cada paso con un teorema, pausa e intenta enunciarlo o demostrarlo; luego compara con la pantalla.</li>
+<li><b>Repaso dirigido:</b> después de corregir la práctica, usa la tabla de capítulos (abajo) y el Apéndice A del solucionario para ver solo los capítulos de los ítems en que perdiste puntos.</li>
+<li><b>Navegación:</b> el MP4 incluye marcas de capítulo. En reproductores como VLC o mpv aparecen en el menú de capítulos. Los subtítulos se activan desde el menú de subtítulos del reproductor.</li>
+</ol>
+
+<h2>Capítulos y correspondencias</h2>
+<table id="capitulos"></table>
+
+<h2>Convenciones de pantalla</h2>
+<p>Cada diapositiva se construye en pasos: un bloque nuevo aparece en cada paso y se resalta con un contorno dorado. Los colores de los bloques son los mismos de la guía: <span class="k-def">azul</span> para definiciones, <span class="k-thm">violeta</span> para teoremas, <span class="k-ej">verde</span> para ejemplos, <span class="k-met">ocre</span> para métodos, <span class="k-warn">rojo</span> para advertencias y <span class="k-obs">gris</span> para observaciones. La barra inferior indica en qué capítulo de los once estás.</p>
+
+<h1 class="capitulo" data-indice="Guion completo"><span class="num">Parte 2</span>Guion completo</h1>
+<p>Para cada plano se indica el tiempo de inicio (minutos:segundos), el contenido que aparece en pantalla en ese paso y el texto narrado. En la narración, las expresiones matemáticas se leen en palabras (por ejemplo, «zeta sub ene» para \(\Z_n\)).</p>
+<div id="guion"></div>
+
+<script>
+const REL = {
+  1: ["—", "—"], 2: ["§1.1, §1.3", "1, 2"], 3: ["§1.2, §1.4", "3, 4, 11, 12"], 4: ["§1.5", "12, 18, 22"],
+  5: ["§1.7–§1.9", "6, 16, 17"], 6: ["§1.10", "5, 13, 18"], 7: ["§2.1–§2.3", "7, 8, 20"], 8: ["§2.4–§2.7", "10, 14"],
+  9: ["§2.8–§2.10", "9, 21"], 10: ["§2.9, §2.11", "15, 19"], 11: ["Capítulo 3", "Todos"],
+};
+const palabras = ESCENAS.reduce((a, c) => a + c.slides.reduce((b, s) => b + s.pasos.reduce((x, p) => x + p.v.split(/\s+/).length, 0), 0), 0);
+document.getElementById("ficha").innerHTML = [
+  ["Código", "AL2-M23-04"], ["Duración", mmss(TIEMPOS.total) + " (" + TIEMPOS.total.toFixed(1) + " s)"],
+  ["Estructura", `11 capítulos, ${ESCENAS.reduce((a, c) => a + c.slides.length, 0)} diapositivas, ${TIEMPOS.planos.length} planos (incluidas 10 tarjetas de capítulo)`],
+  ["Video", "MP4 (H.264), 1920 × 1080, 25 fotogramas por segundo"],
+  ["Audio", "AAC 128 kb/s, 48 kHz, mono, normalizado a −16 LUFS"],
+  ["Narración", `${palabras} palabras en español, voz sintética (Piper TTS, voz «es_MX-claude-high»)`],
+  ["Subtítulos", "Español: pista incrustada (mov_text) y archivo SRT independiente"],
+  ["Capítulos", "Marcas de capítulo incrustadas en el MP4"],
+  ["Generación", "Reproducible desde fuentes/video/ (ver README del paquete)"],
+].map(([a, b]) => `<tr><td style="width:32mm;font-family:'Source Sans 3',sans-serif;font-weight:600;color:#1f3a5f">${a}</td><td>${b}</td></tr>`).join("");
+
+document.getElementById("capitulos").innerHTML =
+  `<thead><tr><th>Cap.</th><th>Título</th><th>Inicio</th><th>Guía AL2-M23-01</th><th>Ítems de la práctica</th></tr></thead><tbody>` +
+  TIEMPOS.capitulos.map(([n, ini]) => {
+    const c = ESCENAS[n - 1];
+    return `<tr><td>${n}</td><td>${c.titulo}</td><td>${mmss(ini)}</td><td>${REL[n][0]}</td><td>${REL[n][1]}</td></tr>`;
+  }).join("") + "</tbody>";
+
+const porId = Object.fromEntries(TIEMPOS.planos.map(p => [p.id, p]));
+const pad = n => String(n).padStart(2, "0");
+let html = "";
+ESCENAS.forEach((cap, ci) => {
+  html += `<h2>Capítulo ${cap.n}. ${cap.titulo}</h2><table class="guion"><thead><tr><th>Inicio</th><th>En pantalla</th><th>Narración</th></tr></thead><tbody>`;
+  if (ci > 0) {
+    const pl = porId[`c${pad(ci)}_t`];
+    html += `<tr class="tarj"><td>${mmss(pl.inicio)}</td><td class="pant"><i>Tarjeta de capítulo:</i> «Capítulo ${cap.n} de 11. ${cap.titulo}»</td><td>${cap.vt}</td></tr>`;
+  }
+  cap.slides.forEach((sl, si) => {
+    html += `<tr class="diap"><td></td><td colspan="2">Diapositiva: ${sl.t}</td></tr>`;
+    sl.pasos.forEach((st, pi) => {
+      const pl = porId[`c${pad(ci)}_s${pad(si)}_p${pad(pi)}`];
+      html += `<tr><td>${mmss(pl.inicio)}</td><td class="pant k-${st.k}-borde">${st.b}</td><td>${st.v}</td></tr>`;
+    });
+  });
+  html += "</tbody></table>";
+});
+document.getElementById("guion").innerHTML = html;
+</script>
+</body>
+</html>

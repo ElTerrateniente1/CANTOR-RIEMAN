@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>AL2-M23-01 Guía de estudio</title>
+<link rel="stylesheet" href="estilos.css">
+<script src="../node_modules/katex/dist/katex.min.js"></script>
+<script src="../node_modules/katex/dist/contrib/auto-render.min.js"></script>
+<script>
+window.DOC = {
+  codigo: "AL2-M23-01", tipo: "Guía de estudio",
+  titulo: "Dominios enteros e ideales",
+  subtitulo: "Teoría con demostraciones completas, métodos de resolución, ejemplos resueltos y ejercicios graduados",
+  version: "2.0", fecha: "24 de noviembre de 2026",
+  extra: [["Contenido", "4 capítulos y 2 apéndices: 36 resultados con 34 demostraciones, 28 ejemplos resueltos, 18 métodos de resolución, 21 advertencias sobre errores frecuentes y 31 ejercicios graduados (respuestas en AL2-M23-03)"],
+          ["Requisitos", "Módulo 0 (grupos) y Módulo 1 (anillos y subanillos)"]],
+};
+</script>
+<script src="comun.js"></script>
+</head>
+<body>
+
+<h2 data-no-indice style="border:none;font-size:18pt;margin-top:0">Índice</h2>
+<div class="indice" data-auto></div>
+
+<!-- ===================================================== INTRODUCCIÓN -->
+<h1 class="capitulo" data-indice="Presentación"><span class="num">Introducción</span>Presentación de la guía</h1>
+
+<h2>Objetivos de aprendizaje</h2>
+<p>Al terminar el estudio de esta guía, deberías poder:</p>
+<ol>
+<li>Enunciar con precisión las definiciones de dominio entero, divisor de cero, unidad, elementos asociados, irreducibles y primos, característica, ideal, ideal generado, ideal principal, ideal primo e ideal maximal.</li>
+<li>Decidir si un anillo dado es o no dominio entero o cuerpo, y justificarlo con el teorema adecuado.</li>
+<li>Calcular divisores de cero, unidades e inversos en \(\Z_n\), y la característica de anillos usuales.</li>
+<li>Usar la norma de \(\Z[\sqrt d]\) para probar que un elemento es irreducible, y producir ejemplos de elementos irreducibles que no son primos.</li>
+<li>Verificar que un subconjunto es un ideal (test del ideal) o refutarlo con un contraejemplo concreto.</li>
+<li>Calcular sumas, intersecciones y productos de ideales de \(\Z\) y describir todos los ideales de \(\Z_n\).</li>
+<li>Decidir si un ideal es primo o maximal y demostrar los teoremas centrales que relacionan ambos conceptos.</li>
+</ol>
+
+<h2>Cómo está organizada</h2>
+<p>El <b>Capítulo 0</b> repasa lo indispensable del Módulo 1. El <b>Capítulo 1</b> desarrolla el Módulo 2 (dominios enteros) y el <b>Capítulo 2</b> el Módulo 3 (ideales). Cada uno de estos dos capítulos termina con tres secciones prácticas: <i>métodos de resolución</i>, <i>errores frecuentes</i> y <i>ejercicios propuestos</i>. El <b>Capítulo 3</b> es una preparación específica para el parcial: mapa conceptual, teoremas que conviene saber demostrar, formulario y plan de estudio. Los apéndices contienen tablas de multiplicación y un glosario.</p>
+<p>Las respuestas de los ejercicios propuestos están en el documento <b>AL2-M23-03</b> (Solucionario), Apéndice B. Te recomendamos intentar cada ejercicio antes de consultarlas.</p>
+
+<h2>Convenciones tipográficas</h2>
+<div class="bloque def"><span class="rotulo">Definición</span> Enunciado que fija el significado de un término.</div>
+<div class="bloque thm"><span class="rotulo">Teorema, proposición, lema o corolario</span> Resultado que se demuestra. Debajo aparece su demostración en un recuadro punteado.</div>
+<div class="bloque ej"><span class="rotulo">Ejemplo</span> Caso concreto resuelto paso a paso.</div>
+<div class="bloque met"><span class="rotulo">Método</span> Procedimiento recomendado para un tipo de problema de examen.</div>
+<div class="bloque warn"><span class="rotulo">Atención</span> Error frecuente o sutileza que suele costar puntos.</div>
+<div class="bloque obs"><span class="rotulo">Observación</span> Comentario que aclara o amplía un resultado.</div>
+<p>La numeración entre paréntesis, como <span class="ref">(Teorema 2.6)</span>, remite al folleto del curso. Los resultados marcados como <b>complementarios</b> no aparecen en el folleto: se incluyen porque son estándar en la teoría de anillos y facilitan la resolución de problemas. Si en tu curso no se han visto, cítalos con cautela o demuéstralos (todas las demostraciones están incluidas).</p>
+
+<h2>Notación</h2>
+<table>
+<thead><tr><th style="width:32%">Símbolo</th><th>Significado</th></tr></thead>
+<tbody>
+<tr><td>\(\Z,\ \Q,\ \R,\ \C\)</td><td>Enteros, racionales, reales y complejos con sus operaciones usuales.</td></tr>
+<tr><td>\(\Z_n = \{\cl{0},\cl{1},\dots,\cl{n-1}\}\)</td><td>Enteros módulo \(n\). Cuando no hay ambigüedad escribimos \(a\) en lugar de \(\cl{a}\).</td></tr>
+<tr><td>\(R^{*}\) o \(U(R)\)</td><td>Grupo de unidades de un anillo con identidad \(R\).</td></tr>
+<tr><td>\(a \mid b\)</td><td>\(a\) divide a \(b\): existe \(t\) con \(b = ta\).</td></tr>
+<tr><td>\(\mcd(a,b),\ \mcm(a,b)\)</td><td>Máximo común divisor y mínimo común múltiplo.</td></tr>
+<tr><td>\(\car(R)\)</td><td>Característica del anillo \(R\).</td></tr>
+<tr><td>\(\gen{a_1,\dots,a_n}\)</td><td>Ideal generado por \(a_1,\dots,a_n\).</td></tr>
+<tr><td>\(I+J,\ IJ,\ I\cap J\)</td><td>Suma, producto e intersección de ideales.</td></tr>
+<tr><td>\(\Z[\sqrt d]\)</td><td>\(\{a+b\sqrt d : a,b\in\Z\}\), con \(d\) entero libre de cuadrados, \(d\neq 1\).</td></tr>
+<tr><td>\(N(x)\)</td><td>Norma en \(\Z[\sqrt d]\): \(N(a+b\sqrt d) = |a^2-db^2|\).</td></tr>
+<tr><td>\(\subsetneq\)</td><td>Contención estricta (subconjunto propio).</td></tr>
+</tbody>
+</table>
+
+<!-- ===================================================== CAPÍTULO 0 -->
+<h1 class="capitulo" data-indice="Capítulo 0. Preliminares del Módulo 1"><span class="num">Capítulo 0</span>Preliminares del Módulo 1</h1>
+<p>Este capítulo reúne, sin pretender sustituir al Módulo 1, las definiciones y propiedades que se usan constantemente en los Módulos 2 y 3.</p>
+
+<h2>0.1 Anillos y sus variantes</h2>
+<div class="bloque def"><span class="rotulo">Definición <span class="ref">(1.1, anillo)</span></span> Un anillo es una terna \((R,+,\cdot)\) donde \(R\neq\varnothing\) y \(+,\cdot\) son operaciones binarias en \(R\) tales que, para todo \(a,b,c\in R\):
+<ol>
+<li>\(a+b=b+a\) y \((a+b)+c=a+(b+c)\);</li>
+<li>existe \(0\in R\) con \(a+0=a\), y para cada \(a\) existe \(-a\) con \(a+(-a)=0\);</li>
+<li>\((ab)c=a(bc)\);</li>
+<li>\(a(b+c)=ab+ac\) y \((a+b)c=ac+bc\).</li>
+</ol>
+Es decir, \((R,+)\) es un grupo abeliano, el producto es asociativo y distribuye sobre la suma.</div>
+
+<table>
+<thead><tr><th style="width:30%">Tipo de anillo</th><th>Condición adicional</th><th style="width:26%">Ejemplo / contraejemplo</th></tr></thead>
+<tbody>
+<tr><td>Conmutativo <span class="ref">(1.8)</span></td><td>\(ab=ba\) para todo \(a,b\).</td><td>\(\Z\) sí; \(M_2(\Z)\) no.</td></tr>
+<tr><td>Con identidad <span class="ref">(1.5)</span></td><td>Existe \(1\neq 0\) con \(1a=a1=a\).</td><td>\(\Z\) sí; \(2\Z\) no.</td></tr>
+<tr><td>Unidad <span class="ref">(1.6)</span></td><td>\(a\) es unidad si existe \(a^{-1}\) con \(aa^{-1}=a^{-1}a=1\).</td><td>En \(\Z\): solo \(\pm 1\).</td></tr>
+<tr><td>Anillo con división <span class="ref">(1.7)</span></td><td>Con identidad y todo \(a\neq 0\) es unidad.</td><td>\(\Q,\ \R,\ \C\).</td></tr>
+<tr><td>Cuerpo o campo <span class="ref">(1.9)</span></td><td>Anillo conmutativo con división.</td><td>\(\Q,\ \Z_5,\ \Q[\sqrt2]\); no \(\Z\).</td></tr>
+</tbody>
+</table>
+
+<h2>0.2 Propiedades elementales</h2>
+<div class="bloque thm"><span class="rotulo">Proposiciones <span class="ref">(1.18 a 1.21)</span></span> En todo anillo \(R\) y para todo \(a,b\in R\):
+<ol>
+<li>el cero y los opuestos son únicos; si \(R\) tiene identidad, \(1\) es única y los inversos multiplicativos son únicos;</li>
+<li>\(a\cdot 0 = 0\cdot a = 0\);</li>
+<li>\(a(-b) = (-a)b = -(ab)\) y, en consecuencia, \((-a)(-b)=ab\).</li>
+</ol></div>
+<div class="prueba"><span class="rotulo">Demostración de 2.</span> \(a0 + 0 = a0 = a(0+0) = a0 + a0\); cancelando \(a0\) en el grupo \((R,+)\) obtenemos \(a0=0\). Análogamente \(0a=0\). <b>De 3.</b> \(ab + a(-b) = a(b+(-b)) = a0 = 0\), luego \(a(-b)\) es el opuesto de \(ab\). <span class="qed"></span></div>
+<div class="bloque obs"><span class="rotulo">Observación</span> La propiedad 2 explica por qué el \(0\) nunca es unidad en un anillo con \(1\neq 0\): si \(0\cdot x = 1\) entonces \(0 = 1\).</div>
+
+<h2>0.3 Subanillos</h2>
+<div class="bloque thm"><span class="rotulo">Teorema <span class="ref">(1.23, test del subanillo)</span></span> Un subconjunto no vacío \(S\) de un anillo \(R\) es subanillo si y solo si, para todo \(a,b\in S\), se cumple \(a-b\in S\) y \(ab\in S\).</div>
+<div class="bloque ej"><span class="rotulo">Ejemplo <span class="ref">(1.25)</span></span> \(S=\left\{\begin{pmatrix}a&0\\0&b\end{pmatrix}: a,b\in\Z\right\}\) es subanillo de \(M_2(\Z)\): la diferencia y el producto de matrices diagonales son diagonales.</div>
+
+<h2>0.4 Herramientas de teoría de números</h2>
+<div class="bloque thm"><span class="rotulo">Resultados de \(\Z\) que usaremos</span>
+<ol>
+<li><b>Algoritmo de la división.</b> Si \(a\in\Z\) y \(n\geq 1\), existen únicos \(q,r\) con \(a=qn+r\) y \(0\le r &lt; n\).</li>
+<li><b>Identidad de Bézout.</b> Existen \(x,y\in\Z\) con \(\mcd(a,b)=ax+by\).</li>
+<li><b>Lema de Euclides.</b> Si \(p\) es primo y \(p\mid ab\), entonces \(p\mid a\) o \(p\mid b\). Más en general, si \(n\mid ab\) y \(\mcd(n,a)=1\), entonces \(n\mid b\).</li>
+<li><b>Relación mcd–mcm.</b> \(\mcd(a,b)\cdot\mcm(a,b) = |ab|\).</li>
+</ol></div>
+<div class="bloque def"><span class="rotulo">El anillo \(\Z_n\) <span class="ref">(1.11, 1.12)</span></span> Las operaciones \(\cl{a}+\cl{b}=\cl{a+b}\) y \(\cl{a}\cl{b}=\cl{ab}\) están bien definidas y hacen de \(\Z_n\) un anillo conmutativo con identidad \(\cl1\). Sus unidades son
+\[ \Z_n^{*}=\{\cl{a}\in\Z_n : \mcd(a,n)=1\}. \]</div>
+<div class="prueba"><span class="rotulo">Por qué son exactamente esas.</span> Si \(\mcd(a,n)=1\), por Bézout \(ax+ny=1\), así que \(\cl a\cl x=\cl1\). Recíprocamente, si \(\cl a\cl x=\cl 1\), entonces \(ax-1=ny\) para algún \(y\), y todo divisor común de \(a\) y \(n\) divide a \(ax-ny=1\). <span class="qed"></span></div>
+<div class="bloque met"><span class="rotulo">Método: calcular \(\cl a^{-1}\) en \(\Z_n\)</span> (i) Comprueba \(\mcd(a,n)=1\). (ii) Para \(n\) pequeño, prueba \(x=1,2,\dots\) hasta que \(ax\equiv 1 \pmod n\). (iii) Para \(n\) grande, usa el algoritmo de Euclides extendido. <i>Ejemplo:</i> en \(\Z_{26}\), \(\mcd(7,26)=1\); \(26=3\cdot 7+5\), \(7=1\cdot5+2\), \(5=2\cdot2+1\). Despejando: \(1=5-2\cdot2=5-2(7-5)=3\cdot5-2\cdot7=3(26-3\cdot7)-2\cdot7=3\cdot26-11\cdot 7\). Luego \(\cl7^{-1}=\cl{-11}=\cl{15}\). Comprobación: \(7\cdot15=105=4\cdot26+1\).</div>
+
+<h2>0.5 Catálogo de anillos de referencia</h2>
+<table>
+<thead><tr><th>Anillo</th><th>Conm.</th><th>Identidad</th><th>Descripción breve</th></tr></thead>
+<tbody>
+<tr><td>\(\Z\)</td><td>Sí</td><td>Sí</td><td>Unidades \(\pm1\).</td></tr>
+<tr><td>\(\Z_n\)</td><td>Sí</td><td>Sí</td><td>Unidades: clases coprimas con \(n\).</td></tr>
+<tr><td>\(\Q,\R,\C\)</td><td>Sí</td><td>Sí</td><td>Cuerpos.</td></tr>
+<tr><td>\(\Z[i]=\{a+bi\}\)</td><td>Sí</td><td>Sí</td><td>Enteros gaussianos <span class="ref">(1.15)</span>.</td></tr>
+<tr><td>\(\Q[\sqrt2]\)</td><td>Sí</td><td>Sí</td><td>Cuerpo <span class="ref">(1.17)</span>: \((a+b\sqrt2)^{-1}=\frac{a-b\sqrt2}{a^2-2b^2}\).</td></tr>
+<tr><td>\(M_n(\Z)\), \(n\ge2\)</td><td>No</td><td>Sí</td><td>Matrices enteras <span class="ref">(1.13)</span>.</td></tr>
+<tr><td>\(R_1\oplus R_2\)</td><td>Si ambos</td><td>Si ambos</td><td>Operaciones componente a componente <span class="ref">(1.14)</span>.</td></tr>
+<tr><td>\(2\Z\)</td><td>Sí</td><td>No</td><td>Anillo sin identidad.</td></tr>
+</tbody>
+</table>
+
+<!-- ===================================================== CAPÍTULO 1 -->
+<h1 class="capitulo" data-indice="Capítulo 1. Módulo 2: Dominios enteros"><span class="num">Capítulo 1 · Módulo 2</span>Dominios enteros</h1>
+<p>Los enteros tienen una propiedad que no se deduce de los axiomas de anillo: si \(ab=ac\) y \(a\neq0\), se puede «cancelar» \(a\). Esta propiedad define a los dominios enteros, la clase de anillos donde más se parece la aritmética a la de \(\Z\).</p>
+
+<h2>1.1 Definición de dominio entero</h2>
+<div class="bloque def"><span class="rotulo">Definición <span class="ref">(2.1)</span></span> Un <b>dominio entero</b> (DI) es un anillo conmutativo con identidad \(D\) que satisface la ley de cancelación:
+\[ \text{si } a,b,c\in D,\ a\neq 0 \text{ y } ab=ac, \text{ entonces } b=c. \]</div>
+<div class="bloque warn"><span class="rotulo">Atención</span> La hipótesis \(a\neq0\) es imprescindible: \(0\cdot b=0\cdot c\) para cualesquiera \(b,c\), así que nunca se puede cancelar el cero. Recuerda también que la definición exige <b>conmutatividad</b> e <b>identidad</b> \(1\neq0\). Por eso \(2\Z\) (sin identidad) no es un dominio entero, aunque en él sí se pueda cancelar.</div>
+<div class="bloque obs"><span class="rotulo">Observación</span> La cancelación no implica la existencia de inversos: en \(\Z\) se cancela, pero \(2\) no tiene inverso. El recíproco sí se cumple (Proposición 2.2).</div>
+
+<h2>1.2 Divisores de cero</h2>
+<div class="bloque def"><span class="rotulo">Definición <span class="ref">(2.4)</span></span> Sea \(R\) un anillo. Un elemento \(a\neq 0\) es <b>divisor de cero</b> si existe \(b\neq 0\) tal que \(ab=0\) (divisor izquierdo) o \(ba=0\) (divisor derecho). En un anillo conmutativo ambas nociones coinciden.</div>
+<div class="bloque ej"><span class="rotulo">Ejemplo <span class="ref">(2.5)</span></span> En \(\Z_6\), \(\cl2\cl3=\cl6=\cl0\), así que \(\cl2\) y \(\cl3\) son divisores de cero. También \(\cl4\cl3=\cl{12}=\cl0\).</div>
+<div class="bloque ej"><span class="rotulo">Ejemplo complementario</span> En \(\Z\oplus\Z\), \((1,0)(0,1)=(0,0)\), luego \((1,0)\) es divisor de cero. En \(M_2(\Z)\), \(\begin{pmatrix}0&1\\0&0\end{pmatrix}^2=\begin{pmatrix}0&0\\0&0\end{pmatrix}\): una matriz no nula cuyo cuadrado es cero.</div>
+
+<div class="bloque thm"><span class="rotulo">Teorema <span class="ref">(2.6)</span></span> Un anillo conmutativo con identidad \(R\) es un dominio entero si y solo si no tiene divisores de cero. Equivalentemente:
+\[ ab=0 \ \Longrightarrow\ a=0 \ \text{ o } \ b=0. \]</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> \((\Rightarrow)\) Sea \(R\) un DI y \(ab=0\). Si \(a\neq0\), entonces \(ab=0=a\cdot0\) y, cancelando \(a\), \(b=0\). Por tanto no hay divisores de cero.<br>
+\((\Leftarrow)\) Supongamos que \(R\) no tiene divisores de cero, y sean \(a\neq0\) y \(ab=ac\). Entonces \(ab-ac=a(b-c)=0\). Como \(a\neq0\) y no hay divisores de cero, \(b-c=0\), es decir, \(b=c\). <span class="qed"></span></div>
+<div class="bloque met"><span class="rotulo">Consecuencia práctica</span> Para <b>probar</b> que \(R\) es DI, basta suponer \(ab=0\) con \(a\neq0\) y deducir \(b=0\). Para <b>refutarlo</b>, basta exhibir un par \(a\neq0\), \(b\neq0\) con \(ab=0\).</div>
+
+<h2>1.3 Cuerpos y dominios enteros</h2>
+<div class="bloque thm"><span class="rotulo">Proposición <span class="ref">(2.2)</span></span> Todo cuerpo es un dominio entero.</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> Sea \(F\) un cuerpo, \(a\neq0\) y \(ab=ac\). Como \(a\) es unidad, multiplicando por \(a^{-1}\): \(a^{-1}(ab)=a^{-1}(ac)\), luego \((a^{-1}a)b=(a^{-1}a)c\), es decir, \(1b=1c\) y \(b=c\). <span class="qed"></span></div>
+<div class="bloque thm"><span class="rotulo">Corolario complementario</span> Todo subanillo \(S\) de un cuerpo \(F\) que contenga al \(1\) de \(F\) es un dominio entero.</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> \(S\) es conmutativo (porque \(F\) lo es) y tiene identidad \(1\neq0\). Si \(a,b\in S\) y \(ab=0\), la misma igualdad vale en \(F\), que no tiene divisores de cero; luego \(a=0\) o \(b=0\). Por el Teorema 2.6, \(S\) es DI. <span class="qed"></span></div>
+<div class="bloque ej"><span class="rotulo">Ejemplo <span class="ref">(2.3 y 1.15)</span></span> \(\Z\), \(\Z[i]\), \(\Z[\sqrt2]\) y \(\Z[\sqrt{-3}]\) son dominios enteros, por ser subanillos de \(\C\) que contienen al \(1\). Ninguno de ellos es cuerpo: por ejemplo, \(2\) no tiene inverso en ninguno. (En \(\Z[i]\), si \(2(a+bi)=1\), entonces \(2a=1\), imposible en \(\Z\)).</div>
+
+<h2>1.4 Los anillos \(\Z_n\)</h2>
+<div class="bloque thm"><span class="rotulo">Ejemplo <span class="ref">(2.7)</span></span> Si \(p\) es primo, \(\Z_p\) no tiene divisores de cero.</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> Si \(\cl a\cl b=\cl0\), entonces \(p\mid ab\). Por el lema de Euclides, \(p\mid a\) o \(p\mid b\), es decir, \(\cl a=\cl0\) o \(\cl b=\cl0\). <span class="qed"></span></div>
+
+<div class="bloque thm"><span class="rotulo">Teorema <span class="ref">(2.9)</span></span> Sea \(n\ge2\) y \(\cl m\neq\cl0\) en \(\Z_n\). Entonces \(\cl m\) es divisor de cero si y solo si \(\mcd(m,n)\neq1\).</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> \((\Leftarrow)\) Sea \(d=\mcd(m,n)&gt;1\). Escribimos \(m=dq_1\) y \(n=dq_2\), con \(0&lt;q_2&lt;n\) (pues \(d&gt;1\)). Entonces \(\cl{q_2}\neq\cl0\) y
+\[ \cl{q_2}\,\cl m = \cl{q_2 d q_1} = \cl{n q_1} = \cl 0. \]
+Así \(\cl m\) es divisor de cero.<br>
+\((\Rightarrow)\) Supongamos \(\mcd(m,n)=1\). Si \(\cl m\cl s=\cl0\), entonces \(n\mid ms\) y, como \(\mcd(n,m)=1\), la forma general del lema de Euclides da \(n\mid s\), es decir, \(\cl s=\cl0\). Luego \(\cl m\) no es divisor de cero. <span class="qed"></span></div>
+
+<div class="bloque thm"><span class="rotulo">Corolario complementario (dicotomía en \(\Z_n\))</span> Todo elemento no nulo de \(\Z_n\) es <b>o bien</b> unidad <b>o bien</b> divisor de cero, y no ambas cosas.</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> Si \(\mcd(m,n)=1\), \(\cl m\) es unidad (§0.4) y no es divisor de cero (Teorema 2.9). Si \(\mcd(m,n)\neq1\), \(\cl m\) es divisor de cero y no es unidad, pues una unidad \(u\) no puede ser divisor de cero: \(ub=0\Rightarrow b=u^{-1}ub=0\). <span class="qed"></span></div>
+
+<div class="bloque ej"><span class="rotulo">Ejemplo resuelto (\(\Z_{12}\))</span> Para \(m=1,\dots,11\) calculamos \(\mcd(m,12)\):
+<table>
+<thead><tr><th>\(m\)</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td></tr></thead>
+<tbody>
+<tr><th>\(\mcd(m,12)\)</th><td>1</td><td>2</td><td>3</td><td>4</td><td>1</td><td>6</td><td>1</td><td>4</td><td>3</td><td>2</td><td>1</td></tr>
+<tr><th>Tipo</th><td>U</td><td>DC</td><td>DC</td><td>DC</td><td>U</td><td>DC</td><td>U</td><td>DC</td><td>DC</td><td>DC</td><td>U</td></tr>
+</tbody></table>
+Unidades (U): \(\cl1,\cl5,\cl7,\cl{11}\), y cada una es su propio inverso (\(5^2=25\equiv1\), \(7^2=49\equiv1\), \(11^2=121\equiv1\)). Divisores de cero (DC): \(\cl2,\cl3,\cl4,\cl6,\cl8,\cl9,\cl{10}\). Para cada DC, un «compañero» que anula: \(\cl2\cl6=\cl3\cl4=\cl8\cl3=\cl9\cl4=\cl{10}\cl6=\cl0\).</div>
+<div class="bloque obs"><span class="rotulo">Conteo</span> El número de unidades de \(\Z_n\) es \(\varphi(n)\) (función de Euler) y el de divisores de cero es \(n-1-\varphi(n)\). Para \(n=12\): \(\varphi(12)=4\) y \(12-1-4=7\).</div>
+
+<h2>1.5 Dominios enteros finitos</h2>
+<div class="bloque thm"><span class="rotulo">Teorema <span class="ref">(2.11)</span></span> Todo dominio entero finito es un cuerpo.</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> Sea \(D\) un DI finito y \(b\in D\), \(b\neq0\). Consideremos la función \(\lambda_b:D\to D\), \(\lambda_b(x)=bx\).<br>
+<i>Es inyectiva:</i> si \(bx=by\), por cancelación (\(b\neq0\)) se tiene \(x=y\).<br>
+<i>Es sobreyectiva:</i> toda función inyectiva de un conjunto finito en sí mismo es biyectiva.<br>
+En particular existe \(c\in D\) con \(bc=1\). Como \(D\) es conmutativo, \(cb=1\) y \(b\) es unidad. Al ser \(b\neq0\) arbitrario, \(D\) es un cuerpo. <span class="qed"></span></div>
+<div class="bloque obs"><span class="rotulo">Relación con el folleto</span> El folleto escribe \(D=\{0,1,a_1,\dots,a_n\}\) y observa que \(L=\{b1,ba_1,\dots,ba_n\}\) tiene elementos distintos y no nulos, de modo que \(L=D\setminus\{0\}\) y \(1\in L\). Es el mismo argumento: \(\lambda_b\) permuta los elementos no nulos.</div>
+<div class="bloque thm"><span class="rotulo">Corolario <span class="ref">(2.12)</span></span> \(\Z_n\) es un cuerpo si y solo si \(n\) es primo.</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> Si \(n=p\) es primo, \(\Z_p\) no tiene divisores de cero (Ejemplo 2.7), así que es un DI finito y, por el Teorema 2.11, un cuerpo. Si \(n\) no es primo, \(n=st\) con \(1&lt;s,t&lt;n\); entonces \(\cl s\cl t=\cl0\) con \(\cl s,\cl t\neq\cl0\). Por el Teorema 2.6, \(\Z_n\) no es DI, y por la Proposición 2.2 tampoco es cuerpo. <span class="qed"></span></div>
+<div class="bloque ej"><span class="rotulo">Ejemplo resuelto: la permutación \(\lambda_3\) en \(\Z_7\)</span> Multiplicar por \(\cl3\) permuta los no nulos:
+\[ 1\mapsto3,\quad 2\mapsto6,\quad 3\mapsto2,\quad 4\mapsto5,\quad 5\mapsto1,\quad 6\mapsto4. \]
+El \(1\) aparece como imagen de \(5\), así que \(\cl3^{-1}=\cl5\). Tabla completa de inversos en \(\Z_7\):
+\(\ 1^{-1}=1,\ 2^{-1}=4,\ 3^{-1}=5,\ 4^{-1}=2,\ 5^{-1}=3,\ 6^{-1}=6.\)</div>
+<div class="bloque ej"><span class="rotulo">Ejemplo complementario: un cuerpo con 9 elementos</span> Sea \(\Z_3[i]=\{a+bi: a,b\in\Z_3\}\) con \(i^2=-1\). Es un anillo conmutativo con identidad de 9 elementos. Si \(a+bi\neq0\), entonces \((a+bi)(a-bi)=a^2+b^2\). Los cuadrados en \(\Z_3\) son \(0\) y \(1\), así que \(a^2+b^2=0\) solo si \(a=b=0\). Por tanto \(a^2+b^2\) es una unidad de \(\Z_3\) y
+\[(a+bi)^{-1}=(a^2+b^2)^{-1}(a-bi).\]
+Así \(\Z_3[i]\) es un cuerpo. En cambio, \(\Z_5[i]\) no es DI: \((2+i)(2-i)=4+1=5=0\).</div>
+
+<h2>1.6 Galería de ejemplos y contraejemplos</h2>
+<table>
+<thead><tr><th style="width:21%">Anillo</th><th style="width:11%">¿DI?</th><th style="width:12%">¿Cuerpo?</th><th>Justificación</th></tr></thead>
+<tbody>
+<tr><td>\(\Z\)</td><td>Sí</td><td>No</td><td>Sin divisores de cero; \(2\) no es unidad.</td></tr>
+<tr><td>\(\Q,\ \R,\ \C\)</td><td>Sí</td><td>Sí</td><td>Todo elemento no nulo tiene inverso.</td></tr>
+<tr><td>\(\Z_p\), \(p\) primo</td><td>Sí</td><td>Sí</td><td>Corolario 2.12.</td></tr>
+<tr><td>\(\Z_n\), \(n\) compuesto</td><td>No</td><td>No</td><td>\(n=st\Rightarrow \cl s\cl t=\cl 0\).</td></tr>
+<tr><td>\(\Z[i],\ \Z[\sqrt2],\ \Z[\sqrt{-3}]\)</td><td>Sí</td><td>No</td><td>Subanillos de \(\C\) con \(1\); \(2\) no es unidad.</td></tr>
+<tr><td>\(\Q[\sqrt2]\)</td><td>Sí</td><td>Sí</td><td>Ejemplo 1.17.</td></tr>
+<tr><td>\(\Z\oplus\Z\)</td><td>No</td><td>No</td><td>\((1,0)(0,1)=(0,0)\).</td></tr>
+<tr><td>\(M_2(\Z)\)</td><td>No</td><td>No</td><td>No es conmutativo y tiene divisores de cero.</td></tr>
+<tr><td>\(2\Z\)</td><td>No</td><td>No</td><td>No tiene identidad (aunque no tiene divisores de cero).</td></tr>
+<tr><td>\(\Z_3[i]\)</td><td>Sí</td><td>Sí</td><td>DI finito con 9 elementos (§1.5).</td></tr>
+<tr><td>\(\Z_5[i]\)</td><td>No</td><td>No</td><td>\((2+i)(2-i)=0\).</td></tr>
+</tbody>
+</table>
+
+<h2>1.7 Divisibilidad: unidades, asociados, irreducibles y primos</h2>
+<p>En esta sección \(D\) denota un dominio entero. Si \(a\neq0\), escribimos \(a\mid b\) cuando existe \(t\in D\) con \(b=ta\).</p>
+<div class="bloque def"><span class="rotulo">Definiciones <span class="ref">(2.13, 2.14, 2.15)</span></span>
+<ol>
+<li>\(a,b\in D\) son <b>asociados</b> si \(a=ub\) para alguna unidad \(u\in D\).</li>
+<li>Sea \(a\neq0\) no unidad. \(a\) es <b>irreducible</b> si siempre que \(a=bc\), con \(b,c\in D\), \(b\) o \(c\) es unidad.</li>
+<li>Sea \(a\neq0\) no unidad. \(a\) es <b>primo</b> si siempre que \(a\mid bc\), se tiene \(a\mid b\) o \(a\mid c\).</li>
+</ol></div>
+<div class="bloque obs"><span class="rotulo">Cómo leer las definiciones</span> «Irreducible» habla de <i>factorizaciones</i> de \(a\): no se puede partir en dos factores que no sean unidades. «Primo» habla de cómo \(a\) <i>divide productos</i>. En \(\Z\) ambas ideas coinciden (Ejemplo 2.16), pero en general son distintas.</div>
+<div class="bloque ej"><span class="rotulo">Ejemplo <span class="ref">(2.16)</span></span> En \(\Z\), las unidades son \(\pm1\), los asociados de \(a\) son \(a\) y \(-a\), y los elementos primos e irreducibles son exactamente \(\pm p\) con \(p\) primo. Que los primos sean elementos primos es el lema de Euclides.</div>
+<div class="bloque thm"><span class="rotulo">Teorema <span class="ref">(2.17)</span></span> En un dominio entero, todo elemento primo es irreducible.</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> Sea \(a\) primo y \(a=bc\). Entonces \(a\mid bc\) (pues \(bc=1\cdot a\)), así que \(a\mid b\) o \(a\mid c\). Si \(a\mid b\), entonces \(b=ad\) para algún \(d\), y
+\[ b\cdot 1 = b = ad = (bc)d = b(cd). \]
+Como \(b\neq0\) (si no, \(a=0\)), cancelamos \(b\) y obtenemos \(cd=1\), así que \(c\) es unidad. Si \(a\mid c\), el argumento simétrico prueba que \(b\) es unidad. <span class="qed"></span></div>
+<div class="bloque warn"><span class="rotulo">Atención</span> El recíproco del Teorema 2.17 es <b>falso</b> en general: hay dominios con elementos irreducibles que no son primos (§1.9). Es una de las preguntas de concepto más habituales.</div>
+
+<h2>1.8 La norma en \(\Z[\sqrt d]\)</h2>
+<p>Sea \(d\in\Z\), \(d\neq1\), libre de cuadrados (no divisible por \(p^2\) para ningún primo \(p\)). Entonces \(\sqrt d\notin\Q\), y cada elemento de \(\Z[\sqrt d]\) se escribe de forma única como \(a+b\sqrt d\). La <b>norma</b> es
+\[ N:\Z[\sqrt d]\to\Z_{\ge0},\qquad N(a+b\sqrt d)=|a^2-db^2| = |(a+b\sqrt d)(a-b\sqrt d)|. \]
+Para \(d&lt;0\) no hace falta el valor absoluto: \(N(a+b\sqrt d)=a^2+|d|b^2\). Por ejemplo, \(N(a+bi)=a^2+b^2\) en \(\Z[i]\) y \(N(a+b\sqrt{-3})=a^2+3b^2\).</p>
+<div class="bloque thm"><span class="rotulo">Proposición <span class="ref">(2.18)</span></span> Para todo \(x,y\in\Z[\sqrt d]\):
+<ol>
+<li>\(N(x)=0\iff x=0\);</li>
+<li>\(N(xy)=N(x)N(y)\);</li>
+<li>\(N(x)=1\iff x\) es unidad;</li>
+<li>si \(N(x)\) es un número primo, entonces \(x\) es irreducible en \(\Z[\sqrt d]\).</li>
+</ol></div>
+<div class="prueba"><span class="rotulo">Demostración.</span> <b>1.</b> Si \(x=a+b\sqrt d\) y \(a^2=db^2\) con \(b\neq0\), entonces \(d=(a/b)^2\) sería el cuadrado de un racional; siendo \(d\) entero, sería un cuadrado perfecto, imposible para \(d\) libre de cuadrados y \(d\neq1\). Luego \(b=0\), y entonces \(a^2=0\), \(a=0\).<br>
+<b>2.</b> Si \(x=a+b\sqrt d\) y \(y=c+e\sqrt d\), entonces \(xy=(ac+bed)+(ae+bc)\sqrt d\) y
+\[ (ac+bed)^2-d(ae+bc)^2 = a^2c^2+b^2e^2d^2-da^2e^2-db^2c^2=(a^2-db^2)(c^2-de^2). \]
+Tomando valor absoluto, \(N(xy)=N(x)N(y)\).<br>
+<b>3.</b> Si \(N(x)=1\), entonces \((a+b\sqrt d)(a-b\sqrt d)=\pm1\), y \(\pm(a-b\sqrt d)\) es inverso de \(x\). Si \(x\) es unidad y \(xy=1\), entonces \(N(x)N(y)=N(1)=1\) con \(N(x),N(y)\) enteros no negativos, así que \(N(x)=1\).<br>
+<b>4.</b> Si \(N(x)=p\) primo, \(x\neq0\) y \(x\) no es unidad (por 1 y 3). Si \(x=yz\), entonces \(N(y)N(z)=p\), luego \(N(y)=1\) o \(N(z)=1\): uno de los factores es unidad. <span class="qed"></span></div>
+<div class="bloque obs"><span class="rotulo">Nota sobre el folleto</span> El enunciado 4) del folleto dice «irreducible en \(\Z\)»; debe leerse «irreducible en \(\Z[\sqrt d]\)», como se demuestra arriba.</div>
+<div class="bloque warn"><span class="rotulo">Atención</span> El recíproco de 4 es falso: \(3\) es irreducible en \(\Z[i]\) y \(N(3)=9\) no es primo. Que la norma no sea prima <b>no</b> prueba que el elemento sea reducible.</div>
+<div class="bloque ej"><span class="rotulo">Ejemplo resuelto: unidades</span>
+<ul>
+<li>\(\Z[i]\): \(a^2+b^2=1\iff(a,b)\in\{(\pm1,0),(0,\pm1)\}\). Unidades: \(\pm1,\pm i\).</li>
+<li>\(\Z[\sqrt{-3}]\): \(a^2+3b^2=1\iff b=0,\ a=\pm1\). Unidades: \(\pm1\).</li>
+<li>\(\Z[\sqrt{-5}]\): \(a^2+5b^2=1\iff b=0,\ a=\pm1\). Unidades: \(\pm1\).</li>
+<li>\(\Z[\sqrt2]\): \(N(1+\sqrt2)=|1-2|=1\), así que \(1+\sqrt2\) es unidad, con inverso \(-1+\sqrt2\). Sus potencias \((1+\sqrt2)^k\) son unidades distintas: hay infinitas unidades.</li>
+</ul></div>
+
+<h2>1.9 Irreducible no implica primo</h2>
+<div class="bloque ej"><span class="rotulo">Ejemplo <span class="ref">(2.19)</span>: \(1+\sqrt{-3}\) en \(\Z[\sqrt{-3}]\)</span>
+<p><b>Es irreducible.</b> \(N(1+\sqrt{-3})=1+3=4\neq1\), así que no es unidad. Si \(1+\sqrt{-3}=xy\) con \(x,y\) no unidades, entonces \(N(x)N(y)=4\) con \(N(x),N(y)\neq1\), luego \(N(x)=N(y)=2\). Pero \(a^2+3b^2=2\) no tiene soluciones enteras: si \(b=0\), \(a^2=2\); si \(b\neq0\), \(a^2+3b^2\ge3\). Contradicción.</p>
+<p><b>No es primo.</b> \((1+\sqrt{-3})(1-\sqrt{-3})=1+3=4=2\cdot2\), así que \(1+\sqrt{-3}\mid 2\cdot2\). Si fuera primo, dividiría a \(2\): \((1+\sqrt{-3})(a+b\sqrt{-3})=2\), es decir,
+\[ (a-3b)+(a+b)\sqrt{-3}=2 \ \Longrightarrow\ a-3b=2,\ a+b=0 \ \Longrightarrow\ b=-\tfrac12, \]
+que no es entero. Por tanto \(1+\sqrt{-3}\) no divide a \(2\) y no es primo.</p></div>
+<div class="bloque ej"><span class="rotulo">Ejemplo resuelto: \(2\) en \(\Z[\sqrt{-3}]\)</span> \(N(2)=4\). El mismo argumento (no existen elementos de norma 2) prueba que \(2\) es irreducible. Además \(2\mid(1+\sqrt{-3})(1-\sqrt{-3})=4\), pero \(\frac{1\pm\sqrt{-3}}{2}=\frac12\pm\frac12\sqrt{-3}\notin\Z[\sqrt{-3}]\), así que \(2\) no divide a ninguno de los factores. Conclusión: \(2\) es irreducible y no es primo.</div>
+<div class="bloque ej"><span class="rotulo">Ejemplo complementario: factorización no única en \(\Z[\sqrt{-5}]\)</span> Con \(N(a+b\sqrt{-5})=a^2+5b^2\):
+\[ 6=2\cdot3=(1+\sqrt{-5})(1-\sqrt{-5}). \]
+Las normas son \(N(2)=4\), \(N(3)=9\), \(N(1\pm\sqrt{-5})=6\). La ecuación \(a^2+5b^2=k\) no tiene solución para \(k=2\) ni \(k=3\), luego ninguno de los cuatro factores puede partirse en factores no unidades: los cuatro son irreducibles. Como las únicas unidades son \(\pm1\), \(2\) no es asociado de \(1\pm\sqrt{-5}\). Así \(6\) tiene dos factorizaciones esencialmente distintas en irreducibles, y \(2\) es irreducible pero no primo.</div>
+
+<h2>1.10 Característica de un anillo</h2>
+<p>Para \(n\in\Z^+\) y \(x\in R\) escribimos \(n\cdot x=x+\cdots+x\) (\(n\) sumandos), \(0\cdot x=0\) y \((-n)\cdot x=-(n\cdot x)\).</p>
+<div class="bloque def"><span class="rotulo">Definición <span class="ref">(2.20)</span></span> La <b>característica</b> de un anillo \(R\) es el menor entero positivo \(n\) tal que \(n\cdot x=0\) para todo \(x\in R\). Si no existe tal entero, \(\car(R)=0\).</div>
+<div class="bloque ej"><span class="rotulo">Ejemplos <span class="ref">(2.21, 2.22)</span></span> \(\car(\Z)=\car(\Q)=\car(\R)=0\). \(\car(\Z_n)=n\), pues \(n\cdot\cl x=\cl{nx}=\cl0\) y \(k\cdot\cl1=\cl k\neq\cl0\) para \(0&lt;k&lt;n\).</div>
+<div class="bloque thm"><span class="rotulo">Teorema <span class="ref">(2.23)</span></span> Sea \(R\) un anillo con identidad. Si \(n\cdot1\neq0\) para todo \(n\in\Z^+\), entonces \(\car(R)=0\). Si \(n\) es el menor entero positivo con \(n\cdot1=0\), entonces \(\car(R)=n\).</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> En el primer caso, ningún \(m\) anula a \(x=1\), así que la característica es \(0\). En el segundo, para todo \(x\in R\):
+\[ n\cdot x = x+\cdots+x = 1x+\cdots+1x=(1+\cdots+1)x=(n\cdot1)x=0x=0. \]
+Además ningún \(0&lt;m&lt;n\) sirve, pues \(m\cdot1\neq0\). <span class="qed"></span></div>
+<div class="bloque met"><span class="rotulo">Consecuencia práctica</span> En un anillo con identidad, la característica es el <b>orden aditivo de \(1\)</b>: basta mirar \(1, 1+1, 1+1+1,\dots\).</div>
+<div class="bloque thm"><span class="rotulo">Proposición <span class="ref">(2.24)</span></span> Si \(\car(R)=n\neq0\) y \(m\cdot1=0\) con \(m\in\N\), entonces \(n\mid m\).</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> Por el algoritmo de la división, \(m=qn+r\), \(0\le r&lt;n\). Entonces \(0=m\cdot1=q\cdot(n\cdot1)+r\cdot1=r\cdot1\). Por la minimalidad de \(n\), \(r=0\). <span class="qed"></span></div>
+<div class="bloque thm"><span class="rotulo">Teorema <span class="ref">(2.25)</span></span> La característica de un dominio entero es \(0\) o un número primo.</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> Sea \(\car(D)=n\neq0\). Como \(1\neq0\), \(n\ge2\). Si \(n\) no fuera primo, \(n=st\) con \(1&lt;s,t&lt;n\). Por la distributividad,
+\[ 0=n\cdot1=(st)\cdot1=(s\cdot1)(t\cdot1). \]
+Como \(D\) no tiene divisores de cero, \(s\cdot1=0\) o \(t\cdot1=0\), lo que contradice la minimalidad de \(n\). <span class="qed"></span></div>
+<div class="bloque thm"><span class="rotulo">Corolario complementario</span> Todo dominio entero finito (y, por tanto, todo cuerpo finito) tiene característica prima.</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> Si \(D\) es finito, los elementos \(1\cdot1, 2\cdot1, 3\cdot1,\dots\) no pueden ser todos distintos: \(m\cdot1=k\cdot1\) con \(m&gt;k\), y entonces \((m-k)\cdot1=0\). Así \(\car(D)\neq0\) y, por el Teorema 2.25, es primo. <span class="qed"></span></div>
+<div class="bloque ej"><span class="rotulo">Ejemplos resueltos (complementarios)</span>
+<ul>
+<li>\(\car(\Z_4\oplus\Z_6)=\mcm(4,6)=12\): \(n\cdot(1,1)=(\cl n,\cl n)=(0,0)\iff 4\mid n\ \text{y}\ 6\mid n\iff12\mid n\).</li>
+<li>\(\car(\Z\oplus\Z_5)=0\): \(n\cdot(1,1)=(n,\cl n)\) nunca es \((0,0)\) para \(n&gt;0\).</li>
+<li>\(\car(\Z_3[i])=3\), coherente con que es un cuerpo finito.</li>
+<li>No existe un DI de característica \(6\), \(10\) o \(12\), por el Teorema 2.25.</li>
+</ul></div>
+
+<h2>1.11 Métodos de resolución (Módulo 2)</h2>
+<div class="bloque met"><span class="rotulo">M1. Probar que \(R\) es un dominio entero</span>
+<ol><li>Verifica que \(R\) es conmutativo y tiene identidad \(1\neq0\).</li>
+<li>Supón \(ab=0\) con \(a\neq0\) y deduce \(b=0\) (Teorema 2.6). Atajo: si \(R\) es subanillo de un cuerpo y contiene al \(1\), ya está.</li></ol></div>
+<div class="bloque met"><span class="rotulo">M2. Probar que \(R\) no es un dominio entero</span> Exhibe \(a\neq0\), \(b\neq0\) con \(ab=0\). En \(\Z_n\): factoriza \(n=st\) y usa \(\cl s\cl t=\cl0\). En productos directos: \((1,0)(0,1)=(0,0)\). Alternativa: muestra que falta conmutatividad o identidad.</div>
+<div class="bloque met"><span class="rotulo">M3. Decidir si un anillo finito es cuerpo</span> Prueba que es DI (M1); el Teorema 2.11 hace el resto. En \(\Z_n\): cuerpo \(\iff\) \(n\) primo.</div>
+<div class="bloque met"><span class="rotulo">M4. Divisores de cero y unidades en \(\Z_n\)</span> Para cada \(1\le m&lt;n\): si \(\mcd(m,n)=1\), \(\cl m\) es unidad (calcula el inverso por tanteo o con Euclides extendido); si no, es divisor de cero y \(\cl{n/d}\), con \(d=\mcd(m,n)\), es un compañero que lo anula.</div>
+<div class="bloque met"><span class="rotulo">M5. Probar que \(x\) es irreducible en \(\Z[\sqrt d]\)</span>
+<ol><li>Calcula \(N(x)\); comprueba \(N(x)\neq 0, 1\) (no es cero ni unidad).</li>
+<li>Si \(N(x)\) es primo, termina por la Proposición 2.18(4).</li>
+<li>Si no, supón \(x=yz\), lista las factorizaciones \(N(x)=N(y)N(z)\) con ambos factores \(&gt;1\), y muestra que la ecuación \(|a^2-db^2|=k\) no tiene solución entera para esos valores de \(k\).</li>
+<li>Concluye que \(N(y)=1\) o \(N(z)=1\): uno de los factores es unidad.</li></ol></div>
+<div class="bloque met"><span class="rotulo">M6. Probar que \(x\) no es primo</span> Busca un producto \(bc\) con \(x\mid bc\) pero \(x\nmid b\), \(x\nmid c\). Lo usual: un producto de conjugados, \((a+b\sqrt d)(a-b\sqrt d)=a^2-db^2\), que sea múltiplo de \(x\). Para ver que \(x\nmid b\), calcula \(b/x\) en \(\Q(\sqrt d)\) (multiplicando por el conjugado) y comprueba que sus coeficientes no son enteros.</div>
+<div class="bloque met"><span class="rotulo">M7. Calcular la característica</span> Si hay identidad, calcula el orden aditivo de \(1\). En \(R_1\oplus R_2\), la característica es \(\mcm(\car R_1,\car R_2)\) si ambas son positivas, y \(0\) si alguna es \(0\). Si te piden probar que no existe un DI de característica \(n\), aplica el Teorema 2.25.</div>
+
+<h2>1.12 Errores frecuentes (Módulo 2)</h2>
+<div class="bloque warn"><span class="rotulo">E1. «\(\Z_n\) es un dominio entero»</span> Solo si \(n\) es primo. \(\Z_6\), \(\Z_{12}\), \(\Z_{15}\) no lo son.</div>
+<div class="bloque warn"><span class="rotulo">E2. Cancelar sin comprobar \(a\neq0\) o en anillos con divisores de cero</span> En \(\Z_6\), \(\cl2\cl1=\cl2\cl4\) y sin embargo \(\cl1\neq\cl4\).</div>
+<div class="bloque warn"><span class="rotulo">E3. Confundir DI con cuerpo</span> Cuerpo \(\Rightarrow\) DI, pero DI \(\not\Rightarrow\) cuerpo (\(\Z\)). La implicación se invierte solo para anillos <i>finitos</i>.</div>
+<div class="bloque warn"><span class="rotulo">E4. Usar «irreducible \(\Rightarrow\) primo» fuera de \(\Z\)</span> Es falso en \(\Z[\sqrt{-3}]\) y en \(\Z[\sqrt{-5}]\).</div>
+<div class="bloque warn"><span class="rotulo">E5. Concluir reducibilidad porque \(N(x)\) no es primo</span> \(3\) es irreducible en \(\Z[i]\) con \(N(3)=9\). Hay que comprobar si existen elementos con las normas intermedias.</div>
+<div class="bloque warn"><span class="rotulo">E6. Definir la característica como «el número de elementos»</span> \(\Z_3[i]\) tiene 9 elementos y característica 3; \(\Z\) es infinito con característica 0.</div>
+<div class="bloque warn"><span class="rotulo">E7. Olvidar que unidades y divisores de cero se excluyen</span> Una unidad nunca es divisor de cero: \(ub=0\Rightarrow b=u^{-1}(ub)=0\).</div>
+
+<h2>1.13 Ejercicios propuestos (Módulo 2)</h2>
+<p class="pequeno">Dificultad: <span class="dificultad d1">B</span> básico · <span class="dificultad d2">I</span> intermedio · <span class="dificultad d3">A</span> avanzado. Respuestas en AL2-M23-03, Apéndice B.</p>
+<ol>
+<li><span class="dificultad d1">B</span> Determina las unidades y los divisores de cero de \(\Z_{10}\) y de \(\Z_{14}\).</li>
+<li><span class="dificultad d1">B</span> Construye la tabla de inversos de \(\Z_{11}\).</li>
+<li><span class="dificultad d1">B</span> ¿Es \(\Z\oplus\Z\) un dominio entero? ¿Y \(\Z_2\oplus\Z_3\)? Justifica.</li>
+<li><span class="dificultad d1">B</span> Demuestra que \(\Z[i]\) es un dominio entero y que no es un cuerpo.</li>
+<li><span class="dificultad d1">B</span> Calcula \(\car(\Z_9)\), \(\car(\Z_2\oplus\Z_3)\), \(\car(\Z\oplus\Z_3)\) y \(\car(\Q)\).</li>
+<li><span class="dificultad d2">I</span> Demuestra que en \(\Z_n\) todo elemento no nulo es unidad o divisor de cero.</li>
+<li><span class="dificultad d2">I</span> Sea \(D\) un DI y \(S\) un subanillo de \(D\) que contiene al \(1\). Demuestra que \(S\) es DI.</li>
+<li><span class="dificultad d2">I</span> Demuestra que \(N(xy)=N(x)N(y)\) en \(\Z[\sqrt d]\) (Proposición 2.18, parte 2).</li>
+<li><span class="dificultad d2">I</span> Halla todas las unidades de \(\Z[i]\) y de \(\Z[\sqrt{-5}]\).</li>
+<li><span class="dificultad d2">I</span> Demuestra que \(3\) es irreducible en \(\Z[i]\) y que \(5\) no lo es.</li>
+<li><span class="dificultad d2">I</span> Demuestra que \(2+i\) es irreducible en \(\Z[i]\).</li>
+<li><span class="dificultad d3">A</span> En \(\Z[\sqrt{-5}]\), prueba que \(2\), \(3\), \(1+\sqrt{-5}\) y \(1-\sqrt{-5}\) son irreducibles, y que \(2\) no es primo.</li>
+<li><span class="dificultad d3">A</span> Prueba que \(\Z_3[i]\) es un cuerpo y que \(\Z_5[i]\) no es dominio entero.</li>
+<li><span class="dificultad d3">A</span> Demuestra que todo DI finito tiene característica prima.</li>
+<li><span class="dificultad d2">I</span> Sea \(D\) un DI y \(a\in D\) con \(a^2=a\). Prueba que \(a=0\) o \(a=1\). ¿Es cierto en \(\Z_6\)?</li>
+<li><span class="dificultad d2">I</span> Sea \(D\) un DI y \(a\in D\) con \(a^2=1\). Prueba que \(a=\pm1\). Halla un contraejemplo en \(\Z_8\).</li>
+</ol>
+
+<!-- ===================================================== CAPÍTULO 2 -->
+<h1 class="capitulo" data-indice="Capítulo 2. Módulo 3: Ideales"><span class="num">Capítulo 2 · Módulo 3</span>Ideales</h1>
+<p>Un ideal es un subanillo que «absorbe» la multiplicación por cualquier elemento del anillo. Los ideales cumplen en anillos el papel que los subgrupos normales cumplen en grupos: son exactamente los subconjuntos con los que se puede construir un anillo cociente (Módulo 4). En este capítulo, salvo que se diga lo contrario, los anillos son conmutativos.</p>
+
+<h2>2.1 Definición y test del ideal</h2>
+<div class="bloque def"><span class="rotulo">Definición <span class="ref">(3.1)</span></span> Un subanillo \(I\) de un anillo \(R\) es un <b>ideal</b> de \(R\) si para todo \(r\in R\) y todo \(a\in I\) se cumple \(ra\in I\) y \(ar\in I\). Si \(R\) es conmutativo basta exigir \(ra\in I\). El ideal \(I\) es <b>propio</b> si \(I\neq R\).</div>
+<div class="bloque thm"><span class="rotulo">Teorema <span class="ref">(3.2, test del ideal)</span></span> Un subconjunto no vacío \(I\) de \(R\) es un ideal si y solo si, para todo \(a,b\in I\) y todo \(r\in R\):
+\[ \text{(i) } a-b\in I, \qquad \text{(ii) } ra\in I \ \text{ y } \ ar\in I. \]</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> Si \(I\) es ideal, (i) se cumple por ser subanillo y (ii) por definición. Recíprocamente, (ii) con \(r=b\in I\subseteq R\) da \(ab\in I\); junto con (i), el test del subanillo (Teorema 1.23) muestra que \(I\) es subanillo, y (ii) es la absorción. <span class="qed"></span></div>
+<div class="bloque warn"><span class="rotulo">Atención</span> La diferencia esencial con un subanillo está en (ii): el factor \(r\) recorre <b>todo</b> \(R\), no solo \(I\). Para probar que algo es ideal hay que verificar (ii) con un \(r\in R\) arbitrario.</div>
+
+<h2>2.2 Ejemplos y contraejemplos</h2>
+<div class="bloque ej"><span class="rotulo">Ejemplo <span class="ref">(3.3)</span></span> En todo anillo \(R\), \(\{0\}\) (ideal trivial) y \(R\) (ideal impropio) son ideales.</div>
+<div class="bloque ej"><span class="rotulo">Ejemplo <span class="ref">(3.4)</span>: \(n\Z\) es ideal de \(\Z\)</span> \(n\Z\neq\varnothing\) (contiene \(0\)). Si \(a=nx\), \(b=ny\), entonces \(a-b=n(x-y)\in n\Z\), y para \(r\in\Z\), \(ra=n(rx)\in n\Z\). Por el Teorema 3.2, \(n\Z\) es ideal.</div>
+<div class="bloque ej"><span class="rotulo">Ejemplo <span class="ref">(3.6)</span>: matrices con entradas pares</span> \(I=\left\{\begin{pmatrix}a_1&a_2\\a_3&a_4\end{pmatrix}: a_i \text{ pares}\right\}\) es ideal del anillo no conmutativo \(M_2(\Z)\). La diferencia de dos matrices de \(I\) tiene entradas pares, y si \(A\in I\), \(C\in M_2(\Z)\), cada entrada de \(AC\) y de \(CA\) es suma de productos «par por entero», que son pares.</div>
+<div class="bloque ej"><span class="rotulo">Ejemplo complementario</span> En \(\Z\oplus\Z\), el conjunto \(\Z\oplus\{0\}=\{(a,0)\}\) es un ideal: \((a,0)-(b,0)=(a-b,0)\) y \((r,s)(a,0)=(ra,0)\).</div>
+<div class="bloque warn"><span class="rotulo">Contraejemplos (subconjuntos que no son ideales)</span>
+<ul>
+<li>\(\Z\) <b>no</b> es ideal de \(\Q\), aunque es subanillo: \(\tfrac12\cdot 1=\tfrac12\notin\Z\). Del mismo modo, \(\Z\) no es ideal de \(\R\) <span class="ref">(3.5)</span>: \(\sqrt2\cdot1\notin\Z\).</li>
+<li>Las matrices diagonales forman un subanillo de \(M_2(\Z)\) que no es ideal: \(\begin{pmatrix}1&1\\0&0\end{pmatrix}\begin{pmatrix}1&0\\0&1\end{pmatrix}=\begin{pmatrix}1&1\\0&0\end{pmatrix}\) no es diagonal.</li>
+<li>Los impares no son ideal de \(\Z\): \(3-1=2\) no es impar (y \(0\) no es impar).</li>
+<li>\(\N\) no es ideal de \(\Z\): \((-1)\cdot 1=-1\notin\N\).</li>
+<li>El conjunto de unidades de \(R\) nunca es un ideal propio: contiene a \(1\) (ver Lema 3.7).</li>
+</ul></div>
+
+<h2>2.3 El ideal unidad y los ideales de un cuerpo</h2>
+<div class="bloque thm"><span class="rotulo">Lema <span class="ref">(3.7)</span></span> Sea \(R\) un anillo con identidad e \(I\) un ideal de \(R\). Entonces \(1\in I \iff I=R\).</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> Si \(I=R\), es claro que \(1\in I\). Si \(1\in I\), para todo \(a\in R\) se tiene \(a=a\cdot1\in I\) por absorción, así que \(R\subseteq I\) y \(I=R\). <span class="qed"></span></div>
+<div class="bloque thm"><span class="rotulo">Corolario complementario</span> Si un ideal \(I\) contiene una unidad \(u\), entonces \(I=R\).</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> \(1=u^{-1}u\in I\) por absorción; aplica el Lema 3.7. <span class="qed"></span></div>
+<div class="bloque thm"><span class="rotulo">Teorema complementario (caracterización de cuerpos por ideales)</span> Sea \(R\) un anillo conmutativo con identidad. Entonces \(R\) es un cuerpo si y solo si sus únicos ideales son \(\{0\}\) y \(R\).</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> \((\Rightarrow)\) Si \(I\neq\{0\}\) es ideal de un cuerpo, contiene un \(a\neq0\), que es unidad; por el corolario, \(I=R\).<br>
+\((\Leftarrow)\) Sea \(a\neq0\). El ideal \(\gen a=\{ra: r\in R\}\) contiene \(a\neq 0\), así que \(\gen a\neq\{0\}\) y, por hipótesis, \(\gen a=R\). Entonces \(1\in\gen a\), es decir, \(1=ra\) para algún \(r\): \(a\) es unidad. <span class="qed"></span></div>
+
+<h2>2.4 Ideal generado e ideales principales</h2>
+<div class="bloque thm"><span class="rotulo">Teorema <span class="ref">(3.8)</span></span> Sea \(R\) conmutativo y \(A=\{a_1,\dots,a_n\}\subseteq R\). Si \(R\) tiene identidad, el conjunto
+\[ \gen{a_1,\dots,a_n}=\{x_1a_1+\cdots+x_na_n : x_i\in R\} \]
+es el menor ideal de \(R\) que contiene a \(A\).</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> <i>Es ideal:</i> la diferencia de dos combinaciones es \(\sum (x_i-y_i)a_i\), otra combinación; y \(r\sum x_ia_i=\sum (rx_i)a_i\).<br>
+<i>Contiene a \(A\):</i> \(a_j=0a_1+\cdots+1a_j+\cdots+0a_n\) (aquí se usa la identidad).<br>
+<i>Es el menor:</i> si \(I\) es un ideal con \(A\subseteq I\), cada \(x_ia_i\in I\) por absorción y la suma está en \(I\) por cerradura. Luego \(\gen{a_1,\dots,a_n}\subseteq I\). <span class="qed"></span></div>
+<div class="bloque def"><span class="rotulo">Definiciones <span class="ref">(3.9, 3.10, 3.11)</span></span> \(\gen{a_1,\dots,a_n}\) es el <b>ideal generado</b> por \(a_1,\dots,a_n\). Un ideal es <b>principal</b> si \(I=\gen a=\{ra: r\in R\}\) para algún \(a\). Un anillo conmutativo es un <b>anillo de ideales principales</b> si todos sus ideales son principales; si además es DI se llama <b>dominio de ideales principales</b> (DIP).</div>
+<div class="bloque ej"><span class="rotulo">Ejemplos</span> En \(\Z\), \(\gen n=n\Z\). En \(\Z[i]\), \(\gen2=\{2(a+bi)\}=\{x+yi: x,y \text{ pares}\}\). En \(\Z_{12}\), \(\gen{\cl 4}=\{\cl0,\cl4,\cl8\}\).</div>
+
+<h2>2.5 \(\Z\) y \(\Z_n\) son anillos de ideales principales</h2>
+<div class="bloque thm"><span class="rotulo">Teorema <span class="ref">(Ejemplos 3.12 y 3.13)</span></span> Todo ideal de \(\Z\) es de la forma \(n\Z=\gen n\) con \(n\ge0\). Por tanto, \(\Z\) es un DIP.</div>
+<div class="prueba"><span class="rotulo">Demostración (por el algoritmo de la división).</span> Sea \(I\) un ideal. Si \(I=\{0\}\), \(I=\gen0\). Si no, \(I\) contiene un entero positivo (si \(a\in I\), también \(-a\in I\)). Sea \(n\) el menor entero positivo de \(I\). Claramente \(\gen n\subseteq I\). Si \(a\in I\), escribimos \(a=qn+r\) con \(0\le r&lt;n\); entonces \(r=a-qn\in I\), y por la minimalidad de \(n\), \(r=0\). Luego \(a\in\gen n\) e \(I=\gen n\). <span class="qed"></span></div>
+<div class="bloque obs"><span class="rotulo">Comparación con el folleto</span> El folleto da otro argumento: un ideal es un subgrupo de \((\Z,+)\), que es cíclico, y todo subgrupo de un grupo cíclico es cíclico. Ambos son válidos.</div>
+<div class="bloque thm"><span class="rotulo">Corolario</span> En \(\Z\), \(\gen{a,b}=\gen{\mcd(a,b)}\).</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> Sea \(d=\mcd(a,b)\). Por Bézout \(d=ax+by\in\gen{a,b}\), luego \(\gen d\subseteq\gen{a,b}\). Como \(d\mid a\) y \(d\mid b\), toda combinación \(ax+by\) es múltiplo de \(d\), luego \(\gen{a,b}\subseteq\gen d\). <span class="qed"></span></div>
+<div class="bloque thm"><span class="rotulo">Teorema complementario</span> Todo ideal de \(\Z_n\) es de la forma \(\gen{\cl d}\) con \(d\) divisor positivo de \(n\).</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> Sea \(I\neq\{\cl0\}\) y \(d\) el menor entero positivo con \(\cl d\in I\). Si \(\cl a\in I\), con \(a=qd+r\), \(0\le r&lt;d\), entonces \(\cl r=\cl a-q\cl d\in I\) y \(r=0\): \(I=\gen{\cl d}\). Aplicando lo mismo a \(\cl n=\cl0\in I\) obtenemos \(d\mid n\). Para \(I=\{\cl0\}\) tomamos \(d=n\). <span class="qed"></span></div>
+
+<h2>2.6 Contención e igualdad de ideales principales</h2>
+<div class="bloque thm"><span class="rotulo">Lema <span class="ref">(3.14)</span></span> Sea \(D\) un dominio entero y \(a,b\in D\setminus\{0\}\).
+<ol><li>\(\gen a\subseteq\gen b\iff b\mid a\).</li>
+<li>\(\gen a=\gen b\iff a\) y \(b\) son asociados.</li>
+<li>\(\gen a=D\iff a\) es unidad.</li></ol></div>
+<div class="prueba"><span class="rotulo">Demostración.</span> <b>1.</b> Si \(\gen a\subseteq\gen b\), entonces \(a\in\gen b\): \(a=qb\), es decir \(b\mid a\). Si \(a=qb\), todo \(xa=(xq)b\in\gen b\).<br>
+<b>2.</b> Si \(a=ub\) con \(u\) unidad, entonces \(b\mid a\) y \(a\mid b\) (pues \(b=u^{-1}a\)); por 1, \(\gen a=\gen b\). Recíprocamente, si \(\gen a=\gen b\), por 1 existen \(q,q'\) con \(a=qb\) y \(b=q'a\). Entonces \(a\cdot1=a=qq'a\), y cancelando \(a\neq0\), \(qq'=1\): \(q\) es unidad.<br>
+<b>3.</b> \(\gen1=D\). Por 2, \(\gen a=\gen 1\iff a\) es asociado de \(1\iff a=u\cdot1\) con \(u\) unidad \(\iff a\) es unidad. <span class="qed"></span></div>
+<div class="bloque met"><span class="rotulo">Regla mnemotécnica</span> «<b>Contener es dividir</b>»: el ideal grande corresponde al divisor pequeño. En \(\Z\): \(\gen 8\subseteq\gen4\subseteq\gen2\) porque \(2\mid4\mid8\); y \(\gen2=\gen{-2}\) porque \(2\) y \(-2\) son asociados.</div>
+<div class="bloque ej"><span class="rotulo">Ejemplos</span> En \(\Z[i]\), \(1-i=(-i)(1+i)\), así que \(\gen{1+i}=\gen{1-i}\). En \(\Z\), \(\gen 6\not\subseteq\gen4\) porque \(4\nmid6\).</div>
+
+<h2>2.7 Operaciones con ideales</h2>
+<div class="bloque def"><span class="rotulo">Definición</span> Para ideales \(I,J\) de \(R\):
+\[ I+J=\{i+j: i\in I,\ j\in J\},\qquad IJ=\Big\{\textstyle\sum_{k=1}^{m} i_kj_k : i_k\in I,\ j_k\in J,\ m\in\Z^+\Big\}. \]</div>
+<div class="bloque obs"><span class="rotulo">Observación</span> \(IJ\) no es el conjunto de productos \(ij\) aislados, sino de <b>sumas finitas</b> de tales productos; sin las sumas no sería, en general, cerrado bajo la suma.</div>
+<div class="bloque thm"><span class="rotulo">Proposición (Ejercicio 3.1 y complementos)</span> \(I+J\), \(I\cap J\) e \(IJ\) son ideales de \(R\), y
+\[ IJ\subseteq I\cap J\subseteq I,\ J\subseteq I+J. \]
+Además, \(I+J\) es el menor ideal que contiene a \(I\cup J\).</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> <b>\(I+J\):</b> contiene \(0=0+0\); \((i_1+j_1)-(i_2+j_2)=(i_1-i_2)+(j_1-j_2)\in I+J\); \(r(i+j)=ri+rj\in I+J\).<br>
+<b>\(I\cap J\):</b> contiene \(0\); si \(a,b\in I\cap J\), entonces \(a-b\) y \(ra\) están en \(I\) y en \(J\).<br>
+<b>\(IJ\):</b> la diferencia de dos sumas finitas de productos es otra suma finita de productos (usando \(-(ij)=(-i)j\)), y \(r\sum i_kj_k=\sum(ri_k)j_k\).<br>
+<b>Contenciones:</b> cada \(i_kj_k\) está en \(I\) (absorción por \(j_k\)) y en \(J\) (absorción por \(i_k\)), así que \(IJ\subseteq I\cap J\). Además \(i=i+0\in I+J\). Si un ideal \(K\) contiene a \(I\) y a \(J\), contiene todas las sumas \(i+j\). <span class="qed"></span></div>
+<div class="bloque thm"><span class="rotulo">Proposición <span class="ref">(3.16)</span></span> Si \(I,J,K\) son ideales de un anillo conmutativo, \(I(J+K)=IJ+IK\).</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> Un elemento de \(I(J+K)\) es \(\sum_s i_s(j_s+k_s)=\sum_s i_sj_s+\sum_s i_sk_s\in IJ+IK\). Recíprocamente, \(\sum i_sj_s+\sum i'_tk_t\) es una suma de productos \(i_s(j_s+0)\) e \(i'_t(0+k_t)\), todos en \(I(J+K)\). <span class="qed"></span></div>
+<div class="bloque thm"><span class="rotulo">Teorema (operaciones en \(\Z\))</span> Para \(m,n\ge1\):
+\[ \gen m+\gen n=\gen{\mcd(m,n)},\qquad \gen m\cap\gen n=\gen{\mcm(m,n)},\qquad \gen m\gen n=\gen{mn}. \]</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> La suma es \(\gen{m,n}\) y vale el corolario de §2.5. Para la intersección: \(k\in\gen m\cap\gen n\iff m\mid k\) y \(n\mid k\iff\mcm(m,n)\mid k\). Para el producto: cada \((mx)(ny)=mn(xy)\in\gen{mn}\), y \(mn=m\cdot n\in\gen m\gen n\). <span class="qed"></span></div>
+<div class="bloque ej"><span class="rotulo">Ejemplo resuelto</span> En \(\Z\), con \(I=\gen4\), \(J=\gen6\):
+\(I+J=\gen2\), \(I\cap J=\gen{12}\), \(IJ=\gen{24}\). Observa que \(IJ=\gen{24}\subsetneq\gen{12}=I\cap J\): la contención \(IJ\subseteq I\cap J\) puede ser estricta. En cambio, si \(\mcd(m,n)=1\), \(\gen m\cap\gen n=\gen m\gen n\).</div>
+<div class="bloque warn"><span class="rotulo">Atención: la unión no es ideal</span> \(\gen2\cup\gen3\) no es ideal de \(\Z\): \(2\) y \(3\) están en la unión, pero \(3-2=1\) no está (ni es múltiplo de 2 ni de 3).</div>
+
+<h2>2.8 Ideales primos</h2>
+<div class="bloque def"><span class="rotulo">Definición <span class="ref">(3.17)</span></span> Sea \(R\) conmutativo. Un ideal <b>propio</b> \(P\) es <b>primo</b> si para todo \(a,b\in R\):
+\[ ab\in P\ \Longrightarrow\ a\in P\ \text{ o }\ b\in P. \]</div>
+<div class="bloque ej"><span class="rotulo">Ejemplos</span>
+<ul>
+<li>En \(\Z\), \(\gen p\) es primo si \(p\) es primo: es el lema de Euclides.</li>
+<li>\(\gen6\) no es primo en \(\Z\): \(2\cdot3\in\gen6\) pero \(2,3\notin\gen6\).</li>
+<li>Si \(R\) es conmutativo con identidad, \(\{0\}\) es primo \(\iff R\) es DI: la condición «\(ab=0\Rightarrow a=0\) o \(b=0\)» es exactamente la ausencia de divisores de cero. Así \(\{0\}\) es primo en \(\Z\) pero no en \(\Z_6\).</li>
+<li>\(\Z\oplus\{0\}\) es primo en \(\Z\oplus\Z\): si \((a,b)(c,d)=(ac,bd)\in\Z\oplus\{0\}\), entonces \(bd=0\), luego \(b=0\) o \(d=0\).</li>
+</ul></div>
+<div class="bloque thm"><span class="rotulo">Proposición <span class="ref">(3.22)</span></span> Sea \(D\) un dominio entero y \(p\in D\), \(p\neq0\). El ideal \(\gen p\) es primo si y solo si \(p\) es un elemento primo de \(D\).</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> Observa que \(x\in\gen p\iff p\mid x\), y que \(\gen p\) es propio \(\iff p\) no es unidad (Lema 3.14). Si \(p\) es primo y \(ab\in\gen p\), entonces \(p\mid ab\), luego \(p\mid a\) o \(p\mid b\), es decir, \(a\in\gen p\) o \(b\in\gen p\). Recíprocamente, si \(\gen p\) es primo y \(p\mid ab\), entonces \(ab\in\gen p\), así que \(a\in\gen p\) o \(b\in\gen p\): \(p\mid a\) o \(p\mid b\). <span class="qed"></span></div>
+<div class="bloque ej"><span class="rotulo">Aplicación</span> En \(\Z[\sqrt{-3}]\), el ideal \(\gen2\) no es primo, porque \(2\) no es elemento primo (§1.9). Explícitamente: \((1+\sqrt{-3})(1-\sqrt{-3})=4\in\gen2\), pero ninguno de los factores está en \(\gen2\).</div>
+
+<h2>2.9 Ideales maximales</h2>
+<div class="bloque def"><span class="rotulo">Definición <span class="ref">(3.18)</span></span> Sea \(R\) conmutativo. Un ideal <b>propio</b> \(M\) es <b>maximal</b> si no existe ningún ideal \(A\) con \(M\subsetneq A\subsetneq R\). Equivalentemente: si \(A\) es ideal y \(M\subseteq A\subseteq R\), entonces \(A=M\) o \(A=R\) <span class="ref">(Observación 3.19)</span>.</div>
+<div class="bloque thm"><span class="rotulo">Lema complementario (criterio práctico)</span> Sea \(R\) conmutativo con identidad y \(M\) un ideal propio. \(M\) es maximal si y solo si para todo \(a\notin M\) se cumple \(M+\gen a=R\), es decir, existen \(m\in M\), \(r\in R\) con \(1=m+ra\).</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> \((\Rightarrow)\) Si \(a\notin M\), \(M+\gen a\) es un ideal que contiene estrictamente a \(M\); por maximalidad, es \(R\). \((\Leftarrow)\) Sea \(A\) un ideal con \(M\subsetneq A\). Toma \(a\in A\setminus M\); entonces \(R=M+\gen a\subseteq A\). <span class="qed"></span></div>
+<div class="bloque ej"><span class="rotulo">Ejemplo <span class="ref">(3.20)</span>: \(\gen{\cl2}\) es maximal en \(\Z_{12}\)</span> \(\gen{\cl2}=\{\cl0,\cl2,\cl4,\cl6,\cl8,\cl{10}\}\) es propio. Sea \(A\) un ideal con \(\gen{\cl2}\subsetneq A\). Entonces \(A\) contiene una clase impar \(\cl m\). Como \(m-1\) es par, \(\cl{m-1}\in\gen{\cl2}\subseteq A\), y \(\cl1=\cl m-\cl{m-1}\in A\). Por el Lema 3.7, \(A=\Z_{12}\).
+<br><i>Nota:</i> el folleto lo demuestra usando que \(\Z_{12}\) es anillo de ideales principales; el argumento de arriba es más directo.</div>
+<div class="bloque ej"><span class="rotulo">Ejemplo <span class="ref">(3.21)</span></span> Si \(p\) es primo, \(\{\cl0\}\) es maximal en \(\Z_p\). Si \(\{\cl0\}\subseteq A\subseteq\Z_p\), \(A\) es un subgrupo aditivo y, por Lagrange, \(|A|\) divide a \(p\): \(|A|=1\) o \(|A|=p\). (Alternativa: \(\Z_p\) es cuerpo y solo tiene los ideales triviales.)</div>
+<div class="bloque thm"><span class="rotulo">Teorema (ideales maximales de \(\Z\))</span> Para \(n\ge2\): \(\gen n\) es maximal en \(\Z\) \(\iff\) \(n\) es primo.</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> Todo ideal es \(\gen m\) con \(m\ge0\), y \(\gen n\subseteq\gen m\iff m\mid n\). Los ideales entre \(\gen n\) y \(\Z=\gen1\) corresponden a los divisores positivos \(m\) de \(n\). Hay uno estrictamente intermedio si y solo si \(n\) tiene un divisor \(1&lt;m&lt;n\), es decir, si y solo si \(n\) es compuesto. <span class="qed"></span></div>
+<div class="bloque ej"><span class="rotulo">Ejemplo resuelto: \(\gen2\) no es maximal en \(\Z[i]\), pero \(\gen{1+i}\) sí</span>
+<p><b>Paso 1.</b> \(2=(1+i)(1-i)\in\gen{1+i}\), luego \(\gen2\subseteq\gen{1+i}\). La contención es estricta: \(1+i\notin\gen2\), pues \(\frac{1+i}{2}\notin\Z[i]\). Y \(\gen{1+i}\neq\Z[i]\): si \(1=(1+i)x\), entonces \(1=N(1+i)N(x)=2N(x)\), imposible. Así \(\gen2\subsetneq\gen{1+i}\subsetneq\Z[i]\) y \(\gen2\) <b>no</b> es maximal.</p>
+<p><b>Paso 2.</b> \(a+bi\in\gen{1+i}\iff a+b\) es par. En efecto, \((1+i)(c+di)=(c-d)+(c+d)i\), cuya suma de coeficientes es \(2c\). Y si \(a+b\) es par, \(a+bi=(1+i)\cdot\frac{(a+b)+(b-a)i}{2}\), con coeficientes enteros.</p>
+<p><b>Paso 3.</b> Si \(\gen{1+i}\subsetneq A\), existe \(a+bi\in A\) con \(a+b\) impar. Entonces \((a-1)+bi\) tiene suma par, está en \(\gen{1+i}\subseteq A\), y \(1=(a+bi)-((a-1)+bi)\in A\). Luego \(A=\Z[i]\): \(\gen{1+i}\) es maximal.</p></div>
+<div class="bloque thm"><span class="rotulo">Teorema <span class="ref">(3.23)</span></span> Sea \(R\) un anillo conmutativo con identidad e \(I\) un ideal propio. Existe un ideal maximal \(M\) con \(I\subseteq M\).</div>
+<div class="bloque obs"><span class="rotulo">Sobre su demostración</span> En general, la prueba usa el lema de Zorn (axioma de elección). Para \(\Z\) y \(\Z_n\) es elemental: si \(I=\gen n\) es propio con \(n\neq 1\) (\(n\geq 2\) o \(n = 0\)), toma un primo \(p\) que divida a \(n\); entonces \(\gen n\subseteq\gen p\), que es maximal. Salvo indicación contraria del profesor, en el parcial este teorema se cita, no se demuestra.</div>
+
+<h2>2.10 Relación entre ideales primos y maximales</h2>
+<div class="bloque thm"><span class="rotulo">Teorema complementario</span> En un anillo conmutativo con identidad, todo ideal maximal es primo.</div>
+<div class="prueba"><span class="rotulo">Demostración directa (sin anillos cociente).</span> Sea \(M\) maximal y \(ab\in M\) con \(a\notin M\). Por el criterio práctico de §2.9, \(1=m+ra\) para algunos \(m\in M\), \(r\in R\). Multiplicando por \(b\):
+\[ b=mb+r(ab). \]
+Ambos sumandos están en \(M\) (\(m\in M\) y \(ab\in M\), con absorción), así que \(b\in M\). <span class="qed"></span></div>
+<div class="bloque warn"><span class="rotulo">El recíproco es falso</span> \(\{0\}\) es primo en \(\Z\) (porque \(\Z\) es DI) pero no es maximal: \(\{0\}\subsetneq\gen2\subsetneq\Z\). Otro ejemplo: \(\Z\oplus\{0\}\) es primo en \(\Z\oplus\Z\) y no es maximal, pues \(\Z\oplus\{0\}\subsetneq\Z\oplus2\Z\subsetneq\Z\oplus\Z\).</div>
+<div class="bloque thm"><span class="rotulo">Teorema complementario (anillos finitos)</span> Si \(R\) es conmutativo, con identidad y finito, todo ideal primo es maximal.</div>
+<div class="prueba"><span class="rotulo">Demostración.</span> Sea \(P\) primo y \(a\notin P\). Como \(R\) es finito, las potencias de \(a\) se repiten: \(a^m=a^{m+k}\) para algunos \(m\ge1\), \(k\ge1\). Entonces \(a^m(1-a^k)=0\in P\). Como \(P\) es primo y \(a\notin P\), ninguna potencia \(a^m\) está en \(P\) (por inducción), así que \(1-a^k\in P\). Luego \(1=(1-a^k)+a^{k-1}a\in P+\gen a\), y por el criterio práctico \(P\) es maximal. <span class="qed"></span></div>
+<div class="bloque obs"><span class="rotulo">Adelanto del Módulo 4 (Teoremas 4.8 y 4.9)</span> Con el anillo cociente \(R/I\) las dos nociones tienen una lectura muy limpia:
+\[ I \text{ primo} \iff R/I \text{ es dominio entero}, \qquad I \text{ maximal} \iff R/I \text{ es cuerpo}. \]
+Como todo cuerpo es DI, de aquí se obtiene otra vez que maximal \(\Rightarrow\) primo.</div>
+<svg class="diagrama" width="560" height="120" viewBox="0 0 560 120" font-family="Source Sans 3, DejaVu Sans, sans-serif">
+  <defs><marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1f3a5f"/></marker></defs>
+  <rect x="10" y="10" width="160" height="40" rx="5" fill="#eef4fb" stroke="#2b6cb0"/><text x="90" y="35" text-anchor="middle" font-size="14" fill="#1f3a5f">I maximal</text>
+  <rect x="10" y="70" width="160" height="40" rx="5" fill="#eef4fb" stroke="#2b6cb0"/><text x="90" y="95" text-anchor="middle" font-size="14" fill="#1f3a5f">R/I cuerpo</text>
+  <rect x="390" y="10" width="160" height="40" rx="5" fill="#f4f0fa" stroke="#6b46c1"/><text x="470" y="35" text-anchor="middle" font-size="14" fill="#44337a">I primo</text>
+  <rect x="390" y="70" width="160" height="40" rx="5" fill="#f4f0fa" stroke="#6b46c1"/><text x="470" y="95" text-anchor="middle" font-size="14" fill="#44337a">R/I dominio entero</text>
+  <line x1="175" y1="30" x2="383" y2="30" stroke="#1f3a5f" stroke-width="1.6" marker-end="url(#fl)"/>
+  <text x="280" y="23" text-anchor="middle" font-size="11.5" fill="#5a6472">siempre (el recíproco falla: ⟨0⟩ en ℤ)</text>
+  <line x1="175" y1="90" x2="383" y2="90" stroke="#1f3a5f" stroke-width="1.6" marker-end="url(#fl)"/>
+  <text x="280" y="83" text-anchor="middle" font-size="11.5" fill="#5a6472">todo cuerpo es DI (Prop. 2.2)</text>
+  <text x="90" y="64" text-anchor="middle" font-size="16" fill="#1f3a5f">⇕</text><text x="470" y="64" text-anchor="middle" font-size="16" fill="#44337a">⇕</text>
+</svg>
+
+<h2>2.11 Los ideales de \(\Z_n\)</h2>
+<div class="bloque thm"><span class="rotulo">Teorema complementario (descripción completa)</span> Sea \(n\ge2\).
+<ol>
+<li>Los ideales de \(\Z_n\) son exactamente \(\gen{\cl d}\), con \(d\) divisor positivo de \(n\), y son distintos para divisores distintos. Hay tantos ideales como divisores positivos de \(n\).</li>
+<li>\(\gen{\cl d}=\{\cl0,\cl d,\cl{2d},\dots,\cl{(n/d-1)d}\}\) tiene \(n/d\) elementos.</li>
+<li>Para divisores \(d,e\) de \(n\): \(\gen{\cl d}\subseteq\gen{\cl e}\iff e\mid d\).</li>
+<li>\(\gen{\cl d}\) es maximal \(\iff\) \(\gen{\cl d}\) es primo \(\iff\) \(d\) es primo.</li>
+<li>Para cualquier \(a\), \(\gen{\cl a}=\gen{\cl{\mcd(a,n)}}\).</li>
+</ol></div>
+<div class="prueba"><span class="rotulo">Demostración.</span> 1 y 2: por §2.5 todo ideal es \(\gen{\cl d}\) con \(d\mid n\), y sus elementos son los múltiplos \(\cl{kd}\), que se repiten con período \(n/d\); los tamaños distintos prueban que divisores distintos dan ideales distintos. 3: si \(\cl d\in\gen{\cl e}\), entonces \(d=ex+ny\) y, como \(e\mid n\), \(e\mid d\); el recíproco es \(\cl d=\cl e\,\cl{d/e}\). 4: por 3, hay un ideal estrictamente entre \(\gen{\cl d}\) y \(\Z_n=\gen{\cl1}\) si y solo si \(d\) tiene un divisor \(1&lt;e&lt;d\); y en un anillo finito primo equivale a maximal (§2.10). 5: con \(g=\mcd(a,n)=ax+ny\) se tiene \(\cl g=\cl a\cl x\in\gen{\cl a}\), y \(\cl a=\cl g\,\cl{a/g}\in\gen{\cl g}\). <span class="qed"></span></div>
+<div class="bloque ej"><span class="rotulo">Ejemplo resuelto: \(\Z_{12}\)</span> Divisores de 12: \(1,2,3,4,6,12\). Seis ideales:
+<table>
+<thead><tr><th>Ideal</th><th>Elementos</th><th>Tamaño</th><th>¿Primo?</th><th>¿Maximal?</th><th>Justificación</th></tr></thead>
+<tbody>
+<tr><td>\(\gen{\cl1}=\Z_{12}\)</td><td>todos</td><td>12</td><td>—</td><td>—</td><td>No es propio.</td></tr>
+<tr><td>\(\gen{\cl2}\)</td><td>0,2,4,6,8,10</td><td>6</td><td>Sí</td><td>Sí</td><td>2 es primo.</td></tr>
+<tr><td>\(\gen{\cl3}\)</td><td>0,3,6,9</td><td>4</td><td>Sí</td><td>Sí</td><td>3 es primo.</td></tr>
+<tr><td>\(\gen{\cl4}\)</td><td>0,4,8</td><td>3</td><td>No</td><td>No</td><td>\(\cl2\cl2=\cl4\in I\), \(\cl2\notin I\).</td></tr>
+<tr><td>\(\gen{\cl6}\)</td><td>0,6</td><td>2</td><td>No</td><td>No</td><td>\(\cl2\cl3=\cl6\in I\), \(\cl2,\cl3\notin I\).</td></tr>
+<tr><td>\(\gen{\cl0}\)</td><td>0</td><td>1</td><td>No</td><td>No</td><td>\(\cl2\cl6=\cl0\) con \(\cl2,\cl6\neq\cl0\).</td></tr>
+</tbody></table>
+<p>El diagrama de contenciones (cada línea indica contención del ideal inferior en el superior):</p>
+<svg class="diagrama" width="330" height="230" viewBox="0 0 330 230" font-family="DejaVu Sans, sans-serif" font-size="13">
+  <g stroke="#1f3a5f" stroke-width="1.4">
+    <line x1="165" y1="30" x2="95" y2="80"/><line x1="165" y1="30" x2="235" y2="80"/>
+    <line x1="95" y1="95" x2="60" y2="140"/><line x1="95" y1="95" x2="165" y2="140"/><line x1="235" y1="95" x2="165" y2="140"/>
+    <line x1="60" y1="155" x2="165" y2="200"/><line x1="165" y1="155" x2="165" y2="200"/>
+  </g>
+  <g text-anchor="middle">
+    <rect x="125" y="8" width="80" height="24" rx="4" fill="#fff" stroke="#1f3a5f"/><text x="165" y="25">ℤ₁₂ = ⟨1⟩</text>
+    <rect x="65" y="76" width="60" height="24" rx="4" fill="#dff3e6" stroke="#2f855a"/><text x="95" y="93">⟨2⟩</text>
+    <rect x="205" y="76" width="60" height="24" rx="4" fill="#dff3e6" stroke="#2f855a"/><text x="235" y="93">⟨3⟩</text>
+    <rect x="30" y="136" width="60" height="24" rx="4" fill="#fff" stroke="#1f3a5f"/><text x="60" y="153">⟨4⟩</text>
+    <rect x="135" y="136" width="60" height="24" rx="4" fill="#fff" stroke="#1f3a5f"/><text x="165" y="153">⟨6⟩</text>
+    <rect x="135" y="196" width="60" height="24" rx="4" fill="#fff" stroke="#1f3a5f"/><text x="165" y="213">⟨0⟩</text>
+  </g>
+  <text x="300" y="93" font-size="10.5" fill="#2f855a" text-anchor="middle">maximales</text>
+</svg>
+<p class="centro pequeno">Diagrama de los ideales de \(\Z_{12}\). En verde, los maximales; coinciden con los primos.</p></div>
+<div class="bloque ej"><span class="rotulo">Ejemplo</span> En \(\Z_{12}\), \(\gen{\cl8}=\gen{\cl{\mcd(8,12)}}=\gen{\cl4}\): en efecto, \(\cl8=\cl4\cl2\) y \(\cl4=\cl8\cl2\) (pues \(16\equiv4\)).</div>
+
+<h2>2.12 Métodos de resolución (Módulo 3)</h2>
+<div class="bloque met"><span class="rotulo">M8. Probar que \(I\) es ideal</span> (i) \(I\neq\varnothing\), normalmente \(0\in I\). (ii) Toma \(a,b\in I\) genéricos, escríbelos según la definición de \(I\) y muestra que \(a-b\) cumple esa definición. (iii) Toma \(r\in R\) <b>arbitrario</b> y muestra \(ra\in I\) (y \(ar\in I\) si \(R\) no es conmutativo).</div>
+<div class="bloque met"><span class="rotulo">M9. Refutar que \(I\) es ideal</span> Basta <b>un</b> contraejemplo concreto: \(0\notin I\); o \(a,b\in I\) con \(a-b\notin I\); o \(r\in R\), \(a\in I\) con \(ra\notin I\). Si \(I\) contiene una unidad y \(I\neq R\), tampoco es ideal (Lema 3.7).</div>
+<div class="bloque met"><span class="rotulo">M10. Hallar un generador</span> En \(\Z\): \(\gen{a_1,\dots,a_k}=\gen{\mcd(a_1,\dots,a_k)}\), y Bézout da la combinación explícita. En \(\Z_n\): \(\gen{\cl a}=\gen{\cl{\mcd(a,n)}}\).</div>
+<div class="bloque met"><span class="rotulo">M11. Decidir si \(I=R\)</span> Busca \(1\in I\) o una unidad en \(I\) (Lema 3.7). En \(\Z\): \(\gen{a,b}=\Z\iff\mcd(a,b)=1\).</div>
+<div class="bloque met"><span class="rotulo">M12. Probar que un ideal es primo o que no lo es</span> <b>Sí:</b> supón \(ab\in P\) y \(a\notin P\); deduce \(b\in P\). Si \(P=\gen p\) en un DI, basta ver que \(p\) es elemento primo (Proposición 3.22). <b>No:</b> exhibe \(a,b\notin P\) con \(ab\in P\); la factorización del generador suele darlos (\(2\cdot3\in\gen6\)).</div>
+<div class="bloque met"><span class="rotulo">M13. Probar que un ideal es maximal o que no lo es</span> <b>Sí:</b> toma \(A\supsetneq M\) y \(a\in A\setminus M\); construye \(1=m+ra\in A\). Alternativas: en \(\Z\) y \(\Z_n\), usa que el generador es primo; con el Módulo 4, prueba que \(R/M\) es cuerpo. <b>No:</b> exhibe un ideal intermedio \(M\subsetneq A\subsetneq R\) y justifica ambas contenciones estrictas; o prueba que \(M\) no es primo.</div>
+<div class="bloque met"><span class="rotulo">M14. Listar todos los ideales de \(\Z_n\)</span> Lista los divisores positivos \(d\) de \(n\); cada uno da \(\gen{\cl d}\) con \(n/d\) elementos. Contenciones: \(\gen{\cl d}\subseteq\gen{\cl e}\iff e\mid d\). Maximales y primos: los \(d\) primos.</div>
+
+<h2>2.13 Errores frecuentes (Módulo 3)</h2>
+<div class="bloque warn"><span class="rotulo">E8. Verificar la absorción solo con elementos de \(I\)</span> Eso prueba que \(I\) es subanillo, no ideal. El factor \(r\) debe recorrer todo \(R\).</div>
+<div class="bloque warn"><span class="rotulo">E9. Creer que todo subanillo es ideal</span> \(\Z\subseteq\Q\) es el contraejemplo estándar.</div>
+<div class="bloque warn"><span class="rotulo">E10. Olvidar que primo y maximal exigen ideal propio</span> \(R\) nunca es primo ni maximal por definición.</div>
+<div class="bloque warn"><span class="rotulo">E11. Invertir la contención</span> En \(\Z\), \(\gen 4\subseteq\gen2\) (y no al revés): más divisores \(\Rightarrow\) ideal más pequeño.</div>
+<div class="bloque warn"><span class="rotulo">E12. Confundir \(IJ\) con \(I\cap J\)</span> \(\gen4\gen6=\gen{24}\neq\gen{12}=\gen4\cap\gen6\).</div>
+<div class="bloque warn"><span class="rotulo">E13. Suponer que primo implica maximal</span> Falla para \(\{0\}\) en \(\Z\). Sí vale en anillos finitos.</div>
+<div class="bloque warn"><span class="rotulo">E14. Tratar la unión de ideales como ideal</span> \(\gen2\cup\gen3\) no lo es. El ideal correcto que contiene a ambos es la suma \(\gen2+\gen3=\Z\).</div>
+
+<h2>2.14 Ejercicios propuestos (Módulo 3)</h2>
+<ol start="17">
+<li><span class="dificultad d1">B</span> ¿Cuáles son ideales de \(\Z\)? (a) \(3\Z\); (b) los impares; (c) \(\{0\}\); (d) \(\N\); (e) \(\{0,\pm 5,\pm10,\dots\}\).</li>
+<li><span class="dificultad d1">B</span> Demuestra que si \(A\) y \(B\) son ideales de \(R\), entonces \(A+B\) y \(A\cap B\) son ideales (Ejercicio 3.1 del folleto).</li>
+<li><span class="dificultad d1">B</span> Expresa como \(\gen d\): \(\gen8+\gen{12}\), \(\gen8\cap\gen{12}\), \(\gen8\gen{12}\) y \(\gen{9,15,21}\).</li>
+<li><span class="dificultad d1">B</span> Lista los ideales de \(\Z_8\) y de \(\Z_{10}\), indicando cuáles son maximales.</li>
+<li><span class="dificultad d2">I</span> Demuestra que \(\Z\oplus\{0\}\) es un ideal primo y no maximal de \(\Z\oplus\Z\).</li>
+<li><span class="dificultad d2">I</span> Demuestra que \(IJ\subseteq I\cap J\) y da un ejemplo en \(\Z\) donde la contención es estricta.</li>
+<li><span class="dificultad d2">I</span> Demuestra el Lema 3.14, parte 2: \(\gen a=\gen b\iff a\) y \(b\) son asociados.</li>
+<li><span class="dificultad d1">B</span> Prueba que \(\gen4\cup\gen6\) no es un ideal de \(\Z\).</li>
+<li><span class="dificultad d2">I</span> Demuestra que, para \(n\ge2\), \(\gen n\) es maximal en \(\Z\) si y solo si \(n\) es primo.</li>
+<li><span class="dificultad d2">I</span> Demuestra que en \(\Z_n\) el ideal \(\gen{\cl d}\), con \(d\mid n\), tiene \(n/d\) elementos.</li>
+<li><span class="dificultad d2">I</span> Sea \(R\) conmutativo con identidad. Demuestra que \(R\) es cuerpo si y solo si sus únicos ideales son \(\{0\}\) y \(R\).</li>
+<li><span class="dificultad d3">A</span> Demuestra que \(\gen{1+i}=\{a+bi: a+b\ \text{par}\}\) en \(\Z[i]\) y deduce que es maximal.</li>
+<li><span class="dificultad d2">I</span> Sea \(R\) conmutativo y \(a\in R\). Demuestra que \(\operatorname{Ann}(a)=\{r\in R: ra=0\}\) es un ideal. Calcula \(\operatorname{Ann}(\cl4)\) en \(\Z_{12}\).</li>
+<li><span class="dificultad d3">A</span> Demuestra directamente (sin anillos cociente) que todo ideal maximal de un anillo conmutativo con identidad es primo.</li>
+<li><span class="dificultad d3">A</span> En \(\Z_{12}\), prueba que \(\gen{\cl8}=\gen{\cl4}\) y, en general, que \(\gen{\cl a}=\gen{\cl{\mcd(a,n)}}\) en \(\Z_n\).</li>
+</ol>
+
+<!-- ===================================================== CAPÍTULO 3 -->
+<h1 class="capitulo" data-indice="Capítulo 3. Preparación para el parcial"><span class="num">Capítulo 3</span>Preparación para el parcial</h1>
+
+<h2>3.1 Mapa conceptual</h2>
+<p>Cada región está contenida en la anterior. Los ejemplos de cada franja pertenecen a esa clase pero no a la siguiente más interna.</p>
+<svg class="diagrama" width="600" height="330" viewBox="0 0 600 330" font-family="Source Sans 3, DejaVu Sans, sans-serif">
+  <rect x="5" y="5" width="590" height="320" rx="8" fill="#f7f9fc" stroke="#9aa5b1"/>
+  <text x="18" y="26" font-size="14" font-weight="700" fill="#4a5568">Anillos</text><text x="580" y="26" font-size="12.5" fill="#4a5568" text-anchor="end">M₂(ℤ)</text>
+  <rect x="25" y="38" width="550" height="277" rx="8" fill="#eef2f8" stroke="#7f8ea3"/>
+  <text x="38" y="58" font-size="14" font-weight="700" fill="#2d3748">Anillos conmutativos</text><text x="560" y="58" font-size="12.5" fill="#2d3748" text-anchor="end">2ℤ</text>
+  <rect x="45" y="70" width="510" height="235" rx="8" fill="#e6eef8" stroke="#5f7aa0"/>
+  <text x="58" y="90" font-size="14" font-weight="700" fill="#1f3a5f">Conmutativos con identidad</text><text x="540" y="90" font-size="12.5" fill="#1f3a5f" text-anchor="end">ℤ₆, ℤ₁₂, ℤ ⊕ ℤ, ℤ₅[i]</text>
+  <rect x="65" y="102" width="470" height="193" rx="8" fill="#dbe7f6" stroke="#2b6cb0"/>
+  <text x="78" y="122" font-size="14" font-weight="700" fill="#1f3a5f">Dominios enteros (DI)</text><text x="520" y="122" font-size="12.5" fill="#1f3a5f" text-anchor="end">ℤ[√−3], ℤ[√−5]</text>
+  <rect x="85" y="134" width="430" height="151" rx="8" fill="#e9e1f7" stroke="#6b46c1"/>
+  <text x="98" y="154" font-size="14" font-weight="700" fill="#44337a">Dominios de ideales principales (DIP)</text><text x="500" y="154" font-size="12.5" fill="#44337a" text-anchor="end">ℤ, ℤ[i]*</text>
+  <rect x="105" y="166" width="390" height="109" rx="8" fill="#dff3e6" stroke="#2f855a"/>
+  <text x="118" y="186" font-size="14" font-weight="700" fill="#22543d">Cuerpos</text>
+  <text x="300" y="216" font-size="13" fill="#22543d" text-anchor="middle">ℚ, ℝ, ℂ, ℤₚ (p primo), ℚ[√2], ℤ₃[i]</text>
+  <text x="300" y="246" font-size="11.5" fill="#22543d" text-anchor="middle">Finito + DI ⇒ cuerpo (Teorema 2.11)</text>
+  <text x="300" y="264" font-size="11.5" fill="#22543d" text-anchor="middle">Únicos ideales: {0} y F</text>
+</svg>
+<p class="pequeno">* Que \(\Z[i]\) es DIP es un dato complementario que no se demuestra en esta guía (se prueba con un algoritmo de división basado en la norma). Que \(\Z[\sqrt{-3}]\) y \(\Z[\sqrt{-5}]\) <b>no</b> son DIP se deduce de un resultado estándar: en un DIP todo irreducible es primo, y en esos anillos hay irreducibles que no son primos (§1.9).</p>
+
+<h2>3.2 Teoremas que debes saber demostrar</h2>
+<table>
+<thead><tr><th style="width:24%">Resultado</th><th style="width:12%">Prioridad</th><th>Idea clave de la demostración</th></tr></thead>
+<tbody>
+<tr><td>Teorema 2.6 (DI \(\iff\) sin DC)</td><td>Alta</td><td>\(ab=a0\) y cancelar; recíproco: \(a(b-c)=0\).</td></tr>
+<tr><td>Proposición 2.2 (cuerpo \(\Rightarrow\) DI)</td><td>Alta</td><td>Multiplicar por \(a^{-1}\).</td></tr>
+<tr><td>Teorema 2.11 (DI finito \(\Rightarrow\) cuerpo)</td><td>Alta</td><td>\(x\mapsto bx\) inyectiva en un conjunto finito \(\Rightarrow\) biyectiva.</td></tr>
+<tr><td>Corolario 2.12 (\(\Z_n\) cuerpo \(\iff n\) primo)</td><td>Alta</td><td>Lema de Euclides + 2.11; si \(n=st\), divisores de cero.</td></tr>
+<tr><td>Teorema 2.17 (primo \(\Rightarrow\) irreducible)</td><td>Alta</td><td>\(a=bc\), \(a\mid b\Rightarrow b=b(cd)\Rightarrow cd=1\).</td></tr>
+<tr><td>Teorema 2.25 (car. 0 o prima)</td><td>Alta</td><td>\((st)\cdot1=(s\cdot1)(t\cdot1)\) y no hay DC.</td></tr>
+<tr><td>Ejercicio 3.1 (\(A+B\), \(A\cap B\) ideales)</td><td>Alta</td><td>Test del ideal término a término.</td></tr>
+<tr><td>Lema 3.7 (\(1\in I\iff I=R\))</td><td>Alta</td><td>\(a=a\cdot1\in I\).</td></tr>
+<tr><td>Maximal \(\Rightarrow\) primo</td><td>Alta</td><td>\(1=m+ra\Rightarrow b=mb+rab\in M\).</td></tr>
+<tr><td>Cuerpo \(\iff\) ideales triviales</td><td>Alta</td><td>\(\gen a=R\Rightarrow 1=ra\).</td></tr>
+<tr><td>Teorema 2.9 (DC en \(\Z_n\))</td><td>Media</td><td>\(\cl{n/d}\cl m=\cl0\); recíproco: Euclides generalizado.</td></tr>
+<tr><td>Proposición 2.18 (norma)</td><td>Media</td><td>Identidad \((ac+bed)^2-d(ae+bc)^2=(a^2-db^2)(c^2-de^2)\).</td></tr>
+<tr><td>Ejemplo 2.19 (irreducible no primo)</td><td>Media</td><td>No hay elementos de norma 2; \(1+\sqrt{-3}\mid4\) pero \(\nmid2\).</td></tr>
+<tr><td>Lema 3.14 (contención \(\iff\) divisibilidad)</td><td>Media</td><td>\(a\in\gen b\iff b\mid a\); \(qq'=1\) por cancelación.</td></tr>
+<tr><td>Proposición 3.22 (\(\gen p\) primo \(\iff p\) primo)</td><td>Media</td><td>\(x\in\gen p\iff p\mid x\).</td></tr>
+<tr><td>\(\Z\) es DIP</td><td>Media</td><td>Menor positivo del ideal + algoritmo de la división.</td></tr>
+</tbody></table>
+
+<h2>3.3 Formulario de consulta rápida</h2>
+<table>
+<thead><tr><th style="width:38%">Concepto</th><th>Hecho clave</th></tr></thead>
+<tbody>
+<tr><td>Dominio entero</td><td>Conmutativo, con \(1\neq0\), y \(ab=0\Rightarrow a=0\) o \(b=0\).</td></tr>
+<tr><td>Unidades de \(\Z_n\)</td><td>\(\cl a\) con \(\mcd(a,n)=1\); hay \(\varphi(n)\).</td></tr>
+<tr><td>Divisores de cero de \(\Z_n\)</td><td>\(\cl m\neq\cl0\) con \(\mcd(m,n)\neq1\); compañero: \(\cl{n/d}\).</td></tr>
+<tr><td>Cuerpos</td><td>Cuerpo \(\Rightarrow\) DI; DI finito \(\Rightarrow\) cuerpo; \(\Z_n\) cuerpo \(\iff n\) primo.</td></tr>
+<tr><td>Norma en \(\Z[\sqrt d]\)</td><td>\(N(a+b\sqrt d)=|a^2-db^2|\); multiplicativa; \(N=1\iff\) unidad; \(N\) primo \(\Rightarrow\) irreducible.</td></tr>
+<tr><td>Primo / irreducible</td><td>Primo \(\Rightarrow\) irreducible. Recíproco falso: \(2\) y \(1+\sqrt{-3}\) en \(\Z[\sqrt{-3}]\).</td></tr>
+<tr><td>Característica</td><td>Orden aditivo de \(1\); DI \(\Rightarrow\) 0 o primo; \(\car(R_1\oplus R_2)=\mcm\).</td></tr>
+<tr><td>Test del ideal</td><td>\(I\neq\varnothing\), \(a-b\in I\), \(ra\in I\) para todo \(r\in R\).</td></tr>
+<tr><td>Ideal unidad</td><td>\(1\in I\) o unidad en \(I\) \(\Rightarrow I=R\).</td></tr>
+<tr><td>Ideales de \(\Z\)</td><td>\(\gen n\); \(+\to\mcd\), \(\cap\to\mcm\), producto \(\to\) producto.</td></tr>
+<tr><td>Ideales de \(\Z_n\)</td><td>\(\gen{\cl d}\), \(d\mid n\), con \(n/d\) elementos; maximal \(\iff\) primo \(\iff d\) primo.</td></tr>
+<tr><td>Contención en un DI</td><td>\(\gen a\subseteq\gen b\iff b\mid a\); igualdad \(\iff\) asociados.</td></tr>
+<tr><td>Ideal primo</td><td>Propio y \(ab\in P\Rightarrow a\in P\) o \(b\in P\); \(\iff R/P\) DI.</td></tr>
+<tr><td>Ideal maximal</td><td>Propio y sin ideales intermedios; \(\iff R/M\) cuerpo; \(\iff M+\gen a=R\) para todo \(a\notin M\).</td></tr>
+<tr><td>Relación</td><td>Maximal \(\Rightarrow\) primo; recíproco falso (\(\{0\}\subseteq\Z\)) salvo en anillos finitos.</td></tr>
+</tbody></table>
+
+<h2>3.4 Lista de verificación antes del examen</h2>
+<ul style="list-style:none;padding-left:2mm">
+<li>☐ Puedo enunciar de memoria las definiciones 2.1, 2.4, 2.13–2.15, 2.20, 3.1, 3.9–3.11, 3.17 y 3.18.</li>
+<li>☐ Sé dar un contraejemplo para cada implicación falsa: DI \(\not\Rightarrow\) cuerpo; irreducible \(\not\Rightarrow\) primo; subanillo \(\not\Rightarrow\) ideal; primo \(\not\Rightarrow\) maximal; unión de ideales \(\not\Rightarrow\) ideal.</li>
+<li>☐ Calculo en menos de 3 minutos las unidades, los divisores de cero y los ideales de \(\Z_n\) para \(n\le 30\).</li>
+<li>☐ Sé usar la norma para probar irreducibilidad y sé demostrar que un elemento no es primo.</li>
+<li>☐ Sé calcular sumas, intersecciones y productos de ideales de \(\Z\), con la combinación de Bézout.</li>
+<li>☐ Puedo demostrar sin consultar los resultados de prioridad alta de §3.2.</li>
+<li>☐ Resolví la práctica AL2-M23-02 en tiempo de examen (120 min) y la corregí con la rúbrica de AL2-M23-03.</li>
+</ul>
+
+<h2>3.5 Plan de estudio sugerido</h2>
+<table>
+<thead><tr><th style="width:13%">Sesión</th><th style="width:15%">Duración</th><th>Actividades</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>90 min</td><td>Ver el video AL2-M23-04 completo. Leer Capítulo 0 y §1.1–1.6. Ejercicios 1–7.</td></tr>
+<tr><td>2</td><td>90 min</td><td>§1.7–1.13: divisibilidad, norma, característica. Ejercicios 8–16.</td></tr>
+<tr><td>3</td><td>90 min</td><td>§2.1–2.7: ideales, generadores, operaciones. Ejercicios 17–24.</td></tr>
+<tr><td>4</td><td>90 min</td><td>§2.8–2.14: primos, maximales, ideales de \(\Z_n\). Ejercicios 25–31.</td></tr>
+<tr><td>5</td><td>150 min</td><td>Práctica AL2-M23-02 cronometrada (120 min). Autocorrección con la rúbrica (30 min). Repasar los errores en §1.12 y §2.13.</td></tr>
+</tbody></table>
+
+<!-- ===================================================== APÉNDICES -->
+<h1 class="capitulo" data-indice="Apéndice A. Tablas de multiplicación"><span class="num">Apéndice A</span>Tablas de multiplicación</h1>
+<p>En rojo, los productos iguales a \(\cl0\) con factores no nulos (señalan divisores de cero); en verde, los productos iguales a \(\cl1\) (señalan pares de inversos). Compara \(\Z_7\) (cuerpo: cada fila no nula contiene un \(1\)) con \(\Z_6\), \(\Z_8\) y \(\Z_{12}\).</p>
+<div style="display:flex;gap:6mm;justify-content:center;flex-wrap:wrap">
+<div data-cayley="6"></div><div data-cayley="7"></div><div data-cayley="8"></div>
+</div>
+<div data-cayley="12"></div>
+
+<h1 class="capitulo" data-indice="Apéndice B. Glosario y bibliografía"><span class="num">Apéndice B</span>Glosario y bibliografía</h1>
+<h2>Glosario español–inglés</h2>
+<p>Útil para consultar bibliografía en inglés.</p>
+<table>
+<thead><tr><th>Español</th><th>Inglés</th><th>Español</th><th>Inglés</th></tr></thead>
+<tbody>
+<tr><td>Anillo</td><td>Ring</td><td>Ideal principal</td><td>Principal ideal</td></tr>
+<tr><td>Anillo conmutativo con identidad</td><td>Commutative ring with unity</td><td>Dominio de ideales principales</td><td>Principal ideal domain (PID)</td></tr>
+<tr><td>Unidad</td><td>Unit</td><td>Ideal primo</td><td>Prime ideal</td></tr>
+<tr><td>Cuerpo / campo</td><td>Field</td><td>Ideal maximal</td><td>Maximal ideal</td></tr>
+<tr><td>Dominio entero</td><td>Integral domain</td><td>Ideal generado</td><td>Ideal generated by</td></tr>
+<tr><td>Divisor de cero</td><td>Zero divisor</td><td>Suma / producto de ideales</td><td>Sum / product of ideals</td></tr>
+<tr><td>Asociados</td><td>Associates</td><td>Anillo cociente</td><td>Quotient (factor) ring</td></tr>
+<tr><td>Elemento irreducible</td><td>Irreducible element</td><td>Característica</td><td>Characteristic</td></tr>
+<tr><td>Elemento primo</td><td>Prime element</td><td>Enteros gaussianos</td><td>Gaussian integers</td></tr>
+<tr><td>Norma</td><td>Norm</td><td>Anulador</td><td>Annihilator</td></tr>
+</tbody></table>
+<h2>Bibliografía de consulta</h2>
+<ol>
+<li>Folleto del curso <i>Álgebra 2: Anillos</i>, Módulos 0 a 5. Fuente principal de definiciones, teoremas y numeración.</li>
+<li>J. B. Fraleigh, <i>A First Course in Abstract Algebra</i>, Addison-Wesley (capítulos sobre anillos, dominios enteros e ideales).</li>
+<li>J. A. Gallian, <i>Contemporary Abstract Algebra</i>, Cengage (capítulos sobre dominios enteros, ideales y anillos cociente).</li>
+<li>I. N. Herstein, <i>Topics in Algebra</i>, Wiley (capítulo 3, teoría de anillos).</li>
+</ol>
+<p class="pequeno">Los títulos 2 a 4 son textos clásicos de referencia; la numeración de capítulos varía según la edición, por lo que no se indica.</p>
+
+<script>
+// Tablas de Cayley de la multiplicación en Z_n
+document.querySelectorAll("[data-cayley]").forEach(div => {
+  const n = +div.dataset.cayley;
+  let h = `<table class="cayley"><caption>Multiplicación en \\(\\Z_{${n}}\\)</caption><tr><th>·</th>`;
+  for (let j = 0; j < n; j++) h += `<th>${j}</th>`;
+  h += "</tr>";
+  for (let i = 0; i < n; i++) {
+    h += `<tr><th>${i}</th>`;
+    for (let j = 0; j < n; j++) {
+      const p = (i * j) % n;
+      const cls = p === 0 && i && j ? "cero" : p === 1 ? "uno" : "";
+      h += `<td class="${cls}">${p}</td>`;
+    }
+    h += "</tr>";
+  }
+  div.innerHTML = h + "</table>";
+});
+</script>
+</body>
+</html>

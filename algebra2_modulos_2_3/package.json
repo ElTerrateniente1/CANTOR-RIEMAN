@@ -1,0 +1,10 @@
+{
+  "name": "algebra2-modulos-2-3",
+  "private": true,
+  "description": "Generadores del paquete de preparación para el parcial (Álgebra 2, Módulos 2 y 3)",
+  "dependencies": {
+    "katex": "0.16.11",
+    "@fontsource/source-serif-4": "5.1.0",
+    "@fontsource/source-sans-3": "5.1.0"
+  }
+}

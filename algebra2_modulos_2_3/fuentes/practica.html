@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>AL2-M23-02 Práctica de parcial</title>
+<link rel="stylesheet" href="estilos.css">
+<script src="../node_modules/katex/dist/katex.min.js"></script>
+<script src="../node_modules/katex/dist/contrib/auto-render.min.js"></script>
+<script>
+window.DOC = {
+  codigo: "AL2-M23-02", tipo: "Práctica de parcial (Forma A)",
+  titulo: "Práctica de parcial: Módulos 2 y 3",
+  subtitulo: "Examen de práctica en formato oficial: 21 ítems en cuatro partes, un ítem de bonificación y espacio de respuesta",
+  version: "2.0", fecha: "24 de noviembre de 2026",
+  extra: [["Duración", "120 minutos"],
+          ["Puntaje", "100 puntos + 5 de bonificación"],
+          ["Estructura", "I. Verdadero o falso (20) · II. Cálculo y respuesta corta (30) · III. Problemas (30) · IV. Demostraciones (20) · Bonificación (5)"],
+          ["Corrección", "Solucionario y rúbrica en AL2-M23-03"]],
+  nota: "Para usarla como simulacro: imprime desde la página 1 del cuerpo (después de esta portada), cronometra 120 minutos y no consultes la guía ni el solucionario hasta terminar.",
+};
+</script>
+<script src="comun.js"></script>
+<style>
+  .espacio.s2 { height: 14mm; } .espacio.s4 { height: 40mm; } .espacio.s6 { height: 62mm; }
+  .espacio.s8 { height: 85mm; } .espacio.s10 { height: 105mm; }
+  .tabla-cal td, .tabla-cal th { text-align: center; }
+  .tabla-cal td:nth-child(2) { text-align: left; }
+  .vf .txt { flex: 1; }
+</style>
+</head>
+<body>
+
+<div class="encabezado-examen">
+  <div class="sans" style="display:flex;justify-content:space-between;align-items:baseline">
+    <span style="font-size:15pt;font-weight:700;color:#1f3a5f">Álgebra 2 · Práctica de parcial</span>
+    <span style="font-weight:700;color:#b7791f">FORMA A · Módulos 2 y 3</span>
+  </div>
+  <div class="fila"><span class="campo">Nombre completo:</span></div>
+  <div class="fila"><span class="campo">Carné / ID:</span><span class="campo">Sección:</span><span class="campo">Fecha:</span></div>
+  <div class="fila"><span class="campo">Docente:</span><span class="campo" style="flex:0.55">Hora de inicio:</span><span class="campo" style="flex:0.55">Hora de entrega:</span></div>
+</div>
+
+<h3 style="margin-top:2mm" data-no-indice>Instrucciones generales</h3>
+<ol class="instrucciones">
+<li>La duración del examen es de <b>120 minutos</b>. El puntaje total es de <b>100 puntos</b>, más 5 puntos de bonificación.</li>
+<li>Escriba con claridad y en el espacio asignado. Si necesita más espacio, use el reverso de la hoja e indique el número del ítem.</li>
+<li><b>Toda respuesta debe estar justificada.</b> Una respuesta correcta sin justificación recibe, como máximo, la cuarta parte del puntaje del ítem.</li>
+<li>Puede citar los resultados del folleto por su número (por ejemplo, «por el Teorema 2.6»). Los resultados que no estén en el folleto deben demostrarse.</li>
+<li>No se permite el uso de calculadora, apuntes, libros ni dispositivos electrónicos.</li>
+<li>En la Parte I, marque V o F y escriba una justificación breve: un argumento si es verdadera o un contraejemplo si es falsa.</li>
+<li>Salvo que se indique otra cosa, todos los anillos son conmutativos con identidad \(1\neq0\), y \(\cl a\) denota la clase de \(a\) en \(\Z_n\).</li>
+</ol>
+
+<table class="tabla-cal" style="width:80%;margin:4mm auto">
+<thead><tr><th>Parte</th><th>Contenido</th><th>Ítems</th><th>Puntos</th><th>Obtenido</th></tr></thead>
+<tbody>
+<tr><td>I</td><td>Verdadero o falso con justificación</td><td>1–10</td><td>20</td><td></td></tr>
+<tr><td>II</td><td>Cálculo y respuesta corta</td><td>11–16</td><td>30</td><td></td></tr>
+<tr><td>III</td><td>Problemas</td><td>17–19</td><td>30</td><td></td></tr>
+<tr><td>IV</td><td>Demostraciones</td><td>20–21</td><td>20</td><td></td></tr>
+<tr><td>—</td><td>Bonificación</td><td>22</td><td>+5</td><td></td></tr>
+<tr><th colspan="3" style="text-align:right">Total</th><th>100</th><th></th></tr>
+</tbody></table>
+
+<!-- ============================ PARTE I -->
+<div class="parte salto"><span>PARTE I · Verdadero o falso con justificación</span><span class="pts">20 puntos · 2 por ítem</span></div>
+<p class="pequeno">Criterio: 1 punto por la elección correcta y 1 punto por la justificación.</p>
+<div id="vf"></div>
+
+<!-- ============================ PARTE II -->
+<div class="parte salto"><span>PARTE II · Cálculo y respuesta corta</span><span class="pts">30 puntos · 5 por ítem</span></div>
+
+<div class="item"><div class="cab">Ítem 11 · Unidades y divisores de cero en \(\Z_{20}\)<span class="pts">5 pts</span></div>
+<p>(a) Liste las unidades de \(\Z_{20}\). (b) Liste los divisores de cero de \(\Z_{20}\). (c) Para \(\cl6\) y \(\cl{15}\), dé en cada caso una clase \(\cl k\neq\cl0\) con \(\cl m\cl k=\cl0\).</p>
+<div class="espacio s6"></div></div>
+
+<div class="item"><div class="cab">Ítem 12 · Inversos en \(\Z_{13}\)<span class="pts">5 pts</span></div>
+<p>(a) Justifique por qué \(\Z_{13}\) es un cuerpo. (b) Calcule \(\cl5^{-1}\) y \(\cl9^{-1}\). (c) Resuelva en \(\Z_{13}\) la ecuación \(\cl5\,x+\cl3=\cl7\).</p>
+<div class="espacio s6"></div></div>
+
+<div class="item"><div class="cab">Ítem 13 · Característica<span class="pts">5 pts</span></div>
+<p>(a) Calcule \(\car(\Z_4\oplus\Z_6)\). (b) Calcule \(\car(\Z\oplus\Z_5)\). (c) ¿Existe un dominio entero de característica \(15\)? Justifique cada respuesta.</p>
+<div class="espacio s6"></div></div>
+
+<div class="item"><div class="cab">Ítem 14 · Operaciones con ideales de \(\Z\)<span class="pts">5 pts</span></div>
+<p>Exprese como ideal principal \(\gen d\), con \(d\ge0\): (a) \(\gen{24}+\gen{36}\); (b) \(\gen{24}\cap\gen{36}\); (c) \(\gen{24}\gen{36}\). (d) Halle enteros \(x,y\) tales que \(d=24x+36y\), donde \(\gen d\) es la respuesta de (a).</p>
+<div class="espacio s6"></div></div>
+
+<div class="item"><div class="cab">Ítem 15 · Ideales de \(\Z_{18}\)<span class="pts">5 pts</span></div>
+<p>Liste todos los ideales de \(\Z_{18}\) indicando sus elementos. Dibuje el diagrama de contenciones e indique cuáles son maximales.</p>
+<div class="espacio s8"></div></div>
+
+<div class="item"><div class="cab">Ítem 16 · Irreducibilidad en \(\Z[i]\)<span class="pts">5 pts</span></div>
+<p>En \(\Z[i]\), con la norma \(N(a+bi)=a^2+b^2\): (a) determine todas las unidades; (b) decida si \(3\) es irreducible; (c) decida si \(5\) es irreducible.</p>
+<div class="espacio s6"></div></div>
+
+<!-- ============================ PARTE III -->
+<div class="parte salto"><span>PARTE III · Problemas</span><span class="pts">30 puntos · 10 por ítem</span></div>
+
+<div class="item"><div class="cab">Ítem 17 · Un irreducible que no es primo<span class="pts">10 pts</span></div>
+<p>Sea \(\Z[\sqrt{-5}]=\{a+b\sqrt{-5}: a,b\in\Z\}\), con \(N(a+b\sqrt{-5})=a^2+5b^2\). Puede usar sin demostrar que \(N\) es multiplicativa y que \(x\) es unidad si y solo si \(N(x)=1\).</p>
+<p>(a) <i>(2 pts)</i> Determine las unidades de \(\Z[\sqrt{-5}]\).<br>
+(b) <i>(4 pts)</i> Demuestre que \(2\) es irreducible.<br>
+(c) <i>(4 pts)</i> Usando la igualdad \(6=(1+\sqrt{-5})(1-\sqrt{-5})\), demuestre que \(2\) no es primo.</p>
+<div class="espacio s10"></div></div>
+
+<div class="item"><div class="cab">Ítem 18 · Los anillos \(\Z_3[i]\) y \(\Z_5[i]\)<span class="pts">10 pts</span></div>
+<p>Para \(p\) primo, sea \(\Z_p[i]=\{a+bi: a,b\in\Z_p\}\), con las operaciones usuales y \(i^2=-1\). Es un anillo conmutativo con identidad de \(p^2\) elementos.</p>
+<p>(a) <i>(2 pts)</i> Demuestre que \(\Z_5[i]\) no es un dominio entero.<br>
+(b) <i>(4 pts)</i> Demuestre que \(\Z_3[i]\) es un cuerpo.<br>
+(c) <i>(2 pts)</i> Calcule el inverso de \(1+i\) en \(\Z_3[i]\) y verifíquelo.<br>
+(d) <i>(2 pts)</i> Determine \(\car(\Z_3[i])\).</p>
+<div class="espacio s10"></div></div>
+
+<div class="item"><div class="cab">Ítem 19 · Ideales de los enteros gaussianos<span class="pts">10 pts</span></div>
+<p>En \(\Z[i]\):</p>
+<p>(a) <i>(3 pts)</i> Demuestre que \(\gen2\subsetneq\gen{1+i}\subsetneq\Z[i]\).<br>
+(b) <i>(3 pts)</i> Demuestre que \(a+bi\in\gen{1+i}\) si y solo si \(a+b\) es par.<br>
+(c) <i>(2 pts)</i> Deduzca que \(\gen{1+i}\) es un ideal maximal.<br>
+(d) <i>(2 pts)</i> ¿Es \(\gen2\) un ideal primo de \(\Z[i]\)? Justifique.</p>
+<div class="espacio s10"></div></div>
+
+<!-- ============================ PARTE IV -->
+<div class="parte salto"><span>PARTE IV · Demostraciones</span><span class="pts">20 puntos · 10 por ítem</span></div>
+
+<div class="item"><div class="cab">Ítem 20 · Cuerpos e ideales<span class="pts">10 pts</span></div>
+<p>Sea \(R\) un anillo conmutativo con identidad. Demuestre que \(R\) es un cuerpo si y solo si sus únicos ideales son \(\{0\}\) y \(R\).</p>
+<div class="espacio s10"></div></div>
+
+<div class="item"><div class="cab">Ítem 21 · Ideales maximales y primos<span class="pts">10 pts</span></div>
+<p>Sea \(R\) un anillo conmutativo con identidad.</p>
+<p>(a) <i>(6 pts)</i> Demuestre, sin usar anillos cociente, que todo ideal maximal de \(R\) es primo.<br>
+(b) <i>(4 pts)</i> Dé un ejemplo de un anillo y un ideal primo que no sea maximal, justificando ambas afirmaciones.</p>
+<div class="espacio s10"></div></div>
+
+<div class="parte"><span>BONIFICACIÓN</span><span class="pts">+5 puntos</span></div>
+<div class="item"><div class="cab">Ítem 22 · Dominios enteros finitos<span class="pts">+5 pts</span></div>
+<p>Demuestre que todo dominio entero finito es un cuerpo.</p>
+<div class="espacio s8"></div></div>
+
+<p class="centro sans" style="margin-top:6mm;color:#5a6472">— Fin del examen —</p>
+
+<script>
+const VF = [
+  "Todo cuerpo es un dominio entero.",
+  "Todo dominio entero es un cuerpo.",
+  "\\(\\Z_{15}\\) es un dominio entero.",
+  "En \\(\\Z_n\\) (\\(n\\ge2\\)), todo elemento no nulo es una unidad o un divisor de cero.",
+  "Existe un dominio entero de característica \\(10\\).",
+  "En todo dominio entero, todo elemento irreducible es primo.",
+  "Todo subanillo de un anillo \\(R\\) es un ideal de \\(R\\).",
+  "Si un ideal \\(I\\) de un anillo con identidad \\(R\\) contiene una unidad, entonces \\(I=R\\).",
+  "Todo ideal primo de un anillo conmutativo con identidad es maximal.",
+  "En \\(\\Z\\), \\(\\gen4\\cap\\gen6=\\gen{12}\\).",
+];
+document.getElementById("vf").innerHTML = VF.map((t, i) => `
+  <div class="item"><div class="vf"><span class="cab">${i + 1}.</span><span class="txt">${t}</span>
+  <span class="casillas">V ☐ &nbsp; F ☐</span></div>
+  <div class="just"></div><div class="just"></div><div class="just"></div></div>`).join("");
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Diapositiva AL2-M23-04</title>
+<link rel="stylesheet" href="../../node_modules/@fontsource/source-serif-4/400.css">
+<link rel="stylesheet" href="../../node_modules/@fontsource/source-serif-4/400-italic.css">
+<link rel="stylesheet" href="../../node_modules/@fontsource/source-serif-4/700.css">
+<link rel="stylesheet" href="../../node_modules/@fontsource/source-sans-3/400.css">
+<link rel="stylesheet" href="../../node_modules/@fontsource/source-sans-3/600.css">
+<link rel="stylesheet" href="../../node_modules/@fontsource/source-sans-3/700.css">
+<link rel="stylesheet" href="../../node_modules/katex/dist/katex.min.css">
+<script src="../../node_modules/katex/dist/katex.min.js"></script>
+<script src="../../node_modules/katex/dist/contrib/auto-render.min.js"></script>
+<script src="escenas.js"></script>
+<style>
+  :root { --azul:#1f3a5f; --azul2:#2c5282; --oro:#b7791f; --oro-claro:#f6d38b; --tinta:#1b1f24; --gris:#5a6472; }
+  html, body { margin:0; width:1920px; height:1080px; overflow:hidden; background:#fbfcfe; color:var(--tinta); }
+  body { font-family:"Source Serif 4", Georgia, serif; }
+  .barra { position:absolute; left:0; top:0; right:0; height:84px; background:var(--azul); color:#fff;
+           display:flex; align-items:center; justify-content:space-between; padding:0 80px; font-family:"Source Sans 3",sans-serif; }
+  .barra .cap { font-size:27px; font-weight:600; letter-spacing:0.02em; }
+  .barra .cap b { color:var(--oro-claro); margin-right:14px; }
+  .barra .cod { font-size:22px; color:#c9d6e6; letter-spacing:0.12em; }
+  h1 { position:absolute; left:80px; right:80px; top:118px; margin:0; font-family:"Source Sans 3",sans-serif;
+       font-size:56px; color:var(--azul); font-weight:700; line-height:1.12; }
+  h1::after { content:""; display:block; width:120px; height:6px; background:var(--oro); margin-top:18px; border-radius:3px; }
+  #contenido { position:absolute; left:80px; right:80px; top:250px; bottom:118px; display:flex; flex-direction:column; gap:26px; font-size:36px; line-height:1.42; }
+  .bloque { border-left:9px solid; border-radius:0 10px 10px 0; padding:20px 30px; box-shadow:0 2px 0 rgba(0,0,0,0.04); transition:none; }
+  .bloque.oculto { visibility:hidden; }
+  .bloque.nuevo { box-shadow:0 0 0 3px rgba(183,121,31,0.55); }
+  .rot { font-family:"Source Sans 3",sans-serif; font-weight:700; margin-right:14px; }
+  .def { border-color:#2b6cb0; background:#eef4fb; } .def .rot { color:#2b6cb0; }
+  .thm { border-color:#6b46c1; background:#f4f0fa; } .thm .rot { color:#6b46c1; }
+  .ej  { border-color:#2f855a; background:#eef8f1; } .ej .rot { color:#2f855a; }
+  .met { border-color:#b7791f; background:#fdf8ea; } .met .rot { color:#975a16; }
+  .warn{ border-color:#c53030; background:#fdf1f0; } .warn .rot { color:#c53030; }
+  .obs { border-color:#718096; background:#f3f5f8; } .obs .rot { color:#4a5568; }
+  .txt { border:none; padding:0; background:none; box-shadow:none !important; }
+  .prueba { border:2px dashed #b9c2cc; border-radius:10px; padding:18px 28px; background:#fff; }
+  .katex { font-size:1.04em; }
+  .katex-display { margin:10px 0; }
+  ol.agenda { margin:0; padding-left:62px; font-family:"Source Sans 3",sans-serif; font-size:42px; line-height:1.6; color:var(--azul); }
+  ol.agenda.compacta { font-size:38px; line-height:1.5; color:var(--tinta); font-family:"Source Serif 4",serif; }
+  ol.agenda li::marker { color:var(--oro); font-weight:700; }
+  table.tz { border-collapse:collapse; font-size:32px; margin:0 auto; }
+  table.tz th, table.tz td { border:2px solid #cfd6df; padding:8px 18px; text-align:center; }
+  table.tz th { background:var(--azul); color:#fff; font-family:"Source Sans 3",sans-serif; font-weight:600; }
+  .dos { display:flex; gap:60px; align-items:center; justify-content:center; }
+  .cierre { display:flex; flex-direction:column; gap:22px; font-family:"Source Sans 3",sans-serif; font-size:40px; }
+  .cierre .paso { background:#eef4fb; border-radius:12px; padding:20px 30px; display:flex; gap:28px; align-items:center; color:var(--azul); }
+  .cierre .paso b { background:var(--oro); color:#fff; border-radius:50%; width:62px; height:62px; display:flex; align-items:center; justify-content:center; flex:0 0 62px; }
+  .pie { position:absolute; left:80px; right:80px; bottom:40px; display:flex; align-items:center; gap:28px; font-family:"Source Sans 3",sans-serif; font-size:21px; color:var(--gris); }
+  .pie .progreso { flex:1; display:flex; gap:8px; }
+  .pie .progreso span { flex:1; height:9px; border-radius:5px; background:#dde3ea; }
+  .pie .progreso span.hecho { background:#9fb3cc; }
+  .pie .progreso span.actual { background:var(--oro); }
+  /* Portada y tarjetas de capítulo */
+  .pantalla { position:absolute; inset:0; background:linear-gradient(135deg,#16304f 0%,#1f3a5f 55%,#27507f 100%); color:#fff;
+              display:flex; flex-direction:column; justify-content:center; padding:0 150px; }
+  .pantalla .serie { font-family:"Source Sans 3",sans-serif; letter-spacing:0.22em; text-transform:uppercase; color:var(--oro-claro); font-size:28px; font-weight:700; }
+  .pantalla .grande { font-family:"Source Sans 3",sans-serif; font-size:104px; font-weight:700; line-height:1.05; margin:30px 0 26px; }
+  .pantalla .sub { font-size:38px; color:#d5e1ef; }
+  .pantalla .num { font-family:"Source Sans 3",sans-serif; font-size:40px; color:var(--oro-claro); font-weight:700; letter-spacing:0.16em; text-transform:uppercase; }
+  .pantalla .linea { width:180px; height:8px; background:var(--oro); border-radius:4px; margin-top:44px; }
+  .pantalla .mapa { position:absolute; left:150px; right:150px; bottom:90px; display:flex; gap:12px; }
+  .pantalla .mapa span { flex:1; height:12px; border-radius:6px; background:rgba(255,255,255,0.18); }
+  .pantalla .mapa span.hecho { background:rgba(246,211,139,0.55); }
+  .pantalla .mapa span.actual { background:var(--oro); }
+  .pantalla .marca { position:absolute; right:150px; top:80px; font-family:"Source Sans 3",sans-serif; font-size:24px; color:#c9d6e6; letter-spacing:0.12em; }
+</style>
+</head>
+<body>
+<script>
+const MACROS = { "\\Z":"\\mathbb{Z}", "\\Q":"\\mathbb{Q}", "\\R":"\\mathbb{R}", "\\C":"\\mathbb{C}", "\\N":"\\mathbb{N}",
+  "\\gen":"\\left\\langle #1 \\right\\rangle", "\\mcd":"\\operatorname{mcd}", "\\mcm":"\\operatorname{mcm}",
+  "\\car":"\\operatorname{char}", "\\cl":"\\left[#1\\right]" };
+const q = new URLSearchParams(location.search);
+const c = +q.get("c"), s = q.get("s"), p = +q.get("p");
+const cap = ESCENAS[c], NC = ESCENAS.length;
+const mapa = (cls) => `<div class="${cls}">` + ESCENAS.map((_, i) => `<span class="${i < c ? "hecho" : i === c ? "actual" : ""}"></span>`).join("") + "</div>";
+window.__errores = [];
+
+if (s === "tarjeta") {
+  document.body.innerHTML = `<div class="pantalla"><div class="marca">AL2-M23-04</div>
+    <div class="num">Capítulo ${cap.n} de ${NC}</div><div class="grande">${cap.titulo}</div><div class="linea"></div>${mapa("mapa")}</div>`;
+} else {
+  const sl = cap.slides[+s];
+  if (sl.portada) {
+    document.body.innerHTML = sl.pasos[0].b.replace('class="portada-video"', 'class="pantalla"') ;
+    document.querySelector(".pantalla").insertAdjacentHTML("beforeend", `<div class="marca">AL2-M23-04</div><div class="linea"></div>${mapa("mapa")}`);
+  } else {
+    const bloques = sl.pasos.map((st, i) =>
+      `<div class="bloque ${st.k}${i > p ? " oculto" : ""}${i === p && sl.pasos.length > 1 ? " nuevo" : ""}">${st.b}</div>`).join("");
+    document.body.innerHTML = `
+      <div class="barra"><span class="cap"><b>Capítulo ${cap.n}</b>${cap.titulo}</span><span class="cod">ÁLGEBRA 2 · AL2-M23-04</span></div>
+      <h1>${sl.t}</h1>
+      <div id="contenido">${bloques}</div>
+      <div class="pie"><span>Módulos 2 y 3 · Dominios enteros e ideales</span>${mapa("progreso")}<span>${cap.n}/${NC}</span></div>`;
+  }
+}
+renderMathInElement(document.body, {
+  delimiters: [{ left: "\\[", right: "\\]", display: true }, { left: "\\(", right: "\\)", display: false }],
+  macros: MACROS, throwOnError: true, errorCallback: (m, e) => window.__errores.push(m + " " + e) });
+document.fonts.ready.then(() => {
+  // Ajuste automático: reduce la letra si el contenido (incluidos los bloques ocultos) no cabe.
+  const cont = document.getElementById("contenido");
+  if (cont) {
+    let fs = 36;
+    while (cont.scrollHeight > cont.clientHeight + 1 && fs > 24) { fs -= 1; cont.style.fontSize = fs + "px"; }
+    window.__fuente = fs;
+    window.__desborde = cont.scrollHeight > cont.clientHeight + 1;
+  }
+  window.__listo = true;
+});
+</script>
+</body>
+</html>

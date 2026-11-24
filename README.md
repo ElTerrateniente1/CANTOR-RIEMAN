@@ -27,3 +27,10 @@ python3 documento/generar_pdf_temas_2_3.py
 python3 presentacion/generar_toro.py
 (cd presentacion && npm install && node generar_pptx.js)
 ```
+
+## Álgebra 2: preparación para el parcial (Módulos 2 y 3)
+
+La carpeta [`algebra2_modulos_2_3/`](algebra2_modulos_2_3/) contiene la serie **AL2-M23** sobre
+dominios enteros e ideales: guía de estudio (36 págs.), práctica de parcial (Forma A), solucionario
+con rúbrica, y video narrado de 21:40 con capítulos, subtítulos y guion. Detalles y cómo
+regenerarlos en su [README](algebra2_modulos_2_3/README.md).

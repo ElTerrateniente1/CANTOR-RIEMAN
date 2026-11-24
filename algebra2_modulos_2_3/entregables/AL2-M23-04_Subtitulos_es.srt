@@ -1,0 +1,1620 @@
+1
+00:00:00,350 --> 00:00:01,181
+Bienvenidos.
+
+2
+00:00:01,181 --> 00:00:06,166
+En este video repasamos los módulos dos y
+tres del curso de Álgebra dos:
+
+3
+00:00:06,166 --> 00:00:08,589
+los dominios enteros y los ideales.
+
+4
+00:00:08,589 --> 00:00:14,127
+Forma parte de un paquete de preparación para
+el parcial que incluye una guía de
+
+5
+00:00:14,127 --> 00:00:19,181
+estudio, una práctica en formato de examen
+y un solucionario con rúbrica.
+
+6
+00:00:20,190 --> 00:00:23,782
+En la primera mitad estudiamos
+los dominios enteros:
+
+7
+00:00:23,782 --> 00:00:28,687
+la ley de cancelación, los divisores de
+cero, los anillos zeta sub ene,
+
+8
+00:00:28,687 --> 00:00:34,145
+los dominios finitos, los elementos
+irreducibles y primos, y la característica.
+
+9
+00:00:35,150 --> 00:00:38,029
+En la segunda mitad pasamos a los ideales:
+
+10
+00:00:38,029 --> 00:00:41,731
+su definición, los ideales
+generados, las operaciones,
+
+11
+00:00:41,731 --> 00:00:46,187
+los ideales primos y maximales, y dos
+ejemplos que integran todo.
+
+12
+00:00:46,187 --> 00:00:49,134
+Cerramos con una estrategia para el examen.
+
+13
+00:00:49,134 --> 00:00:53,796
+La numeración de los teoremas coincide
+con la del folleto del curso.
+
+14
+00:00:55,680 --> 00:00:56,740
+Capítulo dos.
+
+15
+00:00:56,740 --> 00:00:59,267
+Dominios enteros y cancelación.
+
+16
+00:01:00,830 --> 00:01:02,334
+Empecemos recordando.
+
+17
+00:01:02,334 --> 00:01:07,994
+Un anillo conmutativo con identidad es un
+conjunto con suma y producto donde la
+
+18
+00:01:07,994 --> 00:01:12,005
+suma forma un grupo abeliano, el
+producto es asociativo,
+
+19
+00:01:12,005 --> 00:01:17,235
+conmutativo y distribuye sobre la suma, y
+existe un uno distinto de cero.
+
+20
+00:01:18,270 --> 00:01:22,204
+Un elemento es unidad si tiene
+inverso multiplicativo.
+
+21
+00:01:22,204 --> 00:01:28,250
+Y un cuerpo es un anillo conmutativo con
+identidad en el que todo elemento distinto
+
+22
+00:01:28,250 --> 00:01:29,561
+de cero es unidad.
+
+23
+00:01:29,561 --> 00:01:32,621
+Por ejemplo, los racionales son un cuerpo;
+
+24
+00:01:32,621 --> 00:01:36,045
+los enteros no, porque el dos
+no tiene inverso.
+
+25
+00:01:37,070 --> 00:01:38,860
+Definición dos punto uno.
+
+26
+00:01:38,860 --> 00:01:44,660
+Un dominio entero es un anillo conmutativo con
+identidad en el que vale la ley de
+
+27
+00:01:44,660 --> 00:01:45,519
+cancelación:
+
+28
+00:01:45,519 --> 00:01:51,176
+si a es distinto de cero y a por b es igual a
+a por c, entonces b es igual a c.
+
+29
+00:01:52,190 --> 00:01:53,763
+Fíjate en dos detalles.
+
+30
+00:01:53,763 --> 00:01:57,800
+Primero, la hipótesis a distinto de
+cero es imprescindible,
+
+31
+00:01:57,800 --> 00:02:02,178
+porque cero por b es igual a cero por c
+para cualesquiera b y c.
+
+32
+00:02:02,178 --> 00:02:06,009
+Segundo, la definición exige
+conmutatividad e identidad.
+
+33
+00:02:06,009 --> 00:02:09,704
+Por eso los enteros pares no
+forman un dominio entero:
+
+34
+00:02:09,704 --> 00:02:10,661
+no tienen uno.
+
+35
+00:02:11,670 --> 00:02:13,545
+Un contraejemplo concreto:
+
+36
+00:02:13,545 --> 00:02:19,532
+en zeta sub seis, dos por uno es dos, y dos por
+cuatro es ocho, que también es dos.
+
+37
+00:02:19,532 --> 00:02:22,346
+Sin embargo, uno es distinto de cuatro.
+
+38
+00:02:22,346 --> 00:02:27,251
+La cancelación falla, así que zeta sub
+seis no es un dominio entero.
+
+39
+00:02:28,270 --> 00:02:30,004
+Proposición dos punto dos.
+
+40
+00:02:30,004 --> 00:02:32,206
+Todo cuerpo es un dominio entero.
+
+41
+00:02:33,230 --> 00:02:34,985
+La prueba es inmediata.
+
+42
+00:02:34,985 --> 00:02:39,029
+Si a es distinto de cero, en un
+cuerpo tiene inverso.
+
+43
+00:02:39,029 --> 00:02:44,599
+Multiplicamos ambos lados de a por b igual
+a a por c por el inverso de a,
+
+44
+00:02:44,599 --> 00:02:46,431
+y obtenemos b igual a c.
+
+45
+00:02:47,470 --> 00:02:49,213
+El recíproco es falso.
+
+46
+00:02:49,213 --> 00:02:53,809
+Los enteros cumplen la cancelación,
+pero no son un cuerpo.
+
+47
+00:02:53,809 --> 00:02:56,265
+Recuerda la dirección correcta:
+
+48
+00:02:56,265 --> 00:02:59,672
+cuerpo implica dominio entero, no al revés.
+
+49
+00:03:01,560 --> 00:03:02,643
+Capítulo tres.
+
+50
+00:03:02,643 --> 00:03:06,123
+Divisores de cero y los
+anillos zeta sub ene.
+
+51
+00:03:07,710 --> 00:03:09,693
+Definición dos punto cuatro.
+
+52
+00:03:09,693 --> 00:03:15,077
+Un elemento a distinto de cero es divisor de
+cero si existe otro elemento b,
+
+53
+00:03:15,077 --> 00:03:19,185
+también distinto de cero, tal que a
+por b es igual a cero.
+
+54
+00:03:19,185 --> 00:03:23,790
+Por ejemplo, en zeta sub seis, dos por
+tres es seis, que es cero.
+
+55
+00:03:24,790 --> 00:03:30,610
+El teorema dos punto seis dice que un anillo
+conmutativo con identidad es dominio
+
+56
+00:03:30,610 --> 00:03:33,987
+entero si y solo si no tiene
+divisores de cero.
+
+57
+00:03:33,987 --> 00:03:37,364
+Esta es la forma más práctica
+de la definición.
+
+58
+00:03:38,390 --> 00:03:40,457
+La prueba tiene dos líneas.
+
+59
+00:03:40,457 --> 00:03:43,290
+Si hay cancelación y a por b es cero,
+
+60
+00:03:43,290 --> 00:03:46,889
+escribimos cero como a por
+cero y cancelamos a.
+
+61
+00:03:46,889 --> 00:03:53,015
+Recíprocamente, si a por b es igual a a por c,
+entonces a por b menos c es cero,
+
+62
+00:03:53,015 --> 00:03:56,920
+y como no hay divisores de cero,
+b menos c es cero.
+
+63
+00:03:57,950 --> 00:04:01,105
+En zeta sub ene hay un criterio muy cómodo.
+
+64
+00:04:01,105 --> 00:04:02,866
+Teorema dos punto nueve:
+
+65
+00:04:02,866 --> 00:04:08,443
+una clase m distinta de cero es divisor de
+cero si y solo si el máximo común
+
+66
+00:04:08,443 --> 00:04:11,232
+divisor de m y ene es distinto de uno.
+
+67
+00:04:12,270 --> 00:04:16,356
+Y además nos dice cómo encontrar el
+compañero que anula:
+
+68
+00:04:16,356 --> 00:04:21,244
+si de es el máximo común divisor,
+multiplicamos m por ene sobre de,
+
+69
+00:04:21,244 --> 00:04:25,111
+y el resultado es un múltiplo de
+ene, es decir, cero.
+
+70
+00:04:26,150 --> 00:04:27,991
+Consecuencia importante:
+
+71
+00:04:27,991 --> 00:04:33,131
+en zeta sub ene, todo elemento no nulo
+es unidad o divisor de cero,
+
+72
+00:04:33,131 --> 00:04:34,665
+y nunca ambas cosas.
+
+73
+00:04:34,665 --> 00:04:40,189
+Si el máximo común divisor es uno, es
+unidad por la identidad de Bézout;
+
+74
+00:04:40,189 --> 00:04:42,183
+si no, es divisor de cero.
+
+75
+00:04:43,190 --> 00:04:44,812
+Veamos zeta sub doce.
+
+76
+00:04:44,812 --> 00:04:51,224
+Calculamos el máximo común divisor de cada m con
+doce, para m desde uno hasta once.
+
+77
+00:04:52,230 --> 00:04:56,511
+Donde el máximo común divisor es
+uno tenemos unidades:
+
+78
+00:04:56,511 --> 00:04:58,493
+uno, cinco, siete y once.
+
+79
+00:04:58,493 --> 00:05:01,506
+Todos los demás son divisores de cero:
+
+80
+00:05:01,506 --> 00:05:04,994
+dos, tres, cuatro, seis, ocho, nueve y diez.
+
+81
+00:05:04,994 --> 00:05:08,641
+Son cuatro unidades y siete
+divisores de cero,
+
+82
+00:05:08,641 --> 00:05:11,653
+que suman los once elementos no nulos.
+
+83
+00:05:12,670 --> 00:05:15,852
+Podemos verificar con compañeros concretos:
+
+84
+00:05:15,852 --> 00:05:19,181
+dos por seis, tres por
+cuatro, ocho por tres,
+
+85
+00:05:19,181 --> 00:05:23,176
+nueve por cuatro y diez por seis
+dan cero módulo doce.
+
+86
+00:05:23,176 --> 00:05:25,914
+Y las unidades son su propio inverso:
+
+87
+00:05:25,914 --> 00:05:30,131
+cinco al cuadrado es veinticinco,
+que es uno módulo doce.
+
+88
+00:05:32,000 --> 00:05:33,214
+Capítulo cuatro.
+
+89
+00:05:33,214 --> 00:05:35,262
+Dominios finitos y cuerpos.
+
+90
+00:05:36,830 --> 00:05:40,154
+Uno de los teoremas más
+importantes del módulo.
+
+91
+00:05:40,154 --> 00:05:41,780
+Teorema dos punto once:
+
+92
+00:05:41,780 --> 00:05:44,609
+todo dominio entero finito es un cuerpo.
+
+93
+00:05:45,630 --> 00:05:50,660
+La prueba usa la función multiplicar por
+b, con b distinto de cero.
+
+94
+00:05:50,660 --> 00:05:53,513
+Es inyectiva gracias a la cancelación.
+
+95
+00:05:53,513 --> 00:05:59,294
+Como el dominio es finito, toda función
+inyectiva del conjunto en sí mismo es
+
+96
+00:05:59,294 --> 00:06:00,871
+también sobreyectiva.
+
+97
+00:06:00,871 --> 00:06:03,423
+Entonces el uno está en la imagen:
+
+98
+00:06:03,423 --> 00:06:07,027
+existe c con b por c igual a
+uno, y b es unidad.
+
+99
+00:06:08,030 --> 00:06:10,290
+La hipótesis de finitud es esencial:
+
+100
+00:06:10,290 --> 00:06:14,056
+los enteros son un dominio entero
+infinito que no es cuerpo.
+
+101
+00:06:15,070 --> 00:06:16,944
+Corolario dos punto doce.
+
+102
+00:06:16,944 --> 00:06:20,842
+Zeta sub ene es un cuerpo si y
+solo si ene es primo.
+
+103
+00:06:20,842 --> 00:06:26,839
+Si ene es primo, el lema de Euclides impide los
+divisores de cero y aplicamos el
+
+104
+00:06:26,839 --> 00:06:28,114
+teorema anterior.
+
+105
+00:06:28,114 --> 00:06:33,286
+Si ene es compuesto, ene igual a ese por
+te da dos divisores de cero.
+
+106
+00:06:34,310 --> 00:06:36,953
+Así se ve la prueba en zeta sub siete.
+
+107
+00:06:36,953 --> 00:06:42,657
+Multiplicar por tres envía uno en tres, dos en
+seis, tres en dos, cuatro en cinco,
+
+108
+00:06:42,657 --> 00:06:44,744
+cinco en uno y seis en cuatro.
+
+109
+00:06:44,744 --> 00:06:48,709
+Es una permutación, y como el uno
+es la imagen del cinco,
+
+110
+00:06:48,709 --> 00:06:50,657
+el inverso de tres es cinco.
+
+111
+00:06:51,670 --> 00:06:54,828
+Un ejemplo que suele aparecer en exámenes.
+
+112
+00:06:54,828 --> 00:07:00,769
+Considera los anillos zeta sub pe de i, con a
+más b i y coeficientes módulo pe.
+
+113
+00:07:00,769 --> 00:07:06,935
+En zeta sub cinco de i, dos más i por dos menos
+i es cuatro más uno, que es cinco,
+
+114
+00:07:06,935 --> 00:07:07,988
+es decir cero.
+
+115
+00:07:07,988 --> 00:07:09,642
+Hay divisores de cero.
+
+116
+00:07:10,670 --> 00:07:15,007
+En cambio, zeta sub tres de i es un
+cuerpo con nueve elementos.
+
+117
+00:07:15,007 --> 00:07:19,619
+Multiplicando por el conjugado obtenemos
+a cuadrado más b cuadrado.
+
+118
+00:07:19,619 --> 00:07:23,268
+En zeta sub tres los cuadrados
+solo valen cero o uno,
+
+119
+00:07:23,268 --> 00:07:26,986
+así que esa suma es cero
+únicamente si a y b son cero.
+
+120
+00:07:26,986 --> 00:07:30,221
+Por tanto, todo elemento no
+nulo tiene inverso.
+
+121
+00:07:32,080 --> 00:07:33,414
+Capítulo cinco.
+
+122
+00:07:33,414 --> 00:07:36,260
+Irreducibles, primos y la norma.
+
+123
+00:07:37,830 --> 00:07:40,428
+Trabajamos ahora en un dominio entero.
+
+124
+00:07:40,428 --> 00:07:45,487
+Dos elementos son asociados si uno es el
+otro multiplicado por una unidad.
+
+125
+00:07:45,487 --> 00:07:48,291
+En los enteros, a es asociado de menos a.
+
+126
+00:07:49,310 --> 00:07:54,944
+Un elemento no nulo y que no es unidad es
+irreducible si en cualquier factorización
+
+127
+00:07:54,944 --> 00:07:58,474
+a igual a b por c, alguno de los
+factores es unidad.
+
+128
+00:07:58,474 --> 00:08:02,139
+Es decir, no se puede partir en
+factores no triviales.
+
+129
+00:08:03,150 --> 00:08:08,298
+Y es primo si cada vez que divide a un
+producto, divide a alguno de los factores.
+
+130
+00:08:08,298 --> 00:08:11,539
+Irreducible habla de cómo se
+factoriza el elemento;
+
+131
+00:08:11,539 --> 00:08:14,272
+primo habla de cómo divide a los productos.
+
+132
+00:08:15,310 --> 00:08:17,671
+Teorema dos punto diecisiete.
+
+133
+00:08:17,671 --> 00:08:22,311
+En un dominio entero, todo elemento
+primo es irreducible.
+
+134
+00:08:23,350 --> 00:08:29,669
+Si a es igual a b por c, entonces a divide al
+producto, y por ser primo divide,
+
+135
+00:08:29,669 --> 00:08:30,709
+digamos, a b.
+
+136
+00:08:30,709 --> 00:08:33,028
+Escribimos b igual a a por d.
+
+137
+00:08:33,028 --> 00:08:36,308
+Sustituyendo, b es igual a b por c por d,
+
+138
+00:08:36,308 --> 00:08:39,827
+y cancelando b obtenemos que c por d es uno.
+
+139
+00:08:39,827 --> 00:08:41,427
+Así c es una unidad.
+
+140
+00:08:42,430 --> 00:08:43,011
+Cuidado:
+
+141
+00:08:43,011 --> 00:08:45,408
+el recíproco es falso en general.
+
+142
+00:08:45,408 --> 00:08:51,219
+En los enteros, primo e irreducible coinciden,
+pero veremos un dominio donde no.
+
+143
+00:08:52,230 --> 00:08:55,310
+La herramienta para estos
+dominios es la norma.
+
+144
+00:08:55,310 --> 00:09:00,488
+En zeta de raíz de de, la norma de a más b
+raíz de de es el valor absoluto de a
+
+145
+00:09:00,488 --> 00:09:02,651
+cuadrado menos de por b cuadrado.
+
+146
+00:09:02,651 --> 00:09:06,452
+En los enteros gaussianos queda a
+cuadrado más b cuadrado.
+
+147
+00:09:07,470 --> 00:09:09,177
+Sus propiedades clave:
+
+148
+00:09:09,177 --> 00:09:14,222
+la norma es multiplicativa, vale uno
+exactamente en las unidades,
+
+149
+00:09:14,222 --> 00:09:20,121
+y si la norma de un elemento es un número
+primo, el elemento es irreducible.
+
+150
+00:09:20,121 --> 00:09:20,431
+Ojo:
+
+151
+00:09:20,431 --> 00:09:23,303
+el recíproco de esta última es falso.
+
+152
+00:09:23,303 --> 00:09:28,658
+El tres tiene norma nueve en los
+gaussianos y aun así es irreducible.
+
+153
+00:09:29,670 --> 00:09:30,781
+Ejemplo central.
+
+154
+00:09:30,781 --> 00:09:34,738
+En zeta de raíz de menos tres, el
+dos tiene norma cuatro.
+
+155
+00:09:34,738 --> 00:09:39,112
+Si se factorizara en dos no unidades,
+ambas tendrían norma dos.
+
+156
+00:09:39,112 --> 00:09:42,653
+Pero a cuadrado más tres b
+cuadrado nunca vale dos:
+
+157
+00:09:42,653 --> 00:09:45,430
+con b cero queda a cuadrado igual a dos,
+
+158
+00:09:45,430 --> 00:09:48,554
+y con b distinto de cero ya
+es al menos tres.
+
+159
+00:09:48,554 --> 00:09:50,498
+Luego el dos es irreducible.
+
+160
+00:09:51,510 --> 00:09:52,673
+Pero no es primo.
+
+161
+00:09:52,673 --> 00:09:58,144
+El dos divide al producto uno más raíz de menos
+tres por uno menos raíz de menos
+
+162
+00:09:58,144 --> 00:09:59,512
+tres, que es cuatro.
+
+163
+00:09:59,512 --> 00:10:02,864
+Sin embargo, no divide a
+ninguno de los factores,
+
+164
+00:10:02,864 --> 00:10:07,857
+porque al dividir obtendríamos coeficientes
+un medio, que no son enteros.
+
+165
+00:10:08,870 --> 00:10:11,083
+Este es el método para el examen.
+
+166
+00:10:11,083 --> 00:10:16,114
+Para irreducibilidad, usa la norma y muestra
+que las normas intermedias son
+
+167
+00:10:16,114 --> 00:10:16,852
+imposibles.
+
+168
+00:10:16,852 --> 00:10:22,083
+Para ver que no es primo, busca un producto de
+conjugados que sea múltiplo del
+
+169
+00:10:22,083 --> 00:10:25,370
+elemento, y muestra que no
+divide a los factores.
+
+170
+00:10:25,370 --> 00:10:29,930
+El mismo esquema funciona con el dos en
+zeta de raíz de menos cinco.
+
+171
+00:10:31,800 --> 00:10:32,795
+Capítulo seis.
+
+172
+00:10:32,795 --> 00:10:34,784
+Característica de un anillo.
+
+173
+00:10:36,350 --> 00:10:42,171
+La característica de un anillo es el menor
+entero positivo ene tal que ene por x es
+
+174
+00:10:42,171 --> 00:10:43,363
+cero para todo x.
+
+175
+00:10:43,363 --> 00:10:46,729
+Si no existe tal ene, la
+característica es cero.
+
+176
+00:10:47,750 --> 00:10:50,985
+Si el anillo tiene identidad,
+basta mirar el uno:
+
+177
+00:10:50,985 --> 00:10:56,465
+la característica es el número de veces que hay
+que sumar el uno para obtener cero.
+
+178
+00:10:56,465 --> 00:11:01,615
+Los enteros tienen característica cero, zeta
+sub ene tiene característica ene,
+
+179
+00:11:01,615 --> 00:11:05,709
+y zeta sub cuatro por zeta sub seis
+tiene característica doce,
+
+180
+00:11:05,709 --> 00:11:07,359
+el mínimo común múltiplo.
+
+181
+00:11:08,390 --> 00:11:10,241
+Teorema dos punto veinticinco.
+
+182
+00:11:10,241 --> 00:11:14,253
+La característica de un dominio entero
+es cero o un número primo.
+
+183
+00:11:15,270 --> 00:11:19,639
+Si la característica ene fuera
+compuesta, ene igual a ese por te,
+
+184
+00:11:19,639 --> 00:11:25,016
+entonces cero sería ene por uno, que es ese por
+uno multiplicado por te por uno.
+
+185
+00:11:25,016 --> 00:11:29,453
+Como no hay divisores de cero, alguno de
+esos factores sería cero,
+
+186
+00:11:29,453 --> 00:11:31,872
+contradiciendo que ene es el mínimo.
+
+187
+00:11:32,910 --> 00:11:33,812
+Consecuencias:
+
+188
+00:11:33,812 --> 00:11:38,064
+no existe un dominio entero de
+característica seis, diez o quince.
+
+189
+00:11:38,064 --> 00:11:41,672
+Y todo dominio entero finito tiene
+característica prima.
+
+190
+00:11:41,672 --> 00:11:46,762
+Por ejemplo, zeta sub tres de i tiene nueve
+elementos pero característica tres.
+
+191
+00:11:46,762 --> 00:11:50,499
+No confundas la característica con
+el número de elementos.
+
+192
+00:11:52,360 --> 00:11:53,613
+Capítulo siete.
+
+193
+00:11:53,613 --> 00:11:54,281
+Ideales:
+
+194
+00:11:54,281 --> 00:11:55,785
+definición y test.
+
+195
+00:11:57,350 --> 00:11:58,992
+Entramos al módulo tres.
+
+196
+00:11:58,992 --> 00:12:02,754
+Un ideal es un subanillo que
+absorbe la multiplicación:
+
+197
+00:12:02,754 --> 00:12:06,790
+si a está en el ideal y r es
+cualquier elemento del anillo,
+
+198
+00:12:06,790 --> 00:12:09,390
+el producto r por a sigue en el ideal.
+
+199
+00:12:10,390 --> 00:12:15,004
+En la práctica se usa el test del
+ideal, teorema tres punto dos.
+
+200
+00:12:15,004 --> 00:12:20,627
+Un subconjunto no vacío es ideal si y solo si
+es cerrado bajo restas y absorbe
+
+201
+00:12:20,627 --> 00:12:23,800
+productos por cualquier elemento del anillo.
+
+202
+00:12:24,830 --> 00:12:30,207
+El error más frecuente es verificar la
+absorción solo con elementos del propio
+
+203
+00:12:30,207 --> 00:12:30,621
+ideal.
+
+204
+00:12:30,621 --> 00:12:33,861
+Eso demuestra que es un
+subanillo, no un ideal.
+
+205
+00:12:33,861 --> 00:12:37,032
+El factor r tiene que recorrer
+todo el anillo.
+
+206
+00:12:38,070 --> 00:12:38,695
+Ejemplos:
+
+207
+00:12:38,695 --> 00:12:42,373
+el ideal cero y el propio anillo
+siempre son ideales.
+
+208
+00:12:42,373 --> 00:12:45,983
+Los múltiplos de ene forman un
+ideal de los enteros:
+
+209
+00:12:45,983 --> 00:12:48,343
+la resta de múltiplos es múltiplo,
+
+210
+00:12:48,343 --> 00:12:52,091
+y un entero por un múltiplo de ene
+es múltiplo de ene.
+
+211
+00:12:52,091 --> 00:12:57,435
+También las matrices con entradas pares son
+un ideal de las matrices enteras.
+
+212
+00:12:58,470 --> 00:12:59,495
+Contraejemplos:
+
+213
+00:12:59,495 --> 00:13:03,527
+los enteros son subanillo de los
+racionales, pero no ideal,
+
+214
+00:13:03,527 --> 00:13:06,055
+porque un medio por uno no es entero.
+
+215
+00:13:06,055 --> 00:13:09,814
+Los impares no son ideal, porque
+tres menos uno es par.
+
+216
+00:13:09,814 --> 00:13:14,051
+Y los naturales tampoco, porque menos
+uno por uno es negativo.
+
+217
+00:13:15,070 --> 00:13:16,709
+Lema tres punto siete:
+
+218
+00:13:16,709 --> 00:13:22,668
+si un ideal contiene al uno, es todo el anillo,
+porque cualquier a es a por uno.
+
+219
+00:13:22,668 --> 00:13:28,329
+Y si contiene una unidad u, también contiene
+al uno, que es u inverso por u.
+
+220
+00:13:29,350 --> 00:13:32,377
+De aquí sale una caracterización muy útil:
+
+221
+00:13:32,377 --> 00:13:38,214
+un anillo conmutativo con identidad es cuerpo
+si y solo si sus únicos ideales son
+
+222
+00:13:38,214 --> 00:13:39,655
+el cero y el anillo.
+
+223
+00:13:39,655 --> 00:13:44,700
+Si a es no nulo, el ideal generado por a
+tiene que ser todo el anillo,
+
+224
+00:13:44,700 --> 00:13:47,438
+así que uno es r por a, y a es unidad.
+
+225
+00:13:49,320 --> 00:13:50,537
+Capítulo ocho.
+
+226
+00:13:50,537 --> 00:13:53,058
+Ideal generado y operaciones.
+
+227
+00:13:54,630 --> 00:13:59,590
+El ideal generado por a uno hasta a ene es el
+conjunto de todas sus combinaciones
+
+228
+00:13:59,590 --> 00:14:01,427
+con coeficientes en el anillo.
+
+229
+00:14:01,427 --> 00:14:03,570
+Es el menor ideal que los contiene.
+
+230
+00:14:04,590 --> 00:14:07,913
+Un ideal es principal si lo
+genera un solo elemento.
+
+231
+00:14:07,913 --> 00:14:13,088
+Y un dominio de ideales principales es un
+dominio en el que todos los ideales son
+
+232
+00:14:13,088 --> 00:14:13,855
+principales.
+
+233
+00:14:14,870 --> 00:14:18,296
+Los enteros son un dominio de
+ideales principales.
+
+234
+00:14:18,296 --> 00:14:21,038
+Tomamos el menor positivo ene del ideal.
+
+235
+00:14:21,038 --> 00:14:25,697
+Si a está en el ideal, el resto de
+dividir a entre ene también está,
+
+236
+00:14:25,697 --> 00:14:28,165
+y es menor que ene, así que es cero.
+
+237
+00:14:28,165 --> 00:14:31,043
+Por tanto el ideal es el generado por ene.
+
+238
+00:14:32,070 --> 00:14:33,758
+Lema tres punto catorce.
+
+239
+00:14:33,758 --> 00:14:39,454
+En un dominio entero, el ideal generado por a
+está contenido en el generado por b
+
+240
+00:14:39,454 --> 00:14:41,282
+si y solo si b divide a a.
+
+241
+00:14:41,282 --> 00:14:44,446
+Son iguales si y solo si a y
+b son asociados.
+
+242
+00:14:44,446 --> 00:14:49,369
+Y el ideal generado por a es todo el
+dominio si y solo si a es unidad.
+
+243
+00:14:50,390 --> 00:14:51,625
+Regla mnemotécnica:
+
+244
+00:14:51,625 --> 00:14:52,926
+contener es dividir.
+
+245
+00:14:52,926 --> 00:14:55,981
+El ideal grande corresponde al
+divisor pequeño.
+
+246
+00:14:55,981 --> 00:15:00,597
+El ideal de ocho está dentro del de
+cuatro, que está dentro del de dos.
+
+247
+00:15:00,597 --> 00:15:03,393
+Y el ideal de dos es igual al de menos dos.
+
+248
+00:15:04,430 --> 00:15:07,977
+Con dos ideales podemos formar la
+suma, el producto,
+
+249
+00:15:07,977 --> 00:15:11,660
+que son sumas finitas de
+productos, y la intersección.
+
+250
+00:15:11,660 --> 00:15:16,980
+Las tres son ideales, y el producto siempre
+está contenido en la intersección.
+
+251
+00:15:17,990 --> 00:15:20,565
+En los enteros hay fórmulas directas:
+
+252
+00:15:20,565 --> 00:15:23,626
+la suma corresponde al máximo común divisor,
+
+253
+00:15:23,626 --> 00:15:28,358
+la intersección al mínimo común múltiplo,
+y el producto al producto.
+
+254
+00:15:29,390 --> 00:15:31,222
+Ejemplo con cuatro y seis:
+
+255
+00:15:31,222 --> 00:15:36,435
+la suma es el ideal de dos, la intersección
+el de doce y el producto el de
+
+256
+00:15:36,435 --> 00:15:40,239
+veinticuatro, estrictamente menor
+que la intersección.
+
+257
+00:15:40,239 --> 00:15:41,014
+Y atención:
+
+258
+00:15:41,014 --> 00:15:44,043
+la unión de ideales no es ideal en general.
+
+259
+00:15:44,043 --> 00:15:48,129
+Dos y tres están en la unión, pero
+su diferencia, uno, no.
+
+260
+00:15:50,000 --> 00:15:51,215
+Capítulo nueve.
+
+261
+00:15:51,215 --> 00:15:53,402
+Ideales primos y maximales.
+
+262
+00:15:54,990 --> 00:16:00,144
+Un ideal propio pe es primo si cada vez que
+un producto a por b está en pe,
+
+263
+00:16:00,144 --> 00:16:02,481
+alguno de los factores está en pe.
+
+264
+00:16:02,481 --> 00:16:08,048
+En los enteros, el ideal generado por un primo
+es primo, por el lema de Euclides.
+
+265
+00:16:08,048 --> 00:16:09,835
+El ideal de seis no lo es:
+
+266
+00:16:09,835 --> 00:16:12,927
+dos por tres está en él, pero
+ni dos ni tres.
+
+267
+00:16:13,950 --> 00:16:20,284
+Un ideal propio eme es maximal si no hay ningún
+ideal estrictamente entre eme y el
+
+268
+00:16:20,284 --> 00:16:21,520
+anillo completo.
+
+269
+00:16:22,550 --> 00:16:24,041
+Un criterio práctico:
+
+270
+00:16:24,041 --> 00:16:28,230
+eme es maximal si y solo si, para
+cualquier a fuera de eme,
+
+271
+00:16:28,230 --> 00:16:31,071
+al agregarle a obtenemos todo el anillo.
+
+272
+00:16:31,071 --> 00:16:36,041
+Es decir, uno se escribe como un elemento
+de eme más un múltiplo de a.
+
+273
+00:16:37,070 --> 00:16:37,787
+Teorema:
+
+274
+00:16:37,787 --> 00:16:43,885
+en un anillo conmutativo con identidad,
+todo ideal maximal es primo.
+
+275
+00:16:44,910 --> 00:16:48,884
+Supongamos que a por b está en
+eme y que a no está.
+
+276
+00:16:48,884 --> 00:16:51,844
+Por el criterio, uno es m más r por a.
+
+277
+00:16:51,844 --> 00:16:53,403
+Multiplicamos por b:
+
+278
+00:16:53,403 --> 00:16:56,130
+b es igual a m por b más r por a b.
+
+279
+00:16:56,130 --> 00:17:01,350
+Los dos sumandos están en eme por
+absorción, así que b está en eme.
+
+280
+00:17:02,350 --> 00:17:03,939
+El recíproco es falso.
+
+281
+00:17:03,939 --> 00:17:09,716
+El ideal cero es primo en los enteros, porque
+los enteros son un dominio entero,
+
+282
+00:17:09,716 --> 00:17:11,088
+pero no es maximal:
+
+283
+00:17:11,088 --> 00:17:15,277
+el ideal de dos está estrictamente
+entre él y los enteros.
+
+284
+00:17:15,277 --> 00:17:19,393
+En anillos finitos, en cambio,
+primo y maximal coinciden.
+
+285
+00:17:20,430 --> 00:17:22,783
+Proposición tres punto veintidós:
+
+286
+00:17:22,783 --> 00:17:28,273
+en un dominio entero, el ideal generado por
+pe es primo si y solo si pe es un
+
+287
+00:17:28,273 --> 00:17:29,343
+elemento primo.
+
+288
+00:17:29,343 --> 00:17:34,548
+Ser divisible por pe es lo mismo que
+pertenecer al ideal generado por pe.
+
+289
+00:17:35,550 --> 00:17:39,014
+En los enteros, para ene mayor
+o igual que dos,
+
+290
+00:17:39,014 --> 00:17:44,615
+el ideal de ene es maximal si y solo si es
+primo, si y solo si ene es primo.
+
+291
+00:17:44,615 --> 00:17:50,364
+Los ideales entre el de ene y los enteros
+corresponden a los divisores de ene.
+
+292
+00:17:51,390 --> 00:17:53,927
+Y un adelanto del módulo cuatro:
+
+293
+00:17:53,927 --> 00:17:58,764
+un ideal es primo si y solo si el
+cociente es dominio entero,
+
+294
+00:17:58,764 --> 00:18:02,570
+y es maximal si y solo si el
+cociente es cuerpo.
+
+295
+00:18:04,440 --> 00:18:05,510
+Capítulo diez.
+
+296
+00:18:05,510 --> 00:18:07,192
+Ejemplos integradores.
+
+297
+00:18:08,750 --> 00:18:14,215
+Los ideales de zeta sub ene son exactamente los
+generados por los divisores de ene.
+
+298
+00:18:14,215 --> 00:18:17,111
+El ideal de de tiene ene sobre de elementos,
+
+299
+00:18:17,111 --> 00:18:20,930
+la contención vuelve a ser
+divisibilidad, y los maximales,
+
+300
+00:18:20,930 --> 00:18:24,551
+que coinciden con los primos, son
+los de divisor primo.
+
+301
+00:18:25,590 --> 00:18:30,304
+Para zeta sub doce, los divisores de
+doce dan seis ideales.
+
+302
+00:18:30,304 --> 00:18:32,461
+Además del anillo completo:
+
+303
+00:18:32,461 --> 00:18:34,858
+el de dos, con seis elementos;
+
+304
+00:18:34,858 --> 00:18:36,696
+el de tres, con cuatro;
+
+305
+00:18:36,696 --> 00:18:38,534
+el de cuatro, con tres;
+
+306
+00:18:38,534 --> 00:18:40,131
+el de seis, con dos;
+
+307
+00:18:40,131 --> 00:18:40,930
+y el cero.
+
+308
+00:18:40,930 --> 00:18:44,526
+En el diagrama, cada línea
+indica contención.
+
+309
+00:18:45,550 --> 00:18:50,015
+Los maximales son el de dos y el de
+tres, y también son los primos.
+
+310
+00:18:50,015 --> 00:18:51,614
+Los demás no son primos:
+
+311
+00:18:51,614 --> 00:18:55,346
+dos por dos está en el ideal de
+cuatro sin que dos esté;
+
+312
+00:18:55,346 --> 00:18:57,478
+dos por tres está en el de seis;
+
+313
+00:18:57,478 --> 00:19:01,676
+y dos por seis es cero, así que el
+ideal cero tampoco es primo.
+
+314
+00:19:02,710 --> 00:19:05,763
+Segundo ejemplo, en los enteros gaussianos.
+
+315
+00:19:05,763 --> 00:19:08,462
+Como dos es uno más i por uno menos i,
+
+316
+00:19:08,462 --> 00:19:12,083
+el ideal de dos está dentro del
+ideal de uno más i.
+
+317
+00:19:12,083 --> 00:19:17,196
+La contención es estricta, porque uno más i
+no tiene coeficientes pares.
+
+318
+00:19:17,196 --> 00:19:22,877
+Y el ideal de uno más i es propio, porque su
+norma es dos, así que no es unidad.
+
+319
+00:19:23,910 --> 00:19:29,857
+Además, a más b i está en el ideal de uno más i
+exactamente cuando a más b es par,
+
+320
+00:19:29,857 --> 00:19:35,369
+porque los múltiplos de uno más i tienen suma
+de coeficientes igual a dos c.
+
+321
+00:19:36,390 --> 00:19:40,162
+Si un ideal contiene
+estrictamente al de uno más i,
+
+322
+00:19:40,162 --> 00:19:42,824
+tiene algún elemento con suma impar.
+
+323
+00:19:42,824 --> 00:19:48,222
+Restándole el elemento de suma par a menos
+uno más b i, obtenemos el uno.
+
+324
+00:19:48,222 --> 00:19:53,473
+Por tanto el ideal de uno más i es
+maximal, y el ideal de dos no lo es.
+
+325
+00:19:53,473 --> 00:19:57,392
+Este es justamente el ítem
+diecinueve de la práctica.
+
+326
+00:19:59,280 --> 00:20:00,315
+Capítulo once.
+
+327
+00:20:00,315 --> 00:20:02,310
+Estrategia para el parcial.
+
+328
+00:20:03,870 --> 00:20:05,437
+Repasemos los métodos.
+
+329
+00:20:05,437 --> 00:20:07,003
+Para dominios enteros:
+
+330
+00:20:07,003 --> 00:20:12,273
+prueba que a por b igual a cero obliga a que
+uno de los factores sea cero.
+
+331
+00:20:12,273 --> 00:20:16,545
+En zeta sub ene, todo se decide con
+el máximo común divisor.
+
+332
+00:20:16,545 --> 00:20:20,390
+Si el anillo es finito, dominio
+entero implica cuerpo.
+
+333
+00:20:20,390 --> 00:20:22,882
+Para irreducibilidad, usa la norma.
+
+334
+00:20:22,882 --> 00:20:26,300
+Y la característica es el orden
+aditivo del uno.
+
+335
+00:20:27,310 --> 00:20:28,249
+Para ideales:
+
+336
+00:20:28,249 --> 00:20:31,284
+usa el test con r arbitrario en el anillo.
+
+337
+00:20:31,284 --> 00:20:36,054
+Para ver si un ideal es todo el anillo,
+busca el uno o una unidad.
+
+338
+00:20:36,054 --> 00:20:41,834
+En los enteros, suma e intersección se calculan
+con el máximo común divisor y el
+
+339
+00:20:41,834 --> 00:20:43,424
+mínimo común múltiplo.
+
+340
+00:20:43,424 --> 00:20:46,459
+Para probar maximalidad, construye el uno;
+
+341
+00:20:46,459 --> 00:20:49,566
+para refutarla, exhibe un ideal intermedio.
+
+342
+00:20:50,590 --> 00:20:56,325
+Memoriza estos cinco contraejemplos, porque
+aparecen en casi todos los parciales.
+
+343
+00:20:56,325 --> 00:20:58,662
+Dominio entero no implica cuerpo:
+
+344
+00:20:58,662 --> 00:20:59,511
+los enteros.
+
+345
+00:20:59,511 --> 00:21:01,565
+Irreducible no implica primo:
+
+346
+00:21:01,565 --> 00:21:04,185
+el dos en zeta de raíz de menos tres.
+
+347
+00:21:04,185 --> 00:21:06,096
+Subanillo no implica ideal:
+
+348
+00:21:06,096 --> 00:21:08,716
+los enteros dentro de los racionales.
+
+349
+00:21:08,716 --> 00:21:10,486
+Primo no implica maximal:
+
+350
+00:21:10,486 --> 00:21:12,540
+el ideal cero en los enteros.
+
+351
+00:21:12,540 --> 00:21:14,947
+Y la unión de ideales no es ideal:
+
+352
+00:21:14,947 --> 00:21:17,142
+el de dos unido con el de tres.
+
+353
+00:21:18,150 --> 00:21:20,996
+Para terminar, te recomendamos este orden.
+
+354
+00:21:20,996 --> 00:21:23,842
+Estudia la guía y resuelve sus ejercicios.
+
+355
+00:21:23,842 --> 00:21:28,383
+Luego haz la práctica en ciento veinte
+minutos, sin consultar nada.
+
+356
+00:21:28,383 --> 00:21:31,229
+Corrígela con la rúbrica del solucionario,
+
+357
+00:21:31,229 --> 00:21:36,447
+y usa su apéndice de diagnóstico para saber
+qué capítulos de este video y qué
+
+358
+00:21:36,447 --> 00:21:38,412
+secciones de la guía repasar.
+
+359
+00:21:38,412 --> 00:21:40,174
+Mucho éxito en el parcial.
