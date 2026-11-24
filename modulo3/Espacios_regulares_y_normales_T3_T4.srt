@@ -1,0 +1,211 @@
+1
+00:00:00,500 --> 00:00:15,420
+Módulo tres, segunda parte de los axiomas de separación. Hoy estudiamos los espacios regulares y normales, y los axiomas te tres y te cuatro. Al final veremos que todo espacio métrico cumple todos los axiomas de separación.
+
+2
+00:00:16,120 --> 00:00:21,684
+Hasta ahora, los axiomas te cero, te uno y te dos separaban un punto de otro punto.
+
+3
+00:00:22,384 --> 00:00:33,255
+Hoy damos dos pasos más. Un espacio regular separa un punto de un conjunto cerrado que no lo contiene. Un espacio normal separa dos conjuntos cerrados disjuntos.
+
+4
+00:00:33,955 --> 00:00:46,798
+Recordemos dos cosas. Un conjunto es cerrado si su complemento es abierto. Y el teorema tres punto dos: un espacio es te uno, si y solo si, cada punto, visto como conjunto, es cerrado.
+
+5
+00:00:47,498 --> 00:00:57,938
+Ese teorema es la herramienta clave de hoy. En un espacio te uno, un punto es un cerrado. Por eso, separar cerrados termina separando puntos.
+
+6
+00:00:58,638 --> 00:01:15,120
+Primera definición: espacio regular. Un espacio topológico es regular si, para todo conjunto cerrado efe, y todo punto equis que no esté en efe, existen dos abiertos, ge y hache, que no se cortan, tales que efe está contenido en ge, y equis está en hache.
+
+7
+00:01:15,820 --> 00:01:30,613
+Dos precisiones sobre los apuntes. Donde dice que efe pertenece a la clausura, debe entenderse que efe es un conjunto cerrado. Y la condición se pide para todo cerrado, y todo punto fuera de él; no para uno que exista.
+
+8
+00:01:31,313 --> 00:01:52,983
+Ejemplo de la clase. Un conjunto de tres puntos, con abiertos: el vacío, el total, el conjunto a, y el conjunto be ce. Primero listamos los cerrados, que son los complementos de los abiertos: el total, el vacío, el conjunto be ce, y el conjunto a. En este espacio, los cerrados son exactamente los mismos conjuntos que los abiertos.
+
+9
+00:01:53,683 --> 00:02:21,912
+Ahora revisamos cada cerrado, contra cada punto que no esté en él. Si efe es vacío, tomamos ge vacío, y hache igual a todo el espacio. Si efe es el conjunto a, los puntos de afuera son be y ce: tomamos ge igual al conjunto a, y hache igual al conjunto be ce. Si efe es be ce, el único punto de afuera es a: tomamos ge igual a be ce, y hache igual al conjunto a. Y si efe es todo el espacio, no hay puntos afuera, así que no hay nada que verificar.
+
+10
+00:02:22,612 --> 00:02:30,057
+En todos los casos, ge y hache son abiertos y no se cortan. Por lo tanto, el espacio es regular.
+
+11
+00:02:30,757 --> 00:02:40,114
+Pero miremos los puntos be y ce de ese mismo espacio. Los dos tienen exactamente las mismas vecindades: el conjunto be ce, y el total.
+
+12
+00:02:40,814 --> 00:02:47,133
+Entonces no es te cero. Y como el conjunto be no es cerrado, tampoco es te uno; ni te dos.
+
+13
+00:02:47,833 --> 00:02:59,020
+Conclusión importante: un espacio regular no tiene por qué separar puntos. Por eso, para definir te tres, a la regularidad se le añade el axioma te uno.
+
+14
+00:02:59,720 --> 00:03:04,674
+Definición: un espacio es te tres si es regular, y además es te uno.
+
+15
+00:03:05,373 --> 00:03:17,406
+La idea es esta. Con te uno, cada punto ye es un cerrado. Entonces la regularidad permite separar un punto equis del cerrado formado por ye. Es decir, separa puntos.
+
+16
+00:03:18,105 --> 00:03:38,142
+Una advertencia sobre convenciones. Hay libros en los que la palabra regular ya incluye te uno, y otros en los que te tres no lo incluye. Aquí seguimos la convención de la clase: te tres es regular, más te uno. En los apuntes aparece como condiciones suficientes para te tres, pero es la definición.
+
+17
+00:03:38,842 --> 00:03:54,245
+Ejemplo de la clase, en la recta real usual. Tomamos el punto cero, y el cerrado efe, igual al intervalo cerrado de dos a cuatro. Efe es cerrado, porque su complemento es la unión de dos intervalos abiertos. Y el cero no está en efe.
+
+18
+00:03:54,945 --> 00:04:08,334
+Elegimos hache igual al intervalo abierto de menos uno a uno, que contiene al cero. Y ge igual al intervalo abierto de uno a cinco, que contiene a todo efe. Los dos no se cortan, porque el uno está excluido de ambos.
+
+19
+00:04:09,033 --> 00:04:25,055
+¿De dónde salen esos intervalos? La distancia del cero al conjunto efe es dos. Usamos la mitad, que es uno, como radio. Hache es la bola de radio uno alrededor del cero, y ge es la unión de las bolas de radio uno alrededor de los puntos de efe.
+
+20
+00:04:25,755 --> 00:04:41,781
+Ojo: esto verifica un solo caso. Para concluir que la recta es regular, hay que hacerlo con todo cerrado y todo punto. Eso lo garantiza el teorema del final: todo espacio métrico es te cuatro, y por lo tanto te tres.
+
+21
+00:04:42,481 --> 00:05:02,475
+Ahora el corolario: te tres implica te dos, te uno y te cero. Las demostraciones van en formato de tabla. Primero, te tres implica te dos. Tomamos dos puntos distintos, equis y ye. Como el espacio es te uno, el conjunto ye es cerrado, por el teorema tres punto dos. Y equis no está en él.
+
+22
+00:05:03,175 --> 00:05:12,950
+Como el espacio es regular, aplicamos la definición con efe igual al conjunto ye. Existen abiertos ge y hache, disjuntos, con ye en ge, y equis en hache.
+
+23
+00:05:13,650 --> 00:05:21,714
+Esos abiertos son vecindades de equis y de ye, y no se cortan. Esa es exactamente la definición de te dos.
+
+24
+00:05:22,414 --> 00:05:28,178
+Te tres implica te uno es inmediato: te uno es parte de la definición de te tres.
+
+25
+00:05:28,878 --> 00:05:36,126
+Y te tres implica te cero, porque te tres implica te uno, y en la clase anterior vimos que te uno implica te cero.
+
+26
+00:05:36,826 --> 00:05:44,400
+Así se forma la cadena: te tres implica te dos, te dos implica te uno, y te uno implica te cero.
+
+27
+00:05:45,100 --> 00:06:01,313
+Segunda definición: espacio normal. Es similar a la anterior, pero ahora con dos cerrados. Un espacio es normal si, dados dos cerrados disjuntos, e y efe, existen abiertos ge y hache, que no se cortan, con e contenido en ge, y efe contenido en hache.
+
+28
+00:06:02,013 --> 00:06:09,066
+La diferencia con regular: allí separábamos un punto de un cerrado. Aquí separamos dos cerrados.
+
+29
+00:06:09,766 --> 00:06:29,316
+Por ejemplo, el espacio de tres puntos que vimos hace un momento también es normal. El único par de cerrados disjuntos no vacíos es el conjunto a, con el conjunto be ce, y ellos mismos son abiertos que no se cortan. Los pares que incluyen al vacío se resuelven tomando el vacío como uno de los abiertos.
+
+30
+00:06:30,016 --> 00:06:35,033
+Definición: un espacio es te cuatro si es normal, y además es te uno.
+
+31
+00:06:35,733 --> 00:06:46,975
+El espacio de tres puntos es regular y normal, pero no es te uno. Así que no es te tres ni te cuatro. Otra vez: sin te uno, estos axiomas no separan puntos.
+
+32
+00:06:47,675 --> 00:06:59,780
+Igual que con te tres, hay libros en los que normal ya incluye te uno. Aquí, te cuatro es normal más te uno. Lo que vamos a probar ahora es que te cuatro está en la cima de la cadena.
+
+33
+00:07:00,480 --> 00:07:13,843
+Teorema: si un espacio es te cuatro, entonces es te tres. Sabemos que es te uno, porque es parte de la definición. Falta ver que es regular. Tomamos un cerrado efe, y un punto equis fuera de él.
+
+34
+00:07:14,543 --> 00:07:20,926
+Por ser te uno, el conjunto equis es cerrado. Y no corta a efe, porque equis no está en efe.
+
+35
+00:07:21,626 --> 00:07:35,941
+Ahora tenemos dos cerrados disjuntos: efe, y el conjunto equis. Como el espacio es normal, existen abiertos disjuntos ge y hache, con efe dentro de ge, y equis dentro de hache. Eso es justo lo que pide la regularidad.
+
+36
+00:07:36,641 --> 00:07:41,825
+El espacio es regular y te uno. Por lo tanto, es te tres.
+
+37
+00:07:42,525 --> 00:07:51,745
+Los tres corolarios salen encadenando lo que ya probamos. Te cuatro implica te dos, porque te cuatro implica te tres, y te tres implica te dos.
+
+38
+00:07:52,445 --> 00:07:56,451
+Te cuatro implica te uno, directamente por la definición.
+
+39
+00:07:57,151 --> 00:08:01,136
+Y te cuatro implica te cero, porque te uno implica te cero.
+
+40
+00:08:01,836 --> 00:08:09,930
+Queda la cadena completa: te cuatro, te tres, te dos, te uno, te cero. Cada uno implica el siguiente.
+
+41
+00:08:10,629 --> 00:08:26,310
+En clase también se anotó el corolario de José: si un espacio es normal, entonces es regular. Con la convención de esta clase, en la que normal no incluye te uno, ese enunciado es falso. Veamos un contraejemplo, con un espacio que ya conocemos.
+
+42
+00:08:27,009 --> 00:08:44,746
+El espacio de Sierpiński: dos puntos, cero y uno, con abiertos el vacío, el conjunto cero, y el total. Sus cerrados son el vacío, el conjunto uno, y el total. No hay dos cerrados no vacíos que sean disjuntos. Así que la condición de normal se cumple, sin nada que verificar.
+
+43
+00:08:45,446 --> 00:08:57,939
+Pero no es regular. Tomemos efe igual al conjunto uno, y el punto cero. El único abierto que contiene a efe es todo el espacio, y todo el espacio corta a cualquier abierto que contenga al cero.
+
+44
+00:08:58,639 --> 00:09:16,564
+La versión correcta es: normal y te uno implica regular. Es justamente el teorema te cuatro implica te tres. El enunciado de José es cierto tal cual, solo si se usa la convención en la que normal ya incluye te uno. Conviene confirmarlo con la profesora.
+
+45
+00:09:17,264 --> 00:09:28,016
+Último resultado: todo espacio métrico es te cuatro. Primero, en la clase anterior vimos que todo espacio métrico es te dos. Por lo tanto, es te uno.
+
+46
+00:09:28,716 --> 00:09:48,744
+Falta ver que es normal. Tomamos dos cerrados disjuntos, e y efe. Para cada punto a de e: como a no está en efe, y el complemento de efe es abierto, hay una bola alrededor de a, de radio erre sub a, que no toca a efe. Lo mismo para cada punto be de efe: hay un radio erre sub be, con una bola que no toca a e.
+
+47
+00:09:49,444 --> 00:10:03,950
+Ahora usamos la mitad de esos radios. Ge es la unión de las bolas de radio erre sub a, sobre dos. Y hache es la unión de las bolas de radio erre sub be, sobre dos. Son abiertos, porque son uniones de bolas, y contienen a e y a efe.
+
+48
+00:10:04,650 --> 00:10:27,704
+Y no se cortan. Si un punto zeta estuviera en las dos, la desigualdad triangular daría que la distancia entre a y be es menor que el mayor de los dos radios. Entonces be estaría en la bola de a, que no toca a efe; o a estaría en la bola de be, que no toca a e. Es absurdo. Por lo tanto, todo espacio métrico es normal y te uno: es te cuatro.
+
+49
+00:10:28,404 --> 00:10:39,339
+Resumamos la jerarquía. Todo espacio métrico es te cuatro. Te cuatro implica te tres, te tres implica te dos, te dos implica te uno, y te uno implica te cero.
+
+50
+00:10:40,039 --> 00:10:58,608
+Ninguna de estas implicaciones se puede invertir. Te uno sin te dos, y te cero sin te uno, ya los vimos. Los contraejemplos de te dos sin te tres, y de te tres sin te cuatro, son más elaborados: por ejemplo, la topología ka en la recta, y el plano de Sorgenfrey. Quedan fuera de esta clase.
+
+51
+00:10:59,308 --> 00:11:11,434
+Y sin te uno, regular y normal no encajan en la cadena. Sierpiński es normal y no es regular. Y el espacio de tres puntos es regular y normal, pero ni siquiera es te cero.
+
+52
+00:11:12,134 --> 00:11:41,847
+Por último, la tabla con todos los ejemplos de las dos clases. La recta real usual lo cumple todo. La topología cofinita es te uno, pero no es regular ni normal, porque dos abiertos no vacíos siempre se cortan. El ejemplo del punto cero tampoco es regular ni normal. Sierpiński, y el espacio a, be, ce con abiertos vacío, total y a, son normales sin nada que verificar, pero no son regulares. Y el espacio de tres puntos de hoy es regular y normal, pero no es te cero.
+
+53
+00:11:42,547 --> 00:11:57,690
+Para verificar en un ejercicio. Para regular, enfrente cada cerrado con cada punto que no esté en él. Para normal, cada par de cerrados disjuntos. Y para te tres o te cuatro, además, compruebe que los puntos sean cerrados.
