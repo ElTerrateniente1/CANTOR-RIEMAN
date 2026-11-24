@@ -28,18 +28,24 @@ python3 presentacion/generar_toro.py
 (cd presentacion && npm install && node generar_pptx.js)
 ```
 
-## Módulo 3 · Axiomas de separación (T₀, T₁, T₂)
+## Módulo 3 · Axiomas de separación
 
-Apuntes de clase ampliados sobre los espacios de Kolmogórov, Fréchet y Hausdorff.
+Apuntes de clase ampliados. Cada clase tiene un video narrado en español (voz sintética, con
+subtítulos `.srt`), un PDF de apuntes y un PDF con las diapositivas del video.
 
-| Archivo | Contenido |
-|---|---|
-| [`modulo3/Axiomas_de_separacion_T0_T1_T2.mp4`](modulo3/Axiomas_de_separacion_T0_T1_T2.mp4) | Video narrado en español (15 diapositivas, voz sintética). Subtítulos en el `.srt` del mismo nombre. |
-| [`modulo3/Axiomas_de_separacion_T0_T1_T2_apuntes.pdf`](modulo3/Axiomas_de_separacion_T0_T1_T2_apuntes.pdf) | Apuntes ampliados (7 páginas): definiciones, teoremas 3.1 y 3.2 con demostración, ejemplos verificados, notas sobre los apuntes originales y ejercicios. |
-| [`modulo3/Axiomas_de_separacion_T0_T1_T2_diapositivas.pdf`](modulo3/Axiomas_de_separacion_T0_T1_T2_diapositivas.pdf) | Las mismas diapositivas del video, en PDF. |
-| `modulo3/fuente/` | Fuentes: `diapositivas.src.html`, `apuntes.src.html`, `diagramas.mjs`, `build.mjs` (PDF y cuadros, con KaTeX y Playwright) y `narrar.py` (voz Kokoro y montaje con ffmpeg). |
+| Clase | Video | Apuntes | Diapositivas |
+|---|---|---|---|
+| T₀, T₁, T₂ (Kolmogórov, Fréchet, Hausdorff) | [mp4](modulo3/Axiomas_de_separacion_T0_T1_T2.mp4) | [PDF, 7 págs.](modulo3/Axiomas_de_separacion_T0_T1_T2_apuntes.pdf) | [PDF](modulo3/Axiomas_de_separacion_T0_T1_T2_diapositivas.pdf) |
+| T₃, T₄ (espacios regulares y normales) | [mp4](modulo3/Espacios_regulares_y_normales_T3_T4.mp4) | [PDF, 9 págs.](modulo3/Espacios_regulares_y_normales_T3_T4_apuntes.pdf) | [PDF](modulo3/Espacios_regulares_y_normales_T3_T4_diapositivas.pdf) |
+
+Fuentes en `modulo3/fuente/`: `clases/<clase>/diapositivas.src.html` (diapositivas y guion de la
+narración), `clases/<clase>/apuntes.src.html`, `clases.json` (nombre de cada clase),
+`diagramas.mjs`, `build.mjs` (PDF y cuadros del video, con KaTeX y Playwright) y `narrar.py`
+(voz Kokoro y montaje con ffmpeg).
 
 ```bash
-cd modulo3/fuente && npm install && node build.mjs
-pip install kokoro-onnx soundfile && python3 narrar.py CARPETA_CON_MODELOS_KOKORO
+cd modulo3/fuente && npm install
+node build.mjs t3t4                        # o t0t1t2
+pip install kokoro-onnx soundfile
+python3 narrar.py t3t4 CARPETA_CON_MODELOS_KOKORO
 ```

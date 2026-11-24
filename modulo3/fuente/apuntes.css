@@ -25,3 +25,10 @@ table.resumen th, table.resumen td { padding: 4.5pt 8pt; }
 table.resumen td.si, table.resumen td.no { font-size: 13pt; width: 48pt; }
 .katex-display { margin: .5em 0; }
 .et.enlinea { display: inline; }
+table.prueba { margin: 4pt 0 10pt; }
+table.prueba th, table.prueba td { padding: 4pt 8pt; }
+table.prueba th { font-size: 9.4pt; }
+table.resumen.ancha th, table.resumen.ancha td { padding: 4pt 5pt; }
+table.resumen.ancha td.si, table.resumen.ancha td.no { width: 34pt; font-size: 12pt; }
+.cadena-doc { text-align: center; font-size: 13pt; margin: 6pt 0 8pt; }
+.junto { break-inside: avoid; }

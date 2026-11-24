@@ -1,6 +1,6 @@
 """Narra build/narracion.json con Kokoro (voz en español) y monta el video.
 
-Uso: python3 narrar.py RUTA_MODELOS   (carpeta con kokoro-v1.0.onnx y voices-v1.0.bin,
+Uso: python3 narrar.py CLASE RUTA_MODELOS   (CLASE = carpeta de clases/; RUTA_MODELOS = carpeta con kokoro-v1.0.onnx y voices-v1.0.bin,
 descargables de github.com/thewh1teagle/kokoro-onnx/releases, etiqueta model-files-v1.0)
 """
 import json, re, subprocess, sys
@@ -10,9 +10,10 @@ import soundfile as sf
 from kokoro_onnx import Kokoro
 
 AQUI = Path(__file__).resolve().parent
-BUILD = AQUI / "build"
-NOMBRE = "Axiomas_de_separacion_T0_T1_T2"
-modelos = Path(sys.argv[1])
+CLASE = sys.argv[1]
+BUILD = AQUI / "build" / CLASE
+NOMBRE = json.loads((AQUI / "clases.json").read_text())[CLASE]["nombre"]
+modelos = Path(sys.argv[2])
 VOZ, VELOCIDAD, SR = "ef_dora", 0.95, 24000
 
 kokoro = Kokoro(str(modelos / "kokoro-v1.0.onnx"), str(modelos / "voices-v1.0.bin"))

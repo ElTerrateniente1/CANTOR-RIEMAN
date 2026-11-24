@@ -1,0 +1,247 @@
+<!-- Cada <section> es una diapositiva. data-s="k" = aparece en el paso k.
+     <aside data-s="k"> = narración del paso k (no se muestra). -->
+
+<section class="slide portada">
+  <p class="kicker">Módulo 3 · Propiedades de los espacios topológicos</p>
+  <h1>Espacios regulares y normales</h1>
+  <p class="sub">$T_3$ regular &nbsp;·&nbsp; $T_4$ normal</p>
+  <p class="pie">Apuntes de clase ampliados · continuación de $T_0$, $T_1$ y $T_2$</p>
+  <aside data-s="0">Módulo tres, segunda parte de los axiomas de separación. Hoy estudiamos los espacios regulares y normales, y los axiomas te tres y te cuatro. Al final veremos que todo espacio métrico cumple todos los axiomas de separación.</aside>
+</section>
+
+<section class="slide" data-kicker="Panorama">
+  <h2>De separar puntos a separar cerrados</h2>
+  <div class="tarjetas">
+    <div class="tarjeta tenue"><b>$T_0$ · $T_1$ · $T_2$</b><span>Separan un punto de otro punto.</span></div>
+    <div class="tarjeta" data-s="1"><b>Regular → $T_3$</b><span>Separa un punto de un cerrado que no lo contiene.</span></div>
+    <div class="tarjeta" data-s="1"><b>Normal → $T_4$</b><span>Separa dos cerrados disjuntos.</span></div>
+    <div class="tarjeta" data-s="2"><b>Recordatorio</b><span>$F$ es cerrado si $X\setminus F$ es abierto.<br>Teorema 3.2: $X$ es $T_1 \iff \{x\}$ es cerrado para todo $x$.</span></div>
+  </div>
+  <p class="nota-caja" data-s="3">Herramienta clave de hoy: en un espacio $T_1$ cada punto es un cerrado. Por eso, separar cerrados termina separando puntos.</p>
+  <aside data-s="0">Hasta ahora, los axiomas te cero, te uno y te dos separaban un punto de otro punto.</aside>
+  <aside data-s="1">Hoy damos dos pasos más. Un espacio regular separa un punto de un conjunto cerrado que no lo contiene. Un espacio normal separa dos conjuntos cerrados disjuntos.</aside>
+  <aside data-s="2">Recordemos dos cosas. Un conjunto es cerrado si su complemento es abierto. Y el teorema tres punto dos: un espacio es te uno, si y solo si, cada punto, visto como conjunto, es cerrado.</aside>
+  <aside data-s="3">Ese teorema es la herramienta clave de hoy. En un espacio te uno, un punto es un cerrado. Por eso, separar cerrados termina separando puntos.</aside>
+</section>
+
+<section class="slide" data-kicker="Definición">
+  <h2>Espacio regular</h2>
+  <div class="cols">
+    <div>
+      <div class="caja def"><b>Definición.</b> $(X,\T)$ es <em>regular</em> si para todo cerrado $F$ y todo punto $x\in X\setminus F$ existen abiertos $G,H$ con $$F\subseteq G,\qquad x\in H,\qquad G\cap H=\varnothing .$$</div>
+      <p data-s="1" class="nota-caja"><b>Sobre los apuntes:</b> «$F$ pertenece a la clausura» se lee como <em>$F$ es cerrado</em>. Y la condición es <em>para todo</em> $F$ y todo $x\notin F$, no para un $F$ que exista.</p>
+    </div>
+    <div>{{D:regular}}</div>
+  </div>
+  <aside data-s="0">Primera definición: espacio regular. Un espacio topológico es regular si, para todo conjunto cerrado efe, y todo punto equis que no esté en efe, existen dos abiertos, ge y hache, que no se cortan, tales que efe está contenido en ge, y equis está en hache.</aside>
+  <aside data-s="1">Dos precisiones sobre los apuntes. Donde dice que efe pertenece a la clausura, debe entenderse que efe es un conjunto cerrado. Y la condición se pide para todo cerrado, y todo punto fuera de él; no para uno que exista.</aside>
+</section>
+
+<section class="slide compacta" data-kicker="Ejemplo de clase">
+  <h2>$X=\{a,b,c\}$, &nbsp; $\T=\{\varnothing,X,\{a\},\{b,c\}\}$</h2>
+  <div class="cols">
+    <div>
+      <p><b>Cerrados</b> (complementos de los abiertos): $X,\ \varnothing,\ \{b,c\},\ \{a\}$.</p>
+      <table class="prueba casos" data-s="1">
+        <tr><th>$F$ cerrado</th><th>$x\notin F$</th><th>$G\supseteq F$</th><th>$H\ni x$</th></tr>
+        <tr><td>$\varnothing$</td><td>$a,b,c$</td><td>$\varnothing$</td><td>$X$</td></tr>
+        <tr><td>$\{a\}$</td><td>$b,\ c$</td><td>$\{a\}$</td><td>$\{b,c\}$</td></tr>
+        <tr><td>$\{b,c\}$</td><td>$a$</td><td>$\{b,c\}$</td><td>$\{a\}$</td></tr>
+        <tr><td>$X$</td><td>ninguno</td><td>—</td><td>—</td></tr>
+      </table>
+      <p data-s="2" class="veredicto si">En cada fila $G\cap H=\varnothing$: es regular ✓</p>
+    </div>
+    <div>{{D:abcRegular}}</div>
+  </div>
+  <aside data-s="0">Ejemplo de la clase. Un conjunto de tres puntos, con abiertos: el vacío, el total, el conjunto a, y el conjunto be ce. Primero listamos los cerrados, que son los complementos de los abiertos: el total, el vacío, el conjunto be ce, y el conjunto a. En este espacio, los cerrados son exactamente los mismos conjuntos que los abiertos.</aside>
+  <aside data-s="1">Ahora revisamos cada cerrado, contra cada punto que no esté en él. Si efe es vacío, tomamos ge vacío, y hache igual a todo el espacio. Si efe es el conjunto a, los puntos de afuera son be y ce: tomamos ge igual al conjunto a, y hache igual al conjunto be ce. Si efe es be ce, el único punto de afuera es a: tomamos ge igual a be ce, y hache igual al conjunto a. Y si efe es todo el espacio, no hay puntos afuera, así que no hay nada que verificar.</aside>
+  <aside data-s="2">En todos los casos, ge y hache son abiertos y no se cortan. Por lo tanto, el espacio es regular.</aside>
+</section>
+
+<section class="slide" data-kicker="El mismo ejemplo">
+  <h2>Regular no basta para separar puntos</h2>
+  <div class="cols">
+    <div>
+      <p>$\N_b=\N_c=\{\{b,c\},\,X\}$.</p>
+      <p data-s="1"><b>$T_0$</b> <span class="no">✗</span> &nbsp; $b\neq c$ y tienen las mismas vecindades.<br><b>$T_1$</b> <span class="no">✗</span> &nbsp; $\{b\}$ no es cerrado.<br><b>$T_2$</b> <span class="no">✗</span></p>
+      <p data-s="2" class="nota-caja"><b>Conclusión:</b> la regularidad sola no implica ni siquiera $T_0$. Por eso $T_3$ le añade $T_1$.</p>
+    </div>
+    <div>{{D:abcRegular}}</div>
+  </div>
+  <aside data-s="0">Pero miremos los puntos be y ce de ese mismo espacio. Los dos tienen exactamente las mismas vecindades: el conjunto be ce, y el total.</aside>
+  <aside data-s="1">Entonces no es te cero. Y como el conjunto be no es cerrado, tampoco es te uno; ni te dos.</aside>
+  <aside data-s="2">Conclusión importante: un espacio regular no tiene por qué separar puntos. Por eso, para definir te tres, a la regularidad se le añade el axioma te uno.</aside>
+</section>
+
+<section class="slide" data-kicker="Axioma T₃">
+  <h2>$T_3$ = regular + $T_1$</h2>
+  <div class="caja def"><b>Definición.</b> $(X,\T)$ es un espacio $T_3$ si $X$ es regular y además es $T_1$.</div>
+  <p data-s="1"><b>Por qué funciona:</b> con $T_1$, cada $\{y\}$ es cerrado (teorema 3.2); la regularidad separa a $x$ del cerrado $\{y\}$, es decir, separa los puntos $x$ e $y$.</p>
+  <p data-s="2" class="nota-caja"><b>Convenciones.</b> En algunos libros «regular» ya incluye $T_1$; en otros, «$T_3$» no lo incluye. Aquí, como en clase: $T_3$ = regular + $T_1$. En los apuntes figura como «condiciones suficientes para $T_3$»: es la <em>definición</em> de $T_3$.</p>
+  <aside data-s="0">Definición: un espacio es te tres si es regular, y además es te uno.</aside>
+  <aside data-s="1">La idea es esta. Con te uno, cada punto ye es un cerrado. Entonces la regularidad permite separar un punto equis del cerrado formado por ye. Es decir, separa puntos.</aside>
+  <aside data-s="2">Una advertencia sobre convenciones. Hay libros en los que la palabra regular ya incluye te uno, y otros en los que te tres no lo incluye. Aquí seguimos la convención de la clase: te tres es regular, más te uno. En los apuntes aparece como condiciones suficientes para te tres, pero es la definición.</aside>
+</section>
+
+<section class="slide" data-kicker="Ejemplo de clase">
+  <h2>$\R$ usual: $x=0$, &nbsp; $F=[2,4]$</h2>
+  <div class="cols">
+    <div>
+      <p>$F$ es cerrado: $\R\setminus F=(-\infty,2)\cup(4,\infty)$ es abierto. Y $0\notin F$.</p>
+      <p data-s="1">$H=(-1,1)\ni 0$, &nbsp; $G=(1,5)\supseteq F$, &nbsp; $G\cap H=\varnothing$.</p>
+      <p data-s="2"><b>¿De dónde salen?</b> $d(0,F)=2$. Con radio $1=\tfrac22$: $H=B(0,1)$ y $G=\bigcup_{y\in F}B(y,1)$.</p>
+      <p data-s="3" class="nota-caja">Esto verifica <em>un</em> caso. Que $\R$ sea regular para todo $F$ y todo $x$ lo garantiza el teorema final: métrico $\Rightarrow T_4\Rightarrow T_3$.</p>
+    </div>
+    <div>{{D:rectaRegular}}</div>
+  </div>
+  <aside data-s="0">Ejemplo de la clase, en la recta real usual. Tomamos el punto cero, y el cerrado efe, igual al intervalo cerrado de dos a cuatro. Efe es cerrado, porque su complemento es la unión de dos intervalos abiertos. Y el cero no está en efe.</aside>
+  <aside data-s="1">Elegimos hache igual al intervalo abierto de menos uno a uno, que contiene al cero. Y ge igual al intervalo abierto de uno a cinco, que contiene a todo efe. Los dos no se cortan, porque el uno está excluido de ambos.</aside>
+  <aside data-s="2">¿De dónde salen esos intervalos? La distancia del cero al conjunto efe es dos. Usamos la mitad, que es uno, como radio. Hache es la bola de radio uno alrededor del cero, y ge es la unión de las bolas de radio uno alrededor de los puntos de efe.</aside>
+  <aside data-s="3">Ojo: esto verifica un solo caso. Para concluir que la recta es regular, hay que hacerlo con todo cerrado y todo punto. Eso lo garantiza el teorema del final: todo espacio métrico es te cuatro, y por lo tanto te tres.</aside>
+</section>
+
+<section class="slide compacta" data-kicker="Corolario · demostración en tabla">
+  <h2>$T_3\Rightarrow T_2$</h2>
+  <table class="prueba">
+    <tr><th>Paso</th><th>Afirmación</th><th>Justificación</th></tr>
+    <tr><td>1</td><td>Sean $x\neq y$ en $X$.</td><td>Queremos probar $T_2$.</td></tr>
+    <tr><td>2</td><td>$\{y\}$ es cerrado.</td><td>$X$ es $T_1$ y teorema 3.2.</td></tr>
+    <tr><td>3</td><td>$x\notin\{y\}$.</td><td>Porque $x\neq y$.</td></tr>
+    <tr data-s="1"><td>4</td><td>Existen abiertos $G,H$ disjuntos con $\{y\}\subseteq G$ y $x\in H$.</td><td>$X$ es regular, aplicado a $F=\{y\}$.</td></tr>
+    <tr data-s="2"><td>5</td><td>$H\in\N_x$, $G\in\N_y$ y $H\cap G=\varnothing$.</td><td>Todo abierto que contiene a un punto es vecindad suya.</td></tr>
+    <tr data-s="2" class="fin"><td>∴</td><td>$X$ es $T_2$.</td><td>Definición de $T_2$.</td></tr>
+  </table>
+  <aside data-s="0">Ahora el corolario: te tres implica te dos, te uno y te cero. Las demostraciones van en formato de tabla. Primero, te tres implica te dos. Tomamos dos puntos distintos, equis y ye. Como el espacio es te uno, el conjunto ye es cerrado, por el teorema tres punto dos. Y equis no está en él.</aside>
+  <aside data-s="1">Como el espacio es regular, aplicamos la definición con efe igual al conjunto ye. Existen abiertos ge y hache, disjuntos, con ye en ge, y equis en hache.</aside>
+  <aside data-s="2">Esos abiertos son vecindades de equis y de ye, y no se cortan. Esa es exactamente la definición de te dos.</aside>
+</section>
+
+<section class="slide" data-kicker="Corolario · demostración en tabla">
+  <h2>$T_3\Rightarrow T_1$ &nbsp;y&nbsp; $T_3\Rightarrow T_0$</h2>
+  <table class="prueba">
+    <tr><th>Implicación</th><th>Cadena</th><th>Justificación</th></tr>
+    <tr><td>$T_3\Rightarrow T_1$</td><td>$T_3$ = regular + $T_1$</td><td>Definición de $T_3$: basta quedarse con $T_1$.</td></tr>
+    <tr data-s="1"><td>$T_3\Rightarrow T_0$</td><td>$T_3\Rightarrow T_1\Rightarrow T_0$</td><td>Lo anterior y el corolario $T_1\Rightarrow T_0$ de la clase pasada.</td></tr>
+  </table>
+  <p class="cadena" data-s="2">$T_3\;\Longrightarrow\;T_2\;\Longrightarrow\;T_1\;\Longrightarrow\;T_0$</p>
+  <aside data-s="0">Te tres implica te uno es inmediato: te uno es parte de la definición de te tres.</aside>
+  <aside data-s="1">Y te tres implica te cero, porque te tres implica te uno, y en la clase anterior vimos que te uno implica te cero.</aside>
+  <aside data-s="2">Así se forma la cadena: te tres implica te dos, te dos implica te uno, y te uno implica te cero.</aside>
+</section>
+
+<section class="slide" data-kicker="Definición">
+  <h2>Espacio normal</h2>
+  <div class="cols">
+    <div>
+      <div class="caja def"><b>Definición.</b> $(X,\T)$ es <em>normal</em> si para todo par de cerrados disjuntos $E,F$ existen abiertos $G,H$ con $$E\subseteq G,\qquad F\subseteq H,\qquad G\cap H=\varnothing .$$</div>
+      <p data-s="1">Regular: un punto contra un cerrado. <b>Normal: un cerrado contra otro cerrado.</b></p>
+      <p data-s="2" class="nota-caja">El espacio $\{a,b,c\}$ anterior también es normal: el único par de cerrados disjuntos no vacíos es $\{a\}$, $\{b,c\}$, y ellos mismos son abiertos.</p>
+    </div>
+    <div>{{D:normal}}</div>
+  </div>
+  <aside data-s="0">Segunda definición: espacio normal. Es similar a la anterior, pero ahora con dos cerrados. Un espacio es normal si, dados dos cerrados disjuntos, e y efe, existen abiertos ge y hache, que no se cortan, con e contenido en ge, y efe contenido en hache.</aside>
+  <aside data-s="1">La diferencia con regular: allí separábamos un punto de un cerrado. Aquí separamos dos cerrados.</aside>
+  <aside data-s="2">Por ejemplo, el espacio de tres puntos que vimos hace un momento también es normal. El único par de cerrados disjuntos no vacíos es el conjunto a, con el conjunto be ce, y ellos mismos son abiertos que no se cortan. Los pares que incluyen al vacío se resuelven tomando el vacío como uno de los abiertos.</aside>
+</section>
+
+<section class="slide" data-kicker="Axioma T₄">
+  <h2>$T_4$ = normal + $T_1$</h2>
+  <div class="caja def"><b>Definición.</b> $(X,\T)$ es un espacio $T_4$ si $X$ es normal y además es $T_1$.</div>
+  <p data-s="1">$\{a,b,c\}$ con $\T=\{\varnothing,X,\{a\},\{b,c\}\}$ es regular y normal, pero no es $T_1$: <span class="no">no es $T_3$ ni $T_4$</span>.</p>
+  <p data-s="2" class="nota-caja">Igual que con $T_3$: hay libros donde «normal» ya incluye $T_1$. Aquí, $T_4$ = normal + $T_1$.</p>
+  <aside data-s="0">Definición: un espacio es te cuatro si es normal, y además es te uno.</aside>
+  <aside data-s="1">El espacio de tres puntos es regular y normal, pero no es te uno. Así que no es te tres ni te cuatro. Otra vez: sin te uno, estos axiomas no separan puntos.</aside>
+  <aside data-s="2">Igual que con te tres, hay libros en los que normal ya incluye te uno. Aquí, te cuatro es normal más te uno. Lo que vamos a probar ahora es que te cuatro está en la cima de la cadena.</aside>
+</section>
+
+<section class="slide compacta" data-kicker="Teorema · demostración en tabla">
+  <h2>$T_4\Rightarrow T_3$</h2>
+  <table class="prueba">
+    <tr><th>Paso</th><th>Afirmación</th><th>Justificación</th></tr>
+    <tr><td>1</td><td>$X$ es $T_1$.</td><td>Parte de la definición de $T_4$.</td></tr>
+    <tr><td>2</td><td>Sean $F$ cerrado y $x\notin F$.</td><td>Queremos probar que $X$ es regular.</td></tr>
+    <tr data-s="1"><td>3</td><td>$\{x\}$ es cerrado y $\{x\}\cap F=\varnothing$.</td><td>Teorema 3.2; y $x\notin F$.</td></tr>
+    <tr data-s="2"><td>4</td><td>Existen abiertos $G,H$ disjuntos con $F\subseteq G$ y $\{x\}\subseteq H$.</td><td>$X$ es normal, aplicado a los cerrados $F$ y $\{x\}$.</td></tr>
+    <tr data-s="2"><td>5</td><td>$X$ es regular.</td><td>$x\in H$: es la definición de regular.</td></tr>
+    <tr data-s="3" class="fin"><td>∴</td><td>$X$ es $T_3$.</td><td>Regular (paso 5) y $T_1$ (paso 1).</td></tr>
+  </table>
+  <aside data-s="0">Teorema: si un espacio es te cuatro, entonces es te tres. Sabemos que es te uno, porque es parte de la definición. Falta ver que es regular. Tomamos un cerrado efe, y un punto equis fuera de él.</aside>
+  <aside data-s="1">Por ser te uno, el conjunto equis es cerrado. Y no corta a efe, porque equis no está en efe.</aside>
+  <aside data-s="2">Ahora tenemos dos cerrados disjuntos: efe, y el conjunto equis. Como el espacio es normal, existen abiertos disjuntos ge y hache, con efe dentro de ge, y equis dentro de hache. Eso es justo lo que pide la regularidad.</aside>
+  <aside data-s="3">El espacio es regular y te uno. Por lo tanto, es te tres.</aside>
+</section>
+
+<section class="slide" data-kicker="Corolarios · demostración en tabla">
+  <h2>$T_4\Rightarrow T_2$, &nbsp;$T_4\Rightarrow T_1$, &nbsp;$T_4\Rightarrow T_0$</h2>
+  <table class="prueba">
+    <tr><th>Corolario</th><th>Cadena</th><th>Justificación</th></tr>
+    <tr><td>$T_4\Rightarrow T_2$</td><td>$T_4\Rightarrow T_3\Rightarrow T_2$</td><td>Teorema anterior y corolario de $T_3$.</td></tr>
+    <tr data-s="1"><td>$T_4\Rightarrow T_1$</td><td>$T_4$ = normal + $T_1$</td><td>Definición de $T_4$.</td></tr>
+    <tr data-s="2"><td>$T_4\Rightarrow T_0$</td><td>$T_4\Rightarrow T_1\Rightarrow T_0$</td><td>Lo anterior y el corolario $T_1\Rightarrow T_0$.</td></tr>
+  </table>
+  <p class="cadena" data-s="3">$T_4\;\Longrightarrow\;T_3\;\Longrightarrow\;T_2\;\Longrightarrow\;T_1\;\Longrightarrow\;T_0$</p>
+  <aside data-s="0">Los tres corolarios salen encadenando lo que ya probamos. Te cuatro implica te dos, porque te cuatro implica te tres, y te tres implica te dos.</aside>
+  <aside data-s="1">Te cuatro implica te uno, directamente por la definición.</aside>
+  <aside data-s="2">Y te cuatro implica te cero, porque te uno implica te cero.</aside>
+  <aside data-s="3">Queda la cadena completa: te cuatro, te tres, te dos, te uno, te cero. Cada uno implica el siguiente.</aside>
+</section>
+
+<section class="slide compacta" data-kicker="«Corolario de José»">
+  <h2>¿Normal implica regular?</h2>
+  <div class="cols">
+    <div>
+      <p>Si «normal» no incluye $T_1$ (convención de la clase), <span class="no">es falso</span>. Contraejemplo: $X=\{0,1\}$, $\T=\{\varnothing,\{0\},X\}$.</p>
+      <p data-s="1"><b>Normal</b> <span class="si">✓</span> &nbsp; Cerrados: $\varnothing$, $\{1\}$, $X$. No hay dos cerrados no vacíos disjuntos.</p>
+      <p data-s="2"><b>Regular</b> <span class="no">✗</span> &nbsp; $F=\{1\}$, $x=0$: el único abierto $G\supseteq F$ es $X$, que corta a todo $H\ni 0$.</p>
+      <div data-s="3" class="caja teo"><b>Versión correcta:</b> normal + $T_1$ $\Rightarrow$ regular (es el teorema $T_4\Rightarrow T_3$). El enunciado de José es cierto tal cual solo si «normal» ya incluye $T_1$.</div>
+    </div>
+    <div>{{D:sierpinskiF}}</div>
+  </div>
+  <aside data-s="0">En clase también se anotó el corolario de José: si un espacio es normal, entonces es regular. Con la convención de esta clase, en la que normal no incluye te uno, ese enunciado es falso. Veamos un contraejemplo, con un espacio que ya conocemos.</aside>
+  <aside data-s="1">El espacio de Sierpiński: dos puntos, cero y uno, con abiertos el vacío, el conjunto cero, y el total. Sus cerrados son el vacío, el conjunto uno, y el total. No hay dos cerrados no vacíos que sean disjuntos. Así que la condición de normal se cumple, sin nada que verificar.</aside>
+  <aside data-s="2">Pero no es regular. Tomemos efe igual al conjunto uno, y el punto cero. El único abierto que contiene a efe es todo el espacio, y todo el espacio corta a cualquier abierto que contenga al cero.</aside>
+  <aside data-s="3">La versión correcta es: normal y te uno implica regular. Es justamente el teorema te cuatro implica te tres. El enunciado de José es cierto tal cual, solo si se usa la convención en la que normal ya incluye te uno. Conviene confirmarlo con la profesora.</aside>
+</section>
+
+<section class="slide compacta" data-kicker="Teorema">
+  <h2>Todo espacio métrico es $T_4$</h2>
+  <div class="cols">
+    <div>
+      <p><b>$T_1$:</b> todo espacio métrico es $T_2$ (clase anterior), luego $T_1$.</p>
+      <p data-s="1"><b>Normal:</b> sean $E,F$ cerrados disjuntos. Si $a\in E$, entonces $a\notin F$ y $X\setminus F$ es abierto: existe $r_a>0$ con $B(a,r_a)\cap F=\varnothing$. Igual, para $b\in F$ hay $r_b>0$ con $B(b,r_b)\cap E=\varnothing$.</p>
+      <p data-s="2">$G=\bigcup_{a\in E}B\!\left(a,\tfrac{r_a}{2}\right)$, &nbsp; $H=\bigcup_{b\in F}B\!\left(b,\tfrac{r_b}{2}\right)$: abiertos, $E\subseteq G$, $F\subseteq H$.</p>
+      <p data-s="3"><b>Disjuntos:</b> si $z\in G\cap H$, entonces $d(a,b)&lt;\tfrac{r_a+r_b}{2}\le\max(r_a,r_b)$. Si el máximo es $r_a$, $b\in B(a,r_a)$; si es $r_b$, $a\in B(b,r_b)$. Absurdo.</p>
+    </div>
+    <div>{{D:metrico}}</div>
+  </div>
+  <aside data-s="0">Último resultado: todo espacio métrico es te cuatro. Primero, en la clase anterior vimos que todo espacio métrico es te dos. Por lo tanto, es te uno.</aside>
+  <aside data-s="1">Falta ver que es normal. Tomamos dos cerrados disjuntos, e y efe. Para cada punto a de e: como a no está en efe, y el complemento de efe es abierto, hay una bola alrededor de a, de radio erre sub a, que no toca a efe. Lo mismo para cada punto be de efe: hay un radio erre sub be, con una bola que no toca a e.</aside>
+  <aside data-s="2">Ahora usamos la mitad de esos radios. Ge es la unión de las bolas de radio erre sub a, sobre dos. Y hache es la unión de las bolas de radio erre sub be, sobre dos. Son abiertos, porque son uniones de bolas, y contienen a e y a efe.</aside>
+  <aside data-s="3">Y no se cortan. Si un punto zeta estuviera en las dos, la desigualdad triangular daría que la distancia entre a y be es menor que el mayor de los dos radios. Entonces be estaría en la bola de a, que no toca a efe; o a estaría en la bola de be, que no toca a e. Es absurdo. Por lo tanto, todo espacio métrico es normal y te uno: es te cuatro.</aside>
+</section>
+
+<section class="slide" data-kicker="Jerarquía">
+  <h2>La cadena completa</h2>
+  <p class="cadena">métrico $\;\Longrightarrow\;T_4\;\Longrightarrow\;T_3\;\Longrightarrow\;T_2\;\Longrightarrow\;T_1\;\Longrightarrow\;T_0$</p>
+  <p data-s="1"><b>Ningún recíproco es cierto.</b> $T_1\not\Rightarrow T_2$ (cofinita) y $T_0\not\Rightarrow T_1$ (Sierpiński) ya se vieron. Para $T_2\not\Rightarrow T_3$ y $T_3\not\Rightarrow T_4$ hay contraejemplos clásicos más elaborados (la topología $K$ en $\R$; el plano de Sorgenfrey), fuera del alcance de la clase.</p>
+  <p data-s="2" class="nota-caja"><b>Sin $T_1$</b>, regular y normal quedan fuera de la cadena: Sierpiński es normal y no regular; $\{a,b,c\}$ con $\{\varnothing,X,\{a\},\{b,c\}\}$ es regular y normal, y ni siquiera es $T_0$.</p>
+  <aside data-s="0">Resumamos la jerarquía. Todo espacio métrico es te cuatro. Te cuatro implica te tres, te tres implica te dos, te dos implica te uno, y te uno implica te cero.</aside>
+  <aside data-s="1">Ninguna de estas implicaciones se puede invertir. Te uno sin te dos, y te cero sin te uno, ya los vimos. Los contraejemplos de te dos sin te tres, y de te tres sin te cuatro, son más elaborados: por ejemplo, la topología ka en la recta, y el plano de Sorgenfrey. Quedan fuera de esta clase.</aside>
+  <aside data-s="2">Y sin te uno, regular y normal no encajan en la cadena. Sierpiński es normal y no es regular. Y el espacio de tres puntos es regular y normal, pero ni siquiera es te cero.</aside>
+</section>
+
+<section class="slide compacta" data-kicker="Resumen">
+  <h2>Todos los ejemplos de las dos clases</h2>
+  <table class="resumen ancha">
+    <tr><th>Espacio</th><th>$T_0$</th><th>$T_1$</th><th>$T_2$</th><th>Reg.</th><th>Norm.</th><th>$T_3$</th><th>$T_4$</th></tr>
+    <tr><td>$\R$ usual (todo espacio métrico)</td><td class="si">✓</td><td class="si">✓</td><td class="si">✓</td><td class="si">✓</td><td class="si">✓</td><td class="si">✓</td><td class="si">✓</td></tr>
+    <tr><td>$\R$ cofinita</td><td class="si">✓</td><td class="si">✓</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
+    <tr><td>$\R$, $\{A:0\in A\}\cup\{\varnothing\}$</td><td class="si">✓</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
+    <tr><td>$\{0,1\}$, $\{\varnothing,\{0\},X\}$</td><td class="si">✓</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="si">✓</td><td class="no">✗</td><td class="no">✗</td></tr>
+    <tr><td>$\{a,b,c\}$, $\{\varnothing,X,\{a\}\}$</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="si">✓</td><td class="no">✗</td><td class="no">✗</td></tr>
+    <tr><td>$\{a,b,c\}$, $\{\varnothing,X,\{a\},\{b,c\}\}$</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="si">✓</td><td class="si">✓</td><td class="no">✗</td><td class="no">✗</td></tr>
+  </table>
+  <p data-s="1"><b>Para verificar:</b> regular → cada cerrado contra cada punto fuera de él. Normal → cada par de cerrados disjuntos. $T_3$, $T_4$ → además, ¿los puntos son cerrados?</p>
+  <aside data-s="0">Por último, la tabla con todos los ejemplos de las dos clases. La recta real usual lo cumple todo. La topología cofinita es te uno, pero no es regular ni normal, porque dos abiertos no vacíos siempre se cortan. El ejemplo del punto cero tampoco es regular ni normal. Sierpiński, y el espacio a, be, ce con abiertos vacío, total y a, son normales sin nada que verificar, pero no son regulares. Y el espacio de tres puntos de hoy es regular y normal, pero no es te cero.</aside>
+  <aside data-s="1">Para verificar en un ejercicio. Para regular, enfrente cada cerrado con cada punto que no esté en él. Para normal, cada par de cerrados disjuntos. Y para te tres o te cuatro, además, compruebe que los puntos sean cerrados.</aside>
+</section>

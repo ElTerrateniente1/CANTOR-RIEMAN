@@ -20,3 +20,10 @@ table.resumen th, table.resumen td { border-bottom: 1px solid #d6d3c9; text-alig
 table.resumen th:first-child, table.resumen td:first-child { text-align: left; }
 table.resumen th { color: var(--gris); font-weight: 600; }
 .nw { white-space: nowrap; }
+table.prueba { border-collapse: collapse; width: 100%; }
+table.prueba th { text-align: left; color: var(--gris); font-weight: 600; border-bottom: 2px solid #d6d3c9; }
+table.prueba td { border-bottom: 1px solid #e2dfd4; vertical-align: top; }
+table.prueba td:first-child { font-weight: 600; color: var(--azul); white-space: nowrap; }
+table.prueba tr.fin td { font-weight: 600; background: #6d28d90f; }
+table.prueba.casos th, table.prueba.casos td { text-align: center; }
+table.prueba.casos td:first-child { color: var(--naranja); }

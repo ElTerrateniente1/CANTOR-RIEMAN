@@ -36,3 +36,8 @@ table.resumen td.si, table.resumen td.no { font-size: 42px; width: 150px; }
 .portada .pie { color: var(--gris); margin-top: 70px; }
 .slide.compacta { font-size: 36px; }
 .slide.compacta .nota-caja { font-size: 33px; }
+table.prueba { margin: 0 0 30px; }
+table.prueba th, table.prueba td { padding: 15px 22px; }
+table.prueba.casos th, table.prueba.casos td { padding: 10px 14px; }
+table.resumen.ancha td.si, table.resumen.ancha td.no { width: 112px; font-size: 38px; }
+table.resumen.ancha th, table.resumen.ancha td { padding: 13px 12px; }

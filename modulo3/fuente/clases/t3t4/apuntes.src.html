@@ -1,0 +1,210 @@
+<header class="portada">
+  <p class="kicker">Módulo 3 · Propiedades de los espacios topológicos</p>
+  <h1>Espacios regulares y normales: $T_3$ y $T_4$</h1>
+  <p class="sub">Apuntes de clase ampliados · continuación de los axiomas $T_0$, $T_1$ y $T_2$</p>
+</header>
+
+<div class="caja ojo">
+<b>Cómo leer este documento.</b> Sigue el orden de la clase, con las demostraciones completas y los ejemplos verificados caso por caso. Las demostraciones del corolario de $T_3$ (y, por coherencia, las de $T_4$) van en formato de tabla. Los recuadros <span class="et enlinea">Ojo con los apuntes</span> marcan dónde lo anotado no coincide con la definición estándar o con la cuenta: allí se dice qué se supuso para avanzar y qué conviene confirmar con la profesora. Las secciones 7, 10 y 11 y los ejemplos señalados como adicionales son material de apoyo que no se vio en clase.
+</div>
+
+<h2>1. De separar puntos a separar cerrados</h2>
+<p>$T_0$, $T_1$ y $T_2$ separan <em>un punto de otro punto</em>. Los axiomas de hoy separan conjuntos cerrados:</p>
+<table class="mapa">
+<tr><td>Regular</td><td colspan="2">Separa un punto de un cerrado que no lo contiene.</td></tr>
+<tr><td>$T_3$</td><td colspan="2">Regular y además $T_1$.</td></tr>
+<tr><td>Normal</td><td colspan="2">Separa dos cerrados disjuntos.</td></tr>
+<tr><td>$T_4$</td><td colspan="2">Normal y además $T_1$.</td></tr>
+</table>
+<div class="caja prop"><b>Lo que se usa de la clase anterior.</b>
+<ul>
+<li>$F$ es <em>cerrado</em> si $X\setminus F$ es abierto.</li>
+<li><b>Teorema 3.2:</b> $X$ es $T_1$ si y solo si $\{x\}$ es cerrado para todo $x\in X$. <i>Es la herramienta clave de hoy: en un espacio $T_1$, cada punto es un cerrado.</i></li>
+<li><b>Corolario:</b> $T_2\Rightarrow T_1\Rightarrow T_0$.</li>
+<li>Todo espacio métrico es $T_2$.</li>
+</ul></div>
+
+<div class="caja ojo"><span class="et">Ojo con los apuntes</span>
+<ul>
+<li><b>«$F$ pertenece a la clausura».</b> Se interpreta como «<em>$F$ es un conjunto cerrado</em>» (pertenece a la familia de los cerrados). «Pertenecer a la clausura» de un conjunto significaría otra cosa. Lo mismo en la definición de normal: «$E,F$ pertenecen a la cerradura» = «$E,F$ son cerrados».</li>
+<li><b>«Va a existir un conjunto $F$…».</b> El cuantificador correcto es «<em>para todo</em> cerrado $F$ y todo $x\notin F$». Si bastara con que existiera un $F$, la condición se cumpliría en cualquier espacio (con $F=\varnothing$).</li>
+<li><b>«Condiciones suficientes para $T_3$».</b> Es la <em>definición</em> de $T_3$.</li>
+<li><b>«$T_{3a}$ implica $T_2$».</b> Se lee como $T_3\Rightarrow T_2$, junto con las otras dos implicaciones del corolario. Si «$T_{3a}$» se refería a otro axioma, por ejemplo $T_{3\frac12}$ (espacio completamente regular o de Tíjonov), la implicación también sería cierta, porque $T_{3\frac12}\Rightarrow T_3$; pero ese tema no aparece en los apuntes.</li>
+<li><b>Convenciones.</b> Los libros no coinciden. Algunos (como Munkres) incluyen $T_1$ dentro de «regular» y «normal»; otros (como Willard) hacen lo que hizo la clase: regular y normal sin $T_1$, y $T_3$ = regular + $T_1$, $T_4$ = normal + $T_1$. Aquí se usa la convención de la clase. Esto importa para el «corolario de José» (sección 8).</li>
+</ul></div>
+
+<h2>2. Espacios regulares</h2>
+<figure class="der">{{D:regular}}</figure>
+<div class="caja def"><b>Definición (espacio regular).</b> Sea $(X,\T)$ un espacio topológico. $X$ es <em>regular</em> si para todo conjunto cerrado $F$ y todo punto $x\in X\setminus F$ existen abiertos $G,H\in\T$ tales que $$F\subseteq G,\qquad x\in H,\qquad G\cap H=\varnothing .$$</div>
+<p>Dos casos son siempre inmediatos: si $F=\varnothing$, sirven $G=\varnothing$ y $H=X$; si $F=X$, no hay ningún $x$ fuera de $F$ y no hay nada que comprobar.</p>
+
+<h3>2.1 Ejemplo de clase: $X=\{a,b,c\}$, $\T=\{\varnothing,X,\{a\},\{b,c\}\}$</h3>
+<figure class="der">{{D:abcRegular}}</figure>
+<p><b>Paso 1: los cerrados.</b> Son los complementos de los abiertos: $$X\setminus\varnothing=X,\quad X\setminus X=\varnothing,\quad X\setminus\{a\}=\{b,c\},\quad X\setminus\{b,c\}=\{a\}.$$ En este espacio los cerrados son exactamente los mismos conjuntos que los abiertos.</p>
+<div class="junto">
+<p><b>Paso 2: cada cerrado contra cada punto fuera de él.</b></p>
+<table class="prueba casos">
+<tr><th>$F$ cerrado</th><th>$x\notin F$</th><th>$G$ abierto, $F\subseteq G$</th><th>$H$ abierto, $x\in H$</th><th>$G\cap H$</th></tr>
+<tr><td>$\varnothing$</td><td>$a$, $b$, $c$</td><td>$\varnothing$</td><td>$X$</td><td>$\varnothing$</td></tr>
+<tr><td>$\{a\}$</td><td>$b$, $c$</td><td>$\{a\}$</td><td>$\{b,c\}$</td><td>$\varnothing$</td></tr>
+<tr><td>$\{b,c\}$</td><td>$a$</td><td>$\{b,c\}$</td><td>$\{a\}$</td><td>$\varnothing$</td></tr>
+<tr><td>$X$</td><td>ninguno</td><td>—</td><td>—</td><td>—</td></tr>
+</table>
+<p>Todos los casos se resuelven. <span class="si">$(X,\T)$ es regular.</span></p>
+</div>
+
+<h3>2.2 El mismo ejemplo: regular no basta para separar puntos</h3>
+<p>Los puntos $b$ y $c$ tienen las mismas vecindades: $\N_b=\N_c=\{\{b,c\},X\}$. Por tanto:</p>
+<ul>
+<li><b>No es $T_0$</b>: $b\neq c$ pero $\N_b=\N_c$.</li>
+<li><b>No es $T_1$</b>: $\{b\}$ no es cerrado, porque $X\setminus\{b\}=\{a,c\}$ no es abierto (teorema 3.2).</li>
+<li><b>No es $T_2$</b>: $T_2\Rightarrow T_0$.</li>
+</ul>
+<p>Conclusión: <b>la regularidad, por sí sola, no implica ni siquiera $T_0$.</b> Por eso la definición de $T_3$ le añade $T_1$.</p>
+
+<h2>3. Axioma $T_3$</h2>
+<div class="caja def"><b>Definición.</b> Sea $(X,\T)$ un espacio topológico. $X$ es un espacio $T_3$ si $X$ es regular y además es $T_1$.</div>
+<p><b>Por qué se añade $T_1$.</b> Con $T_1$, cada $\{y\}$ es cerrado (teorema 3.2); la regularidad, aplicada al cerrado $\{y\}$ y al punto $x\neq y$, separa a $x$ de $y$ con abiertos disjuntos. Así $T_3$ sí separa puntos (corolario de la sección 4).</p>
+
+<h3>3.1 Ejemplo de clase: $\R$ con la topología usual</h3>
+<figure class="der">{{D:rectaRegular}}</figure>
+<p>Sean $x=0$, $F=[2,4]$, $H=(-1,1)$ y $G=(1,5)$. Se verifica cada condición:</p>
+<ul>
+<li>$F$ es cerrado: $\R\setminus F=(-\infty,2)\cup(4,\infty)$ es unión de abiertos.</li>
+<li>$x\notin F$: $0\notin[2,4]$.</li>
+<li>$G$ y $H$ son abiertos (intervalos abiertos), $F=[2,4]\subseteq(1,5)=G$ y $0\in(-1,1)=H$.</li>
+<li>$G\cap H=(1,5)\cap(-1,1)=\varnothing$: el $1$ está excluido de ambos.</li>
+</ul>
+<p><b>De dónde salen esos intervalos.</b> La distancia del $0$ a $F$ es $d(0,F)=2$. Con la mitad, $r=1$, como radio: $H=B(0,1)=(-1,1)$ y $G=\bigcup_{y\in[2,4]}B(y,1)=(1,5)$. Es exactamente la construcción que se usa en la sección 9 para probar que todo espacio métrico es normal.</p>
+<p class="nota">El ejemplo comprueba un solo par $(x,F)$. Para afirmar que $\R$ usual es regular hay que hacerlo para todo cerrado $F$ y todo $x\notin F$; eso queda garantizado por el teorema de la sección 9 (métrico $\Rightarrow T_4\Rightarrow T_3$).</p>
+
+<h2>4. Corolario: $T_3\Rightarrow T_2$, $T_3\Rightarrow T_1$, $T_3\Rightarrow T_0$</h2>
+<div class="caja teo"><b>Corolario.</b> Sea $(X,\T)$ un espacio topológico. Si $X$ es $T_3$, entonces $X$ es $T_2$, $T_1$ y $T_0$.</div>
+
+<h3>4.1 $T_3\Rightarrow T_2$</h3>
+<table class="prueba">
+<tr><th>Paso</th><th>Afirmación</th><th>Justificación</th></tr>
+<tr><td>1</td><td>Sean $x,y\in X$ con $x\neq y$.</td><td>Queremos probar la definición de $T_2$.</td></tr>
+<tr><td>2</td><td>$\{y\}$ es cerrado.</td><td>$X$ es $T_1$ (parte de $T_3$) y teorema 3.2.</td></tr>
+<tr><td>3</td><td>$x\notin\{y\}$.</td><td>Porque $x\neq y$.</td></tr>
+<tr><td>4</td><td>Existen $G,H\in\T$ con $\{y\}\subseteq G$, $x\in H$ y $G\cap H=\varnothing$.</td><td>$X$ es regular; se aplica con $F=\{y\}$ (pasos 2 y 3).</td></tr>
+<tr><td>5</td><td>$H\in\N_x$ y $G\in\N_y$.</td><td>Todo abierto que contiene a un punto es vecindad de ese punto.</td></tr>
+<tr><td>6</td><td>$H\cap G=\varnothing$.</td><td>Paso 4.</td></tr>
+<tr class="fin"><td>∴</td><td>$X$ es $T_2$.</td><td>Pasos 1, 5 y 6: definición de $T_2$.</td></tr>
+</table>
+
+<h3>4.2 $T_3\Rightarrow T_1$</h3>
+<table class="prueba">
+<tr><th>Paso</th><th>Afirmación</th><th>Justificación</th></tr>
+<tr><td>1</td><td>$X$ es $T_3$.</td><td>Hipótesis.</td></tr>
+<tr><td>2</td><td>$X$ es regular y $X$ es $T_1$.</td><td>Definición de $T_3$.</td></tr>
+<tr class="fin"><td>∴</td><td>$X$ es $T_1$.</td><td>Segunda parte del paso 2.</td></tr>
+</table>
+<p class="nota">También se obtiene de 4.1: $T_3\Rightarrow T_2\Rightarrow T_1$.</p>
+
+<h3>4.3 $T_3\Rightarrow T_0$</h3>
+<table class="prueba">
+<tr><th>Paso</th><th>Afirmación</th><th>Justificación</th></tr>
+<tr><td>1</td><td>$X$ es $T_1$.</td><td>Por 4.2.</td></tr>
+<tr class="fin"><td>∴</td><td>$X$ es $T_0$.</td><td>Corolario de la clase anterior: $T_1\Rightarrow T_0$.</td></tr>
+</table>
+
+<h3>4.4 Resumen del corolario</h3>
+<table class="prueba">
+<tr><th>Implicación</th><th>Cadena</th><th>Idea clave</th></tr>
+<tr><td>$T_3\Rightarrow T_2$</td><td>regular aplicado a $F=\{y\}$</td><td>$T_1$ convierte el punto $y$ en un cerrado.</td></tr>
+<tr><td>$T_3\Rightarrow T_1$</td><td>definición de $T_3$</td><td>$T_1$ es parte de la hipótesis.</td></tr>
+<tr><td>$T_3\Rightarrow T_0$</td><td>$T_3\Rightarrow T_1\Rightarrow T_0$</td><td>Corolario de la clase anterior.</td></tr>
+</table>
+<p class="nota">El $T_1$ es imprescindible: el ejemplo de 2.1 es regular y no es $T_2$, $T_1$ ni $T_0$.</p>
+
+<h2>5. Espacios normales</h2>
+<figure class="der">{{D:normal}}</figure>
+<div class="caja def"><b>Definición (espacio normal).</b> Sea $(X,\T)$ un espacio topológico. $X$ es <em>normal</em> si para todo par de cerrados $E,F$ con $E\cap F=\varnothing$ existen abiertos $G,H\in\T$ tales que $$E\subseteq G,\qquad F\subseteq H,\qquad G\cap H=\varnothing .$$</div>
+<p>Como se dijo en clase, es la misma idea que regular, pero en lugar de «un punto contra un cerrado» se separan <b>dos cerrados</b>. Si alguno de los dos es vacío, digamos $E=\varnothing$, basta $G=\varnothing$ y $H=X$.</p>
+<p><b>Ejemplo.</b> El espacio de 2.1, $\{a,b,c\}$ con $\T=\{\varnothing,X,\{a\},\{b,c\}\}$, también es normal. Sus cerrados son $\varnothing,X,\{a\},\{b,c\}$. Los pares disjuntos con ambos conjuntos no vacíos se reducen a $E=\{a\}$, $F=\{b,c\}$, y se separan con $G=\{a\}$, $H=\{b,c\}$, que son abiertos disjuntos.</p>
+
+<h2>6. Axioma $T_4$</h2>
+<div class="caja def"><b>Definición.</b> Sea $(X,\T)$ un espacio topológico. $X$ es un espacio $T_4$ si $X$ es normal y además es $T_1$.</div>
+<p>El ejemplo de 2.1 es regular y normal, pero no es $T_1$; por eso <span class="no">no es $T_3$ ni $T_4$</span>.</p>
+
+<h3>6.1 Teorema: $T_4\Rightarrow T_3$</h3>
+<div class="caja teo"><b>Teorema.</b> Sea $(X,\T)$ un espacio topológico. Si $X$ es $T_4$, entonces $X$ es $T_3$.</div>
+<table class="prueba">
+<tr><th>Paso</th><th>Afirmación</th><th>Justificación</th></tr>
+<tr><td>1</td><td>$X$ es $T_1$.</td><td>Parte de la definición de $T_4$.</td></tr>
+<tr><td>2</td><td>Sean $F$ cerrado y $x\in X\setminus F$.</td><td>Queremos probar que $X$ es regular.</td></tr>
+<tr><td>3</td><td>$\{x\}$ es cerrado.</td><td>Paso 1 y teorema 3.2.</td></tr>
+<tr><td>4</td><td>$\{x\}\cap F=\varnothing$.</td><td>Porque $x\notin F$.</td></tr>
+<tr><td>5</td><td>Existen $G,H\in\T$ con $F\subseteq G$, $\{x\}\subseteq H$ y $G\cap H=\varnothing$.</td><td>$X$ es normal; se aplica a los cerrados disjuntos $F$ y $\{x\}$ (pasos 2–4).</td></tr>
+<tr><td>6</td><td>$X$ es regular.</td><td>$\{x\}\subseteq H$ significa $x\in H$: es la definición de regular.</td></tr>
+<tr class="fin"><td>∴</td><td>$X$ es $T_3$.</td><td>Regular (paso 6) y $T_1$ (paso 1).</td></tr>
+</table>
+
+<h3>6.2 Corolarios: $T_4\Rightarrow T_2$, $T_4\Rightarrow T_1$, $T_4\Rightarrow T_0$</h3>
+<table class="prueba">
+<tr><th>Corolario</th><th>Cadena</th><th>Justificación</th></tr>
+<tr><td>$T_4\Rightarrow T_2$</td><td>$T_4\Rightarrow T_3\Rightarrow T_2$</td><td>Teorema 6.1 y corolario 4.1.</td></tr>
+<tr><td>$T_4\Rightarrow T_1$</td><td>$T_4$ = normal + $T_1$</td><td>Definición de $T_4$ (también $T_4\Rightarrow T_3\Rightarrow T_1$).</td></tr>
+<tr><td>$T_4\Rightarrow T_0$</td><td>$T_4\Rightarrow T_1\Rightarrow T_0$</td><td>Fila anterior y corolario $T_1\Rightarrow T_0$ de la clase anterior.</td></tr>
+</table>
+<p>Queda la cadena $$T_4\;\Longrightarrow\;T_3\;\Longrightarrow\;T_2\;\Longrightarrow\;T_1\;\Longrightarrow\;T_0 .$$</p>
+
+<h2>7. Por qué el $T_1$ es necesario: resumen de la idea</h2>
+<p>Regular y normal hablan de <em>cerrados</em>. Si los puntos no son cerrados, esas definiciones no dicen nada sobre separar puntos (ejemplo 2.1). $T_1$ es exactamente la condición que convierte cada punto en un cerrado, y con ella:</p>
+<ul>
+<li>regular + $T_1$: un punto contra el cerrado $\{y\}$ $\Rightarrow$ $T_2$;</li>
+<li>normal + $T_1$: el cerrado $\{x\}$ contra un cerrado $F$ $\Rightarrow$ regular.</li>
+</ul>
+
+<h2>8. El «corolario de José»: ¿normal implica regular?</h2>
+<figure class="der">{{D:sierpinskiF}}</figure>
+<p>En clase se anotó: <i>«si un espacio es normal, entonces es regular»</i>.</p>
+<div class="caja ojo"><span class="et">Ojo con los apuntes</span> Con la convención de la clase (normal <b>sin</b> $T_1$), este enunciado es <b>falso</b>. Es verdadero si se añade $T_1$, o si se usa la convención de los libros en que «normal» ya incluye $T_1$. No se sabe cuál de las dos cosas se quiso decir en clase; conviene confirmarlo con la profesora.</div>
+<p><b>Contraejemplo: espacio de Sierpiński.</b> $X=\{0,1\}$, $\T=\{\varnothing,\{0\},X\}$. Sus cerrados son $X$, $\{1\}$ y $\varnothing$.</p>
+<ul>
+<li><b>Es normal.</b> Los pares de cerrados disjuntos son los que incluyen a $\varnothing$ (se resuelven con $G=\varnothing$, $H=X$ o al revés). No existen dos cerrados no vacíos disjuntos, porque $\{1\}\cap X\neq\varnothing$. La condición se cumple «por vacuidad».</li>
+<li><b>No es regular.</b> Sean $F=\{1\}$ y $x=0\notin F$. El único abierto que contiene a $F$ es $G=X$, y $X$ corta a cualquier abierto $H$ que contenga al $0$. No se pueden separar.</li>
+</ul>
+<p><b>Contraejemplo adicional.</b> El espacio de la clase anterior $\{a,b,c\}$ con $\T=\{\varnothing,X,\{a\}\}$ es otro contraejemplo: sus cerrados son $\varnothing$, $X$ y $\{b,c\}$ (normal por vacuidad), y $F=\{b,c\}$ no se separa de $x=a$, porque el único abierto que contiene a $\{b,c\}$ es $X$.</p>
+<div class="caja teo"><b>Versión correcta.</b> Si $X$ es normal y $T_1$, entonces $X$ es regular. Es precisamente el teorema 6.1: $T_4\Rightarrow T_3$.</div>
+<p class="nota">Tampoco «regular $\Rightarrow$ normal» es cierto, ni siquiera con $T_1$: el plano de Sorgenfrey es $T_3$ y no es normal. La demostración es larga y queda fuera de esta clase; se menciona solo para que no se dé por cierta.</p>
+
+<h2>9. Todo espacio métrico es $T_4$</h2>
+<figure class="der">{{D:metrico}}</figure>
+<div class="caja teo"><b>Teorema</b> (en los apuntes, «corolario»). Todo espacio métrico $(X,d)$, con la topología inducida por $d$, es $T_4$.</div>
+<p class="nota">Aunque en clase se llamó corolario, no se deduce de los resultados anteriores: necesita su propia demostración.</p>
+<p class="dem"><b>Demostración.</b> <i>Parte 1: $T_1$.</i> En la clase anterior se probó que todo espacio métrico es $T_2$; como $T_2\Rightarrow T_1$, es $T_1$.</p>
+<p class="dem"><i>Parte 2: normal.</i> Sean $E,F$ cerrados con $E\cap F=\varnothing$. Para cada $a\in E$ se tiene $a\notin F$, y $X\setminus F$ es abierto; luego existe $r_a>0$ con $B(a,r_a)\subseteq X\setminus F$, es decir, $B(a,r_a)\cap F=\varnothing$. Del mismo modo, para cada $b\in F$ existe $r_b>0$ con $B(b,r_b)\cap E=\varnothing$. Se definen $$G=\bigcup_{a\in E}B\!\left(a,\tfrac{r_a}{2}\right),\qquad H=\bigcup_{b\in F}B\!\left(b,\tfrac{r_b}{2}\right).$$ Son abiertos (uniones de bolas abiertas), $E\subseteq G$ y $F\subseteq H$ (cada punto está en su bola).</p>
+<p class="dem"><i>Parte 3: $G\cap H=\varnothing$.</i> Supongamos que existe $z\in G\cap H$. Entonces $z\in B(a,\tfrac{r_a}{2})$ y $z\in B(b,\tfrac{r_b}{2})$ para algún $a\in E$ y algún $b\in F$. Por la desigualdad triangular, $$d(a,b)\le d(a,z)+d(z,b)&lt;\frac{r_a}{2}+\frac{r_b}{2}\le\max(r_a,r_b).$$ Si $\max(r_a,r_b)=r_a$, entonces $b\in B(a,r_a)$, que no corta a $F$; pero $b\in F$: contradicción. Si $\max(r_a,r_b)=r_b$, entonces $a\in B(b,r_b)$, que no corta a $E$; pero $a\in E$: contradicción. Luego $G\cap H=\varnothing$ y $X$ es normal. Con la parte 1, $X$ es $T_4$. $\qquad\blacksquare$</p>
+<p><b>Consecuencia.</b> $\R$ con la topología usual es $T_4$ y, por 6.1, $T_3$: el ejemplo 3.1 funciona para cualquier $x$ y cualquier cerrado $F$. Con $E=\{0\}$ y $F=[2,4]$, los radios $r_a=r_b=2$ dan $G=(-1,1)$ y $H=(1,5)$, los mismos intervalos de clase con los nombres intercambiados.</p>
+
+<h2>10. Resumen</h2>
+<p class="cadena-doc">métrico $\;\Longrightarrow\;T_4\;\Longrightarrow\;T_3\;\Longrightarrow\;T_2\;\Longrightarrow\;T_1\;\Longrightarrow\;T_0$</p>
+<p>Ningún recíproco es cierto. $T_0\not\Rightarrow T_1$ (Sierpiński) y $T_1\not\Rightarrow T_2$ (cofinita) se vieron en la clase anterior. Para $T_2\not\Rightarrow T_3$ y $T_3\not\Rightarrow T_4$ existen contraejemplos clásicos (la topología $K$ en $\R$ y el plano de Sorgenfrey, respectivamente), que quedan fuera del alcance de la clase.</p>
+<table class="resumen ancha">
+<tr><th>Espacio</th><th>$T_0$</th><th>$T_1$</th><th>$T_2$</th><th>Reg.</th><th>Norm.</th><th>$T_3$</th><th>$T_4$</th></tr>
+<tr><td>$\R$ usual (y todo espacio métrico)</td><td class="si">✓</td><td class="si">✓</td><td class="si">✓</td><td class="si">✓</td><td class="si">✓</td><td class="si">✓</td><td class="si">✓</td></tr>
+<tr><td>$\R$ con la topología cofinita</td><td class="si">✓</td><td class="si">✓</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
+<tr><td>$\R$ con $\T=\{A:0\in A\}\cup\{\varnothing\}$</td><td class="si">✓</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
+<tr><td>$\{0,1\}$ con $\{\varnothing,\{0\},X\}$ (Sierpiński)</td><td class="si">✓</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="si">✓</td><td class="no">✗</td><td class="no">✗</td></tr>
+<tr><td>$\{a,b,c\}$ con $\{\varnothing,X,\{a\}\}$</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="si">✓</td><td class="no">✗</td><td class="no">✗</td></tr>
+<tr><td>$\{a,b,c\}$ con $\{\varnothing,X,\{a\},\{b,c\}\}$</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="si">✓</td><td class="si">✓</td><td class="no">✗</td><td class="no">✗</td></tr>
+</table>
+<p class="nota"><b>Justificación de las filas nuevas.</b> Cofinita: dos abiertos no vacíos siempre se cortan, así que no se separa $F=\{1\}$ de $x=0$ (no regular) ni $E=\{1\}$ de $F=\{2\}$ (no normal). Punto $0$: todo abierto no vacío contiene al $0$, así que tampoco se separan $F=\{1\}$ de $x=0$ ni $\{1\}$ de $\{2\}$, que son cerrados porque no contienen al $0$. Sierpiński y $\{\varnothing,X,\{a\}\}$: sección 8.</p>
+<table class="mapa">
+<tr><td>Regular</td><td colspan="2">Para cada cerrado $F$ y cada $x\notin F$: abiertos disjuntos $G\supseteq F$, $H\ni x$.</td></tr>
+<tr><td>Normal</td><td colspan="2">Para cada par de cerrados disjuntos $E,F$: abiertos disjuntos $G\supseteq E$, $H\supseteq F$.</td></tr>
+<tr><td>$T_3$, $T_4$</td><td colspan="2">Lo anterior y además $T_1$: ¿cada $\{x\}$ es cerrado? (teorema 3.2).</td></tr>
+</table>
+
+<div class="junto">
+<h2>11. Ejercicios de comprobación</h2>
+<ol>
+<li>Sea $X$ cualquier conjunto con la topología discreta (todo subconjunto es abierto). ¿Es $T_4$?</li>
+<li>Sea $X=\{a,b\}$ con la topología indiscreta $\T=\{\varnothing,X\}$. ¿Es regular? ¿Normal? ¿$T_3$?</li>
+<li>¿Por qué $\R$ con la topología cofinita es $T_1$ y, sin embargo, no es $T_3$?</li>
+<li>Pruebe: $X$ es regular si y solo si para todo $x\in X$ y todo abierto $U\ni x$ existe un abierto $V$ con $x\in V\subseteq\overline{V}\subseteq U$.</li>
+</ol>
+<p class="nota"><b>Respuestas.</b> (1) Sí: todo $\{x\}$ es cerrado, y dos cerrados disjuntos $E,F$ son también abiertos, así que $G=E$, $H=F$. (2) Es regular y normal: los únicos cerrados son $\varnothing$ y $X$, y esos casos se resuelven con $G=\varnothing$, $H=X$. No es $T_3$ porque $\{a\}$ no es cerrado. (3) Es $T_1$ porque los puntos son finitos, luego cerrados; no es regular porque dos abiertos no vacíos siempre se cortan. (4) ($\Rightarrow$) Aplique la regularidad a $F=X\setminus U$ y $x$: se obtienen $G\supseteq F$, $H\ni x$ disjuntos; tome $V=H$. Como $H\subseteq X\setminus G$, que es cerrado, $\overline{H}\subseteq X\setminus G\subseteq U$. ($\Leftarrow$) Dados $F$ cerrado y $x\notin F$, use $U=X\setminus F$; tome $H=V$ y $G=X\setminus\overline{V}$.</p>
+</div>
